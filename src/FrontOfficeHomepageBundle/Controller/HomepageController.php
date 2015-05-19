@@ -10,14 +10,14 @@ class HomepageController extends Controller
     {
     	$em = $this->getDoctrine()->getManager();
     	$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article') ->getArticles();
-    	$formations = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
-    	$forums = $em ->getRepository('FrontOfficeHomepageBundle:Forum')->getForums();
+    	$formation = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
+    	$forum = $em ->getRepository('FrontOfficeHomepageBundle:Forum')->getLastForum();
 
 
 
         return $this->render('FrontOfficeHomepageBundle:Homepage:homepage.html.twig', 
         	array('articles'  =>$articles,
-        	      'formations'=>$formations,
-        	      'forums'    =>$forums));
+        	      'formation' =>$formation,
+        	      'forum'     =>$forum));
     }
 }

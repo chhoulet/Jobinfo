@@ -14,6 +14,17 @@ front_office_formation_oneFormation:
     path:     /oneFormation/{id}
     defaults: { controller: FrontOfficeHomepageBundle:Formation:oneFormation}
 
+# Routes assurant la gestion des forums:
+front_office_forum_list:
+    path:     /forum/{forumType}
+    defaults: { _controller: FrontOfficeHomepageBundle:Forum:list, forumType: emploi}
+    requirements:
+        forumType: (emploi|formation)
+
+front_office_forum_oneForum:
+    path:     /oneForum/{id}
+    defaults: { _controller: FrontOfficeHomepageBundle:Forum:oneForum}
+
 #Routes vers le blog :
 front_office_homepage_blog_article:
     path:     /showArticles

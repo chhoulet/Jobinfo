@@ -12,14 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class ForumRepository extends EntityRepository
 {
-	public function getForums()
+	public function getLastForum()
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT f 
 			FROM FrontOfficeHomepageBundle:Forum f 
-			WHERE f.forumDate > :dateForum')
-		->setParameter('dateForum', 'now')
-		-> setMaxResults(2);
+			ORDER BY f.forumDate DESC')
+		->setMaxResults(1);
+		
+		return $query -> getResult();
+	}
+	public function getForums($forumType)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f 
+			FROM FrontOfficeHomepageBundle:Forum f 
+			WHERE f.forumType = :forumType')
+		->setParameter('forumType', $forumType);
 
 		return $query -> getResult();
 	}

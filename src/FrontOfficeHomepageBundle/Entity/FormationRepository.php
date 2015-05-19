@@ -17,7 +17,8 @@ class FormationRepository extends EntityRepository
 		$query = $this -> getEntityManager() -> createQuery('
 			SELECT f  
 			FROM FrontOfficeHomepageBundle:Formation f
-			ORDER BY f.createdAt DESC');
+			ORDER BY f.createdAt DESC')
+		->setMaxResults(1);
 		
 		return $query ->getResult();
 	}
