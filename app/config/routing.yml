@@ -1,0 +1,4 @@
+front_office_homepage:
+    resource: "@FrontOfficeHomepageBundle/Resources/config/routing.yml"
+    prefix:   /
+

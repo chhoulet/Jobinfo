@@ -1,0 +1,29 @@
+# Route vers la homepage :
+front_office_homepage_homepage:
+    path:     /
+    defaults: { _controller: FrontOfficeHomepageBundle:Homepage:homepage }
+
+# Routes assurant la gestion des formations + Attribution d'une valeur au paramètre de la requete SQL formationType qui sera la valeur par défault.
+front_office_formation_list:
+    path:     /formation/{formationType}
+    defaults: { _controller: FrontOfficeHomepageBundle:Formation:list, formationType: developpement }
+    requirements:
+        formationType: (developpement|integration|architecte-logiciel)
+
+front_office_formation_oneFormation:
+    path:     /oneFormation/{id}
+    defaults: { controller: FrontOfficeHomepageBundle:Formation:oneFormation}
+
+#Routes vers le blog :
+front_office_homepage_blog_article:
+    path:     /showArticles
+    defaults: { _controller:FrontOfficeHomepageBundle:Blog:showArticles}
+
+front_office_homepage_blog_oneArticle:
+    path:     /showOnearticle/{id}
+    defaults: { _controller:FrontOfficeHomepageBundle:Blog:showOneArticle}
+
+#Route de gestion des commentaires:
+front_office_homepage_blog_oneArticle_comment:
+    path:     /commentOneArticle/{id}
+    defaults: { controller:FrontOfficeHomepageBundle:Blog:createComment}
