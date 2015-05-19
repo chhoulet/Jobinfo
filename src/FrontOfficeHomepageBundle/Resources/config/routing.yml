@@ -38,3 +38,12 @@ front_office_homepage_blog_oneArticle:
 front_office_homepage_blog_oneArticle_comment:
     path:     /commentOneArticle/{id}
     defaults: { controller:FrontOfficeHomepageBundle:Blog:createComment}
+
+#Routes gérant les informations statiques:
+front_office_homepage_static_mentions_legales:
+    path:     /mentions_legales
+    defaults: { _controller: FrontOfficeHomepageBundle:Static:mentions}
+
+front_office_homepage_static_conditions_generales:
+    path:     /conditions_generales
+    defaults: { _controller: FrontOfficeHomepageBundle:Static:conditions}

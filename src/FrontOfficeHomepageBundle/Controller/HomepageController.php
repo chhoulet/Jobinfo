@@ -13,8 +13,6 @@ class HomepageController extends Controller
     	$formation = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
     	$forum = $em ->getRepository('FrontOfficeHomepageBundle:Forum')->getLastForum();
 
-
-
         return $this->render('FrontOfficeHomepageBundle:Homepage:homepage.html.twig', 
         	array('articles'  =>$articles,
         	      'formation' =>$formation,
