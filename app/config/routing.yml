@@ -1,4 +1,11 @@
+front_office_user:
+    resource: "@FrontOfficeUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 front_office_homepage:
     resource: "@FrontOfficeHomepageBundle/Resources/config/routing.yml"
     prefix:   /
+
+user_bundle:
+   resource: "@FrontOfficeUserBundle/Resources/config/routing.yml"
 
