@@ -1,0 +1,4 @@
+services:
+#    front_office_emploi.example:
+#        class: FrontOfficeEmploiBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

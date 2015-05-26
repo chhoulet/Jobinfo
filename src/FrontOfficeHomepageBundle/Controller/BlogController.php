@@ -35,7 +35,7 @@ class BlogController extends Controller
 			$em ->persist($comment);
 			$em ->flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_homepage_blog_showComments', ['id'=>$id]));
+			return $this -> redirect($this -> generateUrl('front_office_homepage_blog_oneArticle', ['id'=>$id]));
 		}
 	
 		return $this -> render('FrontOfficeHomepageBundle:Blog:showOneArticle.html.twig', array('showOneArticle' =>$article,

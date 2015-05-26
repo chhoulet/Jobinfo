@@ -1,3 +1,7 @@
+front_office_emploi:
+    resource: "@FrontOfficeEmploiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 front_office_homepage:
     resource: "@FrontOfficeHomepageBundle/Resources/config/routing.yml"
     prefix:   /
