@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
-}
+	public function getComments($article_id)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeHomepageBundle:Comment c 
+			Join c.article a
+			WHERE a.id LIKE :article_id')
+		->setParameter('article_id', $article_id);
+
+		return $query->getResult();
+	}
