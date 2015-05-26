@@ -35,9 +35,9 @@ front_office_homepage_blog_oneArticle:
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showOneArticle}
 
 #Route de gestion des commentaires:
-front_office_homepage_createComment:
-    path:     /createComment/{id}
-    defaults: { controller: FrontOfficeHomepageBundle:Comment:createComment}
+# front_office_homepage_createComment:
+#     path:     /createComment/{id}
+#     defaults: { controller: FrontOfficeHomepageBundle:Comment:createComment}
 
 front_office_homepage_blog_showComments:
     path:     /showComments /{id}
