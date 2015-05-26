@@ -49,6 +49,13 @@ class Society
      */
     private $hiringState;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", mappedBy="society")
+     */
+    private $forum;
+
 
     /**
      * Get id
@@ -150,5 +157,45 @@ class Society
     public function getHiringState()
     {
         return $this->hiringState;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->forum = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     * @return Society
+     */
+    public function addForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum[] = $forum;
+
+        return $this;
+    }
+
+    /**
+     * Remove forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     */
+    public function removeForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum->removeElement($forum);
+    }
+
+    /**
+     * Get forum
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getForum()
+    {
+        return $this->forum;
     }
 }

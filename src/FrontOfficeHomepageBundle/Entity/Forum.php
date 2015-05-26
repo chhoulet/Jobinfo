@@ -63,6 +63,15 @@ class Forum
      */
     private $formation;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Society", inversedBy="forum")
+     * @ORM\JoinTable(name="forum_society")
+     */
+    private $society;
+
+
 
     /**
      * Get id
@@ -227,5 +236,38 @@ class Forum
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Add society
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Society $society
+     * @return Forum
+     */
+    public function addSociety(\FrontOfficeEmploiBundle\Entity\Society $society)
+    {
+        $this->society[] = $society;
+
+        return $this;
+    }
+
+    /**
+     * Remove society
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Society $society
+     */
+    public function removeSociety(\FrontOfficeEmploiBundle\Entity\Society $society)
+    {
+        $this->society->removeElement($society);
+    }
+
+    /**
+     * Get society
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSociety()
+    {
+        return $this->society;
     }
 }
