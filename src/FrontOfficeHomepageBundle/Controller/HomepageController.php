@@ -13,11 +13,13 @@ class HomepageController extends Controller
     	$formation = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
     	$forum = $em ->getRepository('FrontOfficeHomepageBundle:Forum')->getLastForum();
         $societe = $em -> getRepository('FrontOfficeEmploiBundle:Society')-> getSociety();
+        $jobOffers = $em ->getRepository('FrontOfficeEmploiBundle:JobOffer')->getJobOffers();
 
         return $this->render('FrontOfficeHomepageBundle:Homepage:homepage.html.twig', 
         	array('articles'  =>$articles,
         	      'formation' =>$formation,
         	      'forum'     =>$forum,
-                  'societe'   =>$societe));
+                  'societe'   =>$societe,
+                  'jobOffers' =>$jobOffers));
     }
 }

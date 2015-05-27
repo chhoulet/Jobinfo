@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class JobOfferRepository extends EntityRepository
 {
+	public function getJobOffers()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT j 
+			FROM FrontOfficeEmploiBundle:JobOffer j 
+			ORDER BY j.dateCreated DESC')
+		->setMaxResults(10);
+
+		return $query -> getResult();
+	}
 }
