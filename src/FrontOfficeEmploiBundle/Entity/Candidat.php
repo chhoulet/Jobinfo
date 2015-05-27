@@ -56,6 +56,14 @@ class Candidat
      */
     private $phoneNumber;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="candidat")
+     */
+    private $cuvitae;
+
+
 
     /**
      * Get id
@@ -180,5 +188,45 @@ class Candidat
     public function getPhoneNumber()
     {
         return $this->phoneNumber;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cuvitae = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     * @return Candidat
+     */
+    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
+    {
+        $this->cuvitae[] = $cuvitae;
+
+        return $this;
+    }
+
+    /**
+     * Remove cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     */
+    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
+    {
+        $this->cuvitae->removeElement($cuvitae);
+    }
+
+    /**
+     * Get cuvitae
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCuvitae()
+    {
+        return $this->cuvitae;
     }
 }
