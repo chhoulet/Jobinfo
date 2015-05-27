@@ -23,4 +23,13 @@ class SocietyRepository extends EntityRepository
 
 		return $query -> getSingleResult();
 	}
+
+	public function nbSociety()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(s.id)
+			FROM FrontOfficeEmploiBundle:Society s');
+
+		return $query -> getSingleScalarResult(); 
+	}
 }
