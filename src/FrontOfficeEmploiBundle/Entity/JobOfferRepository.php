@@ -22,4 +22,13 @@ class JobOfferRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbJobOffers()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT COUNT(j.id)
+			FROM FrontOfficeEmploiBundle:JobOffer j');
+
+		return $query -> getSingleSCalarResult();
+	}
 }
