@@ -7,3 +7,8 @@ front_office_emploi_candidat_createLM:
     path:     /createLM
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM }
 
+#Routes gérant les fonctionnalités des employeurs:
+front_office_emploi_employer_createSociety:
+    path:     /createSociety
+    defaults: { _controller: FrontOfficeEmploiBundle:Employer:createSociety}
+
