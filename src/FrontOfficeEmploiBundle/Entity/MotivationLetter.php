@@ -45,10 +45,19 @@ class MotivationLetter
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="MotivationLetter")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="motivationLetter")
      * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
      */
     private $candidat;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="motivationLetter")
+     * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id")
+     */
+    private $jobOffer;
+
 
 
 
@@ -152,5 +161,28 @@ class MotivationLetter
     public function getCandidat()
     {
         return $this->candidat;
+    }
+
+    /**
+     * Set jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     * @return MotivationLetter
+     */
+    public function setJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer = null)
+    {
+        $this->jobOffer = $jobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Get jobOffer
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\JobOffer 
+     */
+    public function getJobOffer()
+    {
+        return $this->jobOffer;
     }
 }
