@@ -12,10 +12,12 @@ class HomepageController extends Controller
     	$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article') ->getArticles();
     	$formation = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
     	$forum = $em ->getRepository('FrontOfficeHomepageBundle:Forum')->getLastForum();
+        $societe = $em -> getRepository('FrontOfficeEmploiBundle:Society')-> getSociety();
 
         return $this->render('FrontOfficeHomepageBundle:Homepage:homepage.html.twig', 
         	array('articles'  =>$articles,
         	      'formation' =>$formation,
-        	      'forum'     =>$forum));
+        	      'forum'     =>$forum,
+                  'societe'   =>$societe));
     }
 }

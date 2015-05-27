@@ -43,6 +43,13 @@ class Society
     private $description;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="hiringState", type="boolean")
@@ -237,5 +244,28 @@ class Society
     public function getJobOffer()
     {
         return $this->jobOffer;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Society
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }
