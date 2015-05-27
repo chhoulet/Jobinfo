@@ -71,6 +71,15 @@ class Candidat
     private $motivationLetter;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="candidat")
+     * @ORM\JoinTable(name="candidat_jobOffer")
+     */
+    private $jobOffer;
+
+
 
     /**
      * Get id
@@ -268,5 +277,38 @@ class Candidat
     public function getMotivationLetter()
     {
         return $this->motivationLetter;
+    }
+
+    /**
+     * Add jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     * @return Candidat
+     */
+    public function addJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer[] = $jobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     */
+    public function removeJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer->removeElement($jobOffer);
+    }
+
+    /**
+     * Get jobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobOffer()
+    {
+        return $this->jobOffer;
     }
 }
