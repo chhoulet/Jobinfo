@@ -63,6 +63,13 @@ class Candidat
      */
     private $cuvitae;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="candidat")
+     */
+    private $motivationLetter;
+
 
 
     /**
@@ -228,5 +235,38 @@ class Candidat
     public function getCuvitae()
     {
         return $this->cuvitae;
+    }
+
+    /**
+     * Add motivationLetter
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
+     * @return Candidat
+     */
+    public function addMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
+    {
+        $this->motivationLetter[] = $motivationLetter;
+
+        return $this;
+    }
+
+    /**
+     * Remove motivationLetter
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
+     */
+    public function removeMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
+    {
+        $this->motivationLetter->removeElement($motivationLetter);
+    }
+
+    /**
+     * Get motivationLetter
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMotivationLetter()
+    {
+        return $this->motivationLetter;
     }
 }

@@ -42,6 +42,15 @@ class MotivationLetter
      */
     private $content;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="MotivationLetter")
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     */
+    private $candidat;
+
+
 
     /**
      * Get id
@@ -120,5 +129,28 @@ class MotivationLetter
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     * @return MotivationLetter
+     */
+    public function setCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat = null)
+    {
+        $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\Candidat 
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
     }
 }
