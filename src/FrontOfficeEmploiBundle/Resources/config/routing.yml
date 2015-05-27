@@ -12,3 +12,7 @@ front_office_emploi_employer_createSociety:
     path:     /createSociety
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:createSociety}
 
+front_office_emploi_employer_createJobOffer:
+    path:     /createJobOffer 
+    defaults: { _controller: FrontOfficeEmploiBundle:Employer:createJobOffer}
+
