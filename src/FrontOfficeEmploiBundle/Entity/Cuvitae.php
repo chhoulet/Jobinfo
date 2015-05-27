@@ -78,6 +78,14 @@ class Cuvitae
      */
     private $candidat;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="cuvitae")
+     * ORM\JoinTable(name="jobOffer_cuvitae")
+     */
+    private $jobOffer;
+
 
     /**
      * Get id
@@ -271,5 +279,45 @@ class Cuvitae
     public function getCandidat()
     {
         return $this->candidat;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->jobOffer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     * @return Cuvitae
+     */
+    public function addJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer[] = $jobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     */
+    public function removeJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer->removeElement($jobOffer);
+    }
+
+    /**
+     * Get jobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobOffer()
+    {
+        return $this->jobOffer;
     }
 }

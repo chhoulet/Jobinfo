@@ -50,6 +50,14 @@ class JobOffer
      */
     private $jobSector;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="jobOffer")
+     */
+    private $cuvitae;
+
+
 
 
     /**
@@ -152,5 +160,45 @@ class JobOffer
     public function getJobSector()
     {
         return $this->jobSector;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cuvitae = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     * @return JobOffer
+     */
+    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
+    {
+        $this->cuvitae[] = $cuvitae;
+
+        return $this;
+    }
+
+    /**
+     * Remove cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     */
+    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
+    {
+        $this->cuvitae->removeElement($cuvitae);
+    }
+
+    /**
+     * Get cuvitae
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCuvitae()
+    {
+        return $this->cuvitae;
     }
 }
