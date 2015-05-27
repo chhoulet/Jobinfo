@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CuvitaeType extends AbstractType
+class MotivationLetterType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,13 +15,8 @@ class CuvitaeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('gradeOne')
-            ->add('gradeTwo')
-            ->add('languages')
-            ->add('workExperience1')
-            ->add('workExperience2')
-            ->add('skills')
+            ->add('subject')
+            ->add('content')
             ->add('valider','submit')
         ;
     }
@@ -32,7 +27,7 @@ class CuvitaeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FrontOfficeEmploiBundle\Entity\Cuvitae'
+            'data_class' => 'FrontOfficeEmploiBundle\Entity\MotivationLetter'
         ));
     }
 
@@ -41,6 +36,6 @@ class CuvitaeType extends AbstractType
      */
     public function getName()
     {
-        return 'frontofficeemploibundle_cuvitae';
+        return 'frontofficeemploibundle_motivationletter';
     }
 }

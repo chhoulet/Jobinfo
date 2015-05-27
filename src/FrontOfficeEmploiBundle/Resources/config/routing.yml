@@ -3,3 +3,7 @@ front_office_emploi_candidat_createCV:
     path:     /createCV
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createCV }
 
+front_office_emploi_candidat_createLM:
+    path:     /createLM
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM }
+
