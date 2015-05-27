@@ -1,3 +1,5 @@
-front_office_emploi_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: FrontOfficeEmploiBundle:Default:index }
+#Route gerant les fonctionnalités des candidats:
+front_office_emploi_candidat_createCV:
+    path:     /createCV
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createCV }
+
