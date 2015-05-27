@@ -71,6 +71,14 @@ class JobOffer
      */
     private $candidat;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Society", inversedBy="jobOffer")
+     * @ORM\JoinColumn(name="society_id", referencedColumnName="id")
+     */
+    private $society;
+
 
 
 
@@ -282,5 +290,28 @@ class JobOffer
     public function getCandidat()
     {
         return $this->candidat;
+    }
+
+    /**
+     * Set society
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Society $society
+     * @return JobOffer
+     */
+    public function setSociety(\FrontOfficeEmploiBundle\Entity\Society $society = null)
+    {
+        $this->society = $society;
+
+        return $this;
+    }
+
+    /**
+     * Get society
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\Society 
+     */
+    public function getSociety()
+    {
+        return $this->society;
     }
 }

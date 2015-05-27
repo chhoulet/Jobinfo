@@ -56,6 +56,13 @@ class Society
      */
     private $forum;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="society")
+     */
+    private $jobOffer;
+
 
     /**
      * Get id
@@ -197,5 +204,38 @@ class Society
     public function getForum()
     {
         return $this->forum;
+    }
+
+    /**
+     * Add jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     * @return Society
+     */
+    public function addJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer[] = $jobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     */
+    public function removeJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer->removeElement($jobOffer);
+    }
+
+    /**
+     * Get jobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobOffer()
+    {
+        return $this->jobOffer;
     }
 }
