@@ -42,6 +42,15 @@ class JobOffer
      */
     private $dateCreated;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobSector", inversedBy="jobOffer")
+     * @ORM\JoinColumn(name="jobSector_id", referencedColumnName="id")
+     */
+    private $jobSector;
+
+
 
     /**
      * Get id
@@ -120,5 +129,28 @@ class JobOffer
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Set jobSector
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobSector $jobSector
+     * @return JobOffer
+     */
+    public function setJobSector(\FrontOfficeEmploiBundle\Entity\JobSector $jobSector = null)
+    {
+        $this->jobSector = $jobSector;
+
+        return $this;
+    }
+
+    /**
+     * Get jobSector
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\JobSector 
+     */
+    public function getJobSector()
+    {
+        return $this->jobSector;
     }
 }

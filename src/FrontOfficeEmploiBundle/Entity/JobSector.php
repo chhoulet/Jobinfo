@@ -28,6 +28,13 @@ class JobSector
      */
     private $nameSector;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="jobSector")
+     */
+    private $jobOffer;
+
 
     /**
      * Get id
@@ -60,5 +67,45 @@ class JobSector
     public function getNameSector()
     {
         return $this->nameSector;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->jobOffer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     * @return JobSector
+     */
+    public function addJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer[] = $jobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     */
+    public function removeJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer->removeElement($jobOffer);
+    }
+
+    /**
+     * Get jobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobOffer()
+    {
+        return $this->jobOffer;
     }
 }
