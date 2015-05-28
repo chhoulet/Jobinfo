@@ -17,6 +17,11 @@ class JobOfferType extends AbstractType
         $builder
             ->add('title')
             ->add('descriptionJob')
+            ->add('jobSector', 'choice', array('choices' => array('Dével' => 'Développement',
+                                                                  'Inté'  => 'Intégration',
+                                                                  'BigD'  => 'Big Data',
+                                                                  'Rése'  => 'Réseaux'),
+                                               'required'=> false))
             ->add('valider','submit')
         ;
     }
