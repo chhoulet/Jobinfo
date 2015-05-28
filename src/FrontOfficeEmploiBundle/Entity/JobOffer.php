@@ -36,6 +36,14 @@ class JobOffer
     private $descriptionJob;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="contract", type="string", length=400)
+     */
+    private $contract;
+
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateCreated", type="datetime")
@@ -313,5 +321,28 @@ class JobOffer
     public function getSociety()
     {
         return $this->society;
+    }
+
+    /**
+     * Set contract
+     *
+     * @param string $contract
+     * @return JobOffer
+     */
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
+
+        return $this;
+    }
+
+    /**
+     * Get contract
+     *
+     * @return string 
+     */
+    public function getContract()
+    {
+        return $this->contract;
     }
 }
