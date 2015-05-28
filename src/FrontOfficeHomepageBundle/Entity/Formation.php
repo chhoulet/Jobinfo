@@ -66,6 +66,13 @@ class Formation
      */
     private $etablissement;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="formation")
+     */
+    private $subscriber;
+
 
 
 
@@ -216,5 +223,45 @@ class Formation
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subscriber = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add subscriber
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Subscriber $subscriber
+     * @return Formation
+     */
+    public function addSubscriber(\FrontOfficeHomepageBundle\Entity\Subscriber $subscriber)
+    {
+        $this->subscriber[] = $subscriber;
+
+        return $this;
+    }
+
+    /**
+     * Remove subscriber
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Subscriber $subscriber
+     */
+    public function removeSubscriber(\FrontOfficeHomepageBundle\Entity\Subscriber $subscriber)
+    {
+        $this->subscriber->removeElement($subscriber);
+    }
+
+    /**
+     * Get subscriber
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubscriber()
+    {
+        return $this->subscriber;
     }
 }
