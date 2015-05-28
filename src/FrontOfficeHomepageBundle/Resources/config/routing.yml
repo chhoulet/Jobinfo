@@ -14,7 +14,7 @@ front_office_formation_oneFormation:
     path:     /oneFormation/{id}
     defaults: { controller: FrontOfficeHomepageBundle:Formation:oneFormation}
 
-# Routes assurant la gestion des forums 
+# Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
 front_office_forum_list:
     path:     /forum/{forumType}
     defaults: { _controller: FrontOfficeHomepageBundle:Forum:list, forumType: emploi}
@@ -24,6 +24,11 @@ front_office_forum_list:
 front_office_forum_oneForum:
     path:     /oneForum/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Forum:oneForum}
+
+# Routes gerant l'inscription de participants aux evenements Forum et Formation:
+front_office_subscriber_formation:
+    path:     /subscriberFormation 
+    defaults: { _controller: FrontOfficeHomepageBundle:Subscriber:inscriptionFormation}
 
 #Routes vers le blog :
 front_office_homepage_blog_article:
