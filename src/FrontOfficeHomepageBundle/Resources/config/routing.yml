@@ -25,10 +25,14 @@ front_office_forum_oneForum:
     path:     /oneForum/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Forum:oneForum}
 
-# Routes gerant l'inscription de participants aux evenements Forum et Formation:
+# Routes gérant l'inscription de participants aux evenements Forum et Formation:
 front_office_subscriber_formation:
     path:     /subscriberFormation/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Subscriber:registrationFormation}
+
+front_office_subscriber_forum:
+    path:     /subscriberForum/{id}
+    defaults: { _controller: FrontOfficeHomepageBundle:Subscriber:registrationForum}
 
 #Routes vers le blog :
 front_office_homepage_blog_article:

@@ -57,7 +57,7 @@ class Formation
      * JoinColumn(name="forum_id" referencedColumnName="id" nullable=true)
      */
     private $forum;
-
+ 
     /**
      * @var string
      *
@@ -69,7 +69,7 @@ class Formation
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="formation" nullable=true)
+     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="formation")
      */
     private $subscriber;
 

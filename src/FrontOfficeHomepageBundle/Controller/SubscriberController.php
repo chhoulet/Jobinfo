@@ -21,7 +21,7 @@ class SubscriberController extends Controller
 
 		if($formFormationSubscriber -> isValid())
 		{
-			$subscriber -> setDateSubscribed(new DateTime('now'));
+			$subscriber -> setDateSubscribed(new \DateTime('now'));
 			$subscriber -> setFormation($formation);
 			$em -> persist($subscriber);
 			$em -> flush();
@@ -30,6 +30,31 @@ class SubscriberController extends Controller
 		}
 
 		return $this-> render('FrontOfficeHomepageBundle:Subscriber:registrationFormation.html.twig',
-		  array('formFormationSubscriber'=>$formFormationSubscriber->createView()));
+		    array('formFormationSubscriber'=>$formFormationSubscriber->createView()));
+	}
+
+	public function registrationForumAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$forum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
+		$subscriber = new Subscriber();
+		$formForumSubscriber = $this -> createForm(new SubscriberType(), $subscriber);
+
+		$formForumSubscriber -> handleRequest($request);
+
+		if($formForumSubscriber -> isValid())
+		{
+			$subscriber -> addForum($forum);
+			$subscriber -> setDateSubscribed(new \DateTime('now'));
+			$em -> persist($subscriber);
+			$em -> flush();
+
+			return $this -> redirect($this -> generateUrl('front_office_subscriber_forum', array('id'=>$id)));
+		}
+
+		return $this -> render('FrontOfficeHomepageBundle:Subscriber:registrationForum.html.twig', 
+			array('formForumSubscriber'=> $formForumSubscriber->createView()));
+
+
 	}
 }
