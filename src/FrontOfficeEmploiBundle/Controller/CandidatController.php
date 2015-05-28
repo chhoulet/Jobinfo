@@ -4,9 +4,11 @@ namespace FrontOfficeEmploiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeEmploiBundle\Entity\Cuvitae;
+use FrontOfficeEmploiBundle\Entity\ResponseJobOffer;
 use FrontOfficeEmploiBundle\Entity\MotivationLetter;
 use FrontOfficeEmploiBundle\Form\CuvitaeType;
 use FrontOfficeEmploiBundle\Form\MotivationLetterType;
+use FrontOfficeEmploiBundle\Form\ResponseJobOfferType;
 use Symfony\Component\HttpFoundation\Request;
 
 class CandidatController extends Controller
@@ -49,4 +51,6 @@ class CandidatController extends Controller
 
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:createLM.html.twig', array('formLm'=> $formLm -> createView())) ;
 	}
+
+	
 }

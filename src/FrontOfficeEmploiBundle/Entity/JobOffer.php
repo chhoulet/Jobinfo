@@ -87,9 +87,12 @@ class JobOffer
      */
     private $society;
 
-
-
-
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="jobOffer")
+     */
+    private $responseJobOffer;
 
 
     /**
@@ -344,5 +347,38 @@ class JobOffer
     public function getContract()
     {
         return $this->contract;
+    }
+
+    /**
+     * Add responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     * @return JobOffer
+     */
+    public function addResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
+    {
+        $this->responseJobOffer[] = $responseJobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     */
+    public function removeResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
+    {
+        $this->responseJobOffer->removeElement($responseJobOffer);
+    }
+
+    /**
+     * Get responseJobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResponseJobOffer()
+    {
+        return $this->responseJobOffer;
     }
 }

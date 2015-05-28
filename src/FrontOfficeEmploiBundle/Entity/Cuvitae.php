@@ -86,6 +86,14 @@ class Cuvitae
      */
     private $jobOffer;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", inversedBy="cuvitae")
+     * @ORM\JoinColumn(name="responseJobOffer_id", referencedColumnName="id")
+     */
+    private $responseJobOffer;
+
 
     /**
      * Get id
@@ -319,5 +327,28 @@ class Cuvitae
     public function getJobOffer()
     {
         return $this->jobOffer;
+    }
+
+    /**
+     * Set responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     * @return Cuvitae
+     */
+    public function setResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer = null)
+    {
+        $this->responseJobOffer = $responseJobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Get responseJobOffer
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\ResponseJobOffer 
+     */
+    public function getResponseJobOffer()
+    {
+        return $this->responseJobOffer;
     }
 }

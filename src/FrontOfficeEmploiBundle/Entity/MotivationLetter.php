@@ -58,6 +58,14 @@ class MotivationLetter
      */
     private $jobOffer;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", inversedBy="motivationLetter")
+     * @ORM\JoinColumn(name="jobOfferResponse_id", referencedColumnName="id")
+     */
+    private $responseJobOffer;
+
 
 
 
@@ -184,5 +192,28 @@ class MotivationLetter
     public function getJobOffer()
     {
         return $this->jobOffer;
+    }
+
+    /**
+     * Set responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     * @return MotivationLetter
+     */
+    public function setResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer = null)
+    {
+        $this->responseJobOffer = $responseJobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Get responseJobOffer
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\ResponseJobOffer 
+     */
+    public function getResponseJobOffer()
+    {
+        return $this->responseJobOffer;
     }
 }

@@ -84,7 +84,7 @@
                             <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a>
                             <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a></p>
                     {% else %}
-                         <p>Pas encore inscrit ? Créez votre compte personnel:
+                         <p>Pas encore inscrit ? Créez votre compte personnel :
                             <a href="{{ path('fos_user_registration_register') }}">Enregistrez-vous !</a></p>
                     {% endif %}
 
@@ -95,35 +95,13 @@
                         <a href="{{ path('front_office_emploi_employer_createSociety') }}">Enregistrer une societe</a>
                         <a href="{{ path('front_office_emploi_employer_createJobOffer') }}">Enregistrer une offre d'emploi</a>
                     {% else %}
-                         <p>Pas encore inscrit ? Créez votre compte sur Jobinfo:
+                         <p>Pas encore inscrit ? Créez votre compte sur Jobinfo :
                             <a href="{{ path('fos_user_registration_register') }}">Je crée mon compte employeur</a>
                     {% endif %}</p>
 
                 </div>
             </div>
         </div>
-
-        {# <div class="row">
-            
-                <div class="col-lg-6">
-                   
-                    {% if(is_granted('ROLE_USER')) %}
-                         <p>Accéder à votre espace personnel :
-                         <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a>
-                         <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a></p>
-                    {% endif %}
-                </div>
-
-                <div class="col-lg-6">
-                  
-                    {% if(is_granted('ROLE_ADMIN')) %}
-                        <p>Accéder à votre espace employeur :
-                        <a href="{{ path('front_office_emploi_employer_createSociety') }}">Enregistrer une societe</a>
-                        <a href="{{ path('front_office_emploi_employer_createJobOffer') }}">Enregistrer une offre d'emploi</a>
-                    {% endif %}
-                </div>
-           
-        </div> #}
 
         <div class="row">
             <div class="box">
