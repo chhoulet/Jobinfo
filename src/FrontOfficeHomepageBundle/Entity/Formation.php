@@ -54,7 +54,7 @@ class Formation
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", inversedBy="formation")
-     * JoinColumn(name="forum_id" referencedColumnName="id")
+     * JoinColumn(name="forum_id" referencedColumnName="id" nullable=true)
      */
     private $forum;
 
@@ -62,14 +62,14 @@ class Formation
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Etablissement", inversedBy="formation")
-     * JoinColumn(name="etablissement_id", referencedColumnName="id")
+     * JoinColumn(name="etablissement_id", referencedColumnName="id" nullable=true)
      */
     private $etablissement;
 
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="formation")
+     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="formation" nullable=true)
      */
     private $subscriber;
 
