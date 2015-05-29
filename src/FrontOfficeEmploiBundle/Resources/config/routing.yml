@@ -7,14 +7,15 @@ front_office_emploi_candidat_createLM:
     path:     /createLM
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM }
 
-#Routes gérant les offres d'emploi:
+#Route gerant les offres d'emploi:
 front_office_emploi_jobOffer_showOne:
     path:     /showOneJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:showOneJobOffer}
 
+#Route gerant les réponses aux offres d'emploi:
 front_office_emploi_joboffer_responseJobOffer:
     path:     /responseJobOffer/{id}/{id_LM}/{id_cuvitae}/{id_candidat}
-    defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:responseJobOffer}
+    defaults: { _controller: FrontOfficeEmploiBundle:ResponseJobOffer:responseJobOffer}
 
 #Routes gérant les fonctionnalités des employeurs:
 front_office_emploi_employer_createSociety:
