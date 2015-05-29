@@ -9,6 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class JobOfferController extends Controller
 {
+	public function showOneJobOfferAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$showOneJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+
+		return $this -> render('FrontOfficeEmploiBundle:JobOffer:showOneJobOffer.html.twig', array('showOneJobOffer'=> $showOneJobOffer));
+	}
+
 	public function responseJobOfferAction(Request $request, $id, $id_LM, $id_cuvitae, $id_candidat)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -32,7 +40,7 @@ class JobOfferController extends Controller
 			$em ->persist($responseJobOffer);
 			$em -> flush();
 
-			/*return $this -> redirect($this -> generateUrl(''));*/
+			return $this -> redirect($this -> generateUrl('front_office_emploi_jobOffer_showOne'));
 		}
 
 		return $this ->render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig', 
