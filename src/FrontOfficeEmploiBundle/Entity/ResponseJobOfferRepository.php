@@ -12,16 +12,27 @@ use Doctrine\ORM\EntityRepository;
  */
 class ResponseJobOfferRepository extends EntityRepository
 {
-	public function getJobOfferResponses($candidat_id)
+	public function getJobOfferResponse($jobOffer_id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT r 
 			FROM FrontOfficeEmploiBundle:ResponseJobOffer r 
-			JOIN  r.candidat c
-			WHERE c.id LIKE :id')
-		->setParameter('id', $candidat_id);
+			JOIN  r.jobOffer j
+			WHERE j.id LIKE :id')
+		->setParameter('id', $jobOffer_id);
 
 		return $query -> getResult();
 	}
 
+	public function getJobOfferResponses($societyId)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT r 
+			FROM FrontOfficeEmploiBundle:ResponseJobOffer r
+			JOIN  r.jobOffer j
+			WHERE j.society = :society')
+		->setParameter('society', $societyId);
+
+		return $query -> getResult();
+	}
 }

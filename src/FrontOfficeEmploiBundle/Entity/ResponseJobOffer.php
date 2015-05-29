@@ -38,14 +38,16 @@ class ResponseJobOffer
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="responseJobOffer")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", inversedBy="responseJobOffer")
+     * @ORM\JoinColumn(name="cuvitae_id", referencedColumnName="id")
      */
     private $cuvitae;
 
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="responseJobOffer")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", inversedBy="responseJobOffer")
+     * @ORM\JoinColumn(name="motivation_letter_id", referencedColumnName="id")
      */
     private $motivationLetter;
 
@@ -64,7 +66,6 @@ class ResponseJobOffer
      * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id")
      */
     private $jobOffer;
-
 
 
     /**
@@ -98,79 +99,6 @@ class ResponseJobOffer
     public function getContent()
     {
         return $this->content;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cuvitae = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add cuvitae
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
-     * @return ResponseJobOffer
-     */
-    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
-    {
-        $this->cuvitae[] = $cuvitae;
-
-        return $this;
-    }
-
-    /**
-     * Remove cuvitae
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
-     */
-    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
-    {
-        $this->cuvitae->removeElement($cuvitae);
-    }
-
-    /**
-     * Get cuvitae
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCuvitae()
-    {
-        return $this->cuvitae;
-    }
-
-    /**
-     * Add motivationLetter
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
-     * @return ResponseJobOffer
-     */
-    public function addMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
-    {
-        $this->motivationLetter[] = $motivationLetter;
-
-        return $this;
-    }
-
-    /**
-     * Remove motivationLetter
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
-     */
-    public function removeMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
-    {
-        $this->motivationLetter->removeElement($motivationLetter);
-    }
-
-    /**
-     * Get motivationLetter
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMotivationLetter()
-    {
-        return $this->motivationLetter;
     }
 
     /**
@@ -240,5 +168,51 @@ class ResponseJobOffer
     public function getJobOffer()
     {
         return $this->jobOffer;
+    }
+
+    /**
+     * Set motivationLetter
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
+     * @return ResponseJobOffer
+     */
+    public function setMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter = null)
+    {
+        $this->motivationLetter = $motivationLetter;
+
+        return $this;
+    }
+
+    /**
+     * Get motivationLetter
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\MotivationLetter 
+     */
+    public function getMotivationLetter()
+    {
+        return $this->motivationLetter;
+    }
+
+    /**
+     * Set cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     * @return ResponseJobOffer
+     */
+    public function setCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae = null)
+    {
+        $this->cuvitae = $cuvitae;
+
+        return $this;
+    }
+
+    /**
+     * Get cuvitae
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\Cuvitae 
+     */
+    public function getCuvitae()
+    {
+        return $this->cuvitae;
     }
 }

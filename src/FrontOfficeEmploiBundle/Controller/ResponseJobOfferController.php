@@ -5,7 +5,7 @@ namespace FrontOfficeEmploiBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeEmploiBundle\Entity\JobOffer;
 use FrontOfficeEmploiBundle\Entity\ResponseJobOffer;
-use FrontOfficeEmploiBundle\Entity\ResponseJobOfferType;
+use FrontOfficeEmploiBundle\Form\ResponseJobOfferType;
 use FrontOfficeEmploiBundle\Entity\Cuvitae;
 use FrontOfficeEmploiBundle\Entity\Candidat;
 use FrontOfficeEmploiBundle\Entity\MotivationLetter;
@@ -14,14 +14,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ResponseJobOfferController extends Controller
 {
-	public function responseJobOfferAction(Request $request, $id, $id_LM, $id_cuvitae, $id_candidat)
+	public function responseJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$responseJobOffer = new ResponseJobOffer();
-		$motivationLetter = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->find($id_LM);
 		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
-		$cuvitae = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae')->find($id_cuvitae);
-		$candidat =  $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->find($id_candidat);
 
 		$formResponseJobOffer = $this -> createForm(new ResponseJobOfferType(), $responseJobOffer);
 
@@ -29,27 +26,29 @@ class ResponseJobOfferController extends Controller
 
 		if($formResponseJobOffer -> isValid())
 		{
-			$responseJobOffer -> addCuvitae($cuvitae);
-			$responseJobOffer -> addMotivationLetter($motivationLetter);
+			/*Les id du CV et de la LM sont recuperees dans le formulaire, donc il faut qu'on ait teste d'abord sa valididté avant de pouvoir en exploiter les données.*/
+			/*Ces deux lignes ci-dessous sont superflues, les informations sont récupérées directement via le formulaire*/
+			//$motivationLetter = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->find($id_LM);
+			//$cuvitae = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae')->find($id_cuvitae);
 			$responseJobOffer -> setDateCreated(new \DateTime('now'));
 			$responseJobOffer -> setJobOffer($jobOffer);
-			$responseJobOffer -> setCandidat($candidat);
+			$responseJobOffer -> setCandidat($this->getUser());
+
 			$em ->persist($responseJobOffer);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_emploi_jobOffer_showOne'));
+			return $this -> redirect($this -> generateUrl('front_office_emploi_jobOffer_showOne', array('id'=>$id)));
 		}
 
 		return $this ->render('FrontOfficeEmploiBundle:ResponseJobOffer:responseJobOffer.html.twig', 
 			array('formResponseJobOffer'=>$formResponseJobOffer->createView()));
 	}
 
-	public function getResponseJobOfferAction($id)
+	public function getResponseJobOfferAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
-		$jobOffer_id = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
-		$responseJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponses($jobOffer_id);
-
+		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponses($this->getUser());
+		
 		return $this -> render('FrontOfficeEmploiBundle:ResponseJobOffer:getResponseJobOffer.html.twig', 
 			array('getResponseJobOffer' => $responseJobOffer));
 	}

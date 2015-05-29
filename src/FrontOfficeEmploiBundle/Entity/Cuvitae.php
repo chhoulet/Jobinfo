@@ -89,8 +89,7 @@ class Cuvitae
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", inversedBy="cuvitae")
-     * @ORM\JoinColumn(name="responseJobOffer_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="cuvitae")
      */
     private $responseJobOffer;
 
@@ -330,25 +329,40 @@ class Cuvitae
     }
 
     /**
-     * Set responseJobOffer
+     * Add responseJobOffer
      *
      * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
      * @return Cuvitae
      */
-    public function setResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer = null)
+    public function addResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
     {
-        $this->responseJobOffer = $responseJobOffer;
+        $this->responseJobOffer[] = $responseJobOffer;
 
         return $this;
     }
 
     /**
+     * Remove responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     */
+    public function removeResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
+    {
+        $this->responseJobOffer->removeElement($responseJobOffer);
+    }
+
+    /**
      * Get responseJobOffer
      *
-     * @return \FrontOfficeEmploiBundle\Entity\ResponseJobOffer 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getResponseJobOffer()
     {
         return $this->responseJobOffer;
+    }
+
+    public function __toString()
+    {
+        return $this -> title;
     }
 }

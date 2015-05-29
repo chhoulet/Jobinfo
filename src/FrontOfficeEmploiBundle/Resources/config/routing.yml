@@ -14,7 +14,7 @@ front_office_emploi_jobOffer_showOne:
 
 #Route gerant les réponses aux offres d'emploi:
 front_office_emploi_jobOffer_responseJobOffer:
-    path:     /responseJobOffer/{id}/{id_LM}/{id_cuvitae}/{id_candidat}
+    path:     /responseJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:ResponseJobOffer:responseJobOffer}
 
 front-office_emploi_jobOffer_getResponseJobOffer:

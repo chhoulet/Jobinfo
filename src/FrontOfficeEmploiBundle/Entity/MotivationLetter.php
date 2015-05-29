@@ -61,8 +61,7 @@ class MotivationLetter
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", inversedBy="motivationLetter")
-     * @ORM\JoinColumn(name="jobOfferResponse_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="motivationLetter")
      */
     private $responseJobOffer;
 
@@ -193,27 +192,49 @@ class MotivationLetter
     {
         return $this->jobOffer;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->responseJobOffer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set responseJobOffer
+     * Add responseJobOffer
      *
      * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
      * @return MotivationLetter
      */
-    public function setResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer = null)
+    public function addResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
     {
-        $this->responseJobOffer = $responseJobOffer;
+        $this->responseJobOffer[] = $responseJobOffer;
 
         return $this;
     }
 
     /**
+     * Remove responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     */
+    public function removeResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
+    {
+        $this->responseJobOffer->removeElement($responseJobOffer);
+    }
+
+    /**
      * Get responseJobOffer
      *
-     * @return \FrontOfficeEmploiBundle\Entity\ResponseJobOffer 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getResponseJobOffer()
     {
         return $this->responseJobOffer;
+    }
+
+    public function __toString()
+    {
+        return $this ->id . ': ' .$this ->subject . ' (' . $this->dateCreated->format('d/m/Y') . ')';
     }
 }

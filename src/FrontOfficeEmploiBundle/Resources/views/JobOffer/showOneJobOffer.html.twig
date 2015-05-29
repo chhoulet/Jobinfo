@@ -4,4 +4,8 @@
 
 		<h2>Détail de l'offre</h2>
 
+		{{ showOneJobOffer.title}}
+
+		<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
+
 	{% endblock %}
