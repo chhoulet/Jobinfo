@@ -43,4 +43,14 @@ class ResponseJobOfferController extends Controller
 		return $this ->render('FrontOfficeEmploiBundle:ResponseJobOffer:responseJobOffer.html.twig', 
 			array('formResponseJobOffer'=>$formResponseJobOffer->createView()));
 	}
+
+	public function getResponseJobOfferAction($id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$jobOffer_id = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$responseJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponses($jobOffer_id);
+
+		return $this -> render('FrontOfficeEmploiBundle:ResponseJobOffer:getResponseJobOffer.html.twig', 
+			array('getResponseJobOffer' => $responseJobOffer));
+	}
 }

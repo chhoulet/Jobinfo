@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class ResponseJobOfferRepository extends EntityRepository
 {
-	public function getJobOfferResponse($candidat_id)
+	public function getJobOfferResponses($candidat_id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT r 
