@@ -52,5 +52,13 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:createLM.html.twig', array('formLm'=> $formLm -> createView())) ;
 	}
 
+	public function showMyCvAction()
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$showMyCv = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae')->findAll();
+
+		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig', array('showMyCv'=>$showMyCv));
+	}
+
 	
 }
