@@ -23,3 +23,5 @@ class HomepageController extends Controller
                   'jobOffers' =>$jobOffers));
     }
 }
+
+ //dump($this->getUser()->getCv());
