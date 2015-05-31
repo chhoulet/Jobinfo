@@ -60,5 +60,12 @@ class CandidatController extends Controller
 		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig', array('showMyCv'=>$showMyCv));
 	}
 
+	public function showMyLmAction()
+	{
+		$em = $this -> getDoctrine()->getmanager();
+		$showMyLm = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->findAll();
+
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig', array('showMyLm'=>$showMyLm));
+	}
 	
 }

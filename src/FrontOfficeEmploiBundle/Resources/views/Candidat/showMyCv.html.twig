@@ -1,0 +1,12 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		{% for cv in showMyCv %}
+
+			{{ cv.title }}
+
+		{% endfor %}
+
+
+	{% endblock %}

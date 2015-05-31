@@ -11,6 +11,10 @@ front_office_emploi_candidat_showMyCv:
     path:     /showMyCv 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyCv}
 
+front_office_emploi_candidat_showMyLm:
+    path:     /showMyLm 
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyLm}
+
 #Routes gerant les offres d'emploi:
 front_office_emploi_jobOffer_showOne:
     path:     /showOneJobOffer/{id}

@@ -1,0 +1,12 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		{% for lm in showMyLm %}
+
+			{{ lm.subject }}
+
+		{% endfor %}
+
+
+	{% endblock %}
