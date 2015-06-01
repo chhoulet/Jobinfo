@@ -25,7 +25,6 @@ back_office_adminArticles_create:
     path:     /createArticle
     defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
 
-
 #Routes gerant l'administration des forums:
 
 

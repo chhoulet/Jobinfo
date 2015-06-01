@@ -45,8 +45,8 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\manyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Article", inversedBy="comment")
-     * JoinColumn(name="article_id" referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Article", inversedBy="comment")
+     * JoinColumn(name="article_id", referencedColumnName="id")
      */
     private $article;
 
