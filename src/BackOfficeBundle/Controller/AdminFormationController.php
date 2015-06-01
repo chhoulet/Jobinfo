@@ -60,4 +60,14 @@ class AdminFormationController extends Controller
         return $this -> render('BackOfficeBundle:AdminFormation:createFormation.html.twig', 
             array('formCreationFormation'=>$formCreationFormation->createView()));
     }
+
+    public function deleteFormationAction($id)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $editFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
+        $em -> remove($editFormation);
+        $em -> flush();
+
+        return $this -> redirect($this->generateUrl('back_office_adminformation_show'));
+    }
 }
