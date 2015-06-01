@@ -10,9 +10,9 @@ front_office_formation_list:
     requirements:
         formationType: (developpement|integration|architecte-logiciel)
 
-front_office_formation_oneFormation:
-    path:     /oneFormation/{id}
-    defaults: { controller: FrontOfficeHomepageBundle:Formation:oneFormation}
+front_office_formation_showOne:
+    path:     /showOne/{id}
+    defaults: { controller: FrontOfficeHomepageBundle:Formation:showOne}
 
 # Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
 front_office_forum_list:

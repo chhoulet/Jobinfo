@@ -6,7 +6,11 @@ back_office_homepage:
 #Routes gerant l'administration des formations:
 back_office_adminformation_show:
     path:     /showFormation
-    defaults: { _controller: BackOfficeBundle:AdminFormation:showFormation }
+    defaults: { _controller: BackOfficeBundle:AdminFormation:showFormation}
+
+back_office_adminformation_edit:
+    path:     /editFormation/{id}
+    defaults: { _controller: BackOfficeBundle:AdminFormation:editFormation}
 
 #Routes gerant l'administration des forums:
 

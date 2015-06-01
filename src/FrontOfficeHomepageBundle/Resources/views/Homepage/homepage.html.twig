@@ -126,6 +126,7 @@
                         <hr>
                         <p><h4>{{ forma.formationType }}</h4></p><br>
                         <p>{{ forma.formationDescription}}</p><br>
+                        <a href="{{ path('front_office_formation_showOne',{id:forma.id}) }}"><button class="btn btn-primary">Détails :</button></a><br><br>
                         <a href="{{ path('front_office_formation_list', {formationType: 'integration'}) }}"><button class="btn btn-primary">Voir les formations d'intégration :</button></a><br><br>
                         <a href="{{ path('front_office_formation_list', {formationType:'architecte-logiciel'}) }}"><button class="btn btn-primary">Voir les formations d'architecte logiciel :</button></a>
                     </div>
