@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FrontOfficeEmploiBundle\FrontOfficeEmploiBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FrontOfficeUserBundle\FrontOfficeUserBundle(),
+            new BackOfficeBundle\BackOfficeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
