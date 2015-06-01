@@ -14,7 +14,8 @@ class AdminFormationController extends Controller
     	$em = $this -> getDoctrine()-> getManager();
     	$showFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->findAll();
 
-        return $this->render('BackOfficeBundle:AdminFormation:showFormation.html.twig', array('showFormation' => $showFormation));
+        return $this->render('BackOfficeBundle:AdminFormation:showFormation.html.twig', 
+            array('showFormation' => $showFormation));
     }
 
     public function editFormationAction(Request $request, $id)
@@ -31,9 +32,32 @@ class AdminFormationController extends Controller
     		$em -> persist($editFormation);
     		$em -> flush();
 
-            return $this -> redirect($this -> generateUrl('front_office_formation_showOne', array('id'=>$id)));
+            return $this -> redirect($this -> generateUrl('back_office_adminformation_show'));
     	}
 
-        return $this -> render('BackOfficeBundle:AdminFormation:editFormation.html.twig', array('formFormation'=>$formFormation));
+        return $this -> render('BackOfficeBundle:AdminFormation:editFormation.html.twig', 
+            array('formFormation'=>$formFormation->createView()));
+    }
+
+    public function createFormationAction(Request $request)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $formation = new Formation();
+        $formCreationFormation = $this -> createForm(new FormationType(), $formation);
+
+        $formCreationFormation -> handleRequest($request);
+        
+        if($formCreationFormation -> isValid())
+        {
+            $formation -> setCreatedAt(new \DateTime('now'));
+            $formation -> setUpdatedAt(new \DateTime('now'));
+            $em -> persist($formation);
+            $em -> flush();
+
+            return $this -> redirect($this -> generateUrl('back_office_adminformation_show'));
+        }
+
+        return $this -> render('BackOfficeBundle:AdminFormation:createFormation.html.twig', 
+            array('formCreationFormation'=>$formCreationFormation->createView()));
     }
 }

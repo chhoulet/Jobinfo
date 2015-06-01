@@ -31,6 +31,13 @@ class Formation
     /**
      * @var string
      *
+     * @ORM\Column(name="organism", type="string", length=255)
+     */
+    private $organism;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="formationType", type="string", length=255)
      */
     private $formationType;
@@ -293,5 +300,28 @@ class Formation
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set organism
+     *
+     * @param string $organism
+     * @return Formation
+     */
+    public function setOrganism($organism)
+    {
+        $this->organism = $organism;
+
+        return $this;
+    }
+
+    /**
+     * Get organism
+     *
+     * @return string 
+     */
+    public function getOrganism()
+    {
+        return $this->organism;
     }
 }

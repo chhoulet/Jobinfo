@@ -12,6 +12,11 @@ back_office_adminformation_edit:
     path:     /editFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:editFormation}
 
+back_office_adminformation_create:
+    path:     /createFormation
+    defaults: { _controller: BackOfficeBundle:AdminFormation:createFormation}
+
+
 #Routes gerant l'administration des forums:
 
 
