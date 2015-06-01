@@ -43,15 +43,6 @@ front_office_homepage_blog_oneArticle:
     path:     /showOnearticle/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showOneArticle}
 
-#Route de gestion des commentaires:
-# front_office_homepage_createComment:
-#     path:     /createComment/{id}
-#     defaults: { controller: FrontOfficeHomepageBundle:Comment:createComment}
-
-front_office_homepage_blog_showComments:
-    path:     /showComments /{id}
-    defaults: { _controller: FrontOfficeHomepageBundle:Comment:showComments}
-
 #Routes gérant les informations statiques:
 front_office_homepage_static_mentions_legales:
     path:     /mentions_legales
