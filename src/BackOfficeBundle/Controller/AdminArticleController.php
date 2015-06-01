@@ -31,4 +31,14 @@ class AdminArticleController extends Controller
 		return $this -> render('BackOfficeBundle:AdminArticle:createArticle.html.twig',
 			array('formArticle'=>$formArticle->createView()));
 	}
+
+	public function deleteArticleAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$deleteArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
+		$em -> remove($deleteArticle);
+		$em -> flush();
+
+		return $this -> redirect($this -> generateurl('front_office_homepage_blog_article'));
+	}
 }

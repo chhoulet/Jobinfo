@@ -21,9 +21,13 @@ back_office_adminformation_delete:
     defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
 
 #Routes gerant l'administration des articles:
-back_office_adminArticles_create:
+back_office_adminarticles_create:
     path:     /createArticle
     defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
+
+back_office_adminarticles_delete:
+    path:     /deleteArticle/{id}
+    defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
 
 #Routes gerant l'administration des forums:
 
