@@ -1,0 +1,5 @@
+#Route gerant la homepage du backoffice:
+back_office_homepage:
+    path:     /homepageBackoffice
+    defaults: { _controller: BackOfficeBundle:Homepage:homepage}
+
