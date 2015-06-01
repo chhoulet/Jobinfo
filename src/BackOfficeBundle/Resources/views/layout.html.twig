@@ -153,10 +153,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="{{ path('back_office_homepage') }}"><i class="fa fa-fw fa-dashboard"></i>Homepage</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="{{ path('back_office_adminformation_show')}}"><i class="fa fa-fw fa-bar-chart-o"></i>Formations</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
@@ -192,10 +192,17 @@
             <!-- /.navbar-collapse -->
         </nav>
 
+         <div id="page-wrapper">
+
+            <div class="container-fluid">
+
         {% block content %}
 
             {% endblock %}
 
+            </div>
+            
+        </div>
 
          <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>

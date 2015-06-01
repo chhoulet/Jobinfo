@@ -3,3 +3,11 @@ back_office_homepage:
     path:     /homepageBackoffice
     defaults: { _controller: BackOfficeBundle:Homepage:homepage}
 
+#Routes gerant l'administration des formations:
+back_office_adminformation_show:
+    path:     /showFormation
+    defaults: { _controller: BackOfficeBundle:AdminFormation:showFormation }
+
+#Routes gerant l'administration des forums:
+
+
