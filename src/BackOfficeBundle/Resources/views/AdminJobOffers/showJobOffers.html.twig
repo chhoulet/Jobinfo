@@ -16,8 +16,9 @@
                         <p>Date de création : {{ job.dateCreated | date('d-m-Y H:i:s') }}</p>
                         <p style="text-align:justify;">{{job.descriptionJob}}</p>
                     </div>
-                    {# <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a>
-                    <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a> #}
+                    <a href="{{ path('back_office_adminjobOffer_edit',{id:job.id}) }}"><button>Mise à jour :</button></a>
+                    <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}"><button>Détails :</button></a>
+                 {#    <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a> #}
                 </div>
             </div>
         	{% endfor %}

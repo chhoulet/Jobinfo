@@ -40,5 +40,7 @@ back_office_adminjobOffers_show:
     path:     /showJobOffers
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:showJobOffers}
 
-
+back_office_adminjobOffer_edit:
+    path:     /editJobOffer/{id}
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:editJobOffer:}
 

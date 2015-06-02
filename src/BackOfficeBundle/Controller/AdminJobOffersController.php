@@ -17,4 +17,25 @@ class AdminJobOffersController extends Controller
 		return $this ->render('BackOfficeBundle:AdminJobOffers:showJobOffers.html.twig', 
 			array('showJobOffers' => $showJobOffers));
 	}
+
+	public function editJobOfferAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$editJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$formJobOffer = $this -> createForm(new JobOfferType(), $editJobOffer);
+
+		$formJobOffer -> handleRequest($request);
+
+		if($formJobOffer -> isValid())
+		{
+			$em -> persist($editJobOffer);
+			$em -> flush();
+			return $this ->redirect($this->generateUrl('back_office_adminjobOffers_show'));
+		}
+
+		return $this -> render('BackOfficeBundle:AdminJobOffers:editJobOffer.html.twig', 
+			array('formJobOffer' => $formJobOffer -> createView()));
+	}
+
+	
 }
