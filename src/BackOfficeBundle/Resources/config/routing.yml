@@ -44,3 +44,9 @@ back_office_adminjobOffer_edit:
     path:     /editJobOffer/{id}
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:editJobOffer:}
 
+back_office_adminjobOffer_delete:
+    path:     /deleteJobOffer/{id}
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:deleteJobOffer}
+
+
+

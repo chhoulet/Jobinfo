@@ -37,5 +37,13 @@ class AdminJobOffersController extends Controller
 			array('formJobOffer' => $formJobOffer -> createView()));
 	}
 
-	
+	public function deleteJobOfferAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$deleteJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$em -> remove($deleteJobOffer);
+		$em -> flush();
+
+		return $this-> redirect($this->generateUrl('back_office_adminjobOffers_show'));
+	}
 }

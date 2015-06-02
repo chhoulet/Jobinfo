@@ -7,5 +7,7 @@
 		{{ showOneJobOffer.title}}
 
 		<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
+
+	    <a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
 	    
 	{% endblock %}
