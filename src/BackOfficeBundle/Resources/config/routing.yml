@@ -3,6 +3,19 @@ back_office_homepage:
     path:     /homepageBackoffice
     defaults: { _controller: BackOfficeBundle:Homepage:homepage}
 
+#Routes gerant l'administration des articles:
+back_office_adminarticles_create:
+    path:     /createArticle
+    defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
+
+back_office_adminarticles_edit:
+    path:     /editArticle/{id}
+    defaults: { _controller: BackOfficeBundle:AdminArticle:editArticle}
+
+back_office_adminarticles_delete:
+    path:     /deleteArticle/{id}
+    defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
+
 #Routes gerant l'administration des formations:
 back_office_adminformation_show:
     path:     /showFormation
@@ -20,21 +33,12 @@ back_office_adminformation_delete:
     path:     /deleteFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
 
-#Routes gerant l'administration des articles:
-back_office_adminarticles_create:
-    path:     /createArticle
-    defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
-
-back_office_adminarticles_edit:
-    path:     /editArticle/{id}
-    defaults: { _controller: BackOfficeBundle:AdminArticle:editArticle}
-
-back_office_adminarticles_delete:
-    path:     /deleteArticle/{id}
-    defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
-
-
-
 #Routes gerant l'administration des forums:
+
+#Routes gerant l'administration des jobOffers:
+back_office_adminjobOffers_show:
+    path:     /showJobOffers
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:showJobOffers}
+
 
 
