@@ -4,7 +4,14 @@
 
 		<h2>Détail de l'offre</h2>
 
-		{{ showOneJobOffer.title}}
+		{{ showOneJobOffer.title}}<br><br>
+
+		{{ showOneJobOffer.descriptionJob }}<br><br>
+
+		{{ showOneJobOffer.contract }}<br><br>
+
+		{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
+
 
 		<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
 
