@@ -1,0 +1,19 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h2>Détail des offres: </h2>
+
+		{% for job in jobOffersByTri %}
+
+		{{ job.title}}<br><br>
+		{{ job.descriptionJob }}<br>
+		{{ job.dateCreated | date('d-m-Y H:i:s') }}<br>
+		{{ job.society }}
+
+		{% endfor %}
+
+
+		<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}">Répondez à cette annonce :</a>
+
+	{% endblock %}

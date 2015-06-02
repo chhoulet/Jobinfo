@@ -268,4 +268,9 @@ class Society
     {
         return $this->dateCreated;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
