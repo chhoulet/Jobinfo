@@ -25,9 +25,15 @@ back_office_adminarticles_create:
     path:     /createArticle
     defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
 
+back_office_adminarticles_edit:
+    path:     /editArticle/{id}
+    defaults: { _controller: BackOfficeBundle:AdminArticle:editArticle}
+
 back_office_adminarticles_delete:
     path:     /deleteArticle/{id}
     defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
+
+
 
 #Routes gerant l'administration des forums:
 

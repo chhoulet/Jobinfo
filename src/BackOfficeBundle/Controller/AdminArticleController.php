@@ -32,6 +32,27 @@ class AdminArticleController extends Controller
 			array('formArticle'=>$formArticle->createView()));
 	}
 
+	public function editArticleAction(Request $request,$id)
+	{
+		$em = $this -> getDoctrine()->getManager();	
+		$editArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
+		$formEditArticle = $this -> createForm(new ArticleType(), $editArticle);
+
+		$formEditArticle -> handleRequest($request);
+
+		if($formEditArticle -> isValid())
+		{
+			$editArticle -> setDateUpdated(new \DateTime('now'));
+			$em -> persist($editArticle);
+			$em -> flush();
+
+			return $this ->redirect($this->generateUrl('front_office_homepage_blog_oneArticle', array('id'=>$id)));
+		}
+
+		return $this -> render('BackOfficeBundle:AdminArticle:editArticle.html.twig', 
+			array('formEditArticle'=> $formEditArticle ->createView()));
+	}
+
 	public function deleteArticleAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
