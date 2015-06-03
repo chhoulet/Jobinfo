@@ -16,11 +16,11 @@ class FormationController extends Controller
 		return $this -> render('FrontOfficeHomepageBundle:Formation:formation.html.twig', array('formation'=>$formation));
 	}
 
-	public function oneFormationAction($id)
+	public function showOneAction($formationType, $id)
 	{
 		$em = $this-> getDoctrine()->getManager();
-		$oneFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
+		$showOne = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
 
-		return $this -> render('FrontOfficeHomepageBundle:Formation:oneFormation.html.twig', array('oneFormation'=>$oneFormation));
+		return $this -> render('FrontOfficeHomepageBundle:Formation:oneFormation.html.twig', array('oneFormation'=>$showOne));
 	}
 }

@@ -12,7 +12,12 @@
 
 		{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
 
+		{% if (is_granted('ROLE_CANDIDAT')) %}
+			<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
+		{% endif %}
 
-		<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
-
+		{% if (is_granted('ROLE_SOCIETY') or (is_granted('ROLE_SUPER_ADMIN'))) %}
+	    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
+		{% endif %}
+	    
 	{% endblock %}

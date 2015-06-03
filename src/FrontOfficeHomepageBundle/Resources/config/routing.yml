@@ -10,9 +10,12 @@ front_office_formation_list:
     requirements:
         formationType: (developpement|integration|architecte-logiciel)
 
-front_office_formation_oneFormation:
-    path:     /oneFormation/{id}
-    defaults: { controller: FrontOfficeHomepageBundle:Formation:oneFormation}
+front_office_formation_showOne:
+    path:     /formation/{formationType}/{id}
+    defaults: { _controller: FrontOfficeHomepageBundle:Formation:showOne}
+    requirements:
+        formationType: (developpement|integration|architecte-logiciel)
+
 
 # Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
 front_office_forum_list:
@@ -42,15 +45,6 @@ front_office_homepage_blog_article:
 front_office_homepage_blog_oneArticle:
     path:     /showOnearticle/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showOneArticle}
-
-#Route de gestion des commentaires:
-# front_office_homepage_createComment:
-#     path:     /createComment/{id}
-#     defaults: { controller: FrontOfficeHomepageBundle:Comment:createComment}
-
-front_office_homepage_blog_showComments:
-    path:     /showComments /{id}
-    defaults: { _controller: FrontOfficeHomepageBundle:Comment:showComments}
 
 #Routes gérant les informations statiques:
 front_office_homepage_static_mentions_legales:

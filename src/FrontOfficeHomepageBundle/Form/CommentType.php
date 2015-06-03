@@ -17,7 +17,6 @@ class CommentType extends AbstractType
         $builder
             ->add('userName')
             ->add('message')
-            ->add('article')
             ->add('valider', 'submit')
         ;
     }

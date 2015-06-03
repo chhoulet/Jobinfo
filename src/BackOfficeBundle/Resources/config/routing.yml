@@ -1,0 +1,55 @@
+#Route gerant la homepage du backoffice:
+back_office_homepage:
+    path:     /homepageBackoffice
+    defaults: { _controller: BackOfficeBundle:Homepage:homepage}
+
+#Routes gerant l'administration des articles:
+back_office_adminarticles_create:
+    path:     /createArticle
+    defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
+
+back_office_adminarticles_edit:
+    path:     /editArticle/{id}
+    defaults: { _controller: BackOfficeBundle:AdminArticle:editArticle}
+
+back_office_adminarticles_delete:
+    path:     /deleteArticle/{id}
+    defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
+
+#Routes gerant l'administration des formations:
+back_office_adminformation_show:
+    path:     /showFormation
+    defaults: { _controller: BackOfficeBundle:AdminFormation:showFormation}
+
+back_office_adminformation_edit:
+    path:     /editFormation/{id}
+    defaults: { _controller: BackOfficeBundle:AdminFormation:editFormation}
+
+back_office_adminformation_create:
+    path:     /createFormation
+    defaults: { _controller: BackOfficeBundle:AdminFormation:createFormation}
+
+back_office_adminformation_delete:
+    path:     /deleteFormation/{id}
+    defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
+
+#Routes gerant l'administration des forums:
+back_office_adminforum_show:
+    path:     /showForums
+    defaults: { _controller: BackOfficeBundle:AdminForum:showForums}
+
+#Routes gerant l'administration des jobOffers:
+back_office_adminjobOffers_show:
+    path:     /showJobOffers
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:showJobOffers}
+
+back_office_adminjobOffer_edit:
+    path:     /editJobOffer/{id}
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:editJobOffer:}
+
+back_office_adminjobOffer_delete:
+    path:     /deleteJobOffer/{id}
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:deleteJobOffer}
+
+
+

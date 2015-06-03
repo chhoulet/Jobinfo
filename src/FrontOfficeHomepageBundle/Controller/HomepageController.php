@@ -3,12 +3,16 @@
 namespace FrontOfficeHomepageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FrontOfficeEmploiBundle\Entity\JobOffer;
+use FrontOfficeEmploiBundle\Form\TriJobOffersType;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class HomepageController extends Controller
 {
-    public function homepageAction()
+    public function homepageAction(Request $request)
     {
+        #Selection des différents éléments mis en page d'accueil :
     	$em = $this->getDoctrine()->getManager();
     	$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article') ->getArticles();
     	$formation = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
@@ -16,12 +20,25 @@ class HomepageController extends Controller
         $societe = $em -> getRepository('FrontOfficeEmploiBundle:Society')-> getSociety();
         $jobOffers = $em ->getRepository('FrontOfficeEmploiBundle:JobOffer')->getJobOffers();
 
+        #Formulaire de selection des  offres d'emploi par critères :
+        $formJobOffers = $this -> createForm(new TriJobOffersType());
+        $formJobOffers -> handleRequest($request);
+
+        if($formJobOffers ->isValid())
+        {
+            $datas = $formJobOffers -> getData();
+            $jobOffersByTri = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')-> triJobOffers($datas['contract'], $datas['jobSector']);
+
+            return $this -> render('FrontOfficeEmploiBundle:JobOffer:triJobOffer.html.twig', array('jobOffersByTri'=>$jobOffersByTri));
+        }
+
         return $this->render('FrontOfficeHomepageBundle:Homepage:homepage.html.twig', 
-        	array('articles'  =>$articles,
-        	      'formation' =>$formation,
-        	      'forum'     =>$forum,
-                  'societe'   =>$societe,
-                  'jobOffers' =>$jobOffers));
+        	array('articles'      =>$articles,
+        	      'formation'     =>$formation,
+        	      'forum'         =>$forum,
+                  'societe'       =>$societe,
+                  'jobOffers'     =>$jobOffers,
+                  'formJobOffers' => $formJobOffers->createView()));
     }
 }
 

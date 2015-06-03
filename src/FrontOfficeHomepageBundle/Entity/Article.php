@@ -70,8 +70,6 @@ class Article
      */
     private $comment;
 
-
-
     /**
      * Get id
      *

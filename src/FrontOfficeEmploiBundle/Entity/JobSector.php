@@ -108,4 +108,9 @@ class JobSector
     {
         return $this->jobOffer;
     }
+
+    public function __toString()
+    {
+        return $this ->nameSector;
+    }
 }

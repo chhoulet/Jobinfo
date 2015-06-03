@@ -11,6 +11,11 @@
                 </h2>
                     <p style="text-align:justify">{{ showOneArticle.content }}</p>
                     <hr>
+
+                   {#  {% if (is_granted('ROLE_SUPER_ADMIN')) %} #}
+                        <a href="{{ path('back_office_adminarticles_delete',{id:showOneArticle.id})}}"><button>Supprimer cet élément</button>   </a>
+                        <a href="{{ path('back_office_adminarticles_edit',{id:showOneArticle.id})}}"><button>Editer cet élément</button>   </a>
+                   {#  {% endif %} #}
         </div>
 
         <div class="col-lg-12 text-center">
@@ -22,11 +27,16 @@
 
         <div class="col-lg-12 text-center">
 
-        		{# <a href="{{ path('front_office_homepage_createComment',{id:showOneArticle.id})}}">
-					<h2>Commentez cet article :</h2></a> #}
+        		<h2>Liste des commentaires :</h2>
 
-        		{# {{ render(controller('FrontOfficeHomepageBundle:Comment:showComments.html.twig', {id:showOneArticle.id})) }} #}
+                {% for com in showOneArticle.comment %}
 
+                    {{ com.userName}}<br>
+                    {{ com.message}}<br>
+                    {{ com.dateCreated |date('d-m-Y H:i:s')}}<br>
+
+                {% endfor %}
+                      
         </div>
 
 	{% endblock %}

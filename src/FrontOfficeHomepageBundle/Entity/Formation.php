@@ -31,6 +31,13 @@ class Formation
     /**
      * @var string
      *
+     * @ORM\Column(name="organism", type="string", length=255)
+     */
+    private $organism;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="formationType", type="string", length=255)
      */
     private $formationType;
@@ -41,6 +48,13 @@ class Formation
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
 
 
     /**
@@ -263,5 +277,51 @@ class Formation
     public function getSubscriber()
     {
         return $this->subscriber;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Formation
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set organism
+     *
+     * @param string $organism
+     * @return Formation
+     */
+    public function setOrganism($organism)
+    {
+        $this->organism = $organism;
+
+        return $this;
+    }
+
+    /**
+     * Get organism
+     *
+     * @return string 
+     */
+    public function getOrganism()
+    {
+        return $this->organism;
     }
 }
