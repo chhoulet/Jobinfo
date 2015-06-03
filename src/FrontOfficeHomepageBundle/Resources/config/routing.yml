@@ -16,7 +16,6 @@ front_office_formation_showOne:
     requirements:
         formationType: (developpement|integration|architecte-logiciel)
 
-
 # Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
 front_office_forum_list:
     path:     /forum/{forumType}

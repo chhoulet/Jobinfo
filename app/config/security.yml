@@ -8,9 +8,9 @@ security:
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
         ROLE_CANDIDAT:    ROLE_USER
-        ROLE_SOCIETY:     ROLE_USER
-        ROLE_ADMIN:       ROLE_SOCIETY
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SOCIETY:     ROLE_SOCIETY
+        ROLE_ADMIN:       ROLE_SOCIETY ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN 
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:

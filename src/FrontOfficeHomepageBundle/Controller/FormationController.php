@@ -16,7 +16,7 @@ class FormationController extends Controller
 		return $this -> render('FrontOfficeHomepageBundle:Formation:formation.html.twig', array('formation'=>$formation));
 	}
 
-	public function showOneAction($formationType, $id)
+	public function showOneAction($id)
 	{
 		$em = $this-> getDoctrine()->getManager();
 		$showOne = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
