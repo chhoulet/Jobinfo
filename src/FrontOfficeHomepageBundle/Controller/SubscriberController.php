@@ -55,7 +55,5 @@ class SubscriberController extends Controller
 
 		return $this -> render('FrontOfficeHomepageBundle:Subscriber:registrationForum.html.twig', 
 			array('formForumSubscriber'=> $formForumSubscriber->createView()));
-
-
 	}
 }

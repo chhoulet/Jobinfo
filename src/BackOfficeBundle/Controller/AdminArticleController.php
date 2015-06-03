@@ -61,4 +61,12 @@ class AdminArticleController extends Controller
 
 		return $this -> redirect($this -> generateurl('front_office_homepage_blog_article'));
 	}
+
+	public function listAction()
+	{
+		$em = $this -> getDoctrine()->getManager();	
+		$listArticles = $em -> getRepository('FrontOfficeHomepageBundle:Article')->findAll();
+
+		return $this -> render('BackOfficeBundle:AdminArticle:list.html.twig', array('listArticles' => $listArticles));
+	}
 }
