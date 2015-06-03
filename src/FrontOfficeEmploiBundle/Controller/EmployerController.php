@@ -44,7 +44,7 @@ class EmployerController extends Controller
 		if($formJobOffer -> isValid())
 		{
 			$jobOffer -> setDateCreated(new \DateTime('now'));
-			$jobOffer -> setSociety($this -> getUser());
+			$jobOffer -> setSociety($this -> getUser()->getSociety());
 			$em -> persist($jobOffer);
 			$em -> flush();
 

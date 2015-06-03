@@ -19,9 +19,8 @@ class AdminArticleController extends Controller
 
 		if($formArticle -> isValid())
 		{
-			/*$article -> setAuthorName($this -> getUser());*/
+			$article -> setAuthor($this -> getUser());
 			$article -> setDateCreated(new \DateTime('now'));	
-			$article -> setDateUpdated(new \DateTime('now'));
 			$em -> persist($article);
 			$em -> flush();
 

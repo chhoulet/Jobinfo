@@ -70,6 +70,15 @@ class Society
      */
     private $jobOffer;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="society")
+     */
+    private $users;
+
+
+
 
     /**
      * Get id
@@ -272,5 +281,38 @@ class Society
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $users
+     * @return Society
+     */
+    public function addUser(\FrontOfficeUserBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $users
+     */
+    public function removeUser(\FrontOfficeUserBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
