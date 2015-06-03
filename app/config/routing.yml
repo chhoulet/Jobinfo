@@ -2,11 +2,11 @@ back_office:
     resource: "@BackOfficeBundle/Resources/config/routing.yml"
     prefix:   /
 
-user_bundle:
-   resource: "@FrontOfficeUserBundle/Resources/config/routing.yml"
-
 front_office_emploi:
     resource: "@FrontOfficeEmploiBundle/Resources/config/routing.yml"
+
+front_office_user:
+    resource: "@FrontOfficeUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 front_office_homepage:

@@ -16,6 +16,7 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
+
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
@@ -23,12 +24,14 @@ security:
         main:
             pattern: ^/
             form_login:
+
                check_path: /login_check
                login_path: /login
                provider: fos_userbundle
             logout:
                path:    /logout
                target: /
+
               # provider: fos_userbundle
               # csrf_provider: form.csrf_provider
 
