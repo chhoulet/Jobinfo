@@ -63,7 +63,7 @@
                         <a href="{{ path('front_office_homepage_blog_article') }}">Blog </a>
                     </li>
                     {# Controle d'accès avec FOSUserBundle #}
-                    {% if(is_granted('ROLE_USER')) %}
+                    {% if (is_granted('ROLE_USER')) %}
                     {
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>

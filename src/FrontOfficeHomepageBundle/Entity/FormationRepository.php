@@ -34,7 +34,4 @@ class FormationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
-
-
-
 }
