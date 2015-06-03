@@ -7,7 +7,7 @@ back_office_homepage:
 back_office_adminarticles_list:
     path:     /list
     defaults: { _controller: BackOfficeBundle:AdminArticle:list}
-    
+
 back_office_adminarticles_create:
     path:     /createArticle
     defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
@@ -41,6 +41,10 @@ back_office_adminformation_delete:
 back_office_adminforum_show:
     path:     /showForums
     defaults: { _controller: BackOfficeBundle:AdminForum:showForums}
+
+back_office_adminforum_new:
+    path:     /newForum
+    defaults: { _controller: BackOfficeBundle:AdminForum:new}
 
 #Routes gerant l'administration des jobOffers:
 back_office_adminjobOffers_show:
