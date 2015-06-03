@@ -4,6 +4,7 @@ namespace FrontOfficeHomepageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class HomepageController extends Controller
 {
     public function homepageAction()

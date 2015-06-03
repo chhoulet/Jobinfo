@@ -4,6 +4,7 @@ namespace FrontOfficeHomepageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeHomepageBundle\Entity\Formation;
+use Symfony\Component\HttpFoundation\Request;
 
 class FormationController extends Controller
 {
