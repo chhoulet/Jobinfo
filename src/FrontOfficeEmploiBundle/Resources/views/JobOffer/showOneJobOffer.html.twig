@@ -4,13 +4,13 @@
 
 		<h2>Détail de l'offre</h2>
 
-		{{ showOneJobOffer.title}}
+		{{ showOneJobOffer.title}}<br>
 
-		{% if (isGranted('ROLE_CANDIDAT') %}
+		{% if (is_granted('ROLE_CANDIDAT')) %}
 			<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
 		{% endif %}
 
-		{% if (isGranted('ROLE_SOCIETY') or (isGranted('ROLE_SUPER_ADMIN')) %}
+		{% if (is_granted('ROLE_SOCIETY') or (is_granted('ROLE_SUPER_ADMIN'))) %}
 	    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
 		{% endif %}
 	    
