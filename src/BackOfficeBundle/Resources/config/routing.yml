@@ -38,13 +38,19 @@ back_office_adminformation_delete:
     defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
 
 #Routes gerant l'administration des forums:
-back_office_adminforum_show:
-    path:     /showForums
-    defaults: { _controller: BackOfficeBundle:AdminForum:showForums}
+back_office_adminforum_list:
+    path:     /listForums
+    defaults: { _controller: BackOfficeBundle:AdminForum:list}
 
 back_office_adminforum_new:
     path:     /newForum
     defaults: { _controller: BackOfficeBundle:AdminForum:new}
+
+back_office_adminforum_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BackOfficeBundle:AdminForum:edit}
+
+
 
 #Routes gerant l'administration des jobOffers:
 back_office_adminjobOffers_show:
