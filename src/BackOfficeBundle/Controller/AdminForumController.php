@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminForumController extends Controller
 {
-	public function showForumsAction()
+	public function listAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$showForums = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->findAll();
@@ -35,5 +35,24 @@ class AdminForumController extends Controller
 
 		return $this -> render('BackOfficeBundle:AdminForum:new.html.twig', 
 			array('formForum' => $formForum ->createView()));
+	}
+
+	public function editAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$forum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
+		$formForum = $this -> createForm(new ForumType(), $forum);
+
+		$formForum -> handleRequest($request);
+
+		if($formForum -> isValid())
+		{
+			$em -> persist($forum);
+			$em -> flush();
+			return $this -> redirect($this->generateUrl('back_office_adminforum_list'));
+		}
+
+		return $this -> render('BackOfficeBundle:AdminForum:edit.html.twig', 
+			array('formForum'=>$formForum->createView()));
 	}
 }

@@ -16,8 +16,8 @@
                         <p>Date : {{forum.forumDate | date('d-m-Y H:i:s') }}</p>
                         <p style="text-align:justify;">{{ forum.forumDescription}}</p>
                     </div>
-                    {# <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a>
-                    <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a> #}
+                    <a href="{{ path('back_office_adminforum_edit',{id:forum.id}) }}"><button>Edition :</button></a>
+                   {#  <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a> #}
                 </div>
             </div>
         	{% endfor %}
