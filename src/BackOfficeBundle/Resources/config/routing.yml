@@ -63,6 +63,10 @@ back_office_adminJobSector_list:
     path:     /listJobSector
     defaults: { _controller: BackOfficeBundle:AdminJobSector:list}
 
+back_office_adminJobSector_create:
+    path:      /createJobSector
+    defaults: { _controller: BackOfficeBundle:AdminJobSector:create}
+
 #Routes gerant l'administration des jobOffers:
 back_office_adminjobOffers_show:
     path:     /showJobOffers
