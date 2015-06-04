@@ -55,4 +55,14 @@ class AdminForumController extends Controller
 		return $this -> render('BackOfficeBundle:AdminForum:edit.html.twig', 
 			array('formForum'=>$formForum->createView()));
 	}
+
+	public function deleteAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$deleteForum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
+		$em ->remove($deleteForum);
+		$em ->flush();
+
+		return $this -> redirect($this -> generateUrl('back_office_adminforum_list'));
+	}
 }

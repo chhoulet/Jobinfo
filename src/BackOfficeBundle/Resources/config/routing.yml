@@ -50,7 +50,9 @@ back_office_adminforum_edit:
     path:     /edit/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:edit}
 
-
+back_office_adminforum_delete:
+    path:     /deleteForum/{id}
+    defaults: { _controller: BackOfficeBundle:AdminForum:delete}
 
 #Routes gerant l'administration des jobOffers:
 back_office_adminjobOffers_show:
