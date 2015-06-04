@@ -46,6 +46,10 @@ back_office_adminforum_new:
     path:     /newForum
     defaults: { _controller: BackOfficeBundle:AdminForum:new}
 
+back_office_adminforum_showOne:
+    path:     /showOneForum/{id}
+    defaults: { _controller: BackOfficeBundle:AdminForum:showOne}
+
 back_office_adminforum_edit:
     path:     /edit/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:edit}

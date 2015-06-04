@@ -5,21 +5,23 @@
 		<h2> Liste des forums : </h2>
 
     		{% for forum in showForums %}
-    		<div class="row">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <hr>
-                        <h2 class="intro-text text-center"><strong>{{ forum.forumName }}</strong><br>
-                            {{forum.forumType}}
-                        </h2>
-                        <hr>
-                        <p>Date : {{forum.forumDate | date('d-m-Y H:i:s') }}</p>
-                        <p style="text-align:justify;">{{ forum.forumDescription}}</p>
+
+        		<div class="row">
+                    <div class="box">
+                        <div class="col-lg-12">
+                            <hr>
+                            <h2 class="intro-text text-center"><strong>{{ forum.forumName }}</strong><br>
+                                {{forum.forumType}}
+                            </h2>
+                            <hr>
+                            <p>Date : {{forum.forumDate | date('d-m-Y H:i:s') }}</p>
+                            <p style="text-align:justify;">{{ forum.forumDescription}}</p>
+                        </div>
+                        <a href="{{ path('back_office_adminforum_edit',{id:forum.id}) }}"><button>Mise à jour :</button></a>
+                        <a href="{{ path('back_office_adminforum_showOne',{id:forum.id}) }}"><button>Edition :</button></a>
                     </div>
-                    <a href="{{ path('back_office_adminforum_edit',{id:forum.id}) }}"><button>Edition :</button></a>
-                   {#  <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a> #}
                 </div>
-            </div>
+                
         	{% endfor %}
 
 	{% endblock %}

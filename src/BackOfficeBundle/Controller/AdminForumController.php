@@ -30,11 +30,19 @@ class AdminForumController extends Controller
 			$em -> persist($forum);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('back_office_adminforum_show'));
+			return $this -> redirect($this -> generateUrl('back_office_adminforum_list'));
 		}
 
 		return $this -> render('BackOfficeBundle:AdminForum:new.html.twig', 
 			array('formForum' => $formForum ->createView()));
+	}
+
+	public function showOneAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$showOne = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
+
+		return $this -> render('BackOfficeBundle:AdminForum:showOne.html.twig', array('showOne'=>$showOne));
 	}
 
 	public function editAction(Request $request, $id)
