@@ -46,7 +46,7 @@ class Comment
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Article", inversedBy="comment")
-     * JoinColumn(name="article_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $article;
 

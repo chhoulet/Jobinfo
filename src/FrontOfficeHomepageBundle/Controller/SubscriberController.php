@@ -7,6 +7,7 @@ use FrontOfficeHomepageBundle\Entity\Subscriber;
 use FrontOfficeHomepageBundle\Entity\Formation;
 use FrontOfficeHomepageBundle\Entity\Forum;
 use FrontOfficeHomepageBundle\Form\SubscriberType;
+use Symfony\Component\HttpFoundation\Request;
 
 class SubscriberController extends Controller
 {
@@ -26,7 +27,7 @@ class SubscriberController extends Controller
 			$em -> persist($subscriber);
 			$em -> flush();
 
-			return $this -> redirect($this-> generateUrl('front_office_formation_oneFormation', array('id' => $id)));
+			return $this -> redirect($this-> generateUrl('front_office_homepage_homepage'));
 		}
 
 		return $this-> render('FrontOfficeHomepageBundle:Subscriber:registrationFormation.html.twig',
@@ -54,7 +55,5 @@ class SubscriberController extends Controller
 
 		return $this -> render('FrontOfficeHomepageBundle:Subscriber:registrationForum.html.twig', 
 			array('formForumSubscriber'=> $formForumSubscriber->createView()));
-
-
 	}
 }

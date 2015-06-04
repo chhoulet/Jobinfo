@@ -19,9 +19,8 @@ class AdminArticleController extends Controller
 
 		if($formArticle -> isValid())
 		{
-			/*$article -> setAuthorName($this -> getUser());*/
+			$article -> setAuthor($this -> getUser());
 			$article -> setDateCreated(new \DateTime('now'));	
-			$article -> setDateUpdated(new \DateTime('now'));
 			$em -> persist($article);
 			$em -> flush();
 
@@ -61,5 +60,13 @@ class AdminArticleController extends Controller
 		$em -> flush();
 
 		return $this -> redirect($this -> generateurl('front_office_homepage_blog_article'));
+	}
+
+	public function listAction()
+	{
+		$em = $this -> getDoctrine()->getManager();	
+		$listArticles = $em -> getRepository('FrontOfficeHomepageBundle:Article')->findAll();
+
+		return $this -> render('BackOfficeBundle:AdminArticle:list.html.twig', array('listArticles' => $listArticles));
 	}
 }

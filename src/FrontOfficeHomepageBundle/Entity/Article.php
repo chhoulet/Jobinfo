@@ -22,11 +22,10 @@ class Article
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="authorName", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="articles")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $authorName;
+    private $author;
 
     /**
      * @var string
@@ -59,7 +58,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateUpdated", type="datetime")
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
      */
     private $dateUpdated;
 
@@ -79,30 +78,7 @@ class Article
     {
         return $this->id;
     }
-
-    /**
-     * Set authorName
-     *
-     * @param string $authorName
-     * @return Article
-     */
-    public function setAuthorName($authorName)
-    {
-        $this->authorName = $authorName;
-
-        return $this;
-    }
-
-    /**
-     * Get authorName
-     *
-     * @return string 
-     */
-    public function getAuthorName()
-    {
-        return $this->authorName;
-    }
-
+    
     /**
      * Set subject
      *
@@ -261,5 +237,28 @@ class Article
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $author
+     * @return Article
+     */
+    public function setAuthor(\FrontOfficeUserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

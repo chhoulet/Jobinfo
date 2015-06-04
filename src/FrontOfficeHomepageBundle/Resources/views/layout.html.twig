@@ -54,16 +54,18 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ path('front_office_homepage_homepage') }}">Accueil JobInfo</a>
+                        <a href="{{ path('front_office_homepage_homepage') }}">JobInfo</a>
                     </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('front_office_homepage_blog_article') }}">Blog </a>
-                    </li>
+                    {# {% if (is_granted('ROLE_SUPER_ADMIN')) %} #}
+                        <li>
+                            <a href="{{ path('back_office_homepage') }}">BackOffice</a>
+                        </li>
+                    {#  {% endif %} #}
+                        <li>
+                            <a href="{{ path('front_office_homepage_blog_article') }}">Blog </a>
+                        </li>
                     {# Controle d'accès avec FOSUserBundle #}
-                    {% if(is_granted('ROLE_USER')) %}
+                    {% if (is_granted('ROLE_USER')) %}
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
                         </li>
@@ -75,11 +77,6 @@
                     <li>
                          <a href="{{ path('fos_user_security_login') }}">Espace Employeurs</a> 
                     </li><br>
-                    {# {% if (is_granted(' ROLE_SUPER_ADMIN') %} #}
-                     <li>
-                         <a href="{{ path('back_office_homepage') }}">BackOffice</a> 
-                    </li>
-                   {#  {% endif %} #}
                 </ul>
 
             </div>
@@ -98,14 +95,17 @@
                 <div class="col-lg-12 text-center">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
-                <div class="col-lg-4 text-center">
+                <div class="col-lg-3 text-center">
                     <p><a href="{{ path('front_office_homepage_static_mentions_legales')}}">Mentions Légales</a></p>
                 </div>
-                <div class="col-lg-4 text-center">
+                <div class="col-lg-3 text-center">
                     <p><a href="{{ path('front_office_homepage_static_conditions_generales')}}">Conditions Générales de Vente</a></p>
                 </div>
-                <div class="col-lg-4 text-center">
+                <div class="col-lg-3 text-center">
                     <p>Contact</a></p>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <p>About</p>
                 </div>
             </div>
         </div>
