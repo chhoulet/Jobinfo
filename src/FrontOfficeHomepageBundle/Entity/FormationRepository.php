@@ -34,4 +34,14 @@ class FormationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
+	public function getFormationType()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f 
+			FROM FrontOfficeHomepageBundle:Formation f 
+			GROUP BY f.formationType');
+
+		return $query ->  getResult();
+	}
+
 }
