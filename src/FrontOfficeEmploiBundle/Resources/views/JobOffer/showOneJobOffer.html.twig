@@ -2,22 +2,26 @@
 
 	{% block content %}
 
-		<h2>Détail de l'offre</h2>
+		<div style="background-color:white;">
 
-		{{ showOneJobOffer.title}}<br><br>
+			<h2>Détail de l'offre</h2>
 
-		{{ showOneJobOffer.descriptionJob }}<br><br>
+			{{ showOneJobOffer.title}}<br><br>
 
-		{{ showOneJobOffer.contract }}<br><br>
+			{{ showOneJobOffer.descriptionJob }}<br><br>
 
-		{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
+			{{ showOneJobOffer.contract }}<br><br>
 
-		{% if (is_granted('ROLE_CANDIDAT')) %}
-			<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
-		{% endif %}
+			{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
 
-		{% if (is_granted('ROLE_SOCIETY') or (is_granted('ROLE_SUPER_ADMIN'))) %}
-	    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
-		{% endif %}
+				{# {% if (is_granted('ROLE_CANDIDAT')) %} #}
+					<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
+				{# {% endif %} #} 
+				
+				{% if (is_granted('ROLE_SOCIETY') or (is_granted('ROLE_SUPER_ADMIN'))) %}
+			    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
+				{% endif %}
+
+		</div>
 	    
 	{% endblock %}

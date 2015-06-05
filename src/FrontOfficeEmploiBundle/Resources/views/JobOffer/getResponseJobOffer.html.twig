@@ -1,0 +1,30 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+{# Recuperation de l'objet response à l'aide d'une boucle, pour afficher tous les CV et les LM des candidats #}
+		{% for response in getResponseJobOffer %}
+
+			<h3>Détail de la candidature :</h3>
+
+				{{ response.content }}<br><br>
+				{{ response.dateCreated | date('d-m-Y') }}<br><br>
+
+					{% for cuv in response.cuvitae %}
+						{{ cuv.title }}<br>
+						{{ cuv.gradeOne }}<br><br>
+						{{ cuv.gradeTwo }}<br>
+						{{ cuv.languages }}<br>
+						{{ cuv.workExperience1 }}<br>
+						{{ cuv.workExperience2 }}<br>
+						{{ cuv.skills }}<br><br>
+					{% endfor %}
+
+					{% for lem in motivationLetter %}
+						{{ lem.subject }}
+						{{ lem.content }}
+					{% endfor %}
+
+		{% endfor %}
+
+	{% endblock %}

@@ -22,6 +22,6 @@ class HomepageController extends Controller
 				  'nbSociety'   => $nbSociety,
 				  'nbComments'  => $nbComments,
 				  'getFormationType' => $getFormationType,
-				  'getNbFormationByType' => $getNbFormationByType));
+				  /*'getNbFormationByType' => $getNbFormationByType*/));
 	}
 }
