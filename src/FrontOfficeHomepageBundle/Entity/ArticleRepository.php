@@ -22,4 +22,15 @@ class ArticleRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function triArticlesByCategory($category)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT a 
+			FROM FrontOfficeHomepageBundle:Article a 
+			WHERE a.category LIKE :category')
+		->setParameter('category', $category);
+
+		return $query -> getResult();
+	}
 }

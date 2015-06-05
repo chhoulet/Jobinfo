@@ -17,6 +17,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('subject')
+            ->add('category')
             ->add('content')
             ->add('Valider', 'submit')
         ;

@@ -15,7 +15,8 @@ class BlogController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$showArticles = $em -> getRepository('FrontOfficeHomepageBundle:Article')->findAll();
 
-		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', array('showArticles'=>$showArticles));
+		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', 
+			array('showArticles'=>$showArticles));
 	}
 
 	public function showOneArticleAction(Request $request, $id)
@@ -38,8 +39,18 @@ class BlogController extends Controller
 			return $this -> redirect($this -> generateUrl('front_office_homepage_blog_oneArticle', ['id'=>$id]));
 		}
 	
-		return $this -> render('FrontOfficeHomepageBundle:Blog:showOneArticle.html.twig', array('showOneArticle' =>$article,
-																							    'formComment'=>$formComment->createView()));
+		return $this -> render('FrontOfficeHomepageBundle:Blog:showOneArticle.html.twig', 
+			array('showOneArticle' =>$article,
+				  'formComment'=>$formComment->createView()));
+	}
+
+	public function triArticlesAction($category)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article')-> triArticlesByCategory($category);
+
+		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', 
+			array('showArticles'=> $articles));
 	}
 
 }

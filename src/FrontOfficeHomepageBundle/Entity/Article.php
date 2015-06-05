@@ -49,6 +49,13 @@ class Article
     private $content;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="text")
+     */
+    private $category;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateCreated", type="datetime")
@@ -290,5 +297,28 @@ class Article
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Article
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

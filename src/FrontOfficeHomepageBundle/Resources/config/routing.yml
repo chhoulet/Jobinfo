@@ -45,6 +45,12 @@ front_office_homepage_blog_oneArticle:
     path:     /showOnearticle/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showOneArticle}
 
+front_office_homepage_blog_triArticle:
+    path:     /triArticle/{category}
+    defaults: { _controller: FrontOfficeHomepageBundle:Blog:triArticles, category:emploi}
+    requirements:
+        category: (emploi|formation|big_data|developpement|integration)
+
 #Routes gérant les informations statiques:
 front_office_homepage_static_mentions_legales:
     path:     /mentions_legales
