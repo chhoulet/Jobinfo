@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class SubscriberRepository extends EntityRepository
 {
+	public function getSubscriber()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT s 
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.formation f 
+			GROUP BY f.formationType');
+
+		return $query -> getResult();
+	}
 }
