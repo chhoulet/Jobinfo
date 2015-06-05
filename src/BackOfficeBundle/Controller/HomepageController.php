@@ -12,11 +12,12 @@ class HomepageController extends Controller
 		$nbCandidats = $em -> getRepository('FrontOfficeEmploiBundle:Candidat') -> nbCandidats();
 		$nbJobOffers = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> nbJobOffers();
 		$nbSociety   = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> nbSociety();
-		
+		$nbComments  = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> nbComments();
 
 		return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
 			array('nbCandidats' => $nbCandidats,
 				  'nbJobOffers' => $nbJobOffers,
-				  'nbSociety'   => $nbSociety));
+				  'nbSociety'   => $nbSociety,
+				  'nbComments'  => $nbComments));
 	}
 }

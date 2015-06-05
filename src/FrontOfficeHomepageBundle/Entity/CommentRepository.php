@@ -23,4 +23,13 @@ class CommentRepository extends EntityRepository
 
 		return $query->getResult();
 	}
+
+	public function nbComments()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT (c.id)
+			FROM FrontOfficeHomepageBundle:Comment c');
+
+		return $query -> getSingleScalarResult();
+	}
 }
