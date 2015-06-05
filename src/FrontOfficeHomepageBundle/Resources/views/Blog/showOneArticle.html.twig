@@ -2,7 +2,7 @@
 
 	{% block content %}
 
-		<div class="col-lg-12 text-center">
+		{# <div class="col-lg-12 text-center">
             <img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt="">
                 <h2>{{ showOneArticle.title }}
                     <br>
@@ -13,9 +13,9 @@
                     <hr>
 
                    {#  {% if (is_granted('ROLE_SUPER_ADMIN')) %} #}
-                        <a href="{{ path('back_office_adminarticles_delete',{id:showOneArticle.id})}}"><button>Supprimer cet élément</button>   </a>
+                        {# <a href="{{ path('back_office_adminarticles_delete',{id:showOneArticle.id})}}"><button>Supprimer cet élément</button>   </a> #}
                    {#  {% endif %} #}
-        </div>
+        {# </div>
 
         <div class="col-lg-12 text-center">
 
@@ -36,6 +36,137 @@
 
                 {% endfor %}
                       
-        </div>
+        </div> #}
 
-	{% endblock %}
+    <!-- Page Content -->
+    <div class="container" style="background-color:white;">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>{{ showOneArticle.title }}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    Thème : {{ showOneArticle.subject }}</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span>Posté le : {{ showOneArticle.dateCreated | date('d-m-Y H:i:s') }}</p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">{{ showOneArticle.content }}</p>
+
+                <hr>
+
+                <!-- Blog Comments -->
+
+                <!-- Comments Form -->
+                <div class="well">
+                    <h4>Postez un commentaire :</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                {# <textarea class="form-control" rows="3"></textarea> #}
+                              {{ form(formComment) }}
+                            </div>
+                        </form>
+                </div>
+
+                <hr>
+
+                <!-- Posted Comments -->
+
+                <!-- Comment -->
+                {% for com in showOneArticle.comment %}
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="http://placehold.it/64x64" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> {{ com.userName}}
+                                <small>{{ com.dateCreated |date('d-m-Y H:i:s')}}</small>
+                            </h4>
+                           {{ com.message}}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        {% endblock %}
