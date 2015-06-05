@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class CandidatRepository extends EntityRepository
 {
+	public function nbCandidats()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(c.id)
+			FROM FrontOfficeEmploiBundle:Candidat c
+			');
+
+		return $query -> getSingleScalarResult();
+	}
 }

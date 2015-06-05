@@ -8,6 +8,10 @@ class HomepageController extends Controller
 {
 	public function homepageAction()
 	{
-		return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig');
+		$em = $this -> getDoctrine()->getManager();
+		$nbCandidats = $em -> getRepository('FrontOfficeEmploiBundle:Candidat') -> nbCandidats();
+
+		return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
+			array('nbCandidats' => $nbCandidats));
 	}
 }
