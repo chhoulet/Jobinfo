@@ -23,3 +23,4 @@ class SubscriberRepository extends EntityRepository
 		return $query -> getResult();
 	}
 }
+         

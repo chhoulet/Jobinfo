@@ -65,6 +65,13 @@ class Article
     /**
      * @var string
      *
+     * @ORM\Column(name="image", type="text")
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Comment", mappedBy="article")
      */
     private $comment;
@@ -260,5 +267,28 @@ class Article
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -25,7 +25,7 @@
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> Posté le {{ article.dateCreated | date('d-m-Y H:i:s') }}</p>
                         <hr>
-                        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                        <img class="img-responsive" src="../img/{{ article.image }}.jpg" alt="image-developpeurs" style="width:750px;">
                         <hr>
                         <p>{{ article.content }}</p>
                         <a class="btn btn-primary" <a href="{{ path('front_office_homepage_blog_oneArticle',{id:article.id}) }}" class="btn btn-default btn-lg">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
