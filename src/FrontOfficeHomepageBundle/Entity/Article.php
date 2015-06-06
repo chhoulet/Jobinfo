@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -29,7 +30,7 @@ class Article
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -37,6 +38,7 @@ class Article
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="subject", type="string", length=255)
      */
     private $subject;
@@ -44,6 +46,12 @@ class Article
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "250",
+     *      max = "1500",
+     *      minMessage = "Votre article doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre article ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -51,6 +59,7 @@ class Article
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="category", type="text")
      */
     private $category;
@@ -58,6 +67,7 @@ class Article
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -65,6 +75,7 @@ class Article
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
      */
     private $dateUpdated;
@@ -72,7 +83,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="text")
+     * @ORM\Column(name="image", type="text", nullable=true)
      */
     private $image;
 

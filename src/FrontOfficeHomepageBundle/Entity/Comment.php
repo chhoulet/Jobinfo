@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -24,6 +25,7 @@ class Comment
     /**
      * @var string
      *
+     * @Assert\Blank()
      * @ORM\Column(name="userName", type="string", length=255)
      */
     private $userName;
@@ -31,6 +33,12 @@ class Comment
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "500",
+     *      minMessage = "Votre message doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre message ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="message", type="text")
      */
     private $message;
@@ -38,6 +46,7 @@ class Comment
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;

@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Etablissement
@@ -24,6 +25,7 @@ class Etablissement
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="etablissementName", type="string", length=255)
      */
     private $etablissementName;
@@ -31,6 +33,7 @@ class Etablissement
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="etablissementAdress", type="string", length=255)
      */
     private $etablissementAdress;
@@ -38,6 +41,7 @@ class Etablissement
     /**
      * @var integer
      *
+     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
      * @ORM\Column(name="etablissementPhone", type="integer")
      */
     private $etablissementPhone;

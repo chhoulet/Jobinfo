@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Subscriber
@@ -24,6 +25,7 @@ class Subscriber
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="firstname", type="string", length=255)
      */
     private $firstname;
@@ -31,6 +33,7 @@ class Subscriber
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="lastname", type="string", length=255)
      */
     private $lastname;
@@ -38,6 +41,10 @@ class Subscriber
     /**
      * @var string
      *
+     * @Assert\Email(
+     *     message = "'{{ value }}' n'est pas un email valide.",
+     *     checkMX = true
+     * )
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
@@ -45,6 +52,7 @@ class Subscriber
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
@@ -52,6 +60,7 @@ class Subscriber
     /**
      * @var integer
      *
+     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
      * @ORM\Column(name="phoneNumber", type="integer")
      */
     private $phoneNumber;
@@ -59,6 +68,7 @@ class Subscriber
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateSubscribed", type="date")
      */
     private $dateSubscribed;

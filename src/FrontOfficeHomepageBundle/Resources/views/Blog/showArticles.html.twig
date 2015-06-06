@@ -24,7 +24,7 @@
                             <a href="#">{{ article.title }}</a>
                         </h2>
                         <p class="lead">
-                            by <a href="index.php"> {{ article.author.username }}</a>
+                            by <a href="index.php"> {# {{ article.author.username }} #}</a>
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> Posté le {{ article.dateCreated | date('d-m-Y H:i:s') }}</p>
                         <hr>

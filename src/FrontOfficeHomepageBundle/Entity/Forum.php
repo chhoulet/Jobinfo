@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Forum
@@ -24,6 +25,7 @@ class Forum
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="forumName", type="string", length=255)
      */
     private $forumName;
@@ -31,6 +33,7 @@ class Forum
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="forumType", type="string", length=255)
      */
     private $forumType;
@@ -38,6 +41,7 @@ class Forum
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="forumDate", type="date")
      */
     private $forumDate;
@@ -45,6 +49,7 @@ class Forum
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="forumAdress", type="string", length=255)
      */
     private $forumAdress;
@@ -52,6 +57,12 @@ class Forum
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "50",
+     *      max = "500",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="forumDescription", type="text")
      */
     private $forumDescription;

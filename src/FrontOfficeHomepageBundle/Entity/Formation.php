@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Formation
@@ -24,13 +25,14 @@ class Formation
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="formationName", type="string", length=255)
      */
     private $formationName;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="organism", type="string", length=255)
      */
     private $organism;
@@ -38,6 +40,7 @@ class Formation
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="formationType", type="string", length=255)
      */
     private $formationType;
@@ -45,6 +48,7 @@ class Formation
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
@@ -52,6 +56,7 @@ class Formation
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime() 
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
@@ -60,6 +65,12 @@ class Formation
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "100",
+     *      max = "580",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="formationDescription", type="text")
      */
     private $formationDescription;
