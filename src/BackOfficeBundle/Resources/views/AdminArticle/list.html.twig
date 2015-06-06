@@ -20,7 +20,7 @@
                         <h2>{{ article.title }}
                             <br>
                             <small>{{ article.subject }} <br>
-                                {{ article.dateCreated | date('d-m-Y H:i:s') }} par {{ article.author.username }}</small>
+                                {{ article.dateCreated | date('d-m-Y H:i:s') }} par {# {{ article.author.username }} #}</small>
                         </h2>
                         <p style="text-align:justify">{{ article.content }}</p>
                         <a href="{{ path('back_office_adminarticles_edit',{id:article.id}) }}" class="btn btn-default btn-lg">Read More</a>

@@ -3,6 +3,7 @@
 namespace FrontOfficeEmploiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MotivationLetter
@@ -24,6 +25,7 @@ class MotivationLetter
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="subject", type="string", length=255)
      */
     private $subject;
@@ -31,6 +33,7 @@ class MotivationLetter
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -38,7 +41,8 @@ class MotivationLetter
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="content", type="string", length=1000)
      */
     private $content;
 

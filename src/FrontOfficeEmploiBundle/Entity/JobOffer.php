@@ -3,6 +3,7 @@
 namespace FrontOfficeEmploiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * JobOffer
@@ -24,6 +25,7 @@ class JobOffer
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -31,6 +33,7 @@ class JobOffer
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="descriptionJob", type="string", length=400)
      */
     private $descriptionJob;
@@ -38,6 +41,7 @@ class JobOffer
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="contract", type="string", length=400)
      */
     private $contract;
@@ -46,6 +50,7 @@ class JobOffer
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;

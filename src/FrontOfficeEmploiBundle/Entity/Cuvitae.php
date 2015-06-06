@@ -3,6 +3,7 @@
 namespace FrontOfficeEmploiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cuvitae
@@ -24,6 +25,7 @@ class Cuvitae
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -31,6 +33,12 @@ class Cuvitae
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "255",
+     *      minMessage = "Votre diplôme doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre diplôme ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="gradeOne", type="string", length=255)
      */
     private $gradeOne;
@@ -38,6 +46,11 @@ class Cuvitae
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "0",
+     *      max = "50",
+     *      maxMessage = "Votre diplôme ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="gradeTwo", type="string", length=255)
      */
     private $gradeTwo;
@@ -45,6 +58,11 @@ class Cuvitae
     /**
      * @var string
      *
+      * @Assert\Length(
+     *      min = "0",
+     *      max = "150",
+     *      maxMessage = "Votre liste de langues parlées ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="languages", type="string", length=255)
      */
     private $languages;
@@ -52,6 +70,11 @@ class Cuvitae
     /**
      * @var string
      *
+      * @Assert\Length(
+     *      min = "0",
+     *      max = "500",
+     *      maxMessage = "La description de votre expérience professionnelle ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="workExperience1", type="string", length=400)
      */
     private $workExperience1;
@@ -59,6 +82,11 @@ class Cuvitae
     /**
      * @var string
      *
+      * @Assert\Length(
+     *      min = "0",
+     *      max = "50",
+     *      maxMessage = "La description de votre expérience professionnelle ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="workExperience2", type="string", length=400)
      */
     private $workExperience2;
@@ -66,6 +94,11 @@ class Cuvitae
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "0",
+     *      max = "500",
+     *      maxMessage = "La liste de vos compétences ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="skills", type="string", length=350)
      */
     private $skills;

@@ -3,6 +3,7 @@
 namespace FrontOfficeEmploiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ResponseJobOffer
@@ -24,6 +25,12 @@ class ResponseJobOffer
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "500",
+     *      minMessage = "Votre réponse  doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre réponse ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="string", length=500)
      */
     private $content;
@@ -31,6 +38,7 @@ class ResponseJobOffer
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;

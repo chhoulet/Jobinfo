@@ -3,6 +3,7 @@
 namespace FrontOfficeEmploiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Society
@@ -24,6 +25,7 @@ class Society
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -31,6 +33,7 @@ class Society
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="activity", type="string", length=400)
      */
     private $activity;
@@ -38,13 +41,20 @@ class Society
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=500)
+      * @Assert\Length(
+     *      min = "10",
+     *      max = "800",
+     *      minMessage = "La description de votre activité doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "La description de votre activité ne peut pas être plus longue que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="description", type="string", length=800)
      */
     private $description;
 
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -52,6 +62,7 @@ class Society
     /**
      * @var boolean
      *
+     * @Assert\Type(type="boolean", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
      * @ORM\Column(name="hiringState", type="boolean")
      */
     private $hiringState;
