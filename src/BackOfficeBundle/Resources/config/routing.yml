@@ -45,6 +45,10 @@ back_office_adminformation_delete:
     requirements:
         id: "[0-9]+"
 
+back_office_adminformation_triFormations:
+    path:     /triFormations
+    defaults: { _controller: BackOfficeBundle:AdminFormation:triFormations}
+
 #Routes gerant l'administration des forums:
 back_office_adminforum_list:
     path:     /listForums

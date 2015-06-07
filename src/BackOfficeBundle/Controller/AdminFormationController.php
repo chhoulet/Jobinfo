@@ -70,4 +70,13 @@ class AdminFormationController extends Controller
 
         return $this -> redirect($this->generateUrl('back_office_adminformation_show'));
     }
+
+    public function triFormations()
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $editFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')-> getFormationType();
+
+        return $this -> render('BackOfficeBundle:AdminFormation:getFormationType.html.twig',
+            array('getFormationType' => $getFormationType));
+    }
 }
