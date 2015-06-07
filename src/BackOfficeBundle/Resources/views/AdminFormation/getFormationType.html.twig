@@ -1,7 +1,16 @@
-<h2> Formations groupées par type : </h2>
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
 
-    {% for form in  getFormationType %}
-        {{ form.formationType }}<br>
-            {{ form.formationName }}
-    {% endfor %}
-    
+	{% block content %}
+
+		<div style="background-color:white">
+
+			<h2> Formations groupées par type : </h2>
+
+			    {% for form in  getFormationType %}
+			        {{ form.formationType }}<br>
+			            {{ form.formationName }}
+			    {% endfor %}
+		    
+		</div>
+		    
+	{% endblock %}

@@ -14,12 +14,14 @@ class HomepageController extends Controller
 		$nbSociety   = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> nbSociety();
 		$nbComments  = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> nbComments();
 		$getNbFormationByType = $em -> getRepository('FrontOfficeHomepageBundle:Formation') -> getNbFormationByType();
+		$nbFormations = $em -> getRepository('FrontOfficeHomepageBundle:Formation') -> nbFormations();
 
 		return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
 			array('nbCandidats' => $nbCandidats,
 				  'nbJobOffers' => $nbJobOffers,
 				  'nbSociety'   => $nbSociety,
 				  'nbComments'  => $nbComments,
+				  'nbFormations'=> $nbFormations
 				  /*'getNbFormationByType' => $getNbFormationByType*/));
 	}
 }
