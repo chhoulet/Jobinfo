@@ -15,10 +15,14 @@ back_office_adminarticles_create:
 back_office_adminarticles_edit:
     path:     /editArticle/{id}
     defaults: { _controller: BackOfficeBundle:AdminArticle:editArticle}
+    requirements: 
+        id: "[0-9]+"
 
 back_office_adminarticles_delete:
     path:     /deleteArticle/{id}
     defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
+    requirements:
+        id: "[0-9]+"
 
 #Routes gerant l'administration des formations:
 back_office_adminformation_show:
@@ -28,6 +32,8 @@ back_office_adminformation_show:
 back_office_adminformation_edit:
     path:     /editFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:editFormation}
+    requirements: 
+        id: "[0-9]+"
 
 back_office_adminformation_create:
     path:     /createFormation
@@ -36,6 +42,8 @@ back_office_adminformation_create:
 back_office_adminformation_delete:
     path:     /deleteFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
+    requirements:
+        id: "[0-9]+"
 
 #Routes gerant l'administration des forums:
 back_office_adminforum_list:
@@ -49,14 +57,20 @@ back_office_adminforum_new:
 back_office_adminforum_showOne:
     path:     /showOneForum/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:showOne}
+    requirements: 
+        id: "[0-9]+"
 
 back_office_adminforum_edit:
     path:     /edit/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:edit}
+    requirements:
+        id: "[0-9]+"
 
 back_office_adminforum_delete:
     path:     /deleteForum/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:delete}
+    requirements:
+        id: "[0-9]+"
 
 #Routes gerant l'administration des JobSectors: 
 back_office_adminJobSector_list:
@@ -75,10 +89,13 @@ back_office_adminjobOffers_show:
 back_office_adminjobOffer_edit:
     path:     /editJobOffer/{id}
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:editJobOffer}
+    requirements:
+        id: "[0-9]+"
 
 back_office_adminjobOffer_delete:
     path:     /deleteJobOffer/{id}
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:deleteJobOffer}
-
+    requirements: 
+        id: "[0-9]+"
 
 
