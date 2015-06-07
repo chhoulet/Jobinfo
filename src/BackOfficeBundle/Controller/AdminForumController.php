@@ -73,4 +73,13 @@ class AdminForumController extends Controller
 
 		return $this -> redirect($this -> generateUrl('back_office_adminforum_list'));
 	}
+
+	public function triForumsAction()
+	{
+		$em = $this -> getDoctrine()-> getmanager();
+		$getForumType = $em -> getRepository('FrontOfficeHomepageBundle:Forum') -> getForumType();
+
+		return $this -> render('BackOfficeBundle:AdminForum:getForumType.html.twig', 
+			array('getForumType'=> $getForumType));
+	}
 }

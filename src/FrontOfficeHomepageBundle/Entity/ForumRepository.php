@@ -44,4 +44,14 @@ class ForumRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getForumType()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f 
+			FROM FrontOfficeHomepageBundle:Forum f 
+			GROUP BY f.forumType');
+
+		return $query -> getResult();
+	}
 }

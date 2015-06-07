@@ -76,6 +76,10 @@ back_office_adminforum_delete:
     requirements:
         id: "[0-9]+"
 
+back_office_adminforum_triForums:
+    path:     /triForums 
+    defaults: { _controller: BackOfficeBundle:AdminForum:triForums}
+
 #Routes gerant l'administration des JobSectors: 
 back_office_adminJobSector_list:
     path:     /listJobSector
