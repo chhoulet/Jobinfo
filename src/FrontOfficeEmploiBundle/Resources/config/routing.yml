@@ -19,14 +19,20 @@ front_office_emploi_candidat_showMyLm:
 front_office_emploi_jobOffer_showOne:
     path:     /showOneJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:showOneJobOffer}
+    requirements:
+        id: "[0-9]+"
 
 front_office_emploi_jobOffer_responseJobOffer:
     path:     /responseJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:responseJobOffer}
+    requirements:
+        id: "[0-9]+"
 
 front-office_emploi_jobOffer_getResponseJobOffer:
     path:     /getResponseJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:getResponseJobOffer}
+    requirements:
+        id: "[0-9]+"
 
 #Routes gérant les fonctionnalités des employeurs:
 front_office_emploi_employer_createSociety:
