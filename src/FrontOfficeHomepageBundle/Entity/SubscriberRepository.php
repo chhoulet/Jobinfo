@@ -22,5 +22,16 @@ class SubscriberRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getSubscriberByFormation()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(s.id) 
+			FROM FrontOfficeHomepageBundle:Subscriber s
+			JOIN s.formation f
+			GROUP BY f.formationType');
+
+		return $query -> getResult();
+	}
 }
          

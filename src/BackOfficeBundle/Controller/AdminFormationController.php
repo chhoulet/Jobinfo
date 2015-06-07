@@ -75,8 +75,10 @@ class AdminFormationController extends Controller
     {
         $em = $this -> getDoctrine()->getManager();
         $getFormationType = $em -> getRepository('FrontOfficeHomepageBundle:Formation')-> getFormationType();
+        $getSubscriber =  $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> getSubscriberByFormation();
 
         return $this -> render('BackOfficeBundle:AdminFormation:getFormationType.html.twig',
-            array('getFormationType' => $getFormationType));
+            array('getFormationType' => $getFormationType,
+                  'getSubscriber'    => $getSubscriber));
     }
 }
