@@ -53,4 +53,13 @@ class FormationRepository extends EntityRepository
 
 		return $query ->  getResult();
 	}
+
+	public function nbFormations()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT COUNT(f.id)
+			FROM FrontOfficeHomepageBundle:Formation f');
+
+		return $query -> getSingleScalarResult();
+	}
 }
