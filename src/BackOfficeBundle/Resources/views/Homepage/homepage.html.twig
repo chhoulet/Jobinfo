@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">{{ nbFormations }}</div>
-                                        <div>Formations prévues</div>
+                                        <div>{% if(nbFormations >1) %} Formations prévues {% else %} Formation prévue {% endif %}</div>
                                     </div>
                                 </div>
                             </div>
@@ -152,8 +152,8 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">A compléter</div>
-                                        <div>Offres d'emplois enregistrées</div>
+                                        <div class="huge">{{ nbForums }}</div>
+                                        <div>{% if(nbForums > 1) %}Forums prévus{% else %}Forum prévu{% endif %}</div>
                                     </div>
                                 </div>
                             </div>

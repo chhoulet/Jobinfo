@@ -22,6 +22,7 @@ class ForumRepository extends EntityRepository
 		
 		return $query -> getResult();
 	}
+
 	public function getForums($forumType)
 	{
 		$query = $this -> getEntityManager()->createQuery('
@@ -31,5 +32,16 @@ class ForumRepository extends EntityRepository
 		->setParameter('forumType', $forumType);
 
 		return $query -> getResult();
+	}
+
+	public function nbForums()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT COUNT(f.id)
+			FROM FrontOfficeHomepageBundle:Forum f 
+			WHERE f.forumDate > :dateForum')
+		->setParameter('dateForum', new \DateTime('now'));
+
+		return $query -> getSingleScalarResult();
 	}
 }
