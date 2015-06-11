@@ -28,7 +28,7 @@ class SubscriberRepository extends EntityRepository
 	public function triSubscriber()
 	{
 		$query = $this -> getEntityManager()->createQuery('
-			SELECT s COUNT(s.id) 
+			SELECT s, COUNT(s.id) 
 			FROM FrontOfficeHomepageBundle:Subscriber s 
 			JOIN s.formation f 
 			GROUP BY f.formationName');
