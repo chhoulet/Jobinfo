@@ -122,3 +122,8 @@ back_office_adminEtablissement_tri:
 back_office_adminEtablissement_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:delete}
+
+#Routes gerant l'administration des subscribers aux différents evenements:
+back_office_admin_subscriber_view:
+    path:     /viewSubscriber
+    defaults: { _controller: BackOfficeBundle:AdminSubscriber:view}
