@@ -106,6 +106,7 @@ back_office_adminjobOffer_delete:
     requirements: 
         id: "[0-9]+"
 
+#Routes gerant l'administration des Etablissements
 back_office_adminEtablissement_list:
     path:     /list
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:list}
@@ -117,3 +118,7 @@ back_office_adminEtablissement_new:
 back_office_adminEtablissement_tri:
     path:     /triByFormations
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:tri}
+
+back_office_adminEtablissement_delete:
+    path:     /delete/{id}
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:delete}

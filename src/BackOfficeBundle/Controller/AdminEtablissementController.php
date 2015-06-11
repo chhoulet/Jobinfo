@@ -44,4 +44,14 @@ class AdminEtablissementController extends Controller
 
 		return $this -> render('BackOfficeBundle:AdminEtablissement:tri.html.twig', array('tri'=>$tri));
 	}
+
+	public function deleteAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$deleteEta = $em -> getRepository('FrontOfficeHomepageBundle:Etablissement') -> find($id);
+		$em -> remove($deleteEta);
+		$em -> flush();
+
+		return $this -> redirect($this->generateUrl('back_office_adminEtablissement_list'));
+	}
 }
