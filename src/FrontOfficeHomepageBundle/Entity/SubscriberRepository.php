@@ -12,13 +12,46 @@ use Doctrine\ORM\EntityRepository;
  */
 class SubscriberRepository extends EntityRepository
 {
-	public function getSubscriber()
+	public function getSubscriberByFormation()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(s.id) 
+			FROM FrontOfficeHomepageBundle:Subscriber s
+			JOIN s.formation f
+			GROUP BY f.formationType');
+
+		return $query -> getResult();
+	}
+
+	public function triSubscriber()
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT s 
 			FROM FrontOfficeHomepageBundle:Subscriber s 
 			JOIN s.formation f 
-			GROUP BY f.formationType');
+			GROUP BY f.formationName');
+
+		return $query -> getResult();
+	}
+
+	public function getSubscriberByForum()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT s 
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.forum f
+			GROUP BY f.forumType');
+
+		return $query -> getResult();
+	}
+
+	public function triSubscriberByForumName()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT s 
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.forum f 
+			GROUP BY f.forumName');
 
 		return $query -> getResult();
 	}

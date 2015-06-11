@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtablissementRepository extends EntityRepository
 {
+	public function triEtablissements()
+	{
+		$query = $this -> getEntitymanager()-> createQuery('
+			SELECT e
+			FROM FrontOfficeHomepageBundle:Etablissement e 
+			JOIN e.formation f 
+			GROUP BY f.formationName');
+
+		return $query -> getResult();
+	}
 }

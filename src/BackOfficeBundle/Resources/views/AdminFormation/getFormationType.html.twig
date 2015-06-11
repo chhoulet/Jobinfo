@@ -8,8 +8,16 @@
 
 			    {% for form in  getFormationType %}
 			        {{ form.formationType }}<br>
-			            {{ form.formationName }}
-			    {% endfor %}
+			        {{ form.formationName }}
+			    {% endfor %}<br><br>
+
+			<h2> Nombre d'inscrits par formation :</h2>
+
+				{% for subscriber in getSubscriber %}
+					{# {{ subscriber.firstname }}<br>
+					{{ subscriber.lastname }}
+ #}
+				{% endfor %}
 		    
 		</div>
 		    

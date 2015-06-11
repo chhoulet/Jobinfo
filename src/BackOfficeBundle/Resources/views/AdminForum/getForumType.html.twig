@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
 
 	{% block content %}
@@ -13,4 +14,19 @@
 		    
 		</div>
 		    
+=======
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+    {% block content %}
+
+		<h2> Liste des Forums par type : </h2>
+
+            {% for forum in getForumType %}    		
+
+                {{ forum.forumName }} <br><br>
+                {{ forum.forumType }}               
+
+            {% endfor %}
+
+>>>>>>> master
 	{% endblock %}
