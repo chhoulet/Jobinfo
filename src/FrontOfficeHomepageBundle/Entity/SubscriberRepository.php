@@ -44,5 +44,16 @@ class SubscriberRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function triSubscriberByForumName()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT s 
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.forum f 
+			GROUP BY f.forumName');
+
+		return $query -> getResult();
+	}
 }
          
