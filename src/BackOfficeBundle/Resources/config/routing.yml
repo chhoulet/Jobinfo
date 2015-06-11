@@ -110,4 +110,6 @@ back_office_adminEtablissement_list:
     path:     /list
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:list}
 
-
+back_office_adminEtablissement_new:
+    path:     /new
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:new} 
