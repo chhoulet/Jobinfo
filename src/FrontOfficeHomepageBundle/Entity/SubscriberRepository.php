@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class SubscriberRepository extends EntityRepository
 {
+	# Nombre d'inscrits par type de formation
 	public function getSubscriberByFormation()
 	{
 		$query = $this -> getEntityManager()->createQuery('
@@ -23,10 +24,11 @@ class SubscriberRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	#nb d'inscrits + Inscrits par nom de formation
 	public function triSubscriber()
 	{
 		$query = $this -> getEntityManager()->createQuery('
-			SELECT s 
+			SELECT s COUNT(s.id) 
 			FROM FrontOfficeHomepageBundle:Subscriber s 
 			JOIN s.formation f 
 			GROUP BY f.formationName');
@@ -34,6 +36,7 @@ class SubscriberRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	# Inscrits par type de forums
 	public function getSubscriberByForum()
 	{
 		$query = $this -> getEntityManager()-> createQuery('
@@ -45,6 +48,7 @@ class SubscriberRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	# Inscrits par nom de forums
 	public function triSubscriberByForumName()
 	{
 		$query = $this -> getEntityManager()->createQuery('

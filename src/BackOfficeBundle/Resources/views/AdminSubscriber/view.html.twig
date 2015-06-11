@@ -4,5 +4,44 @@
 
 		<h2> Test subscriber </h2>
 
+            <h3>Nombre d'inscrits par type de formation</h3>
+
+
+            <h3>Nombre d'inscrits par nom de formation</h3>
+
+                {% for sub in subNameFormation %}
+
+                    {{ sub.firstname }}{{ sub.lastname}}<br>
+
+                        {% for forma in sub.formationName %}
+                            {{ forma.formationName }} {{ forma.organism }}<br><br>
+                        {% endfor %}
+
+                {% endfor %}
+
+            <h3>Inscrits par type de forum</h3>
+
+                {% for sub in subForum %}
+
+                    {{ sub.firstname }}{{ sub.lastname}}<br>
+
+                        {% for forum in sub.forumType %}
+                            {{ forum.forumName}} {{ forum.forumType}} {{ forum.forumDate }}<br><br>
+                        {% endfor %}
+
+                {% endfor %}
+
+
+            <h3>Nombre d'inscrits par nom de forum</h3>
+
+                {% for sub in subNameForum %}
+
+                   {{ sub.firstname }}{{ sub.lastname }}<br>
+
+                    {% for forum in sub.forumName %}
+                        {{ forum.forumName }}<br><br>
+                    {% endfor %}
+
+                {% endfor %}
     		
 	{% endblock %}

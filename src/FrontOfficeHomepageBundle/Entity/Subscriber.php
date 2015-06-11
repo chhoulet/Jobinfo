@@ -58,10 +58,10 @@ class Subscriber
     private $address;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
-     * @ORM\Column(name="phoneNumber", type="integer")
+     * @Assert\NotBlank()
+     * @ORM\Column(name="phoneNumber", type="string")
      */
     private $phoneNumber;
 
