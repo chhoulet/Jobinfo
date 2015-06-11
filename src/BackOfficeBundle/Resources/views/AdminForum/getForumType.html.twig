@@ -1,0 +1,16 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div style="background-color:white">
+
+			<h2> Forums groupés par type : </h2>
+
+			    {% for form in  getForumType %}
+			        {{ form.forumType }}<br>
+			            {{ form.forumName }}
+			    {% endfor %}
+		    
+		</div>
+		    
+	{% endblock %}
