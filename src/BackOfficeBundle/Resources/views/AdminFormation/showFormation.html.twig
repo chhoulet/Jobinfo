@@ -5,21 +5,32 @@
 		<h2> Liste des formations disponibles : </h2>
 
     		{% for forma in showFormation %}
-    		<div class="row">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <hr>
-                        <h2 class="intro-text text-center">{{ forma.organism }}
-                            <strong>{{forma.formationName}}</strong>
-                        </h2>
-                        <hr>
-                        <p>Date de création : {{forma.createdAt | date('d-m-Y H:i:s') }}</p>
-                        <p style="text-align:justify;">{{ forma.formationDescription}}</p>
+        		<div class="row">
+                    <div class="box">
+                        <div class="col-lg-12">
+                            <hr>
+                            <h2 class="intro-text text-center">{{ forma.organism }}
+                                <strong>{{forma.formationName}}</strong>
+                            </h2>
+                            <hr>
+                            <p>Date de création : {{forma.createdAt | date('d-m-Y H:i:s') }}</p>
+                            <p style="text-align:justify;">{{ forma.formationDescription}}</p>
+                        </div>
+                        {% for eta in forma.etablissement %}
+                            <div class="col-lg-12">
+                                <hr>
+                                    <h2 class="intro-text text-center">{{ eta.etablissementName }}
+                                        <strong>{{eta.etablissementAdress}}</strong>
+                                    </h2><br><br>
+                                    <h2 class="intro-text text-center">{{ eta.etablissementPhone }}
+                                    </h2>
+                                    <hr>
+                            </div>
+                        {% endfor %}
+                        <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a>
+                        <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a>
                     </div>
-                    <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a>
-                    <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a>
                 </div>
-            </div>
         	{% endfor %}
 
 	{% endblock %}
