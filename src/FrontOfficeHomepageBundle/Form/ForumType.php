@@ -17,7 +17,7 @@ class ForumType extends AbstractType
         $builder
             ->add('forumName')
             ->add('forumType')
-            ->add('forumDate')
+            ->add('forumDate', 'date')
             ->add('forumDescription')
             ->add('forumAdress')
             ->add('Valider','submit')
