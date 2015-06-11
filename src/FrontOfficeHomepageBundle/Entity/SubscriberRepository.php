@@ -55,5 +55,18 @@ class SubscriberRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+#Nombre d'inscrits aux forums ayant lieu entre maintenant et le futur
+	public function nbSubscriberForums()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(s.id)
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.forum f
+			WHERE f.forumDate > :dateforum')
+		->setParameter('dateforum', new \DateTime('now'));
+
+		return $query -> getSingleScalarResult();
+	}
 }
          
