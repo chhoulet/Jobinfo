@@ -36,4 +36,12 @@ class AdminEtablissementController extends Controller
 
 		return $this -> render('BackOfficeBundle:AdminEtablissement:new.html.twig', array('form'=> $form->createView()));
 	}
+
+	public function triAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$tri = $em -> getRepository('FrontOfficeHomepageBundle:Etablissement') -> triEtablissements();
+
+		return $this -> render('BackOfficeBundle:AdminEtablissement:tri.html.twig', array('tri'=>$tri));
+	}
 }

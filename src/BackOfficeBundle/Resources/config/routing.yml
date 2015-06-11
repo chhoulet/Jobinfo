@@ -113,3 +113,7 @@ back_office_adminEtablissement_list:
 back_office_adminEtablissement_new:
     path:     /new
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:new} 
+
+back_office_adminEtablissement_tri:
+    path:     /triByFormations
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:tri}
