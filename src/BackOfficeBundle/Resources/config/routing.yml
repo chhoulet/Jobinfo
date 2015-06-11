@@ -106,4 +106,8 @@ back_office_adminjobOffer_delete:
     requirements: 
         id: "[0-9]+"
 
+back_office_adminEtablissement_list:
+    path:     /list
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:list}
+
 
