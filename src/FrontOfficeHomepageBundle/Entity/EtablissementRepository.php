@@ -22,4 +22,13 @@ class EtablissementRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbEtablissements()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(e.id)
+			FROM FrontOfficeHomepageBundle:Etablissement e');
+
+		return $query -> getSingleScalarResult();
+	}
 }
