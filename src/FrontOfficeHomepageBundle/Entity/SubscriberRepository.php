@@ -12,17 +12,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class SubscriberRepository extends EntityRepository
 {
-	public function getSubscriber()
-	{
-		$query = $this -> getEntityManager()->createQuery('
-			SELECT s 
-			FROM FrontOfficeHomepageBundle:Subscriber s 
-			JOIN s.formation f 
-			GROUP BY f.formationType');
-
-		return $query -> getResult();
-	}
-
 	public function getSubscriberByFormation()
 	{
 		$query = $this -> getEntityManager()->createQuery('
@@ -41,6 +30,17 @@ class SubscriberRepository extends EntityRepository
 			FROM FrontOfficeHomepageBundle:Subscriber s 
 			JOIN s.formation f 
 			GROUP BY f.formationName');
+
+		return $query -> getResult();
+	}
+
+	public function getSubscriberByForum()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT s 
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.forum f
+			GROUP BY f.forumType');
 
 		return $query -> getResult();
 	}
