@@ -18,11 +18,11 @@ class FormationType extends AbstractType
             ->add('formationName')
             ->add('organism')
             ->add('formationDate','date')
-            ->add('formationType', 'choice', array('choices'=>array('devWeb'      =>'Développement Web',
-                                                                    'Integration' =>'Intégration',
-                                                                    'devMob'      =>'Développement d\'applications mobiles',
-                                                                    'reseaux'     =>'Administration de réseaux',
-                                                                    'bdd'         =>'Gestion de Bases de Données')))
+            ->add('formationType', 'choice', array('choices'=>array('developpement'=>'Développement Web',
+                                                                    'integration'  =>'Intégration',
+                                                                    'devMob'       =>'Développement d\'applications mobiles',
+                                                                    'reseaux'      =>'Administration de réseaux',
+                                                                    'bdd'          =>'Gestion de Bases de Données')))
             ->add('formationDescription')
             ->add('valider', 'submit')
         ;
