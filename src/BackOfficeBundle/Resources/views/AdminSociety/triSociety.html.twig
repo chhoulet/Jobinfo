@@ -1,0 +1,22 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+    {% block content %}
+
+		<h2> Liste des sociétés : </h2>
+
+    		{% for societe in triSociety %}
+    		<div class="row">
+                <div class="box">
+                    <div class="col-lg-12">
+                        <hr>
+                        <h2 class="intro-text text-center">{{ societe.name }}
+                            <strong>{{ societe.activity }}</strong>
+                        </h2>
+                        <hr>
+                        <p>{{ societe.description }}</p>
+                    </div>
+                </div>
+            </div>
+        	{% endfor %}
+
+	{% endblock %}

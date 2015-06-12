@@ -41,4 +41,5 @@ class SocietyRepository extends EntityRepository
 			ORDER BY s.dateCreated DESC');
 
 		return $query -> getResult();
+	}
 }
