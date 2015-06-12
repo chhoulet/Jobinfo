@@ -123,9 +123,14 @@ back_office_adminEtablissement_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:delete}
 
+#Routes gerant l'administration des societes:
 back_office_adminSociety_list:
     path:     /listByDate
     defaults: { _controller: BackOfficeBundle:AdminSociety:triSociety}
+
+back_office_adminSociety_edit:
+    path:     /edit{id}
+    defaults: { _controller: BackOfficeBundle:AdminSociety:edit}
 
 #Routes gerant l'administration des subscribers aux différents evenements:
 back_office_admin_subscriber_view:
