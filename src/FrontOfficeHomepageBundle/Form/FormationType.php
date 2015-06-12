@@ -17,11 +17,12 @@ class FormationType extends AbstractType
         $builder
             ->add('formationName')
             ->add('organism')
-            ->add('formationType', 'choice', array('choices'=>array('devWeb' =>'Développement Web',
-                                                                    'Integration'   =>'Intégration',
-                                                                    'devMob' =>'Développement d\'applications mobiles',
-                                                                    'reseaux'=>'Administration de réseaux',
-                                                                    'bdd'    =>'Gestion de Bases de Données')))
+            ->add('formationDate','date')
+            ->add('formationType', 'choice', array('choices'=>array('devWeb'      =>'Développement Web',
+                                                                    'Integration' =>'Intégration',
+                                                                    'devMob'      =>'Développement d\'applications mobiles',
+                                                                    'reseaux'     =>'Administration de réseaux',
+                                                                    'bdd'         =>'Gestion de Bases de Données')))
             ->add('formationDescription')
             ->add('valider', 'submit')
         ;
