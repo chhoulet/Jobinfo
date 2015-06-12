@@ -11,7 +11,7 @@
                         <strong>{{forum.forumName}}</strong>
                     </h2>
                     <hr>
-                    <p>{{ forum.forumDate}}</p><br>
+                    <p>{{ forum.forumDate | date('d-m-Y')}}</p><br>
                     <p>{{ forum.forumDescription}}</p>
                     <a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}"><button class="btn btn-primary">Détails :</button></a><br><br>
                     

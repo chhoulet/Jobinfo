@@ -16,7 +16,8 @@ class ForumType extends AbstractType
     {
         $builder
             ->add('forumName')
-            ->add('forumType')
+            ->add('forumType', 'choice', array('choices'=> array('emploi'   => 'Emploi',
+                                                                 'formation'=> 'Formation')))
             ->add('forumDate', 'date')
             ->add('forumDescription')
             ->add('forumAdress')
