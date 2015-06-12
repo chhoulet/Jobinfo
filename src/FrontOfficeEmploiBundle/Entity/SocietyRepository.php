@@ -32,4 +32,13 @@ class SocietyRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult(); 
 	}
+
+	public function triSociety()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT s 
+			FROM FrontOfficeEmploiBundle:Society s 
+			ORDER BY s.dateCreated DESC');
+
+		return $query -> getResult();
 }
