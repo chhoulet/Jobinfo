@@ -72,5 +72,20 @@ class SubscriberRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function nbSubscriberFuture()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(s.id)
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.forum fo 
+			JOIN s.formation f
+			WHERE fo.forumDate > :dateforum 
+			AND f.formationDate > :dateformation')
+		->setParameter('dateforum', new \DateTime('now'))
+		->setParameter('dateformation', new \DateTime('now'));
+
+		return $query -> getSingleScalarResult();
+	}
 }
          
