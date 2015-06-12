@@ -17,7 +17,8 @@ class HomepageController extends Controller
 		$nbFormations         = $em -> getRepository('FrontOfficeHomepageBundle:Formation') -> nbFormations();
 		$nbForums             = $em -> getREpository('FrontOfficeHomepageBundle:Forum') -> nbForums();
 		$nbEta                = $em -> getRepository('FrontOfficeHomepageBundle:Etablissement') -> nbEtablissements();
-		$nbSubscriber         = $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> nbSubscriberFuture();
+		/*$nbSubscriber         = $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> nbSubscriberFuture();*/
+		$getNbSubFormation    = $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> getNbSubscriberFormation();
 
 		return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
 			array('nbCandidats' => $nbCandidats,
@@ -27,7 +28,8 @@ class HomepageController extends Controller
 				  'nbFormations'=> $nbFormations,
 				  'nbForums'    => $nbForums,
 				  'nbEta'       => $nbEta,
-				  'nbSubscriber'=> $nbSubscriber
+				  'getNbSubFor' => $getNbSubFormation
+				  /*'nbSubscriber'=> $nbSubscriber*/
 				  /*'getNbFormationByType' => $getNbFormationByType*/));
 	}
 }

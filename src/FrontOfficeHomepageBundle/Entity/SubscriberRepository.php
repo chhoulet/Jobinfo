@@ -73,7 +73,7 @@ class SubscriberRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
-	public function nbSubscriberFuture()
+	/*public function nbSubscriberFuture()
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT COUNT(s.id)
@@ -84,6 +84,18 @@ class SubscriberRepository extends EntityRepository
 			AND f.formationDate > :dateformation')
 		->setParameter('dateforum', new \DateTime('now'))
 		->setParameter('dateformation', new \DateTime('now'));
+
+		return $query -> getSingleScalarResult();
+	}*/
+
+	public function getNbSubscriberFormation()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(s.id)
+			FROM FrontOfficeHomepageBundle:Subscriber s 
+			JOIN s.formation f
+			WHERE f.formationDate > :today')
+		->setParameter('today',  new \DateTime('now'));
 
 		return $query -> getSingleScalarResult();
 	}

@@ -10,10 +10,12 @@
                             <strong>{{ oneForum.forumName }} :</strong>
                         </h2>
                         <hr>
-                        <p><h3>{{ oneForum.forumDate | datetime('d-m-Y H:i:s') }}</h3></p><br>
+                        <p><h3>{{ oneForum.forumDate | date('d-m-Y') }}</h3></p><br>
                         <p><h4>{{ oneForum.forumType }}</h4></p><br>
                         <p>{{ oneForum.forumDescription }}</p><br>
-                        <p>{{ oneForum.forumAdress }}</p><br>
+                        <p>{{ oneForum.forumAdress }}</p><br><br>
+
+                        <a href="{{ path('front_office_subscriber_forum',{id:oneForum.id}) }}"><button>Inscrivez-vous à ce forum</button></a>
                         
                     </div>
                 </div>
