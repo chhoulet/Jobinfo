@@ -2,7 +2,7 @@
 
     {% block content %}
 
-       
+    {{dump(getNbFormationByType)  }}
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -356,5 +356,13 @@
                 <!-- /.row -->
     </div>
     <!-- /#wrapper -->
+
+    {# {{ getNbFormationByType[2].formationName }} #}
+
+    {% for formation in getNbFormationByType %}
+
+        {{ formation.formationName }} : {{ formation.nb }}<br />
+
+    {% endfor %}
 
     {% endblock %} 

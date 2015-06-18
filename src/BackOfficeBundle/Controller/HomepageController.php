@@ -28,8 +28,8 @@ class HomepageController extends Controller
 				  'nbFormations'=> $nbFormations,
 				  'nbForums'    => $nbForums,
 				  'nbEta'       => $nbEta,
-				  'getNbSubFor' => $getNbSubFormation
+				  'getNbSubFor' => $getNbSubFormation,
 				  /*'nbSubscriber'=> $nbSubscriber*/
-				  /*'getNbFormationByType' => $getNbFormationByType*/));
+				  'getNbFormationByType' => $getNbFormationByType));
 	}
 }

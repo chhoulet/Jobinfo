@@ -57,24 +57,24 @@
                     <li>
                         <a href="{{ path('front_office_homepage_homepage') }}">JobInfo</a>
                     </li>
-                    {# {% if (is_granted('ROLE_SUPER_ADMIN')) %} #}
+                     {# {% if (is_granted('ROLE_SUPER_ADMIN')) %}  #}
                         <li>
                             <a href="{{ path('back_office_homepage') }}">BackOffice</a>
                         </li>
-                    {#  {% endif %} #}
+                     {#  {% endif %}  #}
                         <li>
                             <a href="{{ path('front_office_homepage_blog_article') }}">Blog </a>
                         </li>
                     {# Controle d'accès avec FOSUserBundle #}
-                    {% if (is_granted('ROLE_USER')) %}
+                    {# {% if (is_granted('ROLE_USER')) %} #}
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
                         </li>
-                    {% else %}
+                    {# {% else %} #}
                         <li>
                             <a href="{{ path('fos_user_security_login') }}">Connection</a>
                         </li>
-                    {% endif %}
+                   {#  {% endif %} #}
                     <li>
                          <a href="{{ path('fos_user_security_login') }}">Espace Employeurs</a> 
                     </li><br>
