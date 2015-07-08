@@ -64,8 +64,7 @@
                       {% endif %} 
                         <li>
                             <a href="{{ path('front_office_homepage_blog_article') }}">Blog </a>
-                        </li>
-                    {# Controle d'accès avec FOSUserBundle #}
+                        </li>            
                     {% if (is_granted('ROLE_USER')) %}
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
@@ -73,6 +72,9 @@
                     {% else %}
                         <li>
                             <a href="{{ path('fos_user_security_login') }}">Connection</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">Créer mon compte</a>
                         </li>
                     {% endif %}
                     <li>
