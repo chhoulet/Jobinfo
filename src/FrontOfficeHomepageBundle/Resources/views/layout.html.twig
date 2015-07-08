@@ -69,6 +69,9 @@
                             <li>
                                 <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
                             </li>
+                            <li>
+                                <a href="{{ path('front_office_emploi_mon_profil') }}">Mon profil</a>
+                            </li>
                         {% else %}
                             <li>
                                 <a href="{{ path('fos_user_security_login') }}">Connection</a>
@@ -76,9 +79,7 @@
                             <li>
                                 <a href="{{ path('fos_user_registration_register') }}">Créer mon compte</a>
                             </li>
-                            <li>
-                                <a href="{{ path('fos_user_registration_register') }}">Mon profil</a>
-                            </li>
+                            
                         {% endif %}
                         <li>
                          <a href="{{ path('fos_user_security_login') }}">Espace Employeurs</a> 
