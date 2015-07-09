@@ -133,10 +133,10 @@ back_office_adminSociety_list:
 back_office_adminSociety_edit:
     path:     /edit{id}
     defaults: { _controller: BackOfficeBundle:AdminSociety:edit}
+    requirements: 
+        id: "[0-9]+"
 
 #Routes gerant l'administration des subscribers aux différents evenements:
 back_office_admin_subscriber_view:
     path:     /viewSubscriber
     defaults: { _controller: BackOfficeBundle:AdminSubscriber:view}
-    requirements: 
-        id: "[0-9]+"
