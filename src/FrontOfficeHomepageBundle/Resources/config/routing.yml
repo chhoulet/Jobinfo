@@ -68,3 +68,7 @@ front_office_homepage_static_mentions_legales:
 front_office_homepage_static_conditions_generales:
     path:     /conditions_generales
     defaults: { _controller: FrontOfficeHomepageBundle:Static:conditions}
+
+front_office_homepage_static_contact:
+    path:     /contact 
+    defaults: { _controller: FrontOfficeHomepageBundle:Static:contact}
