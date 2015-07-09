@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Message
@@ -24,6 +25,12 @@ class Message
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
@@ -31,6 +38,12 @@ class Message
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le sujet de votre message doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le sujet de votre message ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="subject", type="string", length=255)
      */
     private $subject;
@@ -38,13 +51,17 @@ class Message
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
 
     /**
      * @var string
-     *
+     * @Assert\Email(
+     *     message = "'{{ value }}' n'est pas un email valide.",
+     *     checkMX = true
+     * )
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
@@ -52,6 +69,12 @@ class Message
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le contenu de votre message doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le contenu de votre message ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="string", length=255)
      */
     private $content;
