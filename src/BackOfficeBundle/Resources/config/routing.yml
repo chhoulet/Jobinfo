@@ -122,6 +122,8 @@ back_office_adminEtablissement_tri:
 back_office_adminEtablissement_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:delete}
+    requirements: 
+        id: "[0-9]+"
 
 #Routes gerant l'administration des societes:
 back_office_adminSociety_list:
@@ -136,3 +138,5 @@ back_office_adminSociety_edit:
 back_office_admin_subscriber_view:
     path:     /viewSubscriber
     defaults: { _controller: BackOfficeBundle:AdminSubscriber:view}
+    requirements: 
+        id: "[0-9]+"

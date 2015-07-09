@@ -1,6 +1,6 @@
 back_office:
     resource: "@BackOfficeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 front_office_emploi:
     resource: "@FrontOfficeEmploiBundle/Resources/config/routing.yml"
