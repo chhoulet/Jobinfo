@@ -106,4 +106,9 @@ back_office_adminjobOffer_delete:
     requirements: 
         id: "[0-9]+"
 
+#Routes gerant l'administration des messages:
+back_office_admin_message_list:
+    path:     /listmessages
+    defaults: { _controller: BackOfficeBundle:AdminMessages:list}
+
 
