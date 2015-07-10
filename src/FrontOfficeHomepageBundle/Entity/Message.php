@@ -79,6 +79,12 @@ class Message
      */
     private $content;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="readMessage", type="boolean")
+     */
+    private $readMessage;
 
     /**
      * Get id
@@ -203,5 +209,29 @@ class Message
     public function getContent()
     {
         return $this->content;
+    }
+
+
+    /**
+     * Set readMessage
+     *
+     * @param boolean $readMessage
+     * @return Message
+     */
+    public function setReadMessage($readMessage)
+    {
+        $this->readMessage = $readMessage;
+
+        return $this;
+    }
+
+    /**
+     * Get readMessage
+     *
+     * @return boolean 
+     */
+    public function getReadMessage()
+    {
+        return $this->readMessage;
     }
 }

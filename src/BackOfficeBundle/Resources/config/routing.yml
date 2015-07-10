@@ -145,3 +145,4 @@ back_office_admin_subscriber_view:
 back_office_admin_list_messages:
     path:     /listMessages 
     defaults: { _controller: BackOfficeBundle:AdminMessages:list}
+

@@ -3,6 +3,8 @@
 namespace BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FrontOfficeHomepageBundle\Entity\Message;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdminMessagesController extends Controller
 {
