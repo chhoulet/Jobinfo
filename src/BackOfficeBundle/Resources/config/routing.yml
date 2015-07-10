@@ -150,3 +150,9 @@ back_office_admin_list_messages:
 back_office_admin_readMessage:
     path:     /readMessage/{id}
     defaults: { _controller: BackOfficeBundle:AdminMessages:readMessage}
+
+    #Liste des messages archivés:
+back_office_admin_readMessage_list:
+    path:     /listReadMessage
+    defaults: { _controller: BackOfficeBundle:AdminMessages:listReadMessage}
+    

@@ -26,4 +26,13 @@ class AdminMessagesController extends Controller
 
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	public function listReadMessageAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$readmessages = $em -> getRepository('FrontOfficeHomepageBundle:Message')->getMessagesRead();
+
+		return $this -> render('BackOfficeBundle:AdminMessage:listReadMessage.html.twig', 
+			array('readmessages'=>$readmessages));
+	}
 }
