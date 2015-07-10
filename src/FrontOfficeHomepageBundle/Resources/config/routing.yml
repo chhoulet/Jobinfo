@@ -8,13 +8,13 @@ front_office_formation_list:
     path:     /formation/{formationType}
     defaults: { _controller: FrontOfficeHomepageBundle:Formation:list, formationType: developpement }
     requirements:
-        formationType: (developpement|integration|architecte-logiciel)
+        formationType: (developpement|integration|architecte-logiciel|bdd|reseaux|devMob)
 
 front_office_formation_showOne:
     path:     /formation/{formationType}/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Formation:showOne}
     requirements:
-        formationType: (developpement|integration|architecte-logiciel)
+        formationType: (developpement|integration|architecte-logiciel|bdd|reseaux|devMob)
         id: "[0-9]+"
 
 # Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
@@ -68,3 +68,7 @@ front_office_homepage_static_mentions_legales:
 front_office_homepage_static_conditions_generales:
     path:     /conditions_generales
     defaults: { _controller: FrontOfficeHomepageBundle:Static:conditions}
+
+front_office_homepage_static_contact:
+    path:     /contact 
+    defaults: { _controller: FrontOfficeHomepageBundle:Static:contact}

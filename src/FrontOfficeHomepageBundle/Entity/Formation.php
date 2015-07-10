@@ -49,6 +49,15 @@ class Formation
      * @var \DateTime
      *
      * @Assert\DateTime()
+     * @ORM\Column(name="formationDate", type="datetime")
+     */
+    private $formationDate;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
@@ -334,5 +343,28 @@ class Formation
     public function getOrganism()
     {
         return $this->organism;
+    }
+
+    /**
+     * Set formationDate
+     *
+     * @param \DateTime $formationDate
+     * @return Formation
+     */
+    public function setFormationDate($formationDate)
+    {
+        $this->formationDate = $formationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get formationDate
+     *
+     * @return \DateTime 
+     */
+    public function getFormationDate()
+    {
+        return $this->formationDate;
     }
 }

@@ -67,5 +67,10 @@ class CandidatController extends Controller
 
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig', array('showMyLm'=>$showMyLm));
 	}
+
+	public function monProfilAction()
+	{
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:monProfil.html.twig');
+	}
 	
 }

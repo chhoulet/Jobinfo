@@ -106,9 +106,38 @@ back_office_adminjobOffer_delete:
     requirements: 
         id: "[0-9]+"
 
-#Routes gerant l'administration des messages:
-back_office_admin_message_list:
-    path:     /listmessages
-    defaults: { _controller: BackOfficeBundle:AdminMessages:list}
+#Routes gerant l'administration des Etablissements
+back_office_adminEtablissement_list:
+    path:     /list
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:list}
 
+back_office_adminEtablissement_new:
+    path:     /new
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:new} 
 
+back_office_adminEtablissement_tri:
+    path:     /triByFormations
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:tri}
+
+back_office_adminEtablissement_delete:
+    path:     /delete/{id}
+    defaults: { _controller: BackOfficeBundle:AdminEtablissement:delete}
+    requirements: 
+        id: "[0-9]+"
+
+#Routes gerant l'administration des societes:
+back_office_adminSociety_list:
+    path:     /listByDate
+    defaults: { _controller: BackOfficeBundle:AdminSociety:triSociety}
+
+back_office_adminSociety_edit:
+    path:     /edit{id}
+    defaults: { _controller: BackOfficeBundle:AdminSociety:edit}
+    requirements: 
+        id: "[0-9]+"
+>>>>>>> master
+
+#Routes gerant l'administration des subscribers aux différents evenements:
+back_office_admin_subscriber_view:
+    path:     /viewSubscriber
+    defaults: { _controller: BackOfficeBundle:AdminSubscriber:view}

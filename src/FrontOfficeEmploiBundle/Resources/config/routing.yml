@@ -1,11 +1,15 @@
 #Routes gerant les fonctionnalités des candidats:
+front_office_emploi_mon_profil:
+    path:     /monProfil 
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:monProfil}
+
 front_office_emploi_candidat_createCV:
     path:     /createCV
-    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createCV }
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createCV}
 
 front_office_emploi_candidat_createLM:
     path:     /createLM
-    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM }
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM}
 
 front_office_emploi_candidat_showMyCv:
     path:     /showMyCv 
@@ -23,7 +27,7 @@ front_office_emploi_jobOffer_showOne:
         id: "[0-9]+"
 
 front_office_emploi_jobOffer_responseJobOffer:
-    path:     /responseJobOffer/{id}
+    path:     /responseJobOffer/{id}    
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:responseJobOffer}
     requirements:
         id: "[0-9]+"

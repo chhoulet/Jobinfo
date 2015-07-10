@@ -9,7 +9,7 @@ class AdminMessagesController extends Controller
 	public function listAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$messages = $em -> getRepository('FrontOfficeHomepageBundle:Message')->findAll();
+		$messages = $em -> getRepository('FrontOfficeHomepageBundle:Message')->getMessages();
 
 		return $this -> render('BackOfficeBundle:AdminMessage:list.html.twig', array('messages'=>$messages));
 	}

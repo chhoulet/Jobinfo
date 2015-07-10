@@ -37,9 +37,10 @@ class FormationRepository extends EntityRepository
 	public function getNbFormationByType()
 	{
 		$query = $this -> getEntityManager()->createQuery('
-			SELECT COUNT(f.id) 
+			SELECT f.formationName, COUNT(f.id)  as nb 
 			FROM FrontOfficeHomepageBundle:Formation f 
-			GROUP BY f.formationType');
+			GROUP BY f.formationType
+			ORDER BY nb DESC');
 
 		return $query ->getResult();
 	}

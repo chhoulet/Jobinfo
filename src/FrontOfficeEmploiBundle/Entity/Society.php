@@ -60,6 +60,14 @@ class Society
     private $dateCreated;
 
     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
+     */
+    private $dateUpdated;
+
+    /**
      * @var boolean
      *
      * @Assert\Type(type="boolean", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
@@ -325,5 +333,28 @@ class Society
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Society
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ForumType extends AbstractType
+class EtablissementType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,13 +15,10 @@ class ForumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('forumName')
-            ->add('forumType', 'choice', array('choices'=> array('emploi'   => 'Emploi',
-                                                                 'formation'=> 'Formation')))
-            ->add('forumDate', 'date')
-            ->add('forumDescription')
-            ->add('forumAdress')
-            ->add('Valider','submit')
+            ->add('etablissementName')
+            ->add('etablissementAdress')
+            ->add('etablissementPhone')
+            ->add('Valider', 'submit')
         ;
     }
     
@@ -31,7 +28,7 @@ class ForumType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FrontOfficeHomepageBundle\Entity\Forum'
+            'data_class' => 'FrontOfficeHomepageBundle\Entity\Etablissement'
         ));
     }
 
@@ -40,6 +37,6 @@ class ForumType extends AbstractType
      */
     public function getName()
     {
-        return 'frontofficehomepagebundle_forum';
+        return 'frontofficehomepagebundle_etablissement';
     }
 }

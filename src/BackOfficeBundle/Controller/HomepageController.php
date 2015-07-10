@@ -8,14 +8,17 @@ class HomepageController extends Controller
 {
 	public function homepageAction()
 	{
-		$em          = $this -> getDoctrine()->getManager();
-		$nbCandidats = $em -> getRepository('FrontOfficeEmploiBundle:Candidat') -> nbCandidats();
-		$nbJobOffers = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> nbJobOffers();
-		$nbSociety   = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> nbSociety();
-		$nbComments  = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> nbComments();
+		$em                   = $this -> getDoctrine()->getManager();
+		$nbCandidats          = $em -> getRepository('FrontOfficeEmploiBundle:Candidat') -> nbCandidats();
+		$nbJobOffers          = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> nbJobOffers();
+		$nbSociety            = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> nbSociety();
+		$nbComments           = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> nbComments();
 		$getNbFormationByType = $em -> getRepository('FrontOfficeHomepageBundle:Formation') -> getNbFormationByType();
-		$nbFormations = $em -> getRepository('FrontOfficeHomepageBundle:Formation') -> nbFormations();
-		$nbForums    = $em -> getREpository('FrontOfficeHomepageBundle:Forum') -> nbForums();
+		$nbFormations         = $em -> getRepository('FrontOfficeHomepageBundle:Formation') -> nbFormations();
+		$nbForums             = $em -> getREpository('FrontOfficeHomepageBundle:Forum') -> nbForums();
+		$nbEta                = $em -> getRepository('FrontOfficeHomepageBundle:Etablissement') -> nbEtablissements();
+		/*$nbSubscriber         = $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> nbSubscriberFuture();*/
+		$getNbSubFormation    = $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> getNbSubscriberFormation();
 
 		return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
 			array('nbCandidats' => $nbCandidats,
@@ -23,7 +26,10 @@ class HomepageController extends Controller
 				  'nbSociety'   => $nbSociety,
 				  'nbComments'  => $nbComments,
 				  'nbFormations'=> $nbFormations,
-				  'nbForums'    => $nbForums
-				  /*'getNbFormationByType' => $getNbFormationByType*/));
+				  'nbForums'    => $nbForums,
+				  'nbEta'       => $nbEta,
+				  'getNbSubFor' => $getNbSubFormation,
+				  /*'nbSubscriber'=> $nbSubscriber*/
+				  'getNbFormationByType' => $getNbFormationByType));
 	}
 }

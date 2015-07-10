@@ -39,10 +39,19 @@ class Etablissement
     private $etablissementAdress;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
-     * @ORM\Column(name="etablissementPhone", type="integer")
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="etablissementPhone", type="string")
      */
     private $etablissementPhone;
 
@@ -171,5 +180,28 @@ class Etablissement
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Etablissement
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }

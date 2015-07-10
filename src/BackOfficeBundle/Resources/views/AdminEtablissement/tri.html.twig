@@ -1,0 +1,22 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div style="background-color:white">
+
+			<h2> Etablissements groupés par formations : </h2>
+
+			    {% for eta in  tri %}
+			    	{{ eta.etablissementName }}<br>
+			    	{{ eta.etablissementAdress }}<br>
+
+			    	{% for form in eta.formation %}
+				        {{ form.formationType }}<br>
+				        {{ form.formationName }}<br>
+				    {% endfor %}
+				    
+			    {% endfor %}<br><br>
+		    
+		</div>
+		    
+	{% endblock %}
