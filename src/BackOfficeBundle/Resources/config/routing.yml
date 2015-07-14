@@ -156,3 +156,7 @@ back_office_admin_readMessage_list:
     path:     /listReadMessage
     defaults: { _controller: BackOfficeBundle:AdminMessages:listReadMessage}
     
+    #Supprimer un message:
+back_office_admin_message_delete:
+    path:     /deleteMessage/{id}
+    defaults: { _controller: BackOfficeBundle:AdminMessages:delete}

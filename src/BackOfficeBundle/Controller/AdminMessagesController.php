@@ -35,4 +35,14 @@ class AdminMessagesController extends Controller
 		return $this -> render('BackOfficeBundle:AdminMessage:listReadMessage.html.twig', 
 			array('readmessages'=>$readmessages));
 	}
+
+	public function deleteAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$message = $em -> getRepository('FrontOfficeHomepageBundle:Message')->find($id);
+		$em -> remove($message);
+		$em -> flush();
+
+		return $this ->redirect($request -> headers -> get('referer'));
+	}
 }
