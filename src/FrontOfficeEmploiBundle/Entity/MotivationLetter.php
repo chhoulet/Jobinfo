@@ -49,14 +49,6 @@ class MotivationLetter
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="motivationLetter")
-     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
-     */
-    private $candidat;
-
-    /**
-     * @var string
-     *
      * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="motivationLetter")
      * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id", nullable = true)
      */
@@ -69,7 +61,13 @@ class MotivationLetter
      */
     private $responseJobOffer;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="motivationLetter")
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
+     */
+    private $candidat;
 
 
     /**

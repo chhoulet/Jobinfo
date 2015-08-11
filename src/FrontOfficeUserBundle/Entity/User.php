@@ -26,27 +26,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="candidat")
-     */
-    private $cuvitae;
-
-    /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="candidat")
-     */
-    private $motivationLetter;
-
-     /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="candidat")
-     */
-    private $responseJobOffer;
-
-    /**
-     * @var string
-     *
      * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Society", inversedBy="users")
      * @ORM\JoinColumn(name="society_id", referencedColumnName="id")
      */
@@ -137,105 +116,6 @@ class User extends BaseUser
     public function getSociety()
     {
         return $this->society;
-    }
-
-    /**
-     * Add cuvitae
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
-     * @return User
-     */
-    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
-    {
-        $this->cuvitae[] = $cuvitae;
-
-        return $this;
-    }
-
-    /**
-     * Remove cuvitae
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
-     */
-    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
-    {
-        $this->cuvitae->removeElement($cuvitae);
-    }
-
-    /**
-     * Get cuvitae
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCuvitae()
-    {
-        return $this->cuvitae;
-    }
-
-    /**
-     * Add motivationLetter
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
-     * @return User
-     */
-    public function addMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
-    {
-        $this->motivationLetter[] = $motivationLetter;
-
-        return $this;
-    }
-
-    /**
-     * Remove motivationLetter
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
-     */
-    public function removeMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
-    {
-        $this->motivationLetter->removeElement($motivationLetter);
-    }
-
-    /**
-     * Get motivationLetter
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMotivationLetter()
-    {
-        return $this->motivationLetter;
-    }
-
-    /**
-     * Add responseJobOffer
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
-     * @return User
-     */
-    public function addResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
-    {
-        $this->responseJobOffer[] = $responseJobOffer;
-
-        return $this;
-    }
-
-    /**
-     * Remove responseJobOffer
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
-     */
-    public function removeResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
-    {
-        $this->responseJobOffer->removeElement($responseJobOffer);
-    }
-
-    /**
-     * Get responseJobOffer
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getResponseJobOffer()
-    {
-        return $this->responseJobOffer;
     }
 
     /**
