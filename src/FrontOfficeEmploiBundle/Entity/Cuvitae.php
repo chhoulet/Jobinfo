@@ -106,7 +106,7 @@ class Cuvitae
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="cuvitae")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="cuvitae")
      * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
      */
     private $candidat;
