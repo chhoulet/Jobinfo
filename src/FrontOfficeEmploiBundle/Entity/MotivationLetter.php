@@ -49,7 +49,7 @@ class MotivationLetter
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="motivationLetter")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="motivationLetter")
      * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
      */
     private $candidat;

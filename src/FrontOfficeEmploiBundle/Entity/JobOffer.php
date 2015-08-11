@@ -77,13 +77,7 @@ class JobOffer
      */
     private $motivationLetter;
 
-    /**
-     * @var string
-     *
-      * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", mappedBy="jobOffer")
-     */
-    private $candidat;
-
+    
     /**
      * @var string
      *
@@ -273,39 +267,6 @@ class JobOffer
     public function getMotivationLetter()
     {
         return $this->motivationLetter;
-    }
-
-    /**
-     * Add candidat
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
-     * @return JobOffer
-     */
-    public function addCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
-    {
-        $this->candidat[] = $candidat;
-
-        return $this;
-    }
-
-    /**
-     * Remove candidat
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
-     */
-    public function removeCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
-    {
-        $this->candidat->removeElement($candidat);
-    }
-
-    /**
-     * Get candidat
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCandidat()
-    {
-        return $this->candidat;
     }
 
     /**
