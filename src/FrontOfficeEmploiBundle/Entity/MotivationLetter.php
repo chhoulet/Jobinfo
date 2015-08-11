@@ -62,9 +62,9 @@ class MotivationLetter
     private $responseJobOffer;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="motivationLetter")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="motivationLetter", cascade={"persist"})
      * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
      */
     private $candidat;

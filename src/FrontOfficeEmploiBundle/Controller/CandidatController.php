@@ -4,6 +4,7 @@ namespace FrontOfficeEmploiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeEmploiBundle\Entity\Cuvitae;
+use FrontOfficeEmploiBundle\Entity\Candidat;
 use FrontOfficeEmploiBundle\Entity\ResponseJobOffer;
 use FrontOfficeEmploiBundle\Entity\MotivationLetter;
 use FrontOfficeEmploiBundle\Form\CuvitaeType;
@@ -35,17 +36,22 @@ class CandidatController extends Controller
 	public function createLMAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request ->getSession();
 		$lm = new MotivationLetter();
+		/*$user = $this -> getUser();
+		$user = $user -> getId();*/
 		$formLm = $this -> createForm(new MotivationLetterType(), $lm);
 
 		$formLm -> handleRequest($request);
 
 		if($formLm -> isValid())
-		 {
+		 {		 	
 		 	$lm -> setDateCreated(new \DateTime('now'));
+		 	/*$lm -> setCandidat()->getId($user);*/
 		 	$em -> persist($lm);
 		 	$em -> flush();
 
+		 	$session -> getFlashbag()-> add('succes','Votre lettre de motivation est bien enregistrée !');
 		 	return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		 }
 
