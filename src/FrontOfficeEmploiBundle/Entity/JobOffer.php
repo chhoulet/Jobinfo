@@ -91,6 +91,14 @@ class JobOffer
      */
     private $responseJobOffer;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="jobOffer")
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     */
+    private $candidat;
+
 
     /**
      * Get id
@@ -344,5 +352,28 @@ class JobOffer
     public function getResponseJobOffer()
     {
         return $this->responseJobOffer;
+    }
+
+    /**
+     * Set candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     * @return JobOffer
+     */
+    public function setCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat = null)
+    {
+        $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\Candidat 
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
     }
 }
