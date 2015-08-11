@@ -55,6 +55,14 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", cascade={"persist","remove"})
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     */
+    private $candidat;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Article", mappedBy="author")
      */
     private $articles;
@@ -228,5 +236,28 @@ class User extends BaseUser
     public function getResponseJobOffer()
     {
         return $this->responseJobOffer;
+    }
+
+    /**
+     * Set candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     * @return User
+     */
+    public function setCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat = null)
+    {
+        $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \FrontOfficeEmploiBundle\Entity\Candidat 
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
     }
 }
