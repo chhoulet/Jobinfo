@@ -39,7 +39,7 @@
                     <h2 class="brand-before">
                         <small>Welcome to</small>
                     </h2>
-                    <h1 class="brand-name">JobInfo</h1>
+                    <h1 class="brand-name">JobInfo</h1>{% if(is_granted('ROLE_USER')) %}<strong>Bonjour {{ app.user.username }}</strong>{% endif %}
                     <hr class="tagline-divider">
                     <h2>
                         <small>By

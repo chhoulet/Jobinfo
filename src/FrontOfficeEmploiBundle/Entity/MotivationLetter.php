@@ -50,7 +50,7 @@ class MotivationLetter
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="motivationLetter")
-     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
      */
     private $candidat;
 
@@ -58,7 +58,7 @@ class MotivationLetter
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="motivationLetter")
-     * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id", nullable = true)
      */
     private $jobOffer;
 

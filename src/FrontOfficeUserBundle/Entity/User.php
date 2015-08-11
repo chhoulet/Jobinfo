@@ -26,38 +26,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="firstname", type="string", length=255)
-     */
-    private $firstname;
-
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="lastname", type="string", length=255)
-     */
-    private $lastname;
-
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="address", type="string", length=255)
-     */
-    private $address;
-
-    /**
-     * @var integer
-     *
-     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
-     * @ORM\Column(name="phoneNumber", type="integer")
-     */
-    private $phoneNumber;
-
-    /**
-     * @var string
-     *
      * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="candidat")
      */
     private $cuvitae;
@@ -161,98 +129,6 @@ class User extends BaseUser
     public function getSociety()
     {
         return $this->society;
-    }
-
-    /**
-     * Set firstname
-     *
-     * @param string $firstname
-     * @return User
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * Get firstname
-     *
-     * @return string 
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * Set lastname
-     *
-     * @param string $lastname
-     * @return User
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    /**
-     * Get lastname
-     *
-     * @return string 
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     * @return User
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set phoneNumber
-     *
-     * @param integer $phoneNumber
-     * @return User
-     */
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get phoneNumber
-     *
-     * @return integer 
-     */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
     }
 
     /**

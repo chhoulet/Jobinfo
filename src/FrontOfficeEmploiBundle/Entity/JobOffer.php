@@ -46,7 +46,6 @@ class JobOffer
      */
     private $contract;
 
-
     /**
      * @var \DateTime
      *
@@ -76,7 +75,6 @@ class JobOffer
      * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="jobOffer")
      */
     private $motivationLetter;
-
     
     /**
      * @var string

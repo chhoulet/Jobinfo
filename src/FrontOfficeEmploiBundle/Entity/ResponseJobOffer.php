@@ -63,7 +63,7 @@ class ResponseJobOffer
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="responseJobOffer")
-     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
      */
     private $candidat;
 
@@ -74,7 +74,6 @@ class ResponseJobOffer
      * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id")
      */
     private $jobOffer;
-
 
     /**
      * Get id

@@ -107,7 +107,7 @@ class Cuvitae
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="cuvitae")
-     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id", nullable = true)
      */
     private $candidat;
 
@@ -115,7 +115,7 @@ class Cuvitae
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="cuvitae")
-     * ORM\JoinTable(name="jobOffer_cuvitae")
+     * ORM\JoinTable(name="jobOffer_cuvitae", nullable = true)
      */
     private $jobOffer;
 
