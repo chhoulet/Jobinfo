@@ -17,6 +17,7 @@ class JobOfferRepository extends EntityRepository
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT j 
 			FROM FrontOfficeEmploiBundle:JobOffer j 
+			WHERE j.activeToPurchase = true
 			ORDER BY j.dateCreated DESC')
 		->setMaxResults(10);
 
@@ -39,11 +40,22 @@ class JobOfferRepository extends EntityRepository
 			FROM FrontOfficeEmploiBundle:JobOffer j 
 			JOIN j.jobSector jbs
 			WHERE j.contract c LIKE :contract
+			AND j.activeToPurchase = true
 			AND jbs.nameSector LIKE :jobSector
 			ORDER BY j.dateCreated DESC')
 		->setParameter('contract', $contract)
 		->setParameter('jobSector', $jobSector);
 
 		return $query -> getResult();
+	}
+
+	public function getNbJobOffersPurchased()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT COUNT(j.id)
+			FROM FrontOfficeEmploiBundle:JobOffer j 
+			WHERE j.activeToPurchase = false');
+
+		return $query -> getSingleScalarResult();
 	}
 }
