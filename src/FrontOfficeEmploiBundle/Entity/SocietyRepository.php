@@ -12,16 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class SocietyRepository extends EntityRepository
 {
-	public function getSociety()
+	public function getSocieties()
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT s 
 			FROM FrontOfficeEmploiBundle:Society s 
 			WHERE s.hiringState = true 
 			ORDER BY s.dateCreated DESC')
-		->setMaxResults(1);
+		;
 
-		return $query -> getSingleResult();
+		return $query -> getResult();
 	}
 
 	public function nbSociety()

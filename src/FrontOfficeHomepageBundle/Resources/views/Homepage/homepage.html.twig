@@ -129,12 +129,14 @@
 
                     {% if (is_granted('ROLE_USER')) %}
                          <p>Accéder à votre espace personnel :
-                            <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a>
-                            <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a></p>
+                            <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a><br>
+                            <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a><br></p>
                     {% else %}
                          <p>Pas encore inscrit ? Créez votre compte personnel :
                             <a href="{{ path('fos_user_registration_register') }}">Enregistrez-vous !</a></p>
                     {% endif %}
+
+                    <p>Consultez la liste des <a href="{{ path('front_office_emploi_employer_list') }}">sociétés qui recrutent !</a><br><br></p>
 
                     <p>Starts-up, cabinets conseil, grandes entreprises, SSII, rencontrez le candidat idéal ! Venez proposer des postes à des candidats qualifiés dans tous les domaines du Web qui vous intéressent, donnez leur chance à des débutants, et convainquez des experts de travailler avec vous. Jobinfo vous donnera les clés d'un recrutement réussi :</p>
 

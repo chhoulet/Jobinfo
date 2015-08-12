@@ -17,7 +17,6 @@ class HomepageController extends Controller
     	$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article') ->getArticles();
     	$formation = $em ->getRepository('FrontOfficeHomepageBundle:Formation') ->getLastFormations();
     	$forum = $em ->getRepository('FrontOfficeHomepageBundle:Forum')->getLastForum();
-        $societe = $em -> getRepository('FrontOfficeEmploiBundle:Society')-> getSociety();
         $jobOffers = $em ->getRepository('FrontOfficeEmploiBundle:JobOffer')->getJobOffers();
 
         #Formulaire de selection des  offres d'emploi par critères :
@@ -35,8 +34,7 @@ class HomepageController extends Controller
         return $this->render('FrontOfficeHomepageBundle:Homepage:homepage.html.twig', 
         	array('articles'      =>$articles,
         	      'formation'     =>$formation,
-        	      'forum'         =>$forum,
-                  'societe'       =>$societe,
+        	      'forum'         =>$forum,             
                   'jobOffers'     =>$jobOffers,
                   'formJobOffers' => $formJobOffers->createView()));
     }

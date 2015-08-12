@@ -59,4 +59,13 @@ class EmployerController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Employer:createJobOffer.html.twig', 
 			array('formJobOffer'=>$formJobOffer->createView()));
 	}
+
+	public function listSocietiesAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$listSocieties = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> getSocieties();
+
+		return $this -> render('FrontOfficeEmploiBundle:Employer:listSocieties.html.twig', 
+			array('listSocieties' => $listSocieties));
+	}
 }
