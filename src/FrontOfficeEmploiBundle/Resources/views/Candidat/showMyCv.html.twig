@@ -2,11 +2,12 @@
 
 	{% block content %}
 
-		{% for cv in showMyCv %}
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
 
-			{{ cv.title }}
+			{% for cv in app.user.cuvitae %}
+				{{ cv.title }}<br>
+			{% endfor %}
 
-		{% endfor %}
-
+		</div>
 
 	{% endblock %}
