@@ -29,7 +29,7 @@ class CandidatController extends Controller
 			$em -> persist($cv);
 			$em -> flush();
 
-			$session -> getFlashbag()-> add('notice','Votre CV est bien ajouté dans la base');
+			$session -> getFlashbag()-> add('notice','Votre CV est bien ajouté dans la base !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}
 

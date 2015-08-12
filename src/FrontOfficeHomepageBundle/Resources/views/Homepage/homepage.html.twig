@@ -4,6 +4,23 @@
 
     <div class="container">
 
+        <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+            {% for message in app.session.flashbag.get('succes') %}
+               {{ message }}
+            {% endfor %}
+
+            {% for messa in app.session.flashbag.get('notice') %}
+               {{ messa }}
+            {% endfor %}
+
+            {% for mess in app.session.flashbag.get('creation') %}
+                {{ mess }}
+            {% endfor %}
+
+        </div>
+
+        <hr>
+
         <div class="row">
             <div class="box">
                 <div class="col-lg-12 text-center">
@@ -60,13 +77,7 @@
                         <strong> Ami visiteur, bonjour</strong>
                     </h2>
 
-                        {% for message in app.session.flashbag.get('succes') %}
-                            {{ message }}
-                        {% endfor %}
 
-                        {% for messa in app.session.flashbag.get('notice') %}
-                            {{ messa }}
-                        {% endfor %}
 
                     <hr>
                     <p>Cher visiteur, si tu es arrivé sur ce site, cela signifie que tu t'intéresses à mon travail. Application d'entraînement réalisée avec une intégration  Boostrap et basée sur la technologie Symfony, elle n'a pour d'autre ambition que de vous présenter mon savoir-faire technique. Elle n'a donc aucunement vocation à devenir un véritable site de recherche d'emploi. Connectez-vous sur mon compte GITHUB pour accéder au code source : <a href="https://github.com/chhoulet/jobinfo.git">https://github.com/chhoulet/jobinfo.git</a>. </p>

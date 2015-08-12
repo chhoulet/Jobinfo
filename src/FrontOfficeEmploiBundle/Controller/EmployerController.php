@@ -37,6 +37,7 @@ class EmployerController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$jobOffer = new JobOffer();
+		$session = $request -> getSession();
 		$formJobOffer = $this -> createForm(new JobOfferType(), $jobOffer);
 
 		$formJobOffer -> handleRequest($request);
@@ -49,6 +50,7 @@ class EmployerController extends Controller
 			$em -> persist($jobOffer);
 			$em -> flush();
 
+			$session ->getFlashbag()->add('creation','Votre offre d\'emploi est bien publiée !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}
 
