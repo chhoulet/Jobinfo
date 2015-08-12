@@ -22,6 +22,17 @@ class JobOfferController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:JobOffer:showOneJobOffer.html.twig', array('showOneJobOffer'=> $showOneJobOffer));
 	}
 
+	public function selectAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$selectedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> find($id);
+		/*$selectedJobOffer -> addUser($this -> getUser());*/
+		$selectedJobOffer -> setDateSelected(new \DateTime('now'));
+		$em -> flush();
+
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
+
 	public function responseJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();

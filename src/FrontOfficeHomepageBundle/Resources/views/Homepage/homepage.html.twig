@@ -227,7 +227,8 @@
                             <p>{{ societe.activity }}</p><br>
                             <p>{{ societe.description }}</p><br>
                         {% endfor %}
-                        <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">Détail</a>
+                        <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">Détail</a><br>
+                        <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre</a>
                     </div>
                 </div>
             </div>
