@@ -17,6 +17,7 @@ class CandidatController extends Controller
 	public function createCVAction(Request $request)
 	{
 		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
 		$cv = new Cuvitae();
 		$formCv = $this -> createForm(new CuvitaeType(), $cv);
 
@@ -28,6 +29,7 @@ class CandidatController extends Controller
 			$em -> persist($cv);
 			$em -> flush();
 
+			$session -> getFlashbag()-> add('notice','Votre CV est bien ajouté dans la base');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}
 
