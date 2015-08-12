@@ -4,30 +4,36 @@
 
     <div class="container">
 
+            {% if(is_granted('ROLE_USER')) %}
+                <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
+                    <strong>Bonjour {{ app.user.username }} !</strong>
+                </div>
+                <hr>
+            {% endif %}
        
             {% for message in app.session.flashbag.get('succes') %}
-                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
                     {{ message }}
                  </div>
                  <hr>
             {% endfor %}
 
             {% for messa in app.session.flashbag.get('notice') %} 
-                <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
                     {{ messa }}
                 </div>
                 <hr>
             {% endfor %}
 
             {% for mess in app.session.flashbag.get('creation') %}
-                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
                     {{ mess }}
                  </div>
                  <hr>
             {% endfor %}
 
             {% for mes in app.session.flashbag.get('creasoc') %}
-                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
                     {{ mes }}
                  </div>
                  <hr>
@@ -68,7 +74,7 @@
                     <h2 class="brand-before">
                         <small>Welcome to</small>
                     </h2>
-                    <h1 class="brand-name">JobInfo</h1>{% if(is_granted('ROLE_USER')) %}<strong>Bonjour {{ app.user.username }}</strong>{% endif %}
+                    <h1 class="brand-name">JobInfo</h1>
                     <hr class="tagline-divider">
                     <h2>
                         <small>By
