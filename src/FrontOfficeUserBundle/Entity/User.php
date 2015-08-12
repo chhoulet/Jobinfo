@@ -46,6 +46,14 @@ class User extends BaseUser
      */
     private $articles;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="user")
+     */
+    private $motivationLetter;
+
+
     public function __construct()
     {
         parent::__construct();
@@ -139,5 +147,38 @@ class User extends BaseUser
     public function getCandidat()
     {
         return $this->candidat;
+    }
+
+    /**
+     * Add motivationLetter
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
+     * @return User
+     */
+    public function addMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
+    {
+        $this->motivationLetter[] = $motivationLetter;
+
+        return $this;
+    }
+
+    /**
+     * Remove motivationLetter
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter
+     */
+    public function removeMotivationLetter(\FrontOfficeEmploiBundle\Entity\MotivationLetter $motivationLetter)
+    {
+        $this->motivationLetter->removeElement($motivationLetter);
+    }
+
+    /**
+     * Get motivationLetter
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMotivationLetter()
+    {
+        return $this->motivationLetter;
     }
 }

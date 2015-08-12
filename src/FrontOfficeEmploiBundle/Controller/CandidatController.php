@@ -48,6 +48,7 @@ class CandidatController extends Controller
 		 {		 	
 		 	$lm -> setDateCreated(new \DateTime('now'));
 		 	/*$lm -> setCandidat()->getId($user);*/
+		 	$lm -> setUser($this -> getUser());
 		 	$em -> persist($lm);
 		 	$em -> flush();
 

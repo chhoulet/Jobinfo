@@ -69,6 +69,14 @@ class MotivationLetter
      */
     private $candidat;
 
+     /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="motivationLetter", cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable = true)
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -238,5 +246,28 @@ class MotivationLetter
     public function __toString()
     {
         return $this ->id . ': ' .$this ->subject . ' (' . $this->dateCreated->format('d/m/Y') . ')';
+    }
+
+    /**
+     * Set user
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $user
+     * @return MotivationLetter
+     */
+    public function setUser(\FrontOfficeUserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
