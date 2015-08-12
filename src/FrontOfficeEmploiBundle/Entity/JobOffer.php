@@ -99,6 +99,14 @@ class JobOffer
      */
     private $candidat;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="jobOffer")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable = true)
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -375,5 +383,28 @@ class JobOffer
     public function getCandidat()
     {
         return $this->candidat;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $user
+     * @return JobOffer
+     */
+    public function setUser(\FrontOfficeUserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

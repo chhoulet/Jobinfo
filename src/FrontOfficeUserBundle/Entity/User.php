@@ -60,6 +60,14 @@ class User extends BaseUser
      */
     private $cuvitae;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="user")
+     */
+    private $jobOffer;
+
+
 
 
     public function __construct()
@@ -221,5 +229,38 @@ class User extends BaseUser
     public function getCuvitae()
     {
         return $this->cuvitae;
+    }
+
+    /**
+     * Add jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     * @return User
+     */
+    public function addJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer[] = $jobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
+     */
+    public function removeJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
+    {
+        $this->jobOffer->removeElement($jobOffer);
+    }
+
+    /**
+     * Get jobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobOffer()
+    {
+        return $this->jobOffer;
     }
 }
