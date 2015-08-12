@@ -4,22 +4,34 @@
 
     <div class="container">
 
-        <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+       
             {% for message in app.session.flashbag.get('succes') %}
-               {{ message }}
+                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                    {{ message }}
+                 </div>
+                 <hr>
             {% endfor %}
 
-            {% for messa in app.session.flashbag.get('notice') %}
-               {{ messa }}
+            {% for messa in app.session.flashbag.get('notice') %} 
+                <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                    {{ messa }}
+                </div>
+                <hr>
             {% endfor %}
 
             {% for mess in app.session.flashbag.get('creation') %}
-                {{ mess }}
+                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                    {{ mess }}
+                 </div>
+                 <hr>
             {% endfor %}
 
-        </div>
-
-        <hr>
+            {% for mes in app.session.flashbag.get('creasoc') %}
+                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;">
+                    {{ mes }}
+                 </div>
+                 <hr>
+            {% endfor %}              
 
         <div class="row">
             <div class="box">

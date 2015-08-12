@@ -92,11 +92,10 @@ class Society
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="society")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="society")
+     * @ORM\JoinTable(name="user_society")
      */
-    private $users;
-
-
+    private $user;
 
 
     /**
@@ -326,16 +325,6 @@ class Society
     }
 
     /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
-    /**
      * Set dateUpdated
      *
      * @param \DateTime $dateUpdated
@@ -356,5 +345,15 @@ class Society
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

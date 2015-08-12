@@ -15,6 +15,7 @@ class EmployerController extends Controller
 	public function createSocietyAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$society = new Society();
 		$formSociety = $this -> createForm(new SocietyType(), $society);
 
@@ -22,10 +23,11 @@ class EmployerController extends Controller
 
 		if($formSociety -> isValid())
 		{
-			$society -> setDateCreated(new \DateTime('now'));
+			$society -> setDateCreated(new \DateTime('now'));			
 			$em -> persist($society);
 			$em -> flush();
 
+			$session ->getFlashbag()-> add('creasoc','Votre société est bien enregistrée dans la base !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}
 
