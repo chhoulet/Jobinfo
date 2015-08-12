@@ -2,11 +2,15 @@
 
 	{% block content %}
 
-		{% for lm in showMyLm %}
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
 
-			{{ lm.subject }}
+			{% for lm in app.user.motivationLetter %}
 
-		{% endfor %}
+				{{ lm.subject }}<br>
+
+			{% endfor %}
+
+		</div>
 
 
 	{% endblock %}
