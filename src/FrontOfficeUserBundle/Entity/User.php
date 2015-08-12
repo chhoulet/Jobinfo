@@ -62,9 +62,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="user")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="user")
      */
-    private $jobOffer;
+    private $jobOffers;
 
 
 
@@ -231,39 +231,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add jobOffer
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
-     * @return User
-     */
-    public function addJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
-    {
-        $this->jobOffer[] = $jobOffer;
-
-        return $this;
-    }
-
-    /**
-     * Remove jobOffer
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer
-     */
-    public function removeJobOffer(\FrontOfficeEmploiBundle\Entity\JobOffer $jobOffer)
-    {
-        $this->jobOffer->removeElement($jobOffer);
-    }
-
-    /**
-     * Get jobOffer
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getJobOffer()
-    {
-        return $this->jobOffer;
-    }
-
-    /**
      * Add society
      *
      * @param \FrontOfficeEmploiBundle\Entity\Society $society
@@ -284,5 +251,15 @@ class User extends BaseUser
     public function removeSociety(\FrontOfficeEmploiBundle\Entity\Society $society)
     {
         $this->society->removeElement($society);
+    }
+
+    /**
+     * Get jobOffers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getJobOffers()
+    {
+        return $this->jobOffers;
     }
 }

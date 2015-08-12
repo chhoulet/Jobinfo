@@ -55,6 +55,29 @@ class JobOffer
     private $dateCreated;
 
     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateSelected", type="datetime", nullable = true)
+     */
+    private $dateSelected;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateApplyed", type="datetime", nullable = true)
+     */
+    private $dateApplyed;
+
+    /**
+    * @var boolean
+    *
+    * @ORM\Column(name="activeToPurchase", type="boolean")
+    */
+    private $activeToPurchase;
+
+    /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobSector", inversedBy="jobOffer")
@@ -102,8 +125,8 @@ class JobOffer
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="jobOffer")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable = true)
+     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="jobOffers")
+     * @ORM\JoinTable(name="users_jobOffers")
      */
     private $user;
 
@@ -386,22 +409,101 @@ class JobOffer
     }
 
     /**
-     * Set user
+     * Add user
      *
      * @param \FrontOfficeUserBundle\Entity\User $user
      * @return JobOffer
      */
-    public function setUser(\FrontOfficeUserBundle\Entity\User $user = null)
+    public function addUser(\FrontOfficeUserBundle\Entity\User $user)
     {
-        $this->user = $user;
+        $this->user[] = $user;
 
         return $this;
     }
 
     /**
+     * Remove user
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $user
+     */
+    public function removeUser(\FrontOfficeUserBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Set dateSelected
+     *
+     * @param \DateTime $dateSelected
+     * @return JobOffer
+     */
+    public function setDateSelected($dateSelected)
+    {
+        $this->dateSelected = $dateSelected;
+
+        return $this;
+    }
+
+    /**
+     * Get dateSelected
+     *
+     * @return \DateTime 
+     */
+    public function getDateSelected()
+    {
+        return $this->dateSelected;
+    }
+
+    /**
+     * Set dateApplyed
+     *
+     * @param \DateTime $dateApplyed
+     * @return JobOffer
+     */
+    public function setDateApplyed($dateApplyed)
+    {
+        $this->dateApplyed = $dateApplyed;
+
+        return $this;
+    }
+
+    /**
+     * Get dateApplyed
+     *
+     * @return \DateTime 
+     */
+    public function getDateApplyed()
+    {
+        return $this->dateApplyed;
+    }
+
+    /**
+     * Set activeToPurchase
+     *
+     * @param boolean $activeToPurchase
+     * @return JobOffer
+     */
+    public function setActiveToPurchase($activeToPurchase)
+    {
+        $this->activeToPurchase = $activeToPurchase;
+
+        return $this;
+    }
+
+    /**
+     * Get activeToPurchase
+     *
+     * @return boolean 
+     */
+    public function getActiveToPurchase()
+    {
+        return $this->activeToPurchase;
+    }
+
+    /**
      * Get user
      *
-     * @return \FrontOfficeUserBundle\Entity\User 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getUser()
     {
