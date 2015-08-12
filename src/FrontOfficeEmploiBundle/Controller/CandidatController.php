@@ -24,6 +24,7 @@ class CandidatController extends Controller
 
 		if($formCv -> isValid())
 		{
+			$cv -> setUser($this->getUser());
 			$em -> persist($cv);
 			$em -> flush();
 
@@ -38,16 +39,13 @@ class CandidatController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request ->getSession();
 		$lm = new MotivationLetter();
-		/*$user = $this -> getUser();
-		$user = $user -> getId();*/
 		$formLm = $this -> createForm(new MotivationLetterType(), $lm);
 
 		$formLm -> handleRequest($request);
 
 		if($formLm -> isValid())
 		 {		 	
-		 	$lm -> setDateCreated(new \DateTime('now'));
-		 	/*$lm -> setCandidat()->getId($user);*/
+		 	$lm -> setDateCreated(new \DateTime('now'));	
 		 	$lm -> setUser($this -> getUser());
 		 	$em -> persist($lm);
 		 	$em -> flush();

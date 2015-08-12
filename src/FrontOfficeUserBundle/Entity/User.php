@@ -53,6 +53,14 @@ class User extends BaseUser
      */
     private $motivationLetter;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="user")
+     */
+    private $cuvitae;
+
+
 
     public function __construct()
     {
@@ -180,5 +188,38 @@ class User extends BaseUser
     public function getMotivationLetter()
     {
         return $this->motivationLetter;
+    }
+
+    /**
+     * Add cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     * @return User
+     */
+    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
+    {
+        $this->cuvitae[] = $cuvitae;
+
+        return $this;
+    }
+
+    /**
+     * Remove cuvitae
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae
+     */
+    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
+    {
+        $this->cuvitae->removeElement($cuvitae);
+    }
+
+    /**
+     * Get cuvitae
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCuvitae()
+    {
+        return $this->cuvitae;
     }
 }
