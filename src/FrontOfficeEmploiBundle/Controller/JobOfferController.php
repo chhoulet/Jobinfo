@@ -25,11 +25,13 @@ class JobOfferController extends Controller
 	public function selectAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$selectedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> find($id);
-		/*$selectedJobOffer -> addUser($this -> getUser());*/
 		$selectedJobOffer -> setDateSelected(new \DateTime('now'));
+		$selectedJobOffer -> addUser($this -> getUser());
 		$em -> flush();
 
+		$session -> getFlashbag()-> add('select','L\'offre sélectionnée se trouve maintenant dans votre espace personnel !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 

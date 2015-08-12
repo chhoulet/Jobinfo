@@ -1,6 +1,12 @@
 {% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
 
 	{% block content %}
+		
+		<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+			{% for message in app.session.flashbag.get('select') %}
+				{{ message }}
+			{% endfor %}
+		</div>
 
 		<div style="background-color:white;">
 
@@ -14,9 +20,10 @@
 
 			{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
 
-				{# {% if (is_granted('ROLE_CANDIDAT')) %} #}
-					<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a>
-				{# {% endif %} #} 
+				{% if (is_granted('ROLE_USER')) %}
+					<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a><br>
+					<a href="{{ path('front_office_emploi_jobOffer_select',{id:showOneJobOffer.id}) }}">Sélectionner cette offre</a><br>
+				{% endif %} 
 				
 				{% if (is_granted('ROLE_SOCIETY') or (is_granted('ROLE_SUPER_ADMIN'))) %}
 			    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 

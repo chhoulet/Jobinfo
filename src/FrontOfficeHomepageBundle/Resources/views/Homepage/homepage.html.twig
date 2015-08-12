@@ -37,7 +37,13 @@
                     {{ mes }}
                  </div>
                  <hr>
-            {% endfor %}              
+            {% endfor %}  
+
+            {% for me in app.session.flashbag.get('select') %} 
+                <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">    {{ me }}
+                </div>
+                <hr>
+            {% endfor %}
 
         <div class="row">
             <div class="box">

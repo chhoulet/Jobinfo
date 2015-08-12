@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminJobOffersController extends Controller
 {
-	public function showJobOffersAction()
+	public function listJobOffersAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$showJobOffers = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->findAll();
 
-		return $this ->render('BackOfficeBundle:AdminJobOffers:showJobOffers.html.twig', 
+		return $this ->render('BackOfficeBundle:AdminJobOffers:listJobOffers.html.twig', 
 			array('showJobOffers' => $showJobOffers));
 	}
 
