@@ -19,6 +19,7 @@ class SocietyType extends AbstractType
             ->add('activity')
             ->add('description')
             ->add('hiringState')
+            ->add('jobSector', null)
             ->add('valider','submit')
         ;
     }

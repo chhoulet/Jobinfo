@@ -97,7 +97,14 @@ class Society
      */
     private $user;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="societies")
+     * @ORM\JoinColumn(name="jobSector_id", referencedColumnName="id")
+     */
+    private $jobSector;
+    
     /**
      * Get id
      *
@@ -355,5 +362,28 @@ class Society
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set jobSector
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $jobSector
+     * @return Society
+     */
+    public function setJobSector(\FrontOfficeUserBundle\Entity\User $jobSector = null)
+    {
+        $this->jobSector = $jobSector;
+
+        return $this;
+    }
+
+    /**
+     * Get jobSector
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getJobSector()
+    {
+        return $this->jobSector;
     }
 }
