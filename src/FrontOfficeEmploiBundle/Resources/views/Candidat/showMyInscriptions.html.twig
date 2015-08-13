@@ -1,0 +1,20 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
+
+				<h3>Mes prochaines formations:</h3>
+
+			{# {% for forma in app.user.formation %}
+				{{ forma.formationName }}
+			{% endfor %}
+ #}
+ 				<h3>Mes forums:</h3>
+
+ 					{% for forum in app.user.forum %}
+ 						{{ forum.forumName }}
+ 					{% endfor %}
+
+
+	{% endblock %}

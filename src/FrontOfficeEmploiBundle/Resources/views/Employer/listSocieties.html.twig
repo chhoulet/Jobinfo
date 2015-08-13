@@ -1,0 +1,25 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container">
+
+			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+
+				<h2> Liste des sociétés qui recrutent !</h2>
+
+					{% for society in listSocieties %}
+						Raison sociale : {{ society.name }}<br>
+						Secteur d'activité : {{ society.activity }}<br>
+						Description : {{ society.description }}<br>
+						Inscrite sur le site depuis le : {{ society.dateCreated | date('d-m-Y') }}<br>
+						<hr>
+					{% endfor %}
+
+
+
+			</div>
+
+		</div>
+
+	{% endblock %}
