@@ -8,6 +8,7 @@ use FrontOfficeEmploiBundle\Entity\Candidat;
 use FrontOfficeEmploiBundle\Entity\ResponseJobOffer;
 use FrontOfficeEmploiBundle\Entity\MotivationLetter;
 use FrontOfficeEmploiBundle\Form\CuvitaeType;
+use FrontOfficeEmploiBundle\Form\CandidatType;
 use FrontOfficeEmploiBundle\Form\MotivationLetterType;
 use FrontOfficeEmploiBundle\Form\ResponseJobOfferType;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,6 +60,26 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:createLM.html.twig', array('formLm'=> $formLm -> createView())) ;
 	}
 
+	public function newAction(Request $request)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$candidat = new Candidat();
+		$form = $this -> createForm(new CandidatType(), $candidat);
+		$form -> handleRequest($request);
+
+		if($form -> isValid())
+		{
+			$candidat -> setSavedAt(new \DateTime('now'));
+			$candidat -> setUser($this -> getUser());
+			$em -> persist($candidat);
+			$em -> flush();
+
+			return $this -> redirect($this -> generateUrl('front_office_emploi_mon_profil'));
+		}
+
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form'=>$form->createView()));
+	}
+
 	public function showMyCvAction()
 	{
 		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig');
@@ -69,8 +90,8 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig');
 	}
 
-	public function monProfilAction()
-	{
+	public function monProfilAction(Request $request)
+	{		
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:monProfil.html.twig');
 	}
 
