@@ -3,6 +3,11 @@
 	{% block content %}
 
 		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
+			
+			{% for message in app.session.flashbag.get('notice') %}
+				{{ message }}
+			{% endfor %}
+
 			<strong>{{ app.user.username }}</strong><br><br>
 
 			<a href="{{ path('front_office_emploi_candidat_new') }}">Créer mon profil Candidat</a><br>

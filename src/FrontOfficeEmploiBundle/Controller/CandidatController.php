@@ -64,6 +64,7 @@ class CandidatController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$candidat = new Candidat();
+		$session = $request -> getSession();
 		$form = $this -> createForm(new CandidatType(), $candidat);
 		$form -> handleRequest($request);
 
@@ -74,6 +75,7 @@ class CandidatController extends Controller
 			$em -> persist($candidat);
 			$em -> flush();
 
+			$session -> getFlashbag()->add('notice','Votre profil est bien enregistré dans notre site !');
 			return $this -> redirect($this -> generateUrl('front_office_emploi_mon_profil'));
 		}
 
