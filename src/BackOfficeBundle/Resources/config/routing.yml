@@ -33,6 +33,15 @@ back_office_admincomments_listUnvalidated:
 back_office_admincomments_validation:
     path:     /validationComment/{id}
     defaults: { _controller: BackOfficeBundle:AdminComment:validation}
+    requirements:
+        id: "[0-9]+"
+
+    # Suppression des comments:
+back_office_admincomments_delete:
+    path:     /deleteComment/{id}
+    defaults: { _controller: BackOfficeBundle:AdminComment:delete}
+    requirements:
+        id: "[0-9]+"
 
 #Routes gerant l'administration des formations:
 back_office_adminformation_show:
