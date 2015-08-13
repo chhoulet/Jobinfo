@@ -78,4 +78,9 @@ class CandidatController extends Controller
 	{
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyJobOffers.html.twig');
 	}
+
+	public function showMyInscriptionsAction()
+	{
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyInscriptions.html.twig');
+	}
 }
