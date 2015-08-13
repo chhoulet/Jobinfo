@@ -24,6 +24,11 @@ back_office_adminarticles_delete:
     requirements:
         id: "[0-9]+"
 
+#Routes gerant l'administration des commentaires:
+back_office_admincomments_listUnvalidated:
+    path:     /listUnvalidated 
+    defaults: { _controller: BackOfficeBundle:AdminComment:commentUnvalidated}
+
 #Routes gerant l'administration des formations:
 back_office_adminformation_show:
     path:     /showFormation
