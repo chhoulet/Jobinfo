@@ -29,6 +29,11 @@ back_office_admincomments_listUnvalidated:
     path:     /listUnvalidated 
     defaults: { _controller: BackOfficeBundle:AdminComment:commentUnvalidated}
 
+    # Validation des comments:
+back_office_admincomments_validation:
+    path:     /validationComment/{id}
+    defaults: { _controller: BackOfficeBundle:AdminComment:validation}
+
 #Routes gerant l'administration des formations:
 back_office_adminformation_show:
     path:     /showFormation
