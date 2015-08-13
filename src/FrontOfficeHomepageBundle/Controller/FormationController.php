@@ -27,11 +27,12 @@ class FormationController extends Controller
 	public function inscriptionAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
 		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
 		$formation -> addInscrit($this -> getUser());
-
 		$em -> flush();
 
+		$session -> getFlashbag()->add('notice','Votre inscription est enregistrée !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 }

@@ -73,7 +73,7 @@ class User extends BaseUser
      */
     private $forum;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Formation", mappedBy="inscrits")
@@ -298,40 +298,6 @@ class User extends BaseUser
         $this->jobOffers->removeElement($jobOffers);
     }
 
-
-    /**
-     * Add formation
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Formation $formation
-     * @return User
-     */
-    public function addFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
-    {
-        $this->formation[] = $formation;
-
-        return $this;
-    }
-
-    /**
-     * Remove formation
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Formation $formation
-     */
-    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
-    {
-        $this->formation->removeElement($formation);
-    }
-
-    /**
-     * Get formation
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFormation()
-    {
-        return $this->formation;
-    }
-
     public function addForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
     {
         $this->forum[] = $forum;
@@ -358,5 +324,37 @@ class User extends BaseUser
     {
         return $this->forum;
     }
-}
 
+    /**
+     * Add formation
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Formation $formation
+     * @return User
+     */
+    public function addFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
+    {
+        $this->formation[] = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Remove formation
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Formation $formation
+     */
+    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
+    {
+        $this->formation->removeElement($formation);
+    }
+
+    /**
+     * Get formation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+}

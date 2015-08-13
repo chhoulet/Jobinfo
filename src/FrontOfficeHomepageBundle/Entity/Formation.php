@@ -87,14 +87,6 @@ class Formation
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="formation")
-     * @ORM\JoinTable(name="user_formation")
-     */
-    private $inscrits;
-
-     /**
-     * @var string
-     *
      * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", inversedBy="formation")
      * @ORM\JoinColumn(name="forum_id", referencedColumnName="id", nullable=true)
      */
@@ -107,6 +99,15 @@ class Formation
      * @ORM\JoinColumn(name="etablissement_id", referencedColumnName="id", nullable=true)
      */
     private $etablissement;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="formation")
+     * @ORM\JoinTable(name="user_formation")
+     */
+    private $inscrits;
+
 
 
     /**
@@ -333,15 +334,6 @@ class Formation
         return $this->formationDate;
     }
 
-    /**
-     * Get inscrits
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInscrits()
-    {
-        return $this->inscrits;
-    }
 
     /**
      * Add inscrits
@@ -364,5 +356,15 @@ class Formation
     public function removeInscrit(\FrontOfficeUserBundle\Entity\User $inscrits)
     {
         $this->inscrits->removeElement($inscrits);
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
     }
 }

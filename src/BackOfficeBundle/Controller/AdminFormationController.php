@@ -49,8 +49,7 @@ class AdminFormationController extends Controller
         
         if($formCreationFormation -> isValid())
         {
-            $formation -> setCreatedAt(new \DateTime('now'));
-            $formation -> setUpdatedAt(new \DateTime('now'));
+            $formation -> setCreatedAt(new \DateTime('now'));            
             $em -> persist($formation);
             $em -> flush();
 
