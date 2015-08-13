@@ -22,7 +22,6 @@ class BlogController extends Controller
 	public function showOneArticleAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		/*$showOneArticle = $em ->getRepository('FrontOfficeHomepageBundle:Article')->find($id);*/
 		$comment = new Comment();
 		$article = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
 		$formComment = $this -> createForm(new CommentType(), $comment);
@@ -33,6 +32,7 @@ class BlogController extends Controller
 		{
 			$comment -> setDateCreated(new \DateTime('now'));
 			$comment -> setArticle($article);
+			$comment -> setValidAdmin(false);
 			$em ->persist($comment);
 			$em ->flush();
 

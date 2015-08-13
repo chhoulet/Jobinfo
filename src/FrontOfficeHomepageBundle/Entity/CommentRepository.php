@@ -32,4 +32,14 @@ class CommentRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getUnvalidatedComments()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT c 
+			FROM FrontOfficeHomepageBundle:Comment c 
+			WHERE c.validAdmin =false');
+
+		return $query -> getResult();
+	}
 }

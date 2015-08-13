@@ -31,6 +31,13 @@ class Comment
     private $userName;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="validAdmin", type="boolean")
+     */
+    private $validAdmin;
+
+    /**
      * @var string
      *
      * @Assert\Length(
@@ -160,5 +167,28 @@ class Comment
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set validAdmin
+     *
+     * @param boolean $validAdmin
+     * @return Comment
+     */
+    public function setValidAdmin($validAdmin)
+    {
+        $this->validAdmin = $validAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get validAdmin
+     *
+     * @return boolean 
+     */
+    public function getValidAdmin()
+    {
+        return $this->validAdmin;
     }
 }
