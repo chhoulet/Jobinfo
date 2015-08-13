@@ -21,4 +21,16 @@ class CandidatRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getCandidatByUser($user)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT c 
+			FROM FrontOfficeEmploiBundle:Candidat c 
+			JOIN c.user u 
+			WHERE u.id LIKE :id')
+		->setParameter('id', $user);
+
+		return $query -> getSingleResult();
+	}
 }

@@ -260,7 +260,7 @@ class Candidat
      * @param \FrontOfficeEmploiBundle\Entity\FrontOfficeEmploiBundle $cuvitae
      * @return Candidat
      */
-    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\FrontOfficeEmploiBundle $cuvitae)
+    public function addCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
     {
         $this->cuvitae[] = $cuvitae;
 
@@ -272,7 +272,7 @@ class Candidat
      *
      * @param \FrontOfficeEmploiBundle\Entity\FrontOfficeEmploiBundle $cuvitae
      */
-    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\FrontOfficeEmploiBundle $cuvitae)
+    public function removeCuvitae(\FrontOfficeEmploiBundle\Entity\Cuvitae $cuvitae)
     {
         $this->cuvitae->removeElement($cuvitae);
     }

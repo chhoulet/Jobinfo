@@ -1,6 +1,6 @@
 #Routes gerant les fonctionnalités des candidats:
 front_office_emploi_mon_profil:
-    path:     /monProfil 
+    path:     /monProfil
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:monProfil}
 
 front_office_emploi_candidat_createCV:
