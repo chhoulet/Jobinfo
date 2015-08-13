@@ -82,6 +82,14 @@ class Forum
      */
     private $society;
 
+     /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="forum")
+     * @ORM\JoinTable(name="user_forum")
+     */
+    private $inscrits;
+
 
     /**
      * Get id
@@ -279,5 +287,38 @@ class Forum
     public function getSociety()
     {
         return $this->society;
+    }
+
+    /**
+     * Add inscrits
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $inscrits
+     * @return Forum
+     */
+    public function addInscrit(\FrontOfficeUserBundle\Entity\User $inscrits)
+    {
+        $this->inscrits[] = $inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscrits
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $inscrits
+     */
+    public function removeInscrit(\FrontOfficeUserBundle\Entity\User $inscrits)
+    {
+        $this->inscrits->removeElement($inscrits);
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
     }
 }

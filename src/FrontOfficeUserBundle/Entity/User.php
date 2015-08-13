@@ -66,6 +66,13 @@ class User extends BaseUser
      */
     private $jobOffers;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", mappedBy="inscrits")
+     */
+    private $forum;
+
      /**
      * @var string
      *
@@ -324,91 +331,32 @@ class User extends BaseUser
     {
         return $this->formation;
     }
+
+    public function addForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum[] = $forum;
+
+        return $this;
+    }
+
+    /**
+     * Remove forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     */
+    public function removeForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum->removeElement($forum);
+    }
+
+    /**
+     * Get forum
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getForum()
+    {
+        return $this->forum;
+    }
 }
 
-/* public function getSubscriberByFormation()
-    {
-        $query = $this -> getEntityManager()->createQuery('
-            SELECT COUNT(s.id) 
-            FROM FrontOfficeHomepageBundle:Subscriber s
-            JOIN s.formation f
-            GROUP BY f.formationType');
-
-        return $query -> getResult();
-    }
-
-    #nb d'inscrits + Inscrits par nom de formation
-    public function triSubscriber()
-    {
-        $query = $this -> getEntityManager()->createQuery('
-            SELECT s, COUNT(s.id) 
-            FROM FrontOfficeHomepageBundle:Subscriber s 
-            JOIN s.formation f 
-            GROUP BY f.formationName');
-
-        return $query -> getResult();
-    }
-
-    # Inscrits par type de forums
-    public function getSubscriberByForum()
-    {
-        $query = $this -> getEntityManager()-> createQuery('
-            SELECT s 
-            FROM FrontOfficeHomepageBundle:Subscriber s 
-            JOIN s.forum f
-            GROUP BY f.forumType');
-
-        return $query -> getResult();
-    }
-
-    # Inscrits par nom de forums
-    public function triSubscriberByForumName()
-    {
-        $query = $this -> getEntityManager()->createQuery('
-            SELECT s 
-            FROM FrontOfficeHomepageBundle:Subscriber s 
-            JOIN s.forum f 
-            GROUP BY f.forumName');
-
-        return $query -> getResult();
-    }
-
-#Nombre d'inscrits aux forums ayant lieu entre maintenant et le futur
-    public function nbSubscriberForums()
-    {
-        $query = $this -> getEntityManager()->createQuery('
-            SELECT COUNT(s.id)
-            FROM FrontOfficeHomepageBundle:Subscriber s 
-            JOIN s.forum f
-            WHERE f.forumDate > :dateforum')
-        ->setParameter('dateforum', new \DateTime('now'));
-
-        return $query -> getSingleScalarResult();
-    }
-
-    /*public function nbSubscriberFuture()
-    {
-        $query = $this -> getEntityManager()->createQuery('
-            SELECT COUNT(s.id)
-            FROM FrontOfficeHomepageBundle:Subscriber s 
-            JOIN s.forum fo 
-            JOIN s.formation f
-            WHERE fo.forumDate > :dateforum 
-            AND f.formationDate > :dateformation')
-        ->setParameter('dateforum', new \DateTime('now'))
-        ->setParameter('dateformation', new \DateTime('now'));
-
-        return $query -> getSingleScalarResult();
-    }
-
-    public function getNbSubscriberFormation()
-    {
-        $query = $this -> getEntityManager()->createQuery('
-            SELECT COUNT(s.id)
-            FROM FrontOfficeHomepageBundle:Subscriber s 
-            JOIN s.formation f
-            WHERE f.formationDate > :today')
-        ->setParameter('today',  new \DateTime('now'));
-
-        return $query -> getSingleScalarResult();
-    /*
