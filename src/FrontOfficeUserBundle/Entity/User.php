@@ -34,7 +34,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", cascade={"persist","remove"})
-     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
      */
     private $candidat;
 

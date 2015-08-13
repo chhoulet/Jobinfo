@@ -22,7 +22,7 @@ class CandidatRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
-	public function getCandidatByUser($user)
+	public function getCandidatByUser($user = null)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT c 

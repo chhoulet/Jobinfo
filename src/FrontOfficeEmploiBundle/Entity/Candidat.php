@@ -95,6 +95,7 @@ class Candidat
      * @var string
      *
      * @ORM\OneToOne(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="candidat")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
