@@ -82,14 +82,6 @@ class Forum
      */
     private $society;
 
-     /**
-     * @var string
-     *
-     * @ORM\ManytoMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="forum")
-     */
-    private $subscriber;
-
-
 
     /**
      * Get id
@@ -287,38 +279,5 @@ class Forum
     public function getSociety()
     {
         return $this->society;
-    }
-
-    /**
-     * Add subscriber
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Subscriber $subscriber
-     * @return Forum
-     */
-    public function addSubscriber(\FrontOfficeHomepageBundle\Entity\Subscriber $subscriber)
-    {
-        $this->subscriber[] = $subscriber;
-
-        return $this;
-    }
-
-    /**
-     * Remove subscriber
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Subscriber $subscriber
-     */
-    public function removeSubscriber(\FrontOfficeHomepageBundle\Entity\Subscriber $subscriber)
-    {
-        $this->subscriber->removeElement($subscriber);
-    }
-
-    /**
-     * Get subscriber
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSubscriber()
-    {
-        return $this->subscriber;
     }
 }

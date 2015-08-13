@@ -23,4 +23,15 @@ class FormationController extends Controller
 
 		return $this -> render('FrontOfficeHomepageBundle:Formation:oneFormation.html.twig', array('oneFormation'=>$showOne));
 	}
+
+	public function inscriptionAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
+		$formation -> addInscrit($this -> getUser());
+
+		$em -> flush();
+
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }

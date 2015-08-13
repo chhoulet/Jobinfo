@@ -84,11 +84,19 @@ class Formation
      */
     private $formationDescription;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="formation")
+     * @ORM\JoinTable(name="user_formation")
+     */
+    private $inscrits;
+
      /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", inversedBy="formation")
-     * JoinColumn(name="forum_id" referencedColumnName="id" nullable=true)
+     * @ORM\JoinColumn(name="forum_id", referencedColumnName="id", nullable=true)
      */
     private $forum;
  
@@ -96,19 +104,9 @@ class Formation
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Etablissement", inversedBy="formation")
-     * JoinColumn(name="etablissement_id", referencedColumnName="id" nullable=true)
+     * @ORM\JoinColumn(name="etablissement_id", referencedColumnName="id", nullable=true)
      */
     private $etablissement;
-
-    /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Subscriber", mappedBy="formation")
-     */
-    private $subscriber;
-
-
-
 
 
     /**
@@ -267,39 +265,6 @@ class Formation
     }
 
     /**
-     * Add subscriber
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Subscriber $subscriber
-     * @return Formation
-     */
-    public function addSubscriber(\FrontOfficeHomepageBundle\Entity\Subscriber $subscriber)
-    {
-        $this->subscriber[] = $subscriber;
-
-        return $this;
-    }
-
-    /**
-     * Remove subscriber
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Subscriber $subscriber
-     */
-    public function removeSubscriber(\FrontOfficeHomepageBundle\Entity\Subscriber $subscriber)
-    {
-        $this->subscriber->removeElement($subscriber);
-    }
-
-    /**
-     * Get subscriber
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSubscriber()
-    {
-        return $this->subscriber;
-    }
-
-    /**
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
@@ -366,5 +331,38 @@ class Formation
     public function getFormationDate()
     {
         return $this->formationDate;
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
+    }
+
+    /**
+     * Add inscrits
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $inscrits
+     * @return Formation
+     */
+    public function addInscrit(\FrontOfficeUserBundle\Entity\User $inscrits)
+    {
+        $this->inscrits[] = $inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscrits
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $inscrits
+     */
+    public function removeInscrit(\FrontOfficeUserBundle\Entity\User $inscrits)
+    {
+        $this->inscrits->removeElement($inscrits);
     }
 }

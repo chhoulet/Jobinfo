@@ -16,7 +16,7 @@
                             <p>Date de création : {{oneFormation.createdAt | date('d-m-Y H:i:s') }}</p>
                             <p>{{ oneFormation.formationDescription}}</p>
                         </div>
-                        <a href="{{ path('front_office_subscriber_formation',{id:oneFormation.id})}}"><button>Inscrivez-vous à cette formation :</button></a>
+                        <a href="{{ path('front_office_formation_inscription',{id:oneFormation.id})}}"><button>Inscrivez-vous à cette formation :</button></a>
                     </div>
                     
             </div>
