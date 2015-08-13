@@ -20,6 +20,8 @@ front_office_formation_showOne:
 front_office_formation_inscription:
     path:     /inscriptionFormation/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Formation:inscription}
+    requirements:
+        id: "[0-9]+"
 
 # Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
 front_office_forum_list:
@@ -34,7 +36,13 @@ front_office_forum_oneForum:
     requirements: 
         id: "[0-9]+"
 
-#Routes vers le blog :
+front_office_forum_inscription:
+    path:     /inscriptionForum/{id}
+    defaults: { _controller: FrontOfficeHomepageBundle:Forum:inscription}
+    requirements:
+        id: "[0-9]+"
+
+#Routes assurant la gestion du blog :
 front_office_homepage_blog_article:
     path:     /showArticles
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showArticles}

@@ -3,6 +3,7 @@
 namespace FrontOfficeHomepageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class ForumController extends Controller
 {
@@ -20,5 +21,15 @@ class ForumController extends Controller
 		$oneForum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
 
 		return $this -> render('FrontOfficeHomepageBundle:Forum:oneForum.html.twig', array('oneForum'=>$oneForum));
+	}
+
+	public function inscriptionAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$forum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
+		$forum -> addInscrit($this -> getUser());
+		$em -> flush();
+
+		return $this ->redirect($request -> headers -> get('referer'));		
 	}
 }
