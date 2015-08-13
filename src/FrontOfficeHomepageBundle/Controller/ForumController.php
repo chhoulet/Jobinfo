@@ -26,10 +26,12 @@ class ForumController extends Controller
 	public function inscriptionAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$forum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
 		$forum -> addInscrit($this -> getUser());
 		$em -> flush();
 
+		$session -> getFlashbag() -> add('succes','Votre inscription à ce forum est bien prise en compte !');
 		return $this ->redirect($request -> headers -> get('referer'));		
 	}
 }
