@@ -22,6 +22,7 @@ class BlogController extends Controller
 	public function showOneArticleAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$comment = new Comment();
 		$article = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
 		$formComment = $this -> createForm(new CommentType(), $comment);
@@ -36,6 +37,7 @@ class BlogController extends Controller
 			$em ->persist($comment);
 			$em ->flush();
 
+			$session -> getFlashbag()->add('succes','Votre commentaire est ajouté !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_blog_oneArticle', ['id'=>$id]));
 		}
 	

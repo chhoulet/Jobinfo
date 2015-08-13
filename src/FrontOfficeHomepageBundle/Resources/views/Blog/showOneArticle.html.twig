@@ -11,6 +11,10 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 
+                {% for message in app.session.flashbag.get('succes') %}
+                    {{ message }}
+                {% endfor %}
+
                 <!-- Blog Post -->
 
                 <!-- Title -->
