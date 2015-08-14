@@ -100,7 +100,7 @@ class Society
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="societies")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobSector", inversedBy="societies")
      * @ORM\JoinColumn(name="jobSector_id", referencedColumnName="id")
      */
     private $jobSector;
@@ -367,10 +367,10 @@ class Society
     /**
      * Set jobSector
      *
-     * @param \FrontOfficeUserBundle\Entity\User $jobSector
+     * @param \FrontOfficeEmploiBundle\Entity\JobSector $jobSector
      * @return Society
      */
-    public function setJobSector(\FrontOfficeUserBundle\Entity\User $jobSector = null)
+    public function setJobSector(\FrontOfficeEmploiBundle\Entity\JobSector $jobSector = null)
     {
         $this->jobSector = $jobSector;
 
@@ -380,7 +380,7 @@ class Society
     /**
      * Get jobSector
      *
-     * @return \FrontOfficeUserBundle\Entity\User 
+     * @return \FrontOfficeEmploiBundle\Entity\JobSector 
      */
     public function getJobSector()
     {
