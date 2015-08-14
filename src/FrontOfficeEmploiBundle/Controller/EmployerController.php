@@ -78,4 +78,9 @@ class EmployerController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Employer:myprofil.html.twig', 
 			array('society'=>$society));
 	}
+
+	public function myJobOffersAction()
+	{
+		return $this->render('FrontOfficeEmploiBundle:Employer:myJobOffers.html.twig');
+	}
 }

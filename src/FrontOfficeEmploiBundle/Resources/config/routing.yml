@@ -73,3 +73,7 @@ front_office_emploi_employer_myProfil:
     path:     /myprofilEmployer
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:myProfil}
 
+front_office_emploi_employer_myJobOffers:
+    path:     /myJobOffers 
+    defaults: { _controller: FrontOfficeEmploiBundle:Employer:myJobOffers}
+
