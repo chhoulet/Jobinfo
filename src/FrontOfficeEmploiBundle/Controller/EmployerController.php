@@ -83,4 +83,15 @@ class EmployerController extends Controller
 	{
 		return $this->render('FrontOfficeEmploiBundle:Employer:myJobOffers.html.twig');
 	}
+
+	public function desactivateJobOfferAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$desactivatedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$desactivatedJobOffer -> setActiveToPurchase(false);
+		$desactivatedJobOffer -> setDateDesactivation(new \DateTime('now'));
+		$em -> flush();
+
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }

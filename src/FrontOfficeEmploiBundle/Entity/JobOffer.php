@@ -71,6 +71,15 @@ class JobOffer
     private $dateApplyed;
 
     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateDesactivation", type="datetime", nullable = true)
+     */
+    private $dateDesactivation;
+
+
+    /**
     * @var boolean
     *
     * @ORM\Column(name="activeToPurchase", type="boolean")
@@ -508,5 +517,28 @@ class JobOffer
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set dateDesactivation
+     *
+     * @param \DateTime $dateDesactivation
+     * @return JobOffer
+     */
+    public function setDateDesactivation($dateDesactivation)
+    {
+        $this->dateDesactivation = $dateDesactivation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDesactivation
+     *
+     * @return \DateTime 
+     */
+    public function getDateDesactivation()
+    {
+        return $this->dateDesactivation;
     }
 }

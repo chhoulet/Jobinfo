@@ -77,3 +77,7 @@ front_office_emploi_employer_myJobOffers:
     path:     /myJobOffers 
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:myJobOffers}
 
+front_office_emploi_employer_desactivateJobOffer:
+    path:     /desactivateJobOffer/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Employer:desactivateJobOffer}
+
