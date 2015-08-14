@@ -45,7 +45,7 @@ class SocietyRepository extends EntityRepository
 
 	public function getSocietiesByJobSector()
 	{
-		$query = $this -> getEntitymanager()-> createQuery('
+		$query = $this -> getEntityManager()-> createQuery('
 			SELECT j, COUNT(s.id) AS nb 
 			FROM FrontOfficeEmploiBundle:JobSector j 
 			JOIN j.societies s 
@@ -53,5 +53,17 @@ class SocietyRepository extends EntityRepository
 			ORDER BY s.id DESC');
 
 		return $this -> getResult();
+	}
+
+	public function getSocietyByUser($user)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT s 
+			FROM FrontOfficeEmploiBundle:Society s 
+			JOIN s.user u 
+			WHERE u.id LIKE :id')
+		->setParameter('id', $user);
+
+		return $query -> getSingleResult();
 	}
 }

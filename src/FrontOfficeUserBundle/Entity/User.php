@@ -26,7 +26,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Society", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Society", cascade={"persist","remove"})
      */
     private $society;
 
@@ -239,29 +239,6 @@ class User extends BaseUser
     public function getCuvitae()
     {
         return $this->cuvitae;
-    }
-
-    /**
-     * Add society
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Society $society
-     * @return User
-     */
-    public function addSociety(\FrontOfficeEmploiBundle\Entity\Society $society)
-    {
-        $this->society[] = $society;
-
-        return $this;
-    }
-
-    /**
-     * Remove society
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Society $society
-     */
-    public function removeSociety(\FrontOfficeEmploiBundle\Entity\Society $society)
-    {
-        $this->society->removeElement($society);
     }
 
     /**

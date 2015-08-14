@@ -70,7 +70,6 @@ class Society
     /**
      * @var boolean
      *
-     * @Assert\Type(type="boolean", message="La valeur {{ value }} n'est pas un type {{ type }} valide.")
      * @ORM\Column(name="hiringState", type="boolean")
      */
     private $hiringState;
@@ -92,8 +91,8 @@ class Society
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="society")
-     * @ORM\JoinTable(name="user_society")
+     * @ORM\OneToOne(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="society")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -309,29 +308,6 @@ class Society
     }
 
     /**
-     * Add users
-     *
-     * @param \FrontOfficeUserBundle\Entity\User $users
-     * @return Society
-     */
-    public function addUser(\FrontOfficeUserBundle\Entity\User $users)
-    {
-        $this->users[] = $users;
-
-        return $this;
-    }
-
-    /**
-     * Remove users
-     *
-     * @param \FrontOfficeUserBundle\Entity\User $users
-     */
-    public function removeUser(\FrontOfficeUserBundle\Entity\User $users)
-    {
-        $this->users->removeElement($users);
-    }
-
-    /**
      * Set dateUpdated
      *
      * @param \DateTime $dateUpdated
@@ -355,16 +331,6 @@ class Society
     }
 
     /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      * Set jobSector
      *
      * @param \FrontOfficeEmploiBundle\Entity\JobSector $jobSector
@@ -385,5 +351,28 @@ class Society
     public function getJobSector()
     {
         return $this->jobSector;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $user
+     * @return Society
+     */
+    public function setUser(\FrontOfficeUserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

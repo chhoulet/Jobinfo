@@ -24,7 +24,7 @@ class EmployerController extends Controller
 		if($formSociety -> isValid())
 		{
 			$society -> setDateCreated(new \DateTime('now'));
-			$society -> addUser($this -> getUser());			
+			$society -> setUser($this -> getUser());			
 			$em -> persist($society);
 			$em -> flush();
 
@@ -68,5 +68,14 @@ class EmployerController extends Controller
 
 		return $this -> render('FrontOfficeEmploiBundle:Employer:listSocieties.html.twig', 
 			array('listSocieties' => $listSocieties));
+	}
+
+	public function myProfilAction()
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$society = $em -> getRepository('FrontOfficeEmploiBundle:Society')->getSocietyByUser($this -> getUser());
+
+		return $this -> render('FrontOfficeEmploiBundle:Employer:myprofil.html.twig', 
+			array('society'=>$society));
 	}
 }

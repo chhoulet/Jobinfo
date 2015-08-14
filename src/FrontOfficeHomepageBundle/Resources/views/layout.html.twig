@@ -72,6 +72,9 @@
                             <li>
                                 <a href="{{ path('front_office_emploi_mon_profil') }}">Mon profil</a>
                             </li>
+                            <li>
+                                <a href="{{ path('front_office_emploi_employer_myProfil') }}">Espace Employeurs</a> 
+                            </li>
                         {% else %}
                             <li>
                                 <a href="{{ path('fos_user_security_login') }}">Connection</a>
@@ -81,9 +84,7 @@
                             </li>
                             
                         {% endif %}
-                        <li>
-                         <a href="{{ path('fos_user_security_login') }}">Espace Employeurs</a> 
-                        </li><br>
+                        
                 </ul>
 
             </div>
