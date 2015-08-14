@@ -96,4 +96,14 @@ class EmployerController extends Controller
 		$session -> getFlashbag()-> add('succes','Cette offre d\'emploi est retirée du marché !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	public function desactivateSocietyAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$desactivatedSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->find($id);
+		$desactivatedSociety -> setHiringState(false);
+		$em -> flush();
+
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }
