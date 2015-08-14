@@ -1,0 +1,25 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
+
+			{% for message in app.session.flashbag.get('notice') %}
+				{{ message }}
+				<hr>
+			{% endfor %}
+
+			<h2>{{ society.name }}</h2><br><br>
+
+			Activité : {{ society.activity }}<br>
+			Description : {{ society.description }}<br>
+
+			<a href="{{ path('front_office_emploi_employer_myJobOffers')}}">Consulter mes offres publiées</a><br>
+			<a href="{{ path('front_office_emploi_employer_desactivateSociety',{id:society.id}) }}">Quitter la liste des sociétés qui recrutent</a>
+
+		</div>
+
+
+	{% endblock %}
+
+

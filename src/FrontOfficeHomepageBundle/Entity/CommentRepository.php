@@ -42,4 +42,18 @@ class CommentRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getCommentsValidated($article_id)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeHomepageBundle:Comment c 
+			JOIN c.article a
+			WHERE a.id LIKE :article_id
+			AND c.validAdmin = true 
+			ORDER BY c.dateCreated DESC')
+		->setParameter('article_id', $article_id);
+
+		return $query->getResult();
+	}
 }

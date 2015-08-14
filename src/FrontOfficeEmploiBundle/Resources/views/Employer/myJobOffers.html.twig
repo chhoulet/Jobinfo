@@ -1,0 +1,26 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
+
+			{% for message in app.session.flashbag.get('succes') %}
+				{{ message }}
+				<hr>
+			{% endfor %}
+
+			{% for job in app.user.jobOffers %}
+				<strong>{{ job.title}}<strong><br>
+				Poste proposé : {{ job.descriptionJob}}<br>
+				Contrat : {{ job.contract}}<br>
+				Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>				
+				
+				<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}">Retirer cette offre du marché</a><br><br>
+
+				<hr>
+			{% endfor %}
+
+		</div>
+
+
+	{% endblock %}
