@@ -49,7 +49,7 @@ class EmployerController extends Controller
 		{
 			$jobOffer -> setDateCreated(new \DateTime('now'));
 			$jobOffer -> setActiveToPurchase(true);
-			$jobOffer -> setSociety($this -> getUser());
+			$jobOffer -> addUser($this -> getUser());
 			$em -> persist($jobOffer);
 			$em -> flush();
 
