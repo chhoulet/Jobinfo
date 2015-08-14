@@ -100,10 +100,12 @@ class EmployerController extends Controller
 	public function desactivateSocietyAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$desactivatedSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->find($id);
 		$desactivatedSociety -> setHiringState(false);
 		$em -> flush();
 
+		$session -> getFlashbag() -> add('notice','Votre société est retirée de la liste des sociétés qui recrutent !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 }
