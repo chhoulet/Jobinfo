@@ -21,6 +21,7 @@ class StaticController extends Controller
 
 	public function contactAction(Request $request)
 	{
+		# Création et enregistrement d'un message en BDD:
 		$em = $this -> getDoctrine()-> getManager();
 		$message = new Message();
 		$form = $this -> createForm(new MessageType(), $message);

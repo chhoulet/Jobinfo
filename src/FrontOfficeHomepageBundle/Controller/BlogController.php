@@ -10,15 +10,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends Controller
 {
+	# Page d'accueil du blog, articles indifférenciés:
 	public function showArticlesAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$showArticles = $em -> getRepository('FrontOfficeHomepageBundle:Article')->findAll();
+		$showArticles = $em -> getRepository('FrontOfficeHomepageBundle:Article')->getArticles();
 
 		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', 
 			array('showArticles'=>$showArticles));
 	}
 
+	# Vue d'un article et de ses commentaires, mis en ligne après leur validation:
 	public function showOneArticleAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -46,6 +48,7 @@ class BlogController extends Controller
 				  'formComment'=>$formComment->createView()));
 	}
 
+	# Tri des articles par category:
 	public function triArticlesAction($category)
 	{
 		$em = $this -> getDoctrine()->getManager();

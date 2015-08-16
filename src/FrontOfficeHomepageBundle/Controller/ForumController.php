@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ForumController extends Controller
 {
+	# Liste des forums par type, déterminés en homepage :
 	public function listAction($forumType)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -15,6 +16,7 @@ class ForumController extends Controller
 		return $this -> render('FrontOfficeHomepageBundle:Forum:forum.html.twig', array('forums'=>$forums));
 	}
 
+	# Vue d'un forum 
 	public function oneForumAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -23,6 +25,7 @@ class ForumController extends Controller
 		return $this -> render('FrontOfficeHomepageBundle:Forum:oneForum.html.twig', array('oneForum'=>$oneForum));
 	}
 
+	# Inscription a un forum par ajout d'un user dans la jointable user_forum:
 	public function inscriptionAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();

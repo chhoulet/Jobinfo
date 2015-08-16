@@ -10,6 +10,7 @@ front_office_formation_list:
     requirements:
         formationType: (developpement|integration|architecte-logiciel|bdd|reseaux|devMob)
 
+# Selection des formations par type / Choix d'une formation - Attribution de valeur au paramétre formationType dans le lien en homepage
 front_office_formation_showOne:
     path:     /formation/{formationType}/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Formation:showOne}
@@ -17,6 +18,7 @@ front_office_formation_showOne:
         formationType: (developpement|integration|architecte-logiciel|bdd|reseaux|devMob)
         id: "[0-9]+"
 
+# Inscription d'un user à une formation:
 front_office_formation_inscription:
     path:     /inscriptionFormation/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Formation:inscription}
@@ -30,36 +32,40 @@ front_office_forum_list:
     requirements:
         forumType: (emploi|formation)
 
+# Selection des forums par type / Choix d'un forum - Attribution d'une valeur au paramètre grace au lien en homepage
 front_office_forum_oneForum:
     path:     /oneForum/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Forum:oneForum}
     requirements: 
         id: "[0-9]+"
 
+# Inscription d'un user à un forum:
 front_office_forum_inscription:
     path:     /inscriptionForum/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Forum:inscription}
     requirements:
         id: "[0-9]+"
 
-#Routes assurant la gestion du blog :
+# Routes assurant la gestion du blog :
 front_office_homepage_blog_article:
     path:     /showArticles
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showArticles}
 
+# Selection d'un article avec affichage de ses commentaires:
 front_office_homepage_blog_oneArticle:
     path:     /showOnearticle/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showOneArticle}
     requirements: 
         id: "[0-9]+"
 
+# Selection des articles selon leur category, parametrage en homepage du blog:
 front_office_homepage_blog_triArticle:
     path:     /triArticle/{category}
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:triArticles, category:emploi}
     requirements:
         category: (emploi|formation|big_data|developpement|integration)
 
-#Routes gérant les informations statiques:
+# Routes gérant les informations statiques:
 front_office_homepage_static_mentions_legales:
     path:     /mentions_legales
     defaults: { _controller: FrontOfficeHomepageBundle:Static:mentions}

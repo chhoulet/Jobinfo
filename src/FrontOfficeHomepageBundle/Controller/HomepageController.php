@@ -25,6 +25,7 @@ class HomepageController extends Controller
 
         if($formJobOffers ->isValid())
         {
+            # Recuperatiopn des éléments du formulaire pour hydrater les parametres de la requete:
             $datas = $formJobOffers -> getData();
             $jobOffersByTri = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')-> triJobOffers($datas['contract'], $datas['jobSector']);
 
@@ -40,4 +41,4 @@ class HomepageController extends Controller
     }
 }
 
- //dump($this->getUser()->getCv());
+ 
