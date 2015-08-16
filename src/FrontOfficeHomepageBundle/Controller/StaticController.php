@@ -35,7 +35,7 @@ class StaticController extends Controller
 			$message -> setReadMessage(false);
 			$em -> persist($message);
 			$em ->flush();			
-
+			
 			$session -> getFlashbag() -> add('contact','Votre message a été envoyé !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}

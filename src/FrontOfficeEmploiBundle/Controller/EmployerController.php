@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EmployerController extends Controller
 {
+	# Instantiation de l'objet Society + message flash:
 	public function createSocietyAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -36,6 +37,7 @@ class EmployerController extends Controller
 			array('formSociety'=>$formSociety->createView()));
 	}
 
+	# Instantiation de l'objet jobOffer + message flash:
 	public function createJobOfferAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -61,6 +63,7 @@ class EmployerController extends Controller
 			array('formJobOffer'=>$formJobOffer->createView()));
 	}
 
+	# Liste des sociétés qui recrutent, via un lien en homepage:
 	public function listSocietiesAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -70,6 +73,7 @@ class EmployerController extends Controller
 			array('listSocieties' => $listSocieties));
 	}
 
+	# Voir son profil société via son espace personnel:
 	public function myProfilAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
@@ -79,33 +83,40 @@ class EmployerController extends Controller
 			array('society'=>$society));
 	}
 
+	# Voir ses jobOffers publiées via son espace personnel:
 	public function myJobOffersAction()
 	{
 		return $this->render('FrontOfficeEmploiBundle:Employer:myJobOffers.html.twig');
 	}
 
+	# Function desactivant les jobOffers + message flash:
 	public function desactivateJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$session = $request -> getSession();
 		$desactivatedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		# Desactivation de l'attribut activeToPurchase:
 		$desactivatedJobOffer -> setActiveToPurchase(false);
 		$desactivatedJobOffer -> setDateDesactivation(new \DateTime('now'));
 		$em -> flush();
 
 		$session -> getFlashbag()-> add('succes','Cette offre d\'emploi est retirée du marché !');
+		# Redirection sur la meme page:
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
+	# Function desactivant la society + message flash:
 	public function desactivateSocietyAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
 		$desactivatedSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->find($id);
+		# Desactivation de l'attribut hiringState:
 		$desactivatedSociety -> setHiringState(false);
 		$em -> flush();
 
 		$session -> getFlashbag() -> add('notice','Votre société est retirée de la liste des sociétés qui recrutent !');
+		# Redirection sur la meme page:
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 }

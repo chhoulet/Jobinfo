@@ -13,7 +13,8 @@ use FrontOfficeEmploiBundle\Entity\Candidat;
 use FrontOfficeEmploiBundle\Entity\MotivationLetter;
 
 class JobOfferController extends Controller
-{
+{	
+	# Function selection une jobOffer:
 	public function showOneJobOfferAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -22,6 +23,8 @@ class JobOfferController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:JobOffer:showOneJobOffer.html.twig', array('showOneJobOffer'=> $showOneJobOffer));
 	}
 
+	#  Selection d'une jobOffer par un candidat, attribution de l'id du user a la join table users_joboffers. 
+	# La vue relationnelle entre User et Candidat assure la liaison dans l'espace personnel.
 	public function selectAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -35,6 +38,7 @@ class JobOfferController extends Controller
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
+	# Function de reponse a une jobOffer par un candidat:
 	public function responseJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -65,6 +69,7 @@ class JobOfferController extends Controller
 			array('formResponseJobOffer'=>$formResponseJobOffer->createView()));
 	}
 
+	# Voir ses reponses envoyees a ses offres:
 	public function getResponseJobOfferAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();

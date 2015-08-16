@@ -3,84 +3,101 @@ front_office_emploi_mon_profil:
     path:     /monProfil
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:monProfil}
 
+# Enregistrement du CV:
 front_office_emploi_candidat_createCV:
     path:     /createCV
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createCV}
 
+# Enregistrement de la LM:
 front_office_emploi_candidat_createLM:
     path:     /createLM
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM}
 
+# Function Voir ses CV dans son espace perso :
 front_office_emploi_candidat_showMyCv:
     path:     /showMyCv 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyCv}
 
+# Function Voir ses LM dans son espace perso :
 front_office_emploi_candidat_showMyLm:
     path:     /showMyLm 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyLm}
 
+# Function Voir ses offres d'emplois dans son espace perso :
 front_office_emploi_candidat_showMyJobOffers:
     path:     /showJobOffers 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyJobOffers}
 
+# Function Voir ses inscriptions à différents évenements dans son espace perso :
 front_office_emploi_candidat_showMyInscriptions:
     path:     /showMyInscriptions 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyInscriptions}
 
+# Function créer son profil Candidat dans son espace perso :
 front_office_emploi_candidat_new:
     path:     /newCandidat
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:new}
 
-#Routes gerant les offres d'emploi:
+# Routes gerant les offres d'emploi:
 front_office_emploi_jobOffer_showOne:
     path:     /showOneJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:showOneJobOffer}
     requirements:
         id: "[0-9]+"
 
+# Selection des jobOffers par criteres:
 front_office_emploi_jobOffer_select:
     path:     /selectJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:select}
     requirements:
         id: "[0-9]+"
 
+# Function de reponse a une jobOffer:
 front_office_emploi_jobOffer_responseJobOffer:
     path:     /responseJobOffer/{id}    
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:responseJobOffer}
     requirements:
         id: "[0-9]+"
 
+# Selection de voir les reponses envoyées a ses jobOffers selectionnées pour un candidat:
 front-office_emploi_jobOffer_getResponseJobOffer:
     path:     /getResponseJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:getResponseJobOffer}
     requirements:
         id: "[0-9]+"
 
-#Routes gérant les fonctionnalités des employeurs:
+# Routes gérant les fonctionnalités des employeurs:
+# Enrtegistrer une société:
 front_office_emploi_employer_createSociety:
     path:     /createSociety
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:createSociety}
 
+# Publier une jobOffer:
 front_office_emploi_employer_createJobOffer:
     path:     /createJobOffer 
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:createJobOffer}
 
+# Liste des societes qui recrutent:
 front_office_emploi_employer_list:
     path:     /listSocieties
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:listSocieties}
 
+# Voir espace personnel employeur:
 front_office_emploi_employer_myProfil:
     path:     /myprofilEmployer
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:myProfil}
 
+# Voir ses jobOffers publiées dans son espace perso:
 front_office_emploi_employer_myJobOffers:
     path:     /myJobOffers 
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:myJobOffers}
 
+# Retrait de la liste des postes a pourvoir d'une jobOffer:
 front_office_emploi_employer_desactivateJobOffer:
     path:     /desactivateJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:desactivateJobOffer}
 
+# Retrait de sa société de la liste des societes qui recrutent:
 front_office_emploi_employer_desactivateSociety:
     path:     /desactivateSociety/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:desactivateSociety}
