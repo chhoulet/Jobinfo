@@ -24,6 +24,7 @@ class StaticController extends Controller
 		# Création et enregistrement d'un message en BDD:
 		$em = $this -> getDoctrine()-> getManager();
 		$message = new Message();
+		$session = $request -> getSession();
 		$form = $this -> createForm(new MessageType(), $message);
 
 		$form -> handleRequest($request);
@@ -35,6 +36,7 @@ class StaticController extends Controller
 			$em -> persist($message);
 			$em ->flush();			
 
+			$session -> getFlashbag() -> add('contact','Votre message a été envoyé !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}
 
