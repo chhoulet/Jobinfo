@@ -2,12 +2,19 @@
 
 	{% block content %}
 		
-		<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+		
 			{% for message in app.session.flashbag.get('select') %}
-				{{ message }}
+				<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+					{{ message }}
+				</div>
 			{% endfor %}
-		</div>
 
+			{% for messa in app.session.flashbag.get('notice') %}
+				<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+					{{ messa }}
+				</div>
+			{% endfor %}
+		
 		<div style="background-color:white;">
 
 			<h2>Détail de l'offre</h2>

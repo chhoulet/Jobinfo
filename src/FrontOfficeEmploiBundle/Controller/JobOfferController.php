@@ -42,6 +42,7 @@ class JobOfferController extends Controller
 	public function responseJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$responseJobOffer = new ResponseJobOffer();
 		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
 
@@ -59,6 +60,7 @@ class JobOfferController extends Controller
 			$responseJobOffer -> setJobOffer($jobOffer);
 			$responseJobOffer -> setCandidat($this->getUser());
 
+			$session -> getFlashbag()-> add('notice','Votre candidature a bien été envoyée !');
 			$em ->persist($responseJobOffer);
 			$em -> flush();
 
