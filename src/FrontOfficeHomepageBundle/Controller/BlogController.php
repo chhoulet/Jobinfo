@@ -55,28 +55,6 @@ class BlogController extends Controller
 				  'formComment'=> $form->createView()));
 	}
 
-
-	/*$em = $this -> getDoctrine()->getManager();
-		$session = $request -> getSession();
-		$comment = new Comment();
-		$article = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
-		$formComment = $this -> createForm(new CommentType(), $comment);
-
-		$formComment -> handleRequest($request);
-
-		if($formComment -> isValid())
-		{
-			$comment -> setDateCreated(new \DateTime('now'));
-			$comment -> setArticle($article);
-			$comment -> setValidAdmin(false);
-			$em ->persist($comment);
-			$em ->flush();
-
-			$session -> getFlashbag()->add('succes','Votre commentaire est ajouté !');
-			return $this -> redirect($this -> generateUrl('front_office_homepage_blog_oneArticle', ['id'=>$id]));
-		}
-	*/
-
 	# Tri des articles par category:
 	public function triArticlesAction($category)
 	{

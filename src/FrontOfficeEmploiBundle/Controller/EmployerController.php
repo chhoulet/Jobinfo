@@ -86,7 +86,7 @@ class EmployerController extends Controller
 	# Voir ses jobOffers publiées via son espace personnel:
 	public function myJobOffersAction()
 	{
-		return $this->render('FrontOfficeEmploiBundle:Employer:myJobOffers.html.twig');
+		return $this->render('FrontOfficeEmploiBundle:Employer:showMyJobOffers.html.twig');
 	}
 
 	# Function desactivant les jobOffers + message flash:
