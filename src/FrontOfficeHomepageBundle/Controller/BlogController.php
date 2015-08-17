@@ -26,6 +26,39 @@ class BlogController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
 		$comment = new Comment();
+		$oneArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')-> find($id);
+				
+		/*var_dump($id_article);*/
+		# Selection des comments valides rattachés à l'article selectionne(id en parametre);
+		$comments = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> getCommentsValidated($oneArticle);
+		$form = $this -> createForm(new CommentType(), $comment,
+		    ['action' => $this -> generateUrl('front_office_homepage_blog_oneArticle',['id'=>$oneArticle]) ]);
+	
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$comment -> setDateCreated(new \DateTime('now'));
+			$comment -> setValidAdmin(false);
+			$comment -> setUserName($this -> getUser());
+			$comment -> setArticle($oneArticle);
+			$em -> persist($comment);
+			$em ->flush();
+
+			/*Message flash*/
+			$session -> getFlashbag()->add('notice','Votre commentaire est enregistré. Il sera publié après validation !');
+			return $this -> redirect($request -> headers -> get('referer'));
+		}
+		
+		return $this -> render('FrontOfficeHomepageBundle:Blog:showOneArticle.html.twig', 
+			array('showOneArticle' => $oneArticle,
+				  'formComment'=> $form->createView()));
+	}
+
+
+	/*$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$comment = new Comment();
 		$article = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
 		$formComment = $this -> createForm(new CommentType(), $comment);
 
@@ -42,11 +75,7 @@ class BlogController extends Controller
 			$session -> getFlashbag()->add('succes','Votre commentaire est ajouté !');
 			return $this -> redirect($this -> generateUrl('front_office_homepage_blog_oneArticle', ['id'=>$id]));
 		}
-	
-		return $this -> render('FrontOfficeHomepageBundle:Blog:showOneArticle.html.twig', 
-			array('showOneArticle' =>$article,
-				  'formComment'=>$formComment->createView()));
-	}
+	*/
 
 	# Tri des articles par category:
 	public function triArticlesAction($category)

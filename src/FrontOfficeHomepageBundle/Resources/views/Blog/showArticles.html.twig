@@ -18,13 +18,17 @@
                         <small>Toute l'actu du marché de l'emploi :</small>
                     </h1>
 
+                    {% for message in app.session.flashbag.get('notice') %}
+                        {{ message }}
+                    {% endfor %}
+
                     <!-- First Blog Post -->
                     {% for article in showArticles %}
                         <h2>
                             <a href="#">{{ article.title }}</a>
                         </h2>
                         <p class="lead">
-                            by <a href="index.php"> {# {{ article.author.username }} #}</a>
+                            by <a href="index.php"> {# {{ article.author }} #}</a>
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> Posté le {{ article.dateCreated | date('d-m-Y H:i:s') }}</p>
                         <hr>
