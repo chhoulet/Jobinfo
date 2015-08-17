@@ -59,13 +59,6 @@ front_office_emploi_jobOffer_responseJobOffer:
     requirements:
         id: "[0-9]+"
 
-# Selection de voir les reponses envoyées a ses jobOffers selectionnées pour un candidat:
-front-office_emploi_jobOffer_getResponseJobOffer:
-    path:     /getResponseJobOffer/{id}
-    defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:getResponseJobOffer}
-    requirements:
-        id: "[0-9]+"
-
 # Routes gérant les fonctionnalités des employeurs:
 # Enrtegistrer une société:
 front_office_emploi_employer_createSociety:

@@ -68,14 +68,4 @@ class JobOfferController extends Controller
 		return $this ->render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig', 
 			array('formResponseJobOffer'=>$formResponseJobOffer->createView()));
 	}
-
-	# Voir ses reponses envoyees a ses offres:
-	public function getResponseJobOfferAction()
-	{
-		$em = $this -> getDoctrine()-> getManager();
-		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponses($this->getUser());
-		
-		return $this -> render('FrontOfficeEmploiBundle:JobOffer:getResponseJobOffer.html.twig', 
-			array('getResponseJobOffer' => $jobOffer));
-	}
 }

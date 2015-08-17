@@ -11,7 +11,26 @@
 				Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
 				Sélectionnée le : {{ job.dateSelected | date('d-m-Y') }}<br>
 				<hr>
-			{% endfor %}
+				Réponses:   {% for answers in job.responseJobOffer %}
+								{{ answers.content }}<br>
+								{{ answers.dateCreated | date('d-m-Y') }}<br>
+									CV: {% for mycv in answers.cuvitae %}
+										 	{{ mycv.title }}<br>
+										 	{{ mycv.gradeOne }}<br>
+											{{ mycv.gradeTwo }}<br>
+											{{ mycv.languages }}<br>
+											{{ mycv.workExperience1}}<br>
+											{{ mycv.workExperience2}}<br> 
+									    {% endfor %}
+									LM: {% for mylm in answers.motivationLetter %}
+											{{ mylm.subject }}<br>
+											{{ mylm.dateCreated | date('d-m-Y') }}<br>
+											{{ mylm.content }}<br>
+									    {% endfor %}
+						    {% endfor %}
+
+										
+			{% endfor %}<br><br>
 
 		</div>
 
