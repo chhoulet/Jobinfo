@@ -21,6 +21,7 @@ class AdminEtablissementController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$newEta = new Etablissement();
+		$session = $request -> getSession();
 		$form = $this -> createForm(new EtablissementType(), $newEta);
 
 		$form -> handleRequest($request);
@@ -31,6 +32,7 @@ class AdminEtablissementController extends Controller
 			$em -> persist($newEta);
 			$em ->flush();
 
+			$session ->getFlashbag()->add('newet','Votre établissement est bien créé dans la base !');
 			return $this->redirect($this->generateUrl('back_office_adminEtablissement_list'));
 		}
 
