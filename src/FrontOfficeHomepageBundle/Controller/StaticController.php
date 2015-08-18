@@ -43,4 +43,9 @@ class StaticController extends Controller
 		return $this -> render('FrontOfficeHomepageBundle:Static:contact.html.twig', 
 			array('form'=>$form->createView()));
 	}
+
+	public function aboutAction()
+	{
+		return $this -> render('FrontOfficeHomepageBundle:Static:about.html.twig');
+	}
 }
