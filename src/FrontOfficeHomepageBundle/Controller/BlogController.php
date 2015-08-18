@@ -65,4 +65,13 @@ class BlogController extends Controller
 			array('showArticles'=> $articles));
 	}
 
+	public function listAction()
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$listCategory = $em -> getRepository('FrontOfficeHomepageBundle:Category')->findAll();
+		
+		return $this -> render('FrontOfficeHomepageBundle:Slots:sidebar.html.twig', 
+			array('listCategory'=>$listCategory));
+	}
+
 }

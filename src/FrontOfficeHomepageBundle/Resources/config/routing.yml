@@ -61,9 +61,11 @@ front_office_homepage_blog_oneArticle:
 # Selection des articles selon leur category, parametrage en homepage du blog:
 front_office_homepage_blog_triArticle:
     path:     /triArticle/{category}
-    defaults: { _controller: FrontOfficeHomepageBundle:Blog:triArticles, category:emploi}
-    requirements:
-        category: (emploi|formation|big_data|developpement|integration)
+    defaults: { _controller: FrontOfficeHomepageBundle:Blog:triArticles}
+
+front_office_homepage_blog_categories:
+    path:     /Categories 
+    defaults: { _controller: FrontOfficeHomepageBundle:Blog:list}
 
 # Routes gérant les informations statiques:
 front_office_homepage_static_mentions_legales:
