@@ -89,7 +89,7 @@ class Article
      /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Article", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Category", inversedBy="article")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
@@ -310,14 +310,13 @@ class Article
         return $this->image;
     }
 
-
     /**
      * Set category
      *
-     * @param \FrontOfficeHomepageBundle\Entity\Article $category
+     * @param \FrontOfficeHomepageBundle\Entity\Category $category
      * @return Article
      */
-    public function setCategory(\FrontOfficeHomepageBundle\Entity\Article $category = null)
+    public function setCategory(\FrontOfficeHomepageBundle\Entity\Category $category = null)
     {
         $this->category = $category;
 
@@ -327,7 +326,7 @@ class Article
     /**
      * Get category
      *
-     * @return \FrontOfficeHomepageBundle\Entity\Article 
+     * @return \FrontOfficeHomepageBundle\Entity\Category 
      */
     public function getCategory()
     {
