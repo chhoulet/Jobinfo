@@ -8,6 +8,10 @@
                 {{ message }}
             {% endfor %}
 
+            {% for messag in app.session.flashbag.get('notice') %}
+                {{ messag }}
+            {% endfor %}
+
     		{% for forma in showFormation %}
         		<div class="row">
                     <div class="box">

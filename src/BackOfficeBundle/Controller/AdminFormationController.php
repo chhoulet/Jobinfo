@@ -45,6 +45,7 @@ class AdminFormationController extends Controller
     {
         $em = $this -> getDoctrine()->getManager();
         $formation = new Formation();
+        $session = $request -> getSession();
         $formCreationFormation = $this -> createForm(new FormationType(), $formation);
 
         $formCreationFormation -> handleRequest($request);
@@ -55,6 +56,7 @@ class AdminFormationController extends Controller
             $em -> persist($formation);
             $em -> flush();
 
+            $session -> getFlashbag()->add('notice','La formation est ajoutée dans la base !');
             return $this -> redirect($this -> generateUrl('back_office_adminformation_show'));
         }
 
