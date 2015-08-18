@@ -64,13 +64,15 @@ class AdminFormationController extends Controller
             array('formCreationFormation'=>$formCreationFormation->createView()));
     }
 
-    public function deleteFormationAction($id)
+    public function deleteFormationAction(Request $request, $id)
     {
         $em = $this -> getDoctrine()->getManager();
+        $session = $request -> getSession();
         $editFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
         $em -> remove($editFormation);
         $em -> flush();
 
+        $session -> getFlashbag()->add('supp','La formation sélectionnée est supprimée dans la base !');
         return $this -> redirect($this->generateUrl('back_office_adminformation_show'));
     }   
 }

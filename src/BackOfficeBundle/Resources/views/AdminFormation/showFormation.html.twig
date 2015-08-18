@@ -12,6 +12,11 @@
                 {{ messag }}
             {% endfor %}
 
+            {% for messa in app.session.flashbag.get('supp') %}
+                {{ messa }}
+            {% endfor %}
+
+
     		{% for forma in showFormation %}
         		<div class="row">
                     <div class="box">
