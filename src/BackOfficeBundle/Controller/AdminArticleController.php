@@ -56,14 +56,16 @@ class AdminArticleController extends Controller
 			array('formEditArticle'=> $formEditArticle ->createView()));
 	}
 
-	public function deleteArticleAction($id)
+	public function deleteArticleAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$deleteArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
 		$em -> remove($deleteArticle);
 		$em -> flush();
 
-		return $this -> redirect($this -> generateurl('front_office_homepage_blog_article'));
+		$session -> getFlashbag()->add('suppr','Cet article est bien supprimé du blog !');
+		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
 	public function listAction()
