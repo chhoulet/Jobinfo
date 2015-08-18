@@ -12,6 +12,10 @@
                 {{ messag }}
             {% endfor %}
 
+            {% for messa in app.session.flashbag.get('notice') %}
+                {{ messa }}
+            {% endfor %}
+
     		{% for forum in showForums %}
 
         		<div class="row">

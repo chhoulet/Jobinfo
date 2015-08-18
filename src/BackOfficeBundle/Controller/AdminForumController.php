@@ -69,13 +69,15 @@ class AdminForumController extends Controller
 			array('formForum'=>$formForum->createView()));
 	}
 
-	public function deleteAction($id)
+	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$deleteForum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
 		$em ->remove($deleteForum);
 		$em ->flush();
 
+		$session ->getFlashbag()->add('notice','Ce forum a bien été supprimé !');
 		return $this -> redirect($this -> generateUrl('back_office_adminforum_list'));
 	}
 
