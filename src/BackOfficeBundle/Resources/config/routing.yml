@@ -1,181 +1,190 @@
-#Route gerant la homepage du backoffice:
+# Route gerant la homepage du backoffice:
 back_office_homepage:
     path:     /homepageBackoffice
     defaults: { _controller: BackOfficeBundle:Homepage:homepage}
 
-#Routes gerant l'administration des articles:
+# Routes gerant l'administration des articles:
 back_office_adminarticles_list:
     path:     /listArticles
     defaults: { _controller: BackOfficeBundle:AdminArticle:list}
 
+# Créer un nouvel article:
 back_office_adminarticles_create:
     path:     /createArticle
     defaults: { _controller: BackOfficeBundle:AdminArticle:createArticle}
 
+# Editer un nouvel article:
 back_office_adminarticles_edit:
     path:     /editArticle/{id}
     defaults: { _controller: BackOfficeBundle:AdminArticle:editArticle}
     requirements: 
         id: "[0-9]+"
 
+# Suppression d'un article:
 back_office_adminarticles_delete:
     path:     /deleteArticle/{id}
     defaults: { _controller: BackOfficeBundle:AdminArticle:deleteArticle}
     requirements:
         id: "[0-9]+"
 
-#Routes gerant l'administration des commentaires:
+# Routes gerant l'administration des commentaires:
 back_office_admincomments_listUnvalidated:
     path:     /listUnvalidated 
     defaults: { _controller: BackOfficeBundle:AdminComment:commentUnvalidated}
 
-    # Validation des comments:
+# Validation des comments:
 back_office_admincomments_validation:
     path:     /validationComment/{id}
     defaults: { _controller: BackOfficeBundle:AdminComment:validation}
     requirements:
         id: "[0-9]+"
 
-    # Suppression des comments:
+# Suppression des comments:
 back_office_admincomments_delete:
     path:     /deleteComment/{id}
     defaults: { _controller: BackOfficeBundle:AdminComment:delete}
     requirements:
         id: "[0-9]+"
 
-#Routes gerant l'administration des formations:
+# Routes gerant l'administration des formations:
 back_office_adminformation_show:
     path:     /showFormation
     defaults: { _controller: BackOfficeBundle:AdminFormation:showFormation}
 
+# Edition d'une formation:
 back_office_adminformation_edit:
     path:     /editFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:editFormation}
     requirements: 
         id: "[0-9]+"
 
+# Création d'une formation:
 back_office_adminformation_create:
     path:     /createFormation
     defaults: { _controller: BackOfficeBundle:AdminFormation:createFormation}
 
+# Suppression d'une formation:
 back_office_adminformation_delete:
     path:     /deleteFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
     requirements:
         id: "[0-9]+"
 
-back_office_adminformation_triFormations:
-    path:     /triFormations
-    defaults: { _controller: BackOfficeBundle:AdminFormation:triFormations}
-
-#Routes gerant l'administration des forums:
+# Routes gerant l'administration des forums:
 back_office_adminforum_list:
     path:     /listForums
     defaults: { _controller: BackOfficeBundle:AdminForum:list}
 
+# Création d'un forum:
 back_office_adminforum_new:
     path:     /newForum
     defaults: { _controller: BackOfficeBundle:AdminForum:new}
 
+# Selection d'un forum:
 back_office_adminforum_showOne:
     path:     /showOneForum/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:showOne}
     requirements: 
         id: "[0-9]+"
 
+# Edition d'un forum:
 back_office_adminforum_edit:
     path:     /edit/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:edit}
     requirements:
         id: "[0-9]+"
 
+# Suppression d'un forum:
 back_office_adminforum_delete:
     path:     /deleteForum/{id}
     defaults: { _controller: BackOfficeBundle:AdminForum:delete}
     requirements:
         id: "[0-9]+"
 
+# Tri des forums par type(emploi - formation):
 back_office_adminforum_triForums:
     path:     /triForums 
     defaults: { _controller: BackOfficeBundle:AdminForum:triForums}
 
-#Routes gerant l'administration des JobSectors: 
+# Routes gerant l'administration des JobSectors: 
 back_office_adminJobSector_list:
     path:     /listJobSector
     defaults: { _controller: BackOfficeBundle:AdminJobSector:list}
 
+# Creation de jobSector:
 back_office_adminJobSector_create:
     path:      /createJobSector
     defaults: { _controller: BackOfficeBundle:AdminJobSector:create}
 
-#Routes gerant l'administration des jobOffers:
+# Routes gerant l'administration des jobOffers:
 back_office_adminjobOffers_show:
     path:     /listJobOffers
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:listJobOffers}
 
+# Edition d'une jobOffer:
 back_office_adminjobOffer_edit:
     path:     /editJobOffer/{id}
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:editJobOffer}
     requirements:
         id: "[0-9]+"
 
+# Suppression d'une jobOffer:
 back_office_adminjobOffer_delete:
     path:     /deleteJobOffer/{id}
     defaults: { _controller: BackOfficeBundle:AdminJobOffers:deleteJobOffer}
     requirements: 
         id: "[0-9]+"
 
-#Routes gerant l'administration des Etablissements
+# Routes gerant l'administration des Etablissements
 back_office_adminEtablissement_list:
     path:     /list
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:list}
 
+# Création d'un etablissement:
 back_office_adminEtablissement_new:
     path:     /new
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:new} 
 
+# Etablissement triés par secteurs de formation:
 back_office_adminEtablissement_tri:
     path:     /triByFormations
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:tri}
 
+# Suppression d'un etablissement:
 back_office_adminEtablissement_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:AdminEtablissement:delete}
     requirements: 
         id: "[0-9]+"
 
-#Routes gerant l'administration des societes:
+# Routes gerant l'administration des societes:
 back_office_adminSociety_list:
     path:     /listByDate
     defaults: { _controller: BackOfficeBundle:AdminSociety:triSociety}
 
+# Edition d'une society:
 back_office_adminSociety_edit:
     path:     /edit{id}
     defaults: { _controller: BackOfficeBundle:AdminSociety:edit}
     requirements: 
         id: "[0-9]+"
 
-#Routes gerant l'administration des subscribers aux différents evenements:
-back_office_admin_subscriber_view:
-    path:     /viewSubscriber
-    defaults: { _controller: BackOfficeBundle:AdminSubscriber:view}
-
-#Routes gerant les messages:
+# Routes gerant les messages:
 back_office_admin_list_messages:
     path:     /listMessages 
     defaults: { _controller: BackOfficeBundle:AdminMessages:list}
 
-    #Marquer un message comme lu:
+# Marquer un message comme lu:
 back_office_admin_readMessage:
     path:     /readMessage/{id}
     defaults: { _controller: BackOfficeBundle:AdminMessages:readMessage}
 
-    #Liste des messages archivés:
+# Liste des messages archivés:
 back_office_admin_readMessage_list:
     path:     /listReadMessage
     defaults: { _controller: BackOfficeBundle:AdminMessages:listReadMessage}
     
-    #Supprimer un message:
+# Supprimer un message:
 back_office_admin_message_delete:
     path:     /deleteMessage/{id}
     defaults: { _controller: BackOfficeBundle:AdminMessages:delete}

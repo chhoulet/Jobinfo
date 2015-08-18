@@ -68,16 +68,5 @@ class AdminFormationController extends Controller
         $em -> flush();
 
         return $this -> redirect($this->generateUrl('back_office_adminformation_show'));
-    }
-
-    public function triFormationsAction()
-    {
-        $em = $this -> getDoctrine()->getManager();
-        $getFormationType = $em -> getRepository('FrontOfficeHomepageBundle:Formation')-> getFormationType();
-        $getSubscriber =  $em -> getRepository('FrontOfficeHomepageBundle:Subscriber') -> getSubscriberByFormation();
-
-        return $this -> render('BackOfficeBundle:AdminFormation:getFormationType.html.twig',
-            array('getFormationType' => $getFormationType,
-                  'getSubscriber'    => $getSubscriber));
-    }
+    }   
 }
