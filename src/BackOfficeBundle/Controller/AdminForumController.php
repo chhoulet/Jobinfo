@@ -50,6 +50,7 @@ class AdminForumController extends Controller
 	public function editAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$forum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
 		$formForum = $this -> createForm(new ForumType(), $forum);
 
@@ -59,6 +60,8 @@ class AdminForumController extends Controller
 		{
 			$em -> persist($forum);
 			$em -> flush();
+
+			$session -> getFlashbag() -> add('edit','Vos modifications ont été enregistrées !');
 			return $this -> redirect($this->generateUrl('back_office_adminforum_list'));
 		}
 

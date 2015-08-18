@@ -59,9 +59,9 @@ class Forum
      *
      * @Assert\Length(
      *      min = "50",
-     *      max = "500",
-     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     *      max = "700",
+     *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
      * )
      * @ORM\Column(name="forumDescription", type="text")
      */

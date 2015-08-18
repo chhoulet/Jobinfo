@@ -8,6 +8,10 @@
                 {{ message }}
             {% endfor %}
 
+            {% for messag in app.session.flashbag.get('edit') %}
+                {{ messag }}
+            {% endfor %}
+
     		{% for forum in showForums %}
 
         		<div class="row">
