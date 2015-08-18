@@ -4,6 +4,10 @@
 
 		<h2> Liste des forums : </h2>
 
+            {% for message in app.session.flashbag.get('forum') %}
+                {{ message }}
+            {% endfor %}
+
     		{% for forum in showForums %}
 
         		<div class="row">

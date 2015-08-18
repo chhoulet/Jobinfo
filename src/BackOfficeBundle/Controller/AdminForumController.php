@@ -21,6 +21,7 @@ class AdminForumController extends Controller
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$forum = new Forum();
 		$formForum = $this -> createForm(new ForumType(), $forum);
 
@@ -30,6 +31,7 @@ class AdminForumController extends Controller
 			$em -> persist($forum);
 			$em -> flush();
 
+			$session -> getFlashbag()->add('forum','Ce forum est ajouté à la liste !');
 			return $this -> redirect($this -> generateUrl('back_office_adminforum_list'));
 		}
 

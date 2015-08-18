@@ -19,14 +19,16 @@
 
     {% block content %}
 
-		<h2> Liste des Forums par type : </h2>
+    	<div style="background-color:white">
 
-            {% for forum in getForumType %}    		
+			<h2> Forums groupés par type : </h2>	              		
 
-                {{ forum.forumName }} <br><br>
-                {{ forum.forumType }}               
+	            {% for form in  getForumType %}
+			        {{ form.forumType }}<br>
+			            {{ form.forumName }}
+			    {% endfor %}            
 
-            {% endfor %}
+	    </div>
 
 >>>>>>> master
 	{% endblock %}
