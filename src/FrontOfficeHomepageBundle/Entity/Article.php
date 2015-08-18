@@ -57,14 +57,6 @@ class Article
     private $content;
 
     /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="category", type="text")
-     */
-    private $category;
-
-    /**
      * @var \DateTime
      *
      * @Assert\DateTime()
@@ -93,6 +85,14 @@ class Article
      * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Comment", mappedBy="article")
      */
     private $comment;
+
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Article", inversedBy="article")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
 
     /**
      * Get id
@@ -310,13 +310,14 @@ class Article
         return $this->image;
     }
 
+
     /**
      * Set category
      *
-     * @param string $category
+     * @param \FrontOfficeHomepageBundle\Entity\Article $category
      * @return Article
      */
-    public function setCategory($category)
+    public function setCategory(\FrontOfficeHomepageBundle\Entity\Article $category = null)
     {
         $this->category = $category;
 
@@ -326,7 +327,7 @@ class Article
     /**
      * Get category
      *
-     * @return string 
+     * @return \FrontOfficeHomepageBundle\Entity\Article 
      */
     public function getCategory()
     {
