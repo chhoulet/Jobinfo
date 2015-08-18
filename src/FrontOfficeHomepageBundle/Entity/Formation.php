@@ -66,7 +66,7 @@ class Formation
      * @var \DateTime
      *
      * @Assert\DateTime() 
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
 

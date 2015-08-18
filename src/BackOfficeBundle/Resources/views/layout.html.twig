@@ -154,19 +154,14 @@
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
                         <a href="{{ path('back_office_homepage') }}"><i class="fa fa-fw fa-dashboard"></i>Homepage</a>
+                    </li>                    
+                    <li>
+                        <a href="{{ path('back_office_adminformation_show') }}"><i class="fa fa-fw fa-desktop"></i>Liste des Formations</a>
                     </li>
                     <li>
-                        <a href="{{ path('back_office_adminarticles_list')}}" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Formations <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="{{ path('back_office_adminformation_show') }}">Lister</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('back_office_adminformation_create') }}">Créer</a>
-                            </li>
-                        </ul>
+                        <a href="{{ path('back_office_adminformation_create') }}"><i class="fa fa-fw fa-file"></i> Create Formation</a>
                     </li>
-                    </li>
+                    
                     <li>
                         <a href="{{ path('back_office_adminarticles_create') }}"><i class="fa fa-fw fa-table"></i>Création Articles</a>
                     </li>

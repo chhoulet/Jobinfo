@@ -21,6 +21,7 @@ class AdminFormationController extends Controller
     public function editFormationAction(Request $request, $id)
     {
     	$em = $this -> getDoctrine()->getManager();
+        $session = $request -> getSession();
     	$editFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
     	$formFormation = $this -> createForm(new FormationType(), $editFormation);
 
@@ -32,6 +33,7 @@ class AdminFormationController extends Controller
     		$em -> persist($editFormation);
     		$em -> flush();
 
+            $session -> getFlashbag()->add('succes','La formation a bien été modifiée dans la base !');
             return $this -> redirect($this -> generateUrl('back_office_adminformation_show'));
     	}
 
