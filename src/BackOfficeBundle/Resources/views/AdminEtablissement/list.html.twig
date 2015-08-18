@@ -8,6 +8,10 @@
                 {{ eta }}
             {% endfor %}
 
+            {% for message in app.session.flashbag.get('succes') %}
+                {{ message }}
+            {% endfor %}
+
     		{% for eta in list %}
         		<div class="row">
                     <div class="box">

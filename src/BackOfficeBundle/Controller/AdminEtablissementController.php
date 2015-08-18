@@ -47,13 +47,15 @@ class AdminEtablissementController extends Controller
 		return $this -> render('BackOfficeBundle:AdminEtablissement:tri.html.twig', array('tri'=>$tri));
 	}
 
-	public function deleteAction($id)
+	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$deleteEta = $em -> getRepository('FrontOfficeHomepageBundle:Etablissement') -> find($id);
 		$em -> remove($deleteEta);
 		$em -> flush();
 
+		$session ->getFlashbag()->add('succes','L\'etablissement selectionné a bien été supprimé !');
 		return $this -> redirect($this->generateUrl('back_office_adminEtablissement_list'));
 	}
 }
