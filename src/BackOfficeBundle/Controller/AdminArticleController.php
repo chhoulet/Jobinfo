@@ -13,6 +13,7 @@ class AdminArticleController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$article = new Article();
+		$session = $request ->getSession();
 		$formArticle = $this ->createForm(new ArticleType(), $article);
 
 		$formArticle -> handleRequest($request);
@@ -24,6 +25,7 @@ class AdminArticleController extends Controller
 			$em -> persist($article);
 			$em -> flush();
 
+			$session -> getFlashbag()->add('succes','L\'article est ajouté dans le blog !');
 			return $this-> redirect($this -> generateUrl('front_office_homepage_blog_article'));
 		}
 
@@ -34,6 +36,7 @@ class AdminArticleController extends Controller
 	public function editArticleAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()->getManager();	
+		$session = $request -> getSession();
 		$editArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
 		$formEditArticle = $this -> createForm(new ArticleType(), $editArticle);
 
@@ -45,7 +48,8 @@ class AdminArticleController extends Controller
 			$em -> persist($editArticle);
 			$em -> flush();
 
-			return $this ->redirect($this->generateUrl('front_office_homepage_blog_oneArticle', array('id'=>$id)));
+			$session -> getFlashbag()->add('article','Votre article a bien été corrigé !');
+			return $this ->redirect($request -> headers -> get('referer'));
 		}
 
 		return $this -> render('BackOfficeBundle:AdminArticle:editArticle.html.twig', 
