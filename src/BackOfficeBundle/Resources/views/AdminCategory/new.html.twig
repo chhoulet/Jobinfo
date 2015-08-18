@@ -2,8 +2,12 @@
 
 	{% block content %}
 
-		<h2>Ajoût d'une catégorie:</h2>
-	
-		{{ form(form) }}
+		<h2>Ajout d'une catégorie:</h2>
+
+			{% for succes in app.session.flashbag.get('succes') %}
+				{{ succes }}
+			{% endfor %}
+		
+			{{ form(form) }}
 
 	{% endblock %}

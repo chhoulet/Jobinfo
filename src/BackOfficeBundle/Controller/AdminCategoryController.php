@@ -12,6 +12,7 @@ class AdminCategoryController extends Controller
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$category = new Category();
 		$form = $this -> createForm(new CategoryType(), $category);
 
@@ -21,7 +22,8 @@ class AdminCategoryController extends Controller
 			$em -> persist($category);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('back_office_homepage'));
+			$session -> getFlashbag()->add('succes','La nouvelle categorie est bien ajoutée dans la base !');
+			return $this -> redirect($request -> headers -> get('referer'));
 		}
 
 		return $this -> render('BackOfficeBundle:AdminCategory:new.html.twig', 
