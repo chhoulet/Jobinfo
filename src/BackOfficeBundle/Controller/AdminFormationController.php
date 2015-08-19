@@ -41,6 +41,15 @@ class AdminFormationController extends Controller
             array('formFormation'=>$formFormation->createView()));
     }
 
+    public function oneFormationAction($id)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $oneFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
+
+        return $this -> render('BackOfficeBundle:AdminFormation:oneFormation.html.twig',
+            array('oneFormation'=>$oneFormation));
+    }
+
     public function createFormationAction(Request $request)
     {
         $em = $this -> getDoctrine()->getManager();

@@ -29,6 +29,7 @@
                             <p>Date de création : {{forma.createdAt | date('d-m-Y H:i:s') }}</p>
                             <p style="text-align:justify;">{{ forma.formationDescription}}</p>
                         </div><br>
+
                         {% for eta in forma.etablissement %}
                             <div class="col-lg-12">
                                 <hr>
@@ -40,8 +41,10 @@
                                     <hr>
                             </div>
                         {% endfor %}
-                        <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a>
-                        <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a>
+
+                        <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a><br>
+                        <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a><br>
+                        <a href="{{ path('back_office_adminformation_one',{id:forma.id}) }}">Détails :</a>
                     </div>
                 </div>
         	{% endfor %}

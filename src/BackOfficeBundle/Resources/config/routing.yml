@@ -58,6 +58,10 @@ back_office_adminformation_edit:
     requirements: 
         id: "[0-9]+"
 
+back_office_adminformation_one:
+    path:     /oneFormation/{id}
+    defaults: { _controller: BackOfficeBundle:AdminFormation:oneFormation}
+
 # Création d'une formation:
 back_office_adminformation_create:
     path:     /createFormation
