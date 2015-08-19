@@ -55,8 +55,6 @@ front_office_homepage_blog_article:
 front_office_homepage_blog_oneArticle:
     path:     /showOnearticle/{id}
     defaults: { _controller: FrontOfficeHomepageBundle:Blog:showOneArticle}
-    requirements: 
-        id: "[0-9]+"
 
 # Selection des articles selon leur category, parametrage en homepage du blog:
 front_office_homepage_blog_triArticle:
