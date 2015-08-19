@@ -4,6 +4,10 @@
 
 		<h2> Liste des offres d'emplois disponibles : </h2>
 
+            {% for message in app.session.flashbag.get('succes') %}
+                {{ message }}
+            {% endfor %}
+
     		{% for job in showJobOffers %}
     		<div class="row">
                 <div class="box">

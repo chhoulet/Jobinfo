@@ -21,6 +21,7 @@ class AdminJobOffersController extends Controller
 	public function editJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request->getSession();
 		$editJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
 		$formJobOffer = $this -> createForm(new JobOfferType(), $editJobOffer);
 
@@ -30,6 +31,8 @@ class AdminJobOffersController extends Controller
 		{
 			$em -> persist($editJobOffer);
 			$em -> flush();
+
+			$session ->getFlashbag()->add('succes','Vos modifications ont été prises en compte !');
 			return $this ->redirect($this->generateUrl('back_office_adminjobOffers_show'));
 		}
 
