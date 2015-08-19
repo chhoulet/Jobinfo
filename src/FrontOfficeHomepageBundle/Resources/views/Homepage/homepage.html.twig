@@ -165,27 +165,28 @@
                     <hr>
                     <h2 class="intro-text text-center">Voir les formations disponibles :</h2>
                     <hr>
-                 </div>
+                        {% for forma in formation %}
+              
+                            <h3 class="intro-text text-center">
+                                <strong>{{ forma.formationName }}</strong>
+                            </h3>
+                            <p>Organisme: {{ forma.organism }}</p><br>
+                            <p>Description de la formation: {{ forma.formationDescription}}</p><br>
+                            <a href="{{ path('front_office_formation_showOne',{formationType:forma.formationType, id:forma.id}) }}"><button class="btn btn-primary">Détails :</button></a><br><br>
+                            <p>Sélectionner les formations qui vous intéressent:<br><br>
+                            <a href="{{ path('front_office_formation_list', {formationType: 'integration'}) }}"><button class="btn btn-primary">Intégration :</button></a>
+                            <a href="{{ path('front_office_formation_list', {formationType:'architecte-logiciel'}) }}"><button class="btn btn-primary">Architecte logiciel :</button></a>
+                            <a href="{{ path('front_office_formation_list',{formationType: 'developpement'}) }}"><button class="btn btn-primary">Développement :</button></a>
+                            <a href="{{ path('front_office_formation_list',{formationType: 'bdd'}) }}"><button class="btn btn-primary">Base de Données :</button></a>
+                            <a href="{{ path('front_office_formation_list',{formationType: 'reseaux'}) }}"><button class="btn btn-primary">Réseaux :</button></a>
+                            <a href="{{ path('front_office_formation_list',{formationType: 'devMob'}) }}"><button class="btn btn-primary">Applis sur Mobile :</button></a><br>                    
+                        {% endfor %}
+                    <hr>
+                </div>
             </div>
         </div>
 
-        {% for forma in formation %}
-            <div class="row">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <hr>
-                        <h2 class="intro-text text-center">{{ forma.organism }}
-                            <strong>{{ forma.formationName }}</strong>
-                        </h2>
-                        <hr>
-                        <p>{{ forma.formationDescription}}</p><br>
-                        <a href="{{ path('front_office_formation_showOne',{formationType:forma.formationType, id:forma.id}) }}"><button class="btn btn-primary">Détails :</button></a><br><br>
-                        <a href="{{ path('front_office_formation_list', {formationType: 'integration'}) }}"><button class="btn btn-primary">Voir les formations d'intégration :</button></a><br><br>
-                        <a href="{{ path('front_office_formation_list', {formationType:'architecte-logiciel'}) }}"><button class="btn btn-primary">Voir les formations d'architecte logiciel :</button></a>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+        
 
         <div class="row">
             <div class="box">
