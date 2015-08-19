@@ -17,7 +17,8 @@ class FormationType extends AbstractType
         $builder
             ->add('formationName')
             ->add('organism')
-            ->add('formationDate','date')
+            ->add('beginingDate','date')
+            ->add('endingDate','date')
             ->add('formationType', 'choice', array('choices'=>array('developpement'=>'Développement Web',
                                                                     'integration'  =>'Intégration',
                                                                     'devMob'       =>'Développement d\'applications mobiles',

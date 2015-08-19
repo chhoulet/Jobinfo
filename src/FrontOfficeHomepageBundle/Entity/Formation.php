@@ -49,10 +49,17 @@ class Formation
      * @var \DateTime
      *
      * @Assert\DateTime()
-     * @ORM\Column(name="formationDate", type="datetime")
+     * @ORM\Column(name="beginingDate", type="datetime")
      */
-    private $formationDate;
+    private $beginingDate;
 
+     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="endingDate", type="datetime")
+     */
+    private $endingDate;
 
     /**
      * @var \DateTime
@@ -312,30 +319,6 @@ class Formation
     }
 
     /**
-     * Set formationDate
-     *
-     * @param \DateTime $formationDate
-     * @return Formation
-     */
-    public function setFormationDate($formationDate)
-    {
-        $this->formationDate = $formationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get formationDate
-     *
-     * @return \DateTime 
-     */
-    public function getFormationDate()
-    {
-        return $this->formationDate;
-    }
-
-
-    /**
      * Add inscrits
      *
      * @param \FrontOfficeUserBundle\Entity\User $inscrits
@@ -366,5 +349,51 @@ class Formation
     public function getInscrits()
     {
         return $this->inscrits;
+    }
+
+    /**
+     * Set beginingDate
+     *
+     * @param \DateTime $beginingDate
+     * @return Formation
+     */
+    public function setBeginingDate($beginingDate)
+    {
+        $this->beginingDate = $beginingDate;
+
+        return $this;
+    }
+
+    /**
+     * Get beginingDate
+     *
+     * @return \DateTime 
+     */
+    public function getBeginingDate()
+    {
+        return $this->beginingDate;
+    }
+
+    /**
+     * Set endingDate
+     *
+     * @param \DateTime $endingDate
+     * @return Formation
+     */
+    public function setEndingDate($endingDate)
+    {
+        $this->endingDate = $endingDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endingDate
+     *
+     * @return \DateTime 
+     */
+    public function getEndingDate()
+    {
+        return $this->endingDate;
     }
 }

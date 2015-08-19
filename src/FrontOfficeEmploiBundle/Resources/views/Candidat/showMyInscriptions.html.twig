@@ -10,7 +10,8 @@
 						Nom :           {{ forma.formationName }}<br>
 						Organisme :     {{ forma.organism }}<br>
 						Secteur :       {{ forma.formationType }}<br>
-						Date de Début : {{ forma.formationDate | date('d-m-Y') }}<br>
+						Date de Début : {{ forma.beginingDate | date('d-m-Y') }}<br>
+						Date de Fin :   {{ forma.endingDate | date('d-m-Y') }}<br>
 						Contenu :       {{ forma.formationDescription }}<br><br>
 					{% endfor %}
 
