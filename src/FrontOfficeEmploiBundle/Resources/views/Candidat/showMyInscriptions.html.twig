@@ -2,19 +2,31 @@
 
 	{% block content %}
 
-		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
+		<div class="container" style="background-color:white;text-align:left;margin:auto;padding:40px;font-size:20px;"> 
 
-				<h3>Mes prochaines formations:</h3>
+				<h3 style="text-align:center">Mes prochaines formations:</h3>
 
-			{# {% for forma in app.user.formation %}
-				{{ forma.formationName }}
-			{% endfor %}
- #}
- 				<h3>Mes forums:</h3>
+					{% for forma in app.user.formation %}
+						Nom :           {{ forma.formationName }}<br>
+						Organisme :     {{ forma.organism }}<br>
+						Secteur :       {{ forma.formationType }}<br>
+						Date de Début : {{ forma.formationDate | date('d-m-Y') }}<br>
+						Contenu :       {{ forma.formationDescription }}<br><br>
+					{% endfor %}
+
+					<hr>
+
+ 				<h3 style="text-align:center">Mes forums:</h3>
 
  					{% for forum in app.user.forum %}
- 						{{ forum.forumName }}<br>
+ 						Nom :           {{ forum.forumName }}<br>
+ 						Secteur :       {{ forum.forumType }}<br>
+ 						Date de Début : {{ forum.forumDate | date('d-m-Y') }}<br>
+ 						Adresse :       {{ forum.forumAdress }}<br>
+ 						Description :   {{ forum.forumDescription }}<br><br>
  					{% endfor %}
+
+ 		</div>
 
 
 	{% endblock %}
