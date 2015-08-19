@@ -21,6 +21,7 @@ class AdminJobSectorController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$jobSector = new JobSector();
+		$session = $request -> getSession();
 		$formJob = $this -> createForm(new JobSectorType(), $jobSector);
 
 		$formJob -> handleRequest($request);
@@ -30,6 +31,7 @@ class AdminJobSectorController extends Controller
 			$em -> persist($jobSector);
 			$em -> flush();
 
+			$session -> getFlashbag()-> add('job','Ce secteur est ajouté en Base de données !');
 			return $this -> redirect($this->generateUrl('back_office_adminJobSector_list'));
 		}
 

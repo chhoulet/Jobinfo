@@ -4,6 +4,10 @@
 
 		<h2> Liste des secteurs d'activité : </h2>
 
+             {% for message in app.session.flashbag.get('job') %}
+                {{ message }}
+            {% endfor %}
+
     		{% for job in listJobSector %}
     		<div class="row">
                 <div class="box">
