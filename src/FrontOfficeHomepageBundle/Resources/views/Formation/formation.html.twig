@@ -5,7 +5,7 @@
         <div class="row" style="background-color:white">
 		  
             <h2>Liste des formations disponibles : </h2>
-
+                
     		    {% for format in formation %}
 
                     <div class="box">
@@ -18,7 +18,17 @@
                             <p>Date de création : {{format.createdAt | date('d-m-Y H:i:s') }}</p>
                             <p>{{ format.formationDescription}}</p>
                         </div>
-                        <a href="{{ path('front_office_formation_showOne',{formationType: format.formationType, id:format.id})}}"><button>Détails :</button></a>
+                        <a href="{{ path('front_office_formation_showOne',{formationType: format.formationType, id:format.id})}}"><button>Détails :</button></a><br>
+
+                        {% if (is_granted('ROLE_USER')) %}
+                        
+                            <a href="{{ path('front_office_formation_inscription',{id:format.id}) }}"><button>Inscrivez-vous à cette formation</button></a>
+                        
+                        {% else %}
+                            <h4>Vous souhaitez vous inscrire à cette formation ?</h4>
+                            <a href="{{ path('fos_user_security_login')}}"><button>Connectez-vous !</button></a>
+                        {% endif %}
+                        
                     </div>
                 
         	   {% endfor %}
