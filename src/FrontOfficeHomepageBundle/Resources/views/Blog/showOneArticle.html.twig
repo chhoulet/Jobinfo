@@ -50,7 +50,7 @@
                         <form role="form">
                             <div class="form-group">
                                 {# <textarea class="form-control" rows="3"></textarea> #}
-                              {{ form(formComment) }}
+                              {{ form(form) }}
                             </div>
                         </form>
                 </div>
@@ -60,7 +60,7 @@
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
-                {% for com in showOneArticle.comment %}
+               {#  {% for com in comments %}
                     <div class="media">
                         <a class="pull-left" href="#">
                         </a>
@@ -71,7 +71,7 @@
                            {{ com.message}}
                         </div>
                     </div>
-                {% endfor %}
+                {% endfor %} #}
 
             </div>
 
