@@ -39,10 +39,12 @@ class AdminMessagesController extends Controller
 	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request->getSession();
 		$message = $em -> getRepository('FrontOfficeHomepageBundle:Message')->find($id);
 		$em -> remove($message);
 		$em -> flush();
 
+		$session -> getFlashbag()-> add('succes','Ce message a bien été supprimé !');
 		return $this ->redirect($request -> headers -> get('referer'));
 	}
 }
