@@ -21,16 +21,19 @@ class AdminSocietyController extends Controller
 	public function editAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getmanager();
+		$session = $request -> getSession();
 		$society = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> find($id);
 		$formSociety = $this -> createForm(new SocietyType(), $society);
 
 		$formSociety -> handleRequest($request);
+		
 		if($formSociety -> isValid())
 		{
 			$society -> setdateUpdated(new \datetime('now'));
 			$em -> persist($society);
 			$em -> flush();
 
+			$session ->getFlashbag()->add('notice','Vos modifications sont bien enregistrées !');
 			return $this -> redirect($this->generateUrl('back_office_adminSociety_list'));
 		}
 

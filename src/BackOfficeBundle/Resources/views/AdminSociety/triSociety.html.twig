@@ -4,6 +4,10 @@
 
 		<h2> Liste des sociétés : </h2>
 
+            {% for message in app.session.flashbag.get('notice') %}
+                {{ message }}
+            {% endfor %}
+
     		{% for societe in triSociety %}
     		<div class="row">
                 <div class="box">
