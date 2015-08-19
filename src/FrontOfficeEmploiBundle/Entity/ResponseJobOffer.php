@@ -70,7 +70,7 @@ class ResponseJobOffer
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="responseJobOffer")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", inversedBy="responseJobOffer", cascade={"remove"})
      * @ORM\JoinColumn(name="jobOffer_id", referencedColumnName="id")
      */
     private $jobOffer;

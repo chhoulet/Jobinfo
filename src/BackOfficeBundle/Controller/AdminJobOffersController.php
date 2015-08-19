@@ -40,13 +40,15 @@ class AdminJobOffersController extends Controller
 			array('formJobOffer' => $formJobOffer -> createView()));
 	}
 
-	public function deleteJobOfferAction($id)
+	public function deleteJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session =$request -> getSession();
 		$deleteJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
 		$em -> remove($deleteJobOffer);
 		$em -> flush();
 
-		return $this-> redirect($this->generateUrl('back_office_adminjobOffers_show'));
+		$session ->getFlashbag()->add('notice','L\'élément sélectionné a bien été supprimé !');
+		return $this-> redirect($request -> headers -> get('referer'));
 	}
 }

@@ -8,6 +8,10 @@
                 {{ message }}
             {% endfor %}
 
+            {% for messag in app.session.flashbag.get('notice') %}
+                {{ messag }}
+            {% endfor %}
+
     		{% for job in showJobOffers %}
     		<div class="row">
                 <div class="box">
@@ -22,7 +26,7 @@
                     </div>
                     <a href="{{ path('back_office_adminjobOffer_edit',{id:job.id}) }}"><button>Mise à jour :</button></a>
                     <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}"><button>Détails :</button></a>
-                 {#    <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a> #}
+                    <a href="{{ path('back_office_adminjobOffer_delete',{id:job.id}) }}"><button>Supprimer cet élément</button></a>
                 </div>
             </div>
         	{% endfor %}
