@@ -1,8 +1,9 @@
-#Routes gerant les fonctionnalités des candidats:
-front_office_emploi_mon_profil:
-    path:     /monProfil
-    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:monProfil}
+# Route gerant les fonctionnalites communes candidats/employeurs:
+front_office_emploi_myProfil:
+    path:     /myProfil/{$user}
+    defaults: { _controller: FrontOfficeEmploiBundle:Profil:myProfil}
 
+# Routes gerant les fonctionnalités des candidats:
 # Enregistrement du CV:
 front_office_emploi_candidat_createCV:
     path:     /createCV

@@ -95,16 +95,7 @@ class CandidatController extends Controller
 	public function showMyLmAction()
 	{		
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig');
-	}
-
-	# Acces a son espace personnel via une requete DQL selectionnant le profil Candidat en fonction de l'id de l'user logué:
-	public function monProfilAction($user = null)
-	{		
-		$em = $this -> getDoctrine()->getManager();
-		$candidat = $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->getCandidatByUser($this -> getUser());
-
-		return $this -> render('FrontOfficeEmploiBundle:Candidat:monProfil.html.twig', array('candidat'=>$candidat));
-	}
+	}	
 
 	# Acces via son espace personnel a ses jobOffers selectionnees:
 	public function showMyJobOffersAction()
