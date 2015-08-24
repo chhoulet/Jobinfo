@@ -73,16 +73,6 @@ class EmployerController extends Controller
 			array('listSocieties' => $listSocieties));
 	}
 
-	# Voir son profil société via son espace personnel:
-	public function myProfilAction()
-	{
-		$em = $this -> getDoctrine()-> getManager();
-		$society = $em -> getRepository('FrontOfficeEmploiBundle:Society')->getSocietyByUser($this -> getUser());
-
-		return $this -> render('FrontOfficeEmploiBundle:Employer:myprofil.html.twig', 
-			array('society'=>$society));
-	}
-
 	# Voir ses jobOffers publiées via son espace personnel:
 	public function myJobOffersAction()
 	{

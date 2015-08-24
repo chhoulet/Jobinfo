@@ -1,4 +1,5 @@
 # Route gerant les fonctionnalites communes candidats/employeurs:
+# Voir espace personnel candidat:
 front_office_emploi_myProfil:
     path:     /myProfil/{$user}
     defaults: { _controller: FrontOfficeEmploiBundle:Profil:myProfil}
@@ -61,7 +62,7 @@ front_office_emploi_jobOffer_responseJobOffer:
         id: "[0-9]+"
 
 # Routes gérant les fonctionnalités des employeurs:
-# Enrtegistrer une société:
+# Enregistrer une société:
 front_office_emploi_employer_createSociety:
     path:     /createSociety
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:createSociety}
@@ -75,11 +76,6 @@ front_office_emploi_employer_createJobOffer:
 front_office_emploi_employer_list:
     path:     /listSocieties
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:listSocieties}
-
-# Voir espace personnel employeur:
-front_office_emploi_employer_myProfil:
-    path:     /myprofilEmployer
-    defaults: { _controller: FrontOfficeEmploiBundle:Employer:myProfil}
 
 # Voir ses jobOffers publiées dans son espace perso:
 front_office_emploi_employer_myJobOffers:
