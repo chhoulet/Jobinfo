@@ -97,12 +97,6 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig');
 	}	
 
-	# Acces via son espace personnel a ses jobOffers selectionnees:
-	public function showMyJobOffersAction()
-	{
-		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyJobOffers.html.twig');
-	}
-
 	# Acces via son espace personnel uax events selectionnes:
 	public function showMyInscriptionsAction()
 	{

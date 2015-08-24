@@ -4,6 +4,10 @@ front_office_emploi_myProfil:
     path:     /myProfil/{$user}
     defaults: { _controller: FrontOfficeEmploiBundle:Profil:myProfil}
 
+front_office_emploi_myJobOffers_list:
+    path:     /listMyJobOffers 
+    defaults: { _controller: FrontOfficeEmploiBundle:Profil:listMyJobOffers}
+
 # Routes gerant les fonctionnalités des candidats:
 # Enregistrement du CV:
 front_office_emploi_candidat_createCV:
@@ -24,11 +28,6 @@ front_office_emploi_candidat_showMyCv:
 front_office_emploi_candidat_showMyLm:
     path:     /showMyLm 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyLm}
-
-# Function Voir ses offres d'emplois dans son espace perso :
-front_office_emploi_candidat_showMyJobOffers:
-    path:     /showJobOffers 
-    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyJobOffers}
 
 # Function Voir ses inscriptions à différents évenements dans son espace perso :
 front_office_emploi_candidat_showMyInscriptions:

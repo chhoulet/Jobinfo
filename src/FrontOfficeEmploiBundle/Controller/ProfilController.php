@@ -17,4 +17,9 @@ class ProfilController extends Controller
 			array('candidat'=> $myProfil,
 				  'society' => $myProfilSociety));
 	}		
+
+	public function listMyJobOffersAction()
+	{
+		return $this -> render('FrontOfficeEmploiBundle:Profil:listMyJobOffers.html.twig');
+	}
 }
