@@ -1,0 +1,59 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
+
+			{% for message in app.session.flashbag.get('notice') %}
+				{{ message }}
+				<hr>
+			{% endfor %}
+
+			{% for messag in app.session.flashbag.get('notice') %}
+				{{ messag }}
+				<hr>
+			{% endfor %}
+
+		</div>
+
+		{% if app.user.type == 'candidat' %}
+
+			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
+
+				
+				<strong>{{ app.user.username }}</strong><br><br>
+
+					<h3>Mon profil Candidat :</h3>
+					
+						{{ candidat.firstname }}<br>
+						{{ candidat.lastname }}<br>
+						{{ candidat.street }}<br>
+						{{ candidat.city }}<br>
+					
+
+						<a href="{{ path('front_office_emploi_candidat_new') }}">Créer mon profil Candidat</a><br><a href="{{ path('front_office_emploi_candidat_showMyCv') }}">Voir mes CV</a><br>
+						<a href="{{ path('front_office_emploi_candidat_showMyLm') }}">Voir mes LM</a><br>
+						<a href="{{ path('front_office_emploi_candidat_showMyJobOffers')}}">Voir mes offres sélectionnées</a><br>
+						<a href="{{ path('front_office_emploi_candidat_showMyInscriptions')}}">Mes évenements:</a>
+
+			</div>
+
+		{% else %}
+
+			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">			
+
+					<h3>{{ society.name }}</h3><br><br>
+
+						Activité : {{ society.activity }}<br>
+						Description : {{ society.description }}<br>
+
+						<a href="{{ path('front_office_emploi_employer_myJobOffers')}}">Consulter mes offres publiées</a><br>
+						<a href="{{ path('front_office_emploi_employer_desactivateSociety',{id:society.id}) }}">Quitter la liste des sociétés qui recrutent</a>
+
+			</div>
+
+		{% endif %}
+
+
+
+	{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h2>{{ oneFormation.formationName }}</h2>
+
+			Organisme: {{ oneFormation.organism }}<br>
+			Type de formation: {{ oneFormation.formationType }}<br>
+			Début de formation: {{ oneFormation.beginingDate | date('d-m-Y')}}<br>
+			Fin de formation: {{ oneFormation.endingDate | date('d-m-Y')}}<br>
+			Créée par: {{ oneFormation.createdAt | date('d-m-Y')}}<br>
+
+	{% endblock %}
