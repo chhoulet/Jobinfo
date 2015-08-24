@@ -26,6 +26,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Society", cascade={"persist","remove"})
      */
     private $society;
@@ -332,5 +339,28 @@ class User extends BaseUser
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return User
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
