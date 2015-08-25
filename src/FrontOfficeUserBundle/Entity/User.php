@@ -33,6 +33,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Comment", mappedBy="author")
+     */
+    private $comment;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Society", cascade={"persist","remove"})
      */
     private $society;
@@ -362,5 +369,38 @@ class User extends BaseUser
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Comment $comment
+     * @return User
+     */
+    public function addComment(\FrontOfficeHomepageBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Comment $comment
+     */
+    public function removeComment(\FrontOfficeHomepageBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

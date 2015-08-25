@@ -25,10 +25,10 @@ class Comment
     /**
      * @var string
      *
-     * @Assert\Blank()
-     * @ORM\Column(name="userName", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="comment")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $userName;
+    private $author;
 
     /**
      * @var boolean
@@ -83,29 +83,6 @@ class Comment
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set userName
-     *
-     * @param string $userName
-     * @return Comment
-     */
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    /**
-     * Get userName
-     *
-     * @return string 
-     */
-    public function getUserName()
-    {
-        return $this->userName;
     }
 
     /**
@@ -221,5 +198,28 @@ class Comment
     public function getDateValidated()
     {
         return $this->dateValidated;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $author
+     * @return Comment
+     */
+    public function setAuthor(\FrontOfficeUserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

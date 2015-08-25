@@ -31,7 +31,7 @@ class BlogController extends Controller
 				
 		# Selection des comments valides rattachés à l'article selectionne(id en parametre);
 		$comments = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> getCommentsValidated($oneArticle);
-		$form = $this -> createForm(new CommentType(), $comment);
+		$form = $this -> createForm(new CommentType(), $comment, array('method'=>'post'));
 	
 		$form -> handleRequest($request);
 
@@ -40,6 +40,7 @@ class BlogController extends Controller
 			$comment -> setDateCreated(new \DateTime('now'));
 			$comment -> setValidAdmin(false);			
 			$comment -> setArticle($oneArticle);
+			$comment -> setAuthor($this -> getUser());
 			$em -> persist($comment);
 			$em -> flush();
 
@@ -52,7 +53,7 @@ class BlogController extends Controller
 			array('showOneArticle'=> $oneArticle,
 				  'comments'      => $comments,
 				  'form'          => $form -> createView()));
-	}
+	}	
 
 	# Tri des articles par category:
 	public function triArticlesAction($category)
