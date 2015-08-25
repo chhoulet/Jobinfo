@@ -39,8 +39,9 @@ class JobOfferRepository extends EntityRepository
 			SELECT j 
 			FROM FrontOfficeEmploiBundle:JobOffer j 
 			JOIN j.jobSector jbs
-			WHERE j.contract c LIKE :contract
-			AND j.place LIKE :place
+			JOIN j.place p
+			WHERE j.contract LIKE :contract
+			AND p.name LIKE :place
 			AND j.activeToPurchase = true
 			AND jbs.nameSector LIKE :jobSector
 			ORDER BY j.dateCreated DESC')
