@@ -33,8 +33,9 @@ class JobOffer
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="place", type="string", length=255)
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Place", inversedBy="jobOffer")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
 
@@ -553,10 +554,10 @@ class JobOffer
     /**
      * Set place
      *
-     * @param string $place
+     * @param \FrontOfficeEmploiBundle\Entity\Place $place
      * @return JobOffer
      */
-    public function setPlace($place)
+    public function setPlace(\FrontOfficeEmploiBundle\Entity\Place $place = null)
     {
         $this->place = $place;
 
@@ -566,7 +567,7 @@ class JobOffer
     /**
      * Get place
      *
-     * @return string 
+     * @return \FrontOfficeEmploiBundle\Entity\Place 
      */
     public function getPlace()
     {

@@ -17,6 +17,7 @@ class JobOfferType extends AbstractType
         $builder
             ->add('title')
             ->add('descriptionJob')
+            ->add('place', null)
             ->add('contract', 'choice', array('choices' => array('Stage'=>'Stage',
                                                                   'CDD'=>'CDD',
                                                                   'CDI'=>'CDI',

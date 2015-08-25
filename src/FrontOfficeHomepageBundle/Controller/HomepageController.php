@@ -25,9 +25,9 @@ class HomepageController extends Controller
 
         if($formJobOffers ->isValid())
         {
-            # Recuperatiopn des éléments du formulaire pour hydrater les parametres de la requete:
+            # Recuperation des éléments du formulaire pour hydrater les parametres de la requete:
             $datas = $formJobOffers -> getData();
-            $jobOffersByTri = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')-> triJobOffers($datas['contract'], $datas['jobSector']);
+            $jobOffersByTri = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')-> triJobOffers($datas['contract'], $datas['jobSector'], $datas['place']);
 
             return $this -> render('FrontOfficeEmploiBundle:JobOffer:triJobOffer.html.twig', array('jobOffersByTri'=>$jobOffersByTri));
         }
@@ -37,7 +37,7 @@ class HomepageController extends Controller
         	      'formation'     =>$formation,
         	      'forum'         =>$forum,             
                   'jobOffers'     =>$jobOffers,
-                  'formJobOffers' => $formJobOffers->createView()));
+                  'formJobOffers' =>$formJobOffers->createView()));
     }
 }
 

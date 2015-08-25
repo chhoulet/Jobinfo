@@ -33,18 +33,20 @@ class JobOfferRepository extends EntityRepository
 		return $query -> getSingleSCalarResult();
 	}
 
-	public function triJobOffers($contract, $jobSector)
+	public function triJobOffers($contract, $jobSector, $place)
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT j 
 			FROM FrontOfficeEmploiBundle:JobOffer j 
 			JOIN j.jobSector jbs
 			WHERE j.contract c LIKE :contract
+			AND j.place LIKE :place
 			AND j.activeToPurchase = true
 			AND jbs.nameSector LIKE :jobSector
 			ORDER BY j.dateCreated DESC')
 		->setParameter('contract', $contract)
-		->setParameter('jobSector', $jobSector);
+		->setParameter('jobSector', $jobSector)
+		->setParameter('place', $place);
 
 		return $query -> getResult();
 	}

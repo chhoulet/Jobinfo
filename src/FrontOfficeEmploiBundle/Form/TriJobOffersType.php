@@ -14,11 +14,12 @@ class TriJobOffersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $builder            
             ->add('contract', 'choice',  array('choices' => array('sta'=>'Stage',
                                                                   'cdd'=>'CDD',
                                                                   'cdi'=>'CDI',
                                                                   'alt'=>'Alternance')))
+            ->add('place', null)
             ->add('jobSector', 'choice', array('choices' => array('Devel' => 'Développement',
                                                                   'Inte'  => 'Intégration',
                                                                   'BigD'  => 'Big Data',
