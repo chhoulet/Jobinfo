@@ -111,13 +111,13 @@
 
                     <hr>
                     <p>Cher visiteur, si tu es arrivé sur ce site, cela signifie que tu t'intéresses à mon travail. Application d'entraînement réalisée avec une intégration  Boostrap et basée sur la technologie Symfony, elle n'a pour d'autre ambition que de vous présenter mon savoir-faire technique. Elle n'a donc aucunement vocation à devenir un véritable site de recherche d'emploi. Connectez-vous sur mon compte GITHUB pour accéder au code source : <a href="https://github.com/chhoulet/jobinfo.git">https://github.com/chhoulet/jobinfo.git</a>. </p>
-                    <p>Cherchant à m'insérer dans le monde du web, j'ai versionné plusieurs applis sur GitHub que je vous invite à consulter si mon profil vous intéresse :<br>
+                    <p>Passionné par le monde du développement web, j'ai versionné plusieurs applis sur GitHub que je vous invite à consulter si mon profil vous intéresse :<br>
                            - <a href="https://github.com/chhoulet/sportsweb.git">https://github.com/chhoulet/sportsweb.git</a><br>
                            - <a href="https://github.com/chhoulet/immo.git">https://github.com/chhoulet/immo.git</a><br>
                            - <a href="https://github.com/chhoulet/vin.com.git">https://github.com/chhoulet/vin.com.git</a><br>
                            - <a href="https://github.com/chhoulet/voiture.com.git">https://github.com/chhoulet/voiture.com.git</a><br>
                     Elles sont présentées ici de la plus récente à la plus ancienne. Sports Web est actuellement en cours de développement pour un client et est donc "en évolution constante".</p>
-                    <p>N'hésitez pas à utiliser les liens suivants ci-dessous pour tester l'application, enregistrer de faux CV, ou une société et de fausses offres d'emplois. Laissez si vous le souhaitez un commentaire sur les différents articles de ce blog, ou contactez-moi en utilisant le lien "contact" présent en bas de page. Vous apprendrez plus sur mon parcours et mes compétences en cliquant sur l'onglet <a href="{{ path('front_office_homepage_static_about') }}">About</a>. Je serai ravi de lire vos mails et d'apprendre ce qui vous plait sur mon site, ce que vous aimeriez y trouver, bref d'avoir votre ressenti !</p>
+                    <p>N'hésitez pas à utiliser les liens suivants ci-dessous pour tester l'application, enregistrer de faux CV, ou une société et de fausses offres d'emplois. Consultez-les ensuite dans votre espace personnel. Laissez si vous le souhaitez un commentaire sur les différents articles de ce blog, ou contactez-moi en utilisant le lien "contact" présent en bas de page. Vous apprendrez plus sur mon parcours et mes compétences en cliquant sur l'onglet <a href="{{ path('front_office_homepage_static_about') }}">About</a>. Je serai ravi de lire vos mails et d'apprendre ce qui vous plait sur mon site, ce que vous aimeriez y trouver, bref d'avoir votre ressenti !</p>
                  </div>
             </div>
         </div>
@@ -163,6 +163,19 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
+                    <h2 class="intro-text text-center">Triez les annonces :
+                        <strong>Contrat / Secteur d'activité</strong>
+                    </h2>
+                    <hr>
+                    <p><h4>{{ form(formJobOffers) }}</h4></p><br>    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
                     <h2 class="intro-text text-center">Voir les formations disponibles :</h2>
                     <hr>
                         {% for forma in formation %}
@@ -179,7 +192,8 @@
                             <a href="{{ path('front_office_formation_list',{formationType: 'developpement'}) }}"><button class="btn btn-primary">Développement :</button></a>
                             <a href="{{ path('front_office_formation_list',{formationType: 'bdd'}) }}"><button class="btn btn-primary">Base de Données :</button></a>
                             <a href="{{ path('front_office_formation_list',{formationType: 'reseaux'}) }}"><button class="btn btn-primary">Réseaux :</button></a>
-                            <a href="{{ path('front_office_formation_list',{formationType: 'devMob'}) }}"><button class="btn btn-primary">Applis sur Mobile :</button></a><br>                    
+                            <a href="{{ path('front_office_formation_list',{formationType: 'devMob'}) }}"><button class="btn btn-primary">Applis sur Mobile :</button></a><br>    
+
                         {% endfor %}
                     <hr>
                 </div>
@@ -194,43 +208,31 @@
                     <hr>
                     <h2 class="intro-text text-center">Forums emploi, Forums formation</h2>
                     <hr>
+                        {% for foru in forum %} 
+
+                            <h2 class="intro-text text-center">
+                                <strong>{{ foru.forumName }}</strong>
+                            </h2>
+                                        
+                            <p><h4>{{ foru.forumType }}</h4></p><br>
+                            <p>{{ foru.forumDescription}}</p><br>
+                            <a href="{{ path('front_office_forum_list',{forumType:'emploi'} ) }}"><button class="btn btn-primary">Forums de l'emploi :</button></a>
+                            <a href="{{ path('front_office_forum_list',{forumType:'formation'} ) }}"><button class="btn btn-primary">Forums de formation Web :</button></a>                                                                                                   
+                        {% endfor %}
+                    <hr>
                  </div>
             </div>
         </div>
-
-        {% for foru in forum %}
-            <div class="row">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <hr>
-                        <h2 class="intro-text text-center">
-                            <strong>{{ foru.forumName }}</strong>
-                        </h2>
-                        <hr>
-                        <p><h4>{{ foru.forumType }}</h4></p><br>
-                        <p>{{ foru.forumDescription}}</p><br>
-                        <a href="{{ path('front_office_forum_list',{forumType:'emploi'} ) }}"><button class="btn btn-primary">Voir les forums de l'emploi :</button></a><br><br>
-                        <a href="{{ path('front_office_forum_list',{forumType:'formation'} ) }}"><button class="btn btn-primary">Voir les forums de formation informatique :</button></a>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-
-         <div class="row">
+    
+        <div class="row">
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Dernières offres d'emploi parues :</h2>
                     <hr>
-                 </div>
-            </div>
-        </div>
 
-        {% for job in jobOffers %}
-            <div class="row">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <hr>
+                    {% for job in jobOffers %}
+                                    
                         <h2 class="intro-text text-center">
                             <strong>{{ job.title }}</strong>
                         </h2>
@@ -242,25 +244,14 @@
                             <p>{{ societe.activity }}</p><br>
                             <p>{{ societe.description }}</p><br>
                         {% endfor %}
-                        <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">Détail</a><br>
-                        <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre</a>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+                        <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">En savoir plus :</a><br>
+                        <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre :</a>
+                    
+                    {% endfor %}
 
-         <div class="row">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <hr>
-                        <h2 class="intro-text text-center">Triez les annonces :
-                            <strong>Contrat / Secteur d'activité</strong>
-                        </h2>
-                        <hr>
-                        <p><h4>{{ form(formJobOffers) }}</h4></p><br>    
-                    </div>
-                </div>
+                 </div>
             </div>
+        </div>        
 
     </div>
     <!-- /.container -->

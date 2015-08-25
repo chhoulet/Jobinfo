@@ -34,6 +34,14 @@ class JobOffer
      * @var string
      *
      * @Assert\NotBlank()
+     * @ORM\Column(name="place", type="string", length=255)
+     */
+    private $place;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="descriptionJob", type="string", length=400)
      */
     private $descriptionJob;
@@ -540,5 +548,28 @@ class JobOffer
     public function getDateDesactivation()
     {
         return $this->dateDesactivation;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return JobOffer
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string 
+     */
+    public function getPlace()
+    {
+        return $this->place;
     }
 }

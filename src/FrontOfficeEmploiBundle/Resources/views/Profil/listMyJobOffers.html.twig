@@ -1,0 +1,91 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		{% if app.user.type == 'candidat' %}
+
+			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
+
+				{% for message in app.session.flashbag.get('succes') %}
+					{{ message }}
+					<hr>
+				{% endfor %}
+
+				{% for job in app.user.jobOffers %}
+
+					<h3>Offres sélectionnées :</h3>
+
+					<strong>{{ job.title}}<strong><br>
+
+					Poste proposé :     {{ job.descriptionJob }}<br>
+					Contrat :           {{ job.contract }}<br>
+					Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
+					Sélectionnée le :   {{ job.dateSelected | date('d-m-Y') }}<br>
+					
+					Réponses:   {% for answers in job.responseJobOffer %}
+										{{ answers.content }}<br>
+										{{ answers.dateCreated | date('d-m-Y') }}<br>
+										CV: {% for mycv in answers.cuvitae %}
+											 	{{ mycv.title }}<br>
+											 	{{ mycv.gradeOne }}<br>
+												{{ mycv.gradeTwo }}<br>
+												{{ mycv.languages }}<br>
+												{{ mycv.workExperience1}}<br>
+												{{ mycv.workExperience2}}<br> 
+										    {% endfor %}<br><br>
+										LM: {% for mylm in answers.motivationLetter %}
+												{{ mylm.subject }}<br>
+												{{ mylm.dateCreated | date('d-m-Y') }}<br>
+												{{ mylm.content }}<br>
+										    {% endfor %}
+							    {% endfor %}
+					<hr>						
+				{% endfor %}<br><br>
+
+			</div>
+
+		{% else %}
+
+			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 	
+
+				<h3>Offres postées :</h3>		
+
+				{% for job in app.user.jobOffers %}
+					<strong>{{ job.title}}<strong><br>
+					Poste proposé : {{ job.descriptionJob}}<br>
+					Contrat : {{ job.contract}}<br>
+					Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
+
+					<p>Voir les réponses obtenues :</p>
+
+					{% for jobResponse in job.responseJobOffer %}
+						{{ jobResponse.content }}<br>
+						{{ jobResponse.dateCreated | date('d-m-Y') }}<br>
+
+						CV : {% for mycv in jobResponse.cuvitae %}	
+								{{ mycv.title }}<br>
+								{{ mycv.gradeOne }}<br>
+								{{ mycv.gradeTwo }}<br>
+								{{ mycv.languages }}<br>
+								{{ mycv.workExperience1}}<br>
+								{{ mycv.workExperience2}}<br> 
+							 {% endfor %}<br><br>
+
+						LM : {% for mylm in jobResponse.motivationLetter %}
+								{{ mylm.subject }}<br>
+								{{ mylm.dateCreated | date('d-m-Y') }}<br>
+								{{ mylm.content }}<br>
+							 {% endfor %}
+
+					{% endfor %}<br><br>										 	
+					
+					<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}"><button>Retirer cette offre du marché</button></a><br><br>
+
+					<hr>
+				{% endfor %}
+
+			</div>
+
+		{% endif %}
+
+	{% endblock %}
