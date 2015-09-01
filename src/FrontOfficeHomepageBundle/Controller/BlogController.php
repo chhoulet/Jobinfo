@@ -22,38 +22,34 @@ class BlogController extends Controller
 	}
 
 	# Vue d'un article et de ses commentaires, mis en ligne après leur validation:
-	public function showOneArticleAction(Request $request, $id)
-	{
-		$em = $this -> getDoctrine()->getManager();
-		$session = $request -> getSession();
-		$comment = new Comment();
-		$oneArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')-> find($id);
-				
-		# Selection des comments valides rattachés à l'article selectionne(id en parametre);
-		$comments = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> getCommentsValidated($oneArticle);
-		$form = $this -> createForm(new CommentType(), $comment, array('method'=>'post'));
 	
+	public function oneArticleAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$oneArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
+		$comment = new Comment();
+		$form = $this -> createForm(new CommentType(), $comment);
+
 		$form -> handleRequest($request);
 
-		if ($form -> isValid())
+		if($form -> isValid())
 		{
-			$comment -> setDateCreated(new \DateTime('now'));
-			$comment -> setValidAdmin(false);			
-			$comment -> setArticle($oneArticle);
 			$comment -> setAuthor($this -> getUser());
+			$comment -> setDateCreated(new \datetime('now'));
+			$comment -> setArticle($oneArticle);
+			$comment -> setValidAdmin(false);
 			$em -> persist($comment);
 			$em -> flush();
 
-			/*Message flash*/
-			$session -> getFlashbag()->add('notice','Votre commentaire est enregistré. Il sera publié après validation !');
-			return $this -> redirect($request -> headers -> get('referer'));
+			$session -> getFlashbag()-> add('succes', 'Merci pour votre commentaire !');
+			return $this->redirect($request -> headers -> get('referer'));
 		}
 
-		return $this -> render('FrontOfficeHomepageBundle:Blog:showOneArticle.html.twig', 
-			array('showOneArticle'=> $oneArticle,
-				  'comments'      => $comments,
-				  'form'          => $form -> createView()));
-	}	
+		return $this -> render('FrontOfficeHomepageBundle:Blog:oneArticle.html.twig',
+		    array('oneArticle'=> $oneArticle,
+		    	  'form'      => $form -> createView()));
+	}
 
 	# Tri des articles par category:
 	public function triArticlesAction($category)
