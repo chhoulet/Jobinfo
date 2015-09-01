@@ -38,6 +38,7 @@
 
     <div class="brand">JobInfo</div>
     <div class="address-bar">276 rue de Charenton | Paris 75012 | 01 43 41 56 94 . 07 82 92 41 90</div>
+        {% if app.user %} Bonjour {{ app.user.username }} !{% endif %}
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
