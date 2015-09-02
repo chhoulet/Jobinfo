@@ -245,7 +245,12 @@
                             <p>{{ societe.description }}</p><br>
                         {% endfor %}
                         <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">En savoir plus :</a><br>
-                        <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre :</a>
+
+                        {% if (is_granted('ROLE_USER')) %}
+                            <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre :</a><br>
+                        {% else %}
+                            <p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous et créer votre espace personnel !</a></p>
+                        {% endif %}
                     
                     {% endfor %}
 
