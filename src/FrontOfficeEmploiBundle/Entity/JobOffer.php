@@ -128,7 +128,7 @@ class JobOffer
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="jobOffer")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="jobOffer", cascade={"remove"})
      */
     private $responseJobOffer;
 
