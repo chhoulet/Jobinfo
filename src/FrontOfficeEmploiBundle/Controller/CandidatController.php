@@ -62,6 +62,18 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:createLM.html.twig', array('formLm'=> $formLm -> createView())) ;
 	}
 
+	public function deleteCvAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$deletedCv = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae') -> find($id);
+		$em -> remove($deletedCv);
+		$em -> flush();
+
+		$session -> getFlashbag()->add('succes','Ce cv est supprimé de votre espace personnel !');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
+
 	#Creation de l'objet Candidat, function accessible aux personnes loguées + message flash: 
 	public function newAction(Request $request)
 	{
