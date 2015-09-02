@@ -80,7 +80,7 @@ class Candidat
     /**
      * @var integer
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="candidat")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="candidat")
      */
     private $jobOffer;
 

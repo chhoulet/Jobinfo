@@ -135,8 +135,8 @@ class JobOffer
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="jobOffer")
-     * @ORM\JoinColumn(name="candidat_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="jobOffer")
+     * @ORM\JoinTable(name="jobOffer_candidat")
      */
     private $candidat;
 
@@ -572,5 +572,28 @@ class JobOffer
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Add candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     * @return JobOffer
+     */
+    public function addCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
+    {
+        $this->candidat[] = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * Remove candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     */
+    public function removeCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
+    {
+        $this->candidat->removeElement($candidat);
     }
 }
