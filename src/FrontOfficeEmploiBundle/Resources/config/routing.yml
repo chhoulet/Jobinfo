@@ -34,6 +34,11 @@ front_office_emploi_candidat_deleteCv:
     path:     /deleteCv/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:deleteCv}
 
+# Function de mise à jour d'un CV dans son espace perso :
+front_office_emploi_candidat_updateCv:
+    path:     /updateCv/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:updateCv}
+
 # Function Voir ses inscriptions à différents évenements dans son espace perso :
 front_office_emploi_candidat_showMyInscriptions:
     path:     /showMyInscriptions 

@@ -62,6 +62,7 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:createLM.html.twig', array('formLm'=> $formLm -> createView())) ;
 	}
 
+	# Suppression d'un CV + message flash + redirection sur la meme page
 	public function deleteCvAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -72,6 +73,27 @@ class CandidatController extends Controller
 
 		$session -> getFlashbag()->add('succes','Ce cv est supprimé de votre espace personnel !');
 		return $this -> redirect($request -> headers -> get('referer'));
+	}
+
+	# Mise à jour d'un CV + message flash 
+	public function updateCvAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$updatedCv = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae') -> find($id);
+		$form = $this -> createForm(new CuvitaeType(), $updatedCv);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid()){
+			$updatedCv -> setDateUpdated(new \DateTime('now'));
+			$em -> flush();
+
+			$session -> getFlashbag()-> add('notice','Votre CV est bien mis à jour !');
+			return $this -> redirect($this -> generateUrl('front_office_emploi_candidat_showMyCv'));
+		}
+
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:createCV.html.twig', array('formCV' => $form -> createView()));
 	}
 
 	#Creation de l'objet Candidat, function accessible aux personnes loguées + message flash: 

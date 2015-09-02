@@ -104,6 +104,13 @@ class Cuvitae
     private $skills;
 
     /**
+     * @var datetime
+     *      
+     * @ORM\Column(name="dateUpdated", type="datetime")
+     */
+    private $dateUpdated;
+
+    /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="cuvitae")
@@ -133,8 +140,6 @@ class Cuvitae
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable = true)
      */
     private $user;
-
-
 
     /**
      * Get id
@@ -429,5 +434,28 @@ class Cuvitae
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Cuvitae
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

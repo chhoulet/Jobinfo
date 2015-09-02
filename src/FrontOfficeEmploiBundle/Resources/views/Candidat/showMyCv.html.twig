@@ -11,6 +11,11 @@
 					<hr>
 				{% endfor %}
 
+				{% for messa in app.session.flashbag.get('notice') %}
+					{{ messa }}
+					<hr>
+				{% endfor %}
+
 				{% for cv in app.user.cuvitae %}
 					{{ cv.title }}<br>
 					{{ cv.gradeOne }}<br>
@@ -18,8 +23,15 @@
 					{{ cv.languages }}<br>
 					{{ cv.workExperience1 }}<br>
 					{{ cv.workExperience2 }}<br>
-					{{ cv.skills }}<br><br>
-					<a href="{{ path('front_office_emploi_candidat_deleteCv',{id:cv.id}) }}"> Supprimer ce CV</a>
+					{{ cv.skills }}<br>
+
+					{% if cv.dateUpdated %}
+						Dernière mise à jour le : {{ cv.dateUpdated | date('d-m-Y') }}<br><br>
+					{% else %}
+						<br>
+					{% endif %}
+					<a href="{{ path('front_office_emploi_candidat_deleteCv',{id:cv.id}) }}"> Supprimer ce CV</a>			
+					<a href="{{ path('front_office_emploi_candidat_updateCv',{id:cv.id}) }}">Mettre à jour ce CV</a>
 					<hr>
 				{% endfor %}
 
