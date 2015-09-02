@@ -2,18 +2,23 @@
 
 	{% block content %}
 
-		<h2>Détail des offres: </h2>
+		<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
 
-		{% for job in jobOffersByTri %}
+			<h2>Détail des offres: </h2>
 
-		{{ job.title}}<br><br>
-		{{ job.descriptionJob }}<br>
-		{{ job.dateCreated | date('d-m-Y H:i:s') }}<br>
-		{{ job.society }}
+				{% for job in jobOffersByTri %}
 
-		{% endfor %}
+					{{ job.title}}<br><br>
+					{{ job.descriptionJob }}<br>
+					{{ job.dateCreated | date('d-m-Y H:i:s') }}<br>
+					{{ job.society }}
 
+				{% endfor %}
 
-		<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}">Répondez à cette annonce :</a>
+				{% if (is_granted('ROLE_USER') %}
+					<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}">Répondez à cette annonce :</a>
+				{% else %}
+					<p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a></p>
+                {% endif %}
 
 	{% endblock %}

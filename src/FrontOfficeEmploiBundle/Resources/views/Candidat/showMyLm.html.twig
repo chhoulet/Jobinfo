@@ -4,11 +4,15 @@
 
 		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 
 
-			{% for lm in app.user.motivationLetter %}
+			<h3>Mes lettres de motivation :</h3>
 
-				{{ lm.subject }}<br>
+				{% for lm in app.user.motivationLetter %}
 
-			{% endfor %}
+					{{ lm.subject }}<br>
+					{{ lm.content }}
+					<hr>
+
+				{% endfor %}
 
 		</div>
 

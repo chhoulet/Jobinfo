@@ -15,27 +15,28 @@
 				</div>
 			{% endfor %}
 		
-		<div style="background-color:white;">
+			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
 
-			<h2>Détail de l'offre</h2>
+				<h2>Détail de l'offre</h2>
 
-			{{ showOneJobOffer.title}}<br><br>
+				<h4>{{ showOneJobOffer.title}}</h4><br>
+					<p>{# <a href="{{ path('')}}"> #}{{ showOneJobOffer.society.name}}{# </a> #}<br>
 
-			{{ showOneJobOffer.descriptionJob }}<br><br>
+				{{ showOneJobOffer.descriptionJob }}<br><br>
 
-			{{ showOneJobOffer.contract }}<br><br>
+				{{ showOneJobOffer.contract }}<br><br>
 
-			{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
+				{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
 
-				{% if (is_granted('ROLE_USER')) %}
-					<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a><br>
-					<a href="{{ path('front_office_emploi_jobOffer_select',{id:showOneJobOffer.id}) }}">Sélectionner cette offre</a><br>
-				{% endif %} 
-				
-				{% if (is_granted('ROLE_SOCIETY') or (is_granted('ROLE_SUPER_ADMIN'))) %}
-			    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
-				{% endif %}
+					{% if (is_granted('ROLE_USER')) %}
+						<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a><br>
+						<a href="{{ path('front_office_emploi_jobOffer_select',{id:showOneJobOffer.id}) }}">Sélectionner cette offre</a><br>
+					{% endif %} 
+					
+					{% if (is_granted('ROLE_SUPER_ADMIN')) %}
+				    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 
+					{% endif %}
 
-		</div>
+			</div>
 	    
 	{% endblock %}
