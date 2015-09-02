@@ -134,9 +134,13 @@
                     <p>Développeurs, intégrateurs, spécialistes réseaux et big Data : faîtes la rencontre professionnelle de votre vie ! Grâce à JobInfo, vous pourrez enregistrer vos CV et Lettres de Motivation dans votre espace personnel, faire un tri personnalisé des offres d'emplois et maximiser vos chances de trouver le poste de vos rêves :</p>
 
                     {% if (is_granted('ROLE_USER')) %}
-                         <p>Accéder à votre espace personnel :
-                            <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a><br>
-                            <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a><br></p>
+                        {% if (app.user.candidat) %}
+                             <p>Accéder à votre espace personnel :
+                                <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a><br>
+                                <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a><br></p>
+                        {% else %}
+                            <p><a href="{{ path('front_office_emploi_candidat_new') }}">Créez votre espace personnel !</a> Et enregistrer CV et lettres de motivation, et répondez à nos offres !</p>
+                        {% endif %}
                     {% else %}
                          <p>Pas encore inscrit ? Créez votre compte personnel :
                             <a href="{{ path('fos_user_registration_register') }}">Enregistrez-vous !</a></p>

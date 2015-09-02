@@ -72,9 +72,11 @@
                             <li>
                                 <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
                             </li>
-                            <li>
-                                <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil</a>
-                            </li>
+                            {% if app.user.candidat %}
+                                <li>
+                                    <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil</a>
+                                </li>
+                            {% endif %}
                             <li>
                                 <a href="{{ path('front_office_emploi_myProfil') }}">Espace Employeurs</a> 
                             </li>

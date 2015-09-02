@@ -99,7 +99,6 @@ class Candidat
      */
     private $user;
 
-
     /**
      * Get id
      *
