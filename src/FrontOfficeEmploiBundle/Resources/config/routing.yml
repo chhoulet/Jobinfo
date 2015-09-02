@@ -33,11 +33,22 @@ front_office_emploi_candidat_showMyLm:
 front_office_emploi_candidat_deleteCv:
     path:     /deleteCv/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:deleteCv}
+    requirements:
+        id: "[0-9]+"
+
+# Function de suppression d'un CV de son espace perso :
+front_office_emploi_candidat_deleteLm:
+    path:     /deleteLm/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:deleteLm}
+    requirements:
+        id: "[0-9]+"
 
 # Function de mise à jour d'un CV dans son espace perso :
 front_office_emploi_candidat_updateCv:
     path:     /updateCv/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:updateCv}
+    requirements:
+        id: "[0-9]+"
 
 # Function Voir ses inscriptions à différents évenements dans son espace perso :
 front_office_emploi_candidat_showMyInscriptions:

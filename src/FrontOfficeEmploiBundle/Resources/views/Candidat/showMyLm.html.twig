@@ -6,10 +6,17 @@
 
 			<h3>Mes lettres de motivation :</h3>
 
+				{% for message in app.session.flashbag.get('suppLm') %}
+					{{ message }}
+					<hr>
+				{% endfor %}
+
 				{% for lm in app.user.motivationLetter %}
 
 					{{ lm.subject }}<br>
-					{{ lm.content }}
+					{{ lm.content }}<br>					
+					<a href="{{ path('front_office_emploi_candidat_deleteLm',{id:lm.id}) }}">Supprimer cette lettre de motivation</a>
+
 					<hr>
 
 				{% endfor %}

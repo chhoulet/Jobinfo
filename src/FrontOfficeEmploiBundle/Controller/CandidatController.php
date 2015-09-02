@@ -75,6 +75,19 @@ class CandidatController extends Controller
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
+	# Suppression d'une LM + message flash + redirection sur la meme page
+	public function deleteLmAction(Request $request, $id)
+	{
+		$em = $this ->getDoctrine()->getManager();
+		$deletedLm = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->find($id);
+		$session = $request -> getSession();
+		$em -> remove($deletedLm);
+		$em -> flush();
+
+		$session ->getFlashbag()-> add('suppLm', 'Cette lettre de motivation est bien supprimée');
+		return $this ->redirect($request -> headers -> get('referer'));
+	}
+
 	# Mise à jour d'un CV + message flash 
 	public function updateCvAction(Request $request, $id)
 	{
