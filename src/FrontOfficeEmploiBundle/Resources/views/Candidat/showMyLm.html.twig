@@ -11,10 +11,22 @@
 					<hr>
 				{% endfor %}
 
+				{% for messa in app.session.flashbag.get('updateLm') %}
+					{{ messa }}
+					<hr>
+				{% endfor %}
+
 				{% for lm in app.user.motivationLetter %}
 
 					{{ lm.subject }}<br>
-					{{ lm.content }}<br>					
+					{{ lm.content }}<br>
+
+					{% if lm.dateUpdated %}
+						Dernière mises à jour : {{ lm.dateUpdated | date('d-m-Y') }}
+						<hr>
+					{% endif %}
+
+					<a href="{{ path('front_office_emploi_candidat_updateLm',{id:lm.id}) }}">Mettre à jour cette lettre de motivation</a>
 					<a href="{{ path('front_office_emploi_candidat_deleteLm',{id:lm.id}) }}">Supprimer cette lettre de motivation</a>
 
 					<hr>

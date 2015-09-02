@@ -39,6 +39,14 @@ class MotivationLetter
     private $dateCreated;
 
     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateUpdated", type="datetime")
+     */
+    private $dateUpdated;
+
+    /**
      * @var string
      *
      * @Assert\NotBlank()
@@ -269,5 +277,28 @@ class MotivationLetter
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return MotivationLetter
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

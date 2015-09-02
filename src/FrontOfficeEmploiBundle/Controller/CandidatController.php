@@ -106,10 +106,34 @@ class CandidatController extends Controller
 			return $this -> redirect($this -> generateUrl('front_office_emploi_candidat_showMyCv'));
 		}
 
-		return $this -> render('FrontOfficeEmploiBundle:Candidat:createCV.html.twig', array('formCV' => $form -> createView()));
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:createCV.html.twig', 
+			array('formCV' => $form -> createView()));
 	}
 
-	#Creation de l'objet Candidat, function accessible aux personnes loguées + message flash: 
+	# Mise à jour d'une MotivationLetter + message flash 
+	public function updateLmAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$updatedLm = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->find($id);
+		$session = $request -> getSession();
+		$form = $this -> createForm(new MotivationLetterType(), $updatedLm);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$updatedLm -> setDateUpdated(new \DateTime('now'));
+			$em -> flush();
+
+			$session -> getFlashbag()->add('updateLm','Votre Lettre de motivation a bien été mise à jour !');
+			return $this -> redirect($this -> generateUrl('front_office_emploi_candidat_showMyLm'));
+		}
+
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:createLM.html.twig', 
+			array('formLm'=> $form -> createView()));
+	}
+
+	# Creation de l'objet Candidat, function accessible aux personnes loguées + message flash: 
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()-> getManager();

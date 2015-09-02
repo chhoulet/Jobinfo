@@ -19,12 +19,12 @@ front_office_emploi_candidat_createLM:
     path:     /createLM
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:createLM}
 
-# Function Voir ses CV dans son espace perso :
+# Function voir ses CV dans son espace perso :
 front_office_emploi_candidat_showMyCv:
     path:     /showMyCv 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyCv}
 
-# Function Voir ses LM dans son espace perso :
+# Function voir ses LM dans son espace perso :
 front_office_emploi_candidat_showMyLm:
     path:     /showMyLm 
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyLm}
@@ -36,7 +36,7 @@ front_office_emploi_candidat_deleteCv:
     requirements:
         id: "[0-9]+"
 
-# Function de suppression d'un CV de son espace perso :
+# Function de suppression d'une LM de son espace perso :
 front_office_emploi_candidat_deleteLm:
     path:     /deleteLm/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:deleteLm}
@@ -47,6 +47,13 @@ front_office_emploi_candidat_deleteLm:
 front_office_emploi_candidat_updateCv:
     path:     /updateCv/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:updateCv}
+    requirements:
+        id: "[0-9]+"
+
+# Function de mise à jour d'une LM dans son espace perso :
+front_office_emploi_candidat_updateLm:
+    path:     /updateLm/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:updateLm}
     requirements:
         id: "[0-9]+"
 
