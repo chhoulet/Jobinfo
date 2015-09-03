@@ -61,4 +61,16 @@ class JobOfferRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getNbJobOffersByUser($user)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(j.id) AS nb 
+			FROM FrontOfficeEmploiBundle:JobOffer j 
+			JOIN j.user u
+			WHERE u.id LIKE :user')
+		->setParameter('user', $user);
+
+		return $query -> getSingleScalarResult();
+	}	
 }

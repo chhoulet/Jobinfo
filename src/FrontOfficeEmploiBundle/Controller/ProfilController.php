@@ -10,12 +10,14 @@ class ProfilController extends Controller
 	public function myProfilAction($user = null)
 	{		
 		$em = $this -> getDoctrine()->getManager();
+		$NbJobOffersByUser = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->getNbJobOffersByUser($this ->getUser());
 		$myProfil = $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->getCandidatByUser($this -> getUser());
 		$myProfilSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->getSocietyByUser($this -> getUser());
 
 		return $this -> render('FrontOfficeEmploiBundle:Profil:myProfil.html.twig', 
-			array('candidat'=> $myProfil,
-				  'oneSociety' => $myProfilSociety));
+			array('nbJobOffersByUser' => $NbJobOffersByUser,
+				  'candidat'          => $myProfil,
+				  'oneSociety'        => $myProfilSociety));
 	}		
 
 	public function listMyJobOffersAction()

@@ -23,7 +23,7 @@
 				
 				<strong>{{ app.user.username }}</strong><br><br>
 
-					<h3>Mon profil Candidat :</h3>
+					<h3>Mon profil Candidat : {{ nbJobOffersByUser }} {% if nbJobOffersByUser >1 %} offres sélectionnées {% else %} offre sélectionnée {% endif %} </h3>
 					
 						{{ candidat.firstname }}<br>
 						{{ candidat.lastname }}<br>
