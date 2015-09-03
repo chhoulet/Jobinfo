@@ -19,14 +19,22 @@
 
 				<h2>Détail de l'offre</h2>
 
-				<h4>{{ showOneJobOffer.title}}</h4><br>
-					<p><a href="{{ path('front_office_emploi_employer_oneSociety',{id:showOneJobOffer.society.id}) }}">{{ showOneJobOffer.society.name}}</a><br>
+					<h4>{{ showOneJobOffer.title}}</h4><br>
+						<p><a href="{{ path('front_office_emploi_employer_oneSociety',{id:showOneJobOffer.society.id}) }}">{{ showOneJobOffer.society.name}}</a><br>
 
-				{{ showOneJobOffer.descriptionJob }}<br><br>
+						{{ showOneJobOffer.descriptionJob }}<br><br>
 
-				{{ showOneJobOffer.contract }}<br><br>
+						Statut : {{ showOneJobOffer.contract }}
 
-				{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
+						Lieu : {{ showOneJobOffer.place }}<br><br>
+
+						{{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
+
+						{% if job.activeToPurchase == false %}
+							<p>Cette offre est pourvue !</p>
+						{% else %}
+							<p>Poste à pourvoir !</p>
+						{% endif %}
 
 					{% if (is_granted('ROLE_USER')) %}
 						<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a><br>

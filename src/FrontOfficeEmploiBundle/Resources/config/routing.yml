@@ -83,7 +83,7 @@ front_office_emploi_jobOffer_select:
 
 # Function de reponse a une jobOffer:
 front_office_emploi_jobOffer_responseJobOffer:
-    path:     /responseJobOffer/{id}    
+    path:     /responseJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:responseJobOffer}
     requirements:
         id: "[0-9]+"
