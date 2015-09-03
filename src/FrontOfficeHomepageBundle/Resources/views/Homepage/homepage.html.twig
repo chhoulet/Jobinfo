@@ -133,48 +133,51 @@
                     <hr class="visible-xs">
                     <p>Développeurs, intégrateurs, spécialistes réseaux et big Data : faîtes la rencontre professionnelle de votre vie ! Grâce à JobInfo, vous pourrez enregistrer vos CV et Lettres de Motivation dans votre espace personnel, faire un tri personnalisé des offres d'emplois et maximiser vos chances de trouver le poste de vos rêves :</p>                                        
                         
-                        {% if app.user %}
+                        {# Les functions d'acces à son espace perso ou de creation de celui-ci exigent d'etre inscrit sur le site #}
+                        {% if (is_granted('ROLE_USER')) %}
                             {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil candidat.#}
                             {% if (app.user.personnalSpaceActive) %}
                                     <p>Accéder à votre espace personnel :
-                                    <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a><br>
+                                    <a href="{{ path('front_office_emploi_candidat_createCV') }}">Enregistrer un CV</a>
                                     <a href="{{ path('front_office_emploi_candidat_createLM') }}">Enregistrer une Lettre de Motivation</a><br></p>
-                            {% else %}
-                                {# Les functions d'acces à son espace perso ou de creation de celui-ci exigent d'etre inscrit sur le site #}
-                                {% if (is_granted('ROLE_USER')) %}
+                            {% else %}                                
                                     {# Function de creation d'un espace perso : #}
                                     <p><a href="{{ path('front_office_emploi_candidat_new') }}">Créez votre espace personnel !</a> Et enregistrer CV et lettres de motivation, et répondez à nos offres !</p>
-                                {% else %}
-                                    {# Redirection vers l'authentification : #}
-                                    <a href="{{ path('fos_user_security_login') }}">Connectez-vous à votre compte :</a>
-                                    {# Redirection vers la function de creation de compte : #}
-                                    <p>Pas encore inscrit ? Créez votre compte personnel :
-                                    <a href="{{ path('fos_user_registration_register') }}">Enregistrez-vous !</a></p>
-                                {% endif %}
-                            {% endif %}  
+                            {% endif %}
+                        {% else %}
+                            {# Redirection vers l'authentification : #}
+                            <a href="{{ path('fos_user_security_login') }}">Connectez-vous à votre compte :</a>
+                            {# Redirection vers la function de creation de compte : #}
+                            <p>Pas encore inscrit ? Créez votre compte personnel :
+                            <a href="{{ path('fos_user_registration_register') }}">Enregistrez-vous !</a></p>               
                         {% endif %}                                                     
 
                     <p>Consultez la liste des <a href="{{ path('front_office_emploi_employer_list') }}">sociétés qui recrutent !</a><br><br></p>
 
                     <p>Starts-up, cabinets conseil, grandes entreprises, SSII, rencontrez le candidat idéal ! Venez proposer des postes à des candidats qualifiés dans tous les domaines du Web qui vous intéressent, donnez leur chance à des débutants, et convainquez des experts de travailler avec vous. Jobinfo vous donnera les clés d'un recrutement réussi :</p>
                         
-                        {% if app.user %}                        
-                            {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil society.#}
-                            {% if app.user.personnalSpaceActive %}
-                                    <p>Gérer votre compte personnel :</p>
-                                    <a href="{{ path('front_office_emploi_myProfil') }}">Accéder à votre espace employeur :</a> {% else %}
-                                {# Les functions d'acces à son espace perso ou de creation de celui-ci exigent d'etre inscrit sur le site #}
-                                {% if (is_granted('ROLE_USER')) %}                        
-                                    <a href="{{ path('front_office_emploi_employer_createSociety')}}">Créer votre espace personnel :</a>
+                            {% if (is_granted('ROLE_USER')) %} 
+
+                                {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil society.#}
+                                {% if app.user.personnalSpaceActive %}
+                                    <p>Gérer votre compte personnel :
+                                    <a href="{{ path('front_office_emploi_myProfil') }}">Accéder à votre espace employeur</a></p> 
+                                    {# Les functions d'acces à son espace perso ou de creation de celui-ci exigent d'etre inscrit sur le site #}                                
                                 {% else %}
+                                    <a href="{{ path('front_office_emploi_employer_createSociety')}}">Créer votre espace personnel :</a> 
+                                {% endif %}
+
+                            {% else %}
+
                                     {# Redirection vers l'authentification : #}
                                     <a href="{{ path('fos_user_security_login') }}">Connectez-vous à votre compte :</a>
                                     {# Redirection vers la function de creation de compte : #}
                                     <p>Pas encore inscrit ? Créez votre compte sur Jobinfo :
-                                <a href="{{ path('fos_user_registration_register') }}">Je m'inscris pour pouvoir créer mon espace employeur !</a>
-                                {% endif %}
+                                    <a href="{{ path('fos_user_registration_register') }}">Je m'inscris pour pouvoir créer mon espace employeur !</a>  
+
                             {% endif %} 
-                        {% endif %}                                                    
+                        
+                                                                           
 
                 </div>
             </div>
