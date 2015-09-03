@@ -145,7 +145,7 @@ class CandidatController extends Controller
 		if($form -> isValid())
 		{
 			$candidat -> setSavedAt(new \DateTime('now'));
-			$candidat -> setUser($this -> getUser());
+			$candidat -> setUser($this -> getUser()) -> setPersonnalSpaceActive(true);
 			$em -> persist($candidat);
 			$em -> flush();
 

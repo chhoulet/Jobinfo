@@ -30,6 +30,13 @@ class User extends BaseUser
      */
     private $type;
 
+     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="personnalSpaceActive", type="boolean")
+     */
+    private $personnalSpaceActive;
+
     /**
      * @var string
      *
@@ -402,5 +409,28 @@ class User extends BaseUser
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set personnalSpaceActive
+     *
+     * @param boolean $personnalSpaceActive
+     * @return User
+     */
+    public function setPersonnalSpaceActive($personnalSpaceActive)
+    {
+        $this->personnalSpaceActive = $personnalSpaceActive;
+
+        return $this;
+    }
+
+    /**
+     * Get personnalSpaceActive
+     *
+     * @return boolean 
+     */
+    public function getPersonnalSpaceActive()
+    {
+        return $this->personnalSpaceActive;
     }
 }

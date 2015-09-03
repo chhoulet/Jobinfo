@@ -61,7 +61,8 @@ class SocietyRepository extends EntityRepository
 			SELECT s 
 			FROM FrontOfficeEmploiBundle:Society s 
 			JOIN s.user u 
-			WHERE u.id LIKE :id')
+			WHERE u.id LIKE :id
+			AND u.personnalSpaceActive = true')
 		->setParameter('id', $user);
 
 		return $query -> getSingleResult();

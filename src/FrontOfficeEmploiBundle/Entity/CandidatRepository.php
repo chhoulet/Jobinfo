@@ -28,7 +28,8 @@ class CandidatRepository extends EntityRepository
 			SELECT c 
 			FROM FrontOfficeEmploiBundle:Candidat c 
 			JOIN c.user u 
-			WHERE u.id LIKE :id')
+			WHERE u.id LIKE :id
+			AND u.personnalSpaceActive = true')
 		->setParameter('id', $user);
 
 		return $query -> getSingleResult();
