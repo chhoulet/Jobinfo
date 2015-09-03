@@ -74,12 +74,15 @@
                             </li>
                             {% if app.user.candidat %}
                                 <li>
-                                    <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil</a>
+                                    <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil Candidat</a>
                                 </li>
+                            {% else %}
+                                {% if app.user.society %}                                
+                                    <li>
+                                        <a href="{{ path('front_office_emploi_myProfil') }}">Espace Employeurs</a> 
+                                    </li>                                
+                                {% endif %}                                                    
                             {% endif %}
-                            <li>
-                                <a href="{{ path('front_office_emploi_myProfil') }}">Espace Employeurs</a> 
-                            </li>
                         {% else %}
                             <li>
                                 <a href="{{ path('fos_user_security_login') }}">Connection</a>
