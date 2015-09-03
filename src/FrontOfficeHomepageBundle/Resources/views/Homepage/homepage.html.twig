@@ -133,7 +133,7 @@
                     <hr class="visible-xs">
                     <p>Développeurs, intégrateurs, spécialistes réseaux et big Data : faîtes la rencontre professionnelle de votre vie ! Grâce à JobInfo, vous pourrez enregistrer vos CV et Lettres de Motivation dans votre espace personnel, faire un tri personnalisé des offres d'emplois et maximiser vos chances de trouver le poste de vos rêves :</p>                                        
                         
-                       
+                        {% if app.user %}
                             {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil candidat.#}
                             {% if (app.user.personnalSpaceActive) %}
                                     <p>Accéder à votre espace personnel :
@@ -152,13 +152,13 @@
                                     <a href="{{ path('fos_user_registration_register') }}">Enregistrez-vous !</a></p>
                                 {% endif %}
                             {% endif %}  
-                                                                           
+                        {% endif %}                                                     
 
                     <p>Consultez la liste des <a href="{{ path('front_office_emploi_employer_list') }}">sociétés qui recrutent !</a><br><br></p>
 
                     <p>Starts-up, cabinets conseil, grandes entreprises, SSII, rencontrez le candidat idéal ! Venez proposer des postes à des candidats qualifiés dans tous les domaines du Web qui vous intéressent, donnez leur chance à des débutants, et convainquez des experts de travailler avec vous. Jobinfo vous donnera les clés d'un recrutement réussi :</p>
                         
-                                             
+                        {% if app.user %}                        
                             {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil society.#}
                             {% if app.user.personnalSpaceActive %}
                                     <p>Gérer votre compte personnel :</p>
@@ -174,7 +174,7 @@
                                 <a href="{{ path('fos_user_registration_register') }}">Je m'inscris pour pouvoir créer mon espace employeur !</a>
                                 {% endif %}
                             {% endif %} 
-
+                        {% endif %}                                                    
 
                 </div>
             </div>

@@ -121,3 +121,8 @@ front_office_emploi_employer_desactivateSociety:
     path:     /desactivateSociety/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:desactivateSociety}
 
+# Nombre d'offres publiées par une society:
+front_office_emploi_employer_nbJobOffer:
+    path:     /nbJobOffer/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Profil:nbJobOffer}
+

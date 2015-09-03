@@ -56,7 +56,7 @@
 							<p>Cette société n'est actuellement plus en recherche de talents !</p>
 						{% else %}										
 
-							<p>Offres d'emploi de {{ oneSociety.name }} :</p>	
+							<p>Offres d'emploi de {{ oneSociety.name }} publiées : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id})}}">Voir mes statistiques :</a></p>	
 
 							{% for job in oneSociety.jobOffer %}											
 								{{ job.title }}<br>
