@@ -1,0 +1,12 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
+
+			Offres d'emplois publiées : {{ nbJobOffer }}<br><br>
+			Offres d'emplois toujours actives : {{ nbActiveJobOffersBySociety }}
+
+		</div>
+
+	{% endblock %}

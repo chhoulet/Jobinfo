@@ -23,10 +23,12 @@ class ProfilController extends Controller
 	public function nbJobOfferAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$nbJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->getNbJobOffersBySociety($id);
+		$nbJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getNbJobOffersBySociety($id);
+		$nbActiveJobOffersBySociety = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getNbActiveJobOffersBySociety($id);
 
 		return $this -> render('FrontOfficeEmploiBundle:Profil:stats.html.twig',
-			array('nbJobOffer'=> $nbJobOffer));
+			array('nbJobOffer'                => $nbJobOffer,
+				  'nbActiveJobOffersBySociety'=> $nbActiveJobOffersBySociety));
 	}
 
 	public function listMyJobOffersAction()
