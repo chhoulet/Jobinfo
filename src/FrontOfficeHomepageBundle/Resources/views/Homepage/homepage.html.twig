@@ -133,6 +133,7 @@
                     <hr class="visible-xs">
                     <p>Développeurs, intégrateurs, spécialistes réseaux et big Data : faîtes la rencontre professionnelle de votre vie ! Grâce à JobInfo, vous pourrez enregistrer vos CV et Lettres de Motivation dans votre espace personnel, faire un tri personnalisé des offres d'emplois et maximiser vos chances de trouver le poste de vos rêves :</p>
 
+                    {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil candidat #}
                     {% if (is_granted('ROLE_USER')) %}
                         {% if (app.user.candidat) %}
                              <p>Accéder à votre espace personnel :

@@ -37,6 +37,15 @@ class EmployerController extends Controller
 			array('formSociety'=>$formSociety->createView()));
 	}
 
+	# Détail d'une society:
+	public function oneSocietyAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$oneSociety = $em ->getRepository('FrontOfficeEmploiBundle:Society') -> find($id);
+
+		return $this -> render('FrontOfficeEmploiBundle:Employer:oneSociety.html.twig', array('oneSociety'=> $oneSociety));
+	}
+
 	# Instantiation de l'objet jobOffer + message flash:
 	public function createJobOfferAction(Request $request)
 	{

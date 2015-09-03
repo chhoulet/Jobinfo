@@ -94,6 +94,13 @@ front_office_emploi_employer_createSociety:
     path:     /createSociety
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:createSociety}
 
+# Détail d'une société :
+front_office_emploi_employer_oneSociety:
+    path:     /oneSociety/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Employer:oneSociety}
+    requirements:
+        id: "[0-9]+"
+
 # Publier une jobOffer:
 front_office_emploi_employer_createJobOffer:
     path:     /createJobOffer 

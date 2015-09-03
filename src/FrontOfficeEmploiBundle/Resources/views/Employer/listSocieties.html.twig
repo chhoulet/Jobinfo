@@ -9,8 +9,14 @@
 				<h2> Liste des sociétés qui recrutent !</h2>
 
 					{% for society in listSocieties %}
-						Raison sociale : {{ society.name }}<br>
+						Raison sociale : <a href="{{ path('front_office_emploi_employer_oneSociety',{id:society.id}) }}">{{ society.name }}</a><br>
+
+						{% for job in society.jobSector %}
+							{{ job.nameSector }}
+						{% endfor %}
+						
 						Secteur d'activité : {{ society.activity }}<br>
+						Métier : {{ society.activity }}<br>
 						Description : {{ society.description }}<br>
 						Inscrite sur le site depuis le : {{ society.dateCreated | date('d-m-Y') }}<br>
 						<hr>
