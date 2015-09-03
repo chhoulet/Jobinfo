@@ -50,6 +50,8 @@
 						Description : {{ oneSociety.description }}<br>
 						Inscrite sur le site depuis le : {{ oneSociety.dateCreated | date('d-m-Y') }}<br>
 
+						<a href="{{ path('front_office_emploi_employer_createJobOffer',{id:oneSociety.id}) }}">Publier une offre d'emploi :</a>
+
 						{% if oneSociety.hiringState == false %}
 							<p>Cette société n'est actuellement plus en recherche de talents !</p>
 						{% else %}										
@@ -83,9 +85,11 @@
 								{{ forum.forumDescription }}<br>
 							{% endfor %}
 
+
+
 						<hr>						
 						
-						<a href="{{ path('front_office_emploi_employer_desactivateSociety',{id:society.id}) }}">Quitter la liste des sociétés qui recrutent</a>
+						<a href="{{ path('front_office_emploi_employer_desactivateSociety',{id:oneSociety.id}) }}">Quitter la liste des sociétés qui recrutent</a>
 
 			</div>
 

@@ -47,10 +47,11 @@ class EmployerController extends Controller
 	}
 
 	# Instantiation de l'objet jobOffer + message flash:
-	public function createJobOfferAction(Request $request)
+	public function createJobOfferAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$jobOffer = new JobOffer();
+		$society = $em -> getRepository('FrontOfficeEmploiBundle:Society')->find($id);
 		$session = $request -> getSession();
 		$formJobOffer = $this -> createForm(new JobOfferType(), $jobOffer);
 
@@ -61,6 +62,7 @@ class EmployerController extends Controller
 			$jobOffer -> setDateCreated(new \DateTime('now'));
 			$jobOffer -> setActiveToPurchase(true);
 			$jobOffer -> addUser($this -> getUser());
+			$jobOffer -> setSociety($society);
 			$em -> persist($jobOffer);
 			$em -> flush();
 
