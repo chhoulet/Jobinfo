@@ -15,7 +15,7 @@ class ProfilController extends Controller
 
 		return $this -> render('FrontOfficeEmploiBundle:Profil:myProfil.html.twig', 
 			array('candidat'=> $myProfil,
-				  'society' => $myProfilSociety));
+				  'oneSociety' => $myProfilSociety));
 	}		
 
 	public function listMyJobOffersAction()

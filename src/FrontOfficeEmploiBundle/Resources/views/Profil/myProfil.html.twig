@@ -42,12 +42,49 @@
 
 			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">			
 
-					<h3>{{ society.name }}</h3><br><br>
+					<h2 style="text-align:center"> {{ oneSociety.name }}</h2>
 
-						Activité : {{ society.activity }}<br>
-						Description : {{ society.description }}<br>
+											
+						Secteur d'activité : {{ oneSociety.jobSector.nameSector }}<br>
+						Métier : {{ oneSociety.activity }}<br>
+						Description : {{ oneSociety.description }}<br>
+						Inscrite sur le site depuis le : {{ oneSociety.dateCreated | date('d-m-Y') }}<br>
 
-						<a href="{{ path('front_office_emploi_employer_myJobOffers')}}">Consulter mes offres publiées</a><br>
+						{% if oneSociety.hiringState == false %}
+							<p>Cette société n'est actuellement plus en recherche de talents !</p>
+						{% else %}										
+
+							<p>Offres d'emploi de {{ oneSociety.name }} :</p>	
+
+							{% for job in oneSociety.jobOffer %}											
+								{{ job.title }}<br>
+								{{ job.place }}<br>
+								{{ job.descriptionJob }}<br>
+								{{ job.contract }}<br>
+								Offre publiée le : {{ job.dateCreated | date('d-m-Y') }}<br>
+
+								{% if job.activeToPurchase == false %}
+									<p>Cette offre est pourvue !</p>
+								{% else %}
+									<p>Poste à pourvoir !</p>
+								{% endif %}
+							{% endfor %}
+
+							<hr>
+
+						{% endif %}
+
+						<p>{{ oneSociety.name }} participe aux forums suivants :</p>
+
+							{% for forum in oneSociety.forum %}
+								<h4><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a></h4><br>
+								{{ forum.forumType }}<br>
+								{{ forum.forumDate | date('m-d-Y') }}<br>
+								{{ forum.forumDescription }}<br>
+							{% endfor %}
+
+						<hr>						
+						
 						<a href="{{ path('front_office_emploi_employer_desactivateSociety',{id:society.id}) }}">Quitter la liste des sociétés qui recrutent</a>
 
 			</div>

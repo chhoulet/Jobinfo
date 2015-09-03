@@ -111,11 +111,6 @@ front_office_emploi_employer_list:
     path:     /listSocieties
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:listSocieties}
 
-# Voir ses jobOffers publiées dans son espace perso:
-front_office_emploi_employer_myJobOffers:
-    path:     /myJobOffers 
-    defaults: { _controller: FrontOfficeEmploiBundle:Employer:myJobOffers}
-
 # Retrait de la liste des postes a pourvoir d'une jobOffer:
 front_office_emploi_employer_desactivateJobOffer:
     path:     /desactivateJobOffer/{id}

@@ -80,13 +80,7 @@ class EmployerController extends Controller
 
 		return $this -> render('FrontOfficeEmploiBundle:Employer:listSocieties.html.twig', 
 			array('listSocieties' => $listSocieties));
-	}
-
-	# Voir ses jobOffers publiées via son espace personnel:
-	public function myJobOffersAction()
-	{
-		return $this->render('FrontOfficeEmploiBundle:Employer:showMyJobOffers.html.twig');
-	}
+	}	
 
 	# Function desactivant les jobOffers + message flash:
 	public function desactivateJobOfferAction(Request $request, $id)
