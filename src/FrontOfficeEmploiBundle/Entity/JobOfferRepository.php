@@ -98,4 +98,14 @@ class JobOfferRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getAverageNbResponseJobOfferByJobOffer($id)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT AVG(r.id)
+			FROM FrontOfficeEmploiBundle:ResponsejobOffer r
+			JOIN r.jobOffer j');
+
+		return $query -> getSingleScalarResult();
+	}
 }

@@ -24,10 +24,12 @@ class ProfilController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$nbJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getNbJobOffersBySociety($id);
+		$nbAvgJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getAverageNbResponseJobOfferByJobOffer($id);
 		$nbActiveJobOffersBySociety = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getNbActiveJobOffersBySociety($id);
 
 		return $this -> render('FrontOfficeEmploiBundle:Profil:stats.html.twig',
 			array('nbJobOffer'                => $nbJobOffer,
+				  'nbAvgJobOffer'             => $nbAvgJobOffer,
 				  'nbActiveJobOffersBySociety'=> $nbActiveJobOffersBySociety));
 	}
 
