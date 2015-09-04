@@ -67,6 +67,13 @@ front_office_emploi_candidat_new:
     path:     /newCandidat
     defaults: { _controller: FrontOfficeEmploiBundle:Candidat:new}
 
+# Function de mise à jour de son profil perso :
+front_office_emploi_candidat_update:
+    path:     /update/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:update}
+    requirements:
+        id: "[0-9]+"
+
 # Routes gerant les offres d'emploi:
 front_office_emploi_jobOffer_showOne:
     path:     /showOneJobOffer/{id}

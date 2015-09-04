@@ -71,6 +71,13 @@ class Candidat
     private $savedAt;
 
      /**
+     * @var datetime
+     *
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable = true)
+     */
+    private $dateUpdated;
+
+     /**
      * @var integer
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="candidat")
@@ -397,5 +404,28 @@ class Candidat
     public function getSavedAt()
     {
         return $this->savedAt;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Candidat
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

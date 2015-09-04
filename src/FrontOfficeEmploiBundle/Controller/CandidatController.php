@@ -156,6 +156,27 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form'=>$form->createView()));
 	}
 
+	public function updateAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$updatedCandidat = $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->find($id);
+		$session = $request -> getSession();
+		$formUpdate = $this -> createForm(new CandidatType(), $updatedCandidat);
+
+		$formUpdate -> handleRequest($request);
+
+		if ($formUpdate -> isValid())
+		{
+			$updatedCandidat -> setDateUpdated(new \DateTime(''));
+			$em -> flush();
+
+			$session -> getFlashbag()-> add('update', 'Votre profil est mis à jour !');
+			return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', array('id' => $id)));
+		}
+
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form' => $formUpdate -> createView()));
+	}
+
 	# Acces via son espace personnel a ses CV:
 	public function showMyCvAction()
 	{
