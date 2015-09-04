@@ -68,6 +68,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="user")
+     */
+    private $responseJobOffer;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="user")
      */
     private $motivationLetter;
@@ -432,5 +439,38 @@ class User extends BaseUser
     public function getPersonnalSpaceActive()
     {
         return $this->personnalSpaceActive;
+    }
+
+    /**
+     * Add responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     * @return User
+     */
+    public function addResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
+    {
+        $this->responseJobOffer[] = $responseJobOffer;
+
+        return $this;
+    }
+
+    /**
+     * Remove responseJobOffer
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer
+     */
+    public function removeResponseJobOffer(\FrontOfficeEmploiBundle\Entity\ResponseJobOffer $responseJobOffer)
+    {
+        $this->responseJobOffer->removeElement($responseJobOffer);
+    }
+
+    /**
+     * Get responseJobOffer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResponseJobOffer()
+    {
+        return $this->responseJobOffer;
     }
 }

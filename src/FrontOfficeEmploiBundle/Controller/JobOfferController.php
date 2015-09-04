@@ -58,7 +58,7 @@ class JobOfferController extends Controller
 			//$cuvitae = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae')->find($id_cuvitae);
 			$responseJobOffer -> setDateCreated(new \DateTime('now'));
 			$responseJobOffer -> setJobOffer($jobOffer);
-			$responseJobOffer -> setCandidat($this->getUser());
+			$responseJobOffer -> setUser($this->getUser());
 
 			$session -> getFlashbag()-> add('notice','Votre candidature a bien été envoyée !');
 			$em ->persist($responseJobOffer);
@@ -66,7 +66,7 @@ class JobOfferController extends Controller
 
 			return $this -> redirect($this -> generateUrl('front_office_emploi_jobOffer_showOne', array('id'=>$id)));
 		}
-
+		
 		return $this ->render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig', 
 			array('formResponseJobOffer'=>$formResponseJobOffer->createView()));
 	}

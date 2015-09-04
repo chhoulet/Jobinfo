@@ -76,6 +76,14 @@ class ResponseJobOffer
     private $jobOffer;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="responseJobOffer")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -221,5 +229,28 @@ class ResponseJobOffer
     public function getCuvitae()
     {
         return $this->cuvitae;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $user
+     * @return ResponseJobOffer
+     */
+    public function setUser(\FrontOfficeUserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
