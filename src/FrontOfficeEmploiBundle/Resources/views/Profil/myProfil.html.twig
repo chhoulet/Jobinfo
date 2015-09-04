@@ -49,7 +49,11 @@
 						Métier : {{ oneSociety.activity }}<br>
 						Description : {{ oneSociety.description }}<br>
 						Inscrite sur le site depuis le : {{ oneSociety.dateCreated | date('d-m-Y') }}<br>
+						{% if oneSociety.dateUpdated  %}
+							Dernière mise à jour le : {{ oneSociety.dateUpdated | date('d-m-Y') }}<br>
+						{% endif %}
 
+						<a href="{{ path('front_office_emploi_employer_updateSociety',{id:oneSociety.id}) }}">Mettre à jour mon profil employer</a><br>
 						<a href="{{ path('front_office_emploi_employer_createJobOffer',{id:oneSociety.id}) }}">Publier une offre d'emploi :</a>
 
 						{% if oneSociety.hiringState == false %}

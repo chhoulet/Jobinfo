@@ -150,7 +150,7 @@ class CandidatController extends Controller
 			$em -> flush();
 
 			$session -> getFlashbag()->add('notice','Votre profil est bien enregistré dans notre site !');
-			return $this -> redirect($this -> generateUrl('front_office_emploi_mon_profil'));
+			return $this -> redirect($this -> generateUrl('front_office_emploi_mon_profil', array('user' => $user)));
 		}
 
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form'=>$form->createView()));

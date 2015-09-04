@@ -96,10 +96,17 @@ front_office_emploi_jobOffer_responseJobOffer:
         id: "[0-9]+"
 
 # Routes gérant les fonctionnalités des employeurs:
-# Enregistrer une société:
+# Enregistrer une société - créer son espace employer:
 front_office_emploi_employer_createSociety:
     path:     /createSociety
     defaults: { _controller: FrontOfficeEmploiBundle:Employer:createSociety}
+
+# Mise a jour de son espace employer:
+front_office_emploi_employer_updateSociety:
+    path:     /updateSociety/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Employer:updateSociety}
+    requirements:
+        id: "[0-9]+"
 
 # Détail d'une société :
 front_office_emploi_employer_oneSociety:

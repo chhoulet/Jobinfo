@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EmployerController extends Controller
 {
-	# Instantiation de l'objet Society + message flash:
+	# Instantiation de l'objet Society - creation de compte employer + message flash:
 	public function createSocietyAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -35,6 +35,28 @@ class EmployerController extends Controller
 
 		return $this -> render('FrontOfficeEmploiBundle:Employer:createSociety.html.twig', 
 			array('formSociety'=>$formSociety->createView()));
+	}
+
+	public function updateSocietyAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$updatedSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')-> find($id);
+		$form = $this -> createForm(new SocietyType(), $updatedSociety);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$updatedSociety -> setDateUpdated(new \DateTime());
+			$em -> flush();
+
+			$session -> getFlashbag()->add('updatedSociety', 'Votre profil society a bien été mis à jour !');
+			return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', array('user'=>$this -> getUser())));
+		}
+
+		return $this -> render('FrontOfficeEmploiBundle:Employer:createSociety.html.twig', 
+			array('formSociety'=> $form-> createView()));
 	}
 
 	# Détail d'une society:
