@@ -56,8 +56,10 @@ class AdminJobOffersController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$nbJobOffersByPlace = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getNbJobOffersByPlace();
+		$nbJobOffersBySociety = $em -> getRepository('FrontOfficeEmploiBundle:Society') ->getNbJobOffersBySociety();
 
 		return $this -> render('BackOfficeBundle:AdminJobOffers:stats.html.twig', 
-			array('nbJobOffersByPlace'=> $nbJobOffersByPlace));
+			array('nbJobOffersByPlace'=> $nbJobOffersByPlace,
+				  'nbJobOffersBySociety'=> $nbJobOffersBySociety));
 	}
 }

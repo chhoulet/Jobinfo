@@ -121,5 +121,5 @@ class JobOfferRepository extends EntityRepository
 			ORDER BY nb DESC');
 
 		return $query -> getResult();
-	}
+	}	
 }
