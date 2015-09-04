@@ -28,7 +28,8 @@ class JobOfferRepository extends EntityRepository
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT COUNT(j.id)
-			FROM FrontOfficeEmploiBundle:JobOffer j');
+			FROM FrontOfficeEmploiBundle:JobOffer j
+			WHERE j.activeToPurchase = true');
 
 		return $query -> getSingleSCalarResult();
 	}
@@ -107,5 +108,18 @@ class JobOfferRepository extends EntityRepository
 			JOIN r.jobOffer j');
 
 		return $query -> getSingleScalarResult();
+	}
+
+	public function getNbJobOffersByPlace()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT p.name, COUNT(j.id) AS nb
+			FROM FrontOfficeEmploiBundle:Place p
+			JOIN p.jobOffer j
+			WHERE j.activeToPurchase = true
+			GROUP BY p.name
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
 	}
 }

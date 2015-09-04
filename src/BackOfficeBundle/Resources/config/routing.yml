@@ -139,6 +139,11 @@ back_office_adminjobOffer_delete:
     requirements: 
         id: "[0-9]+"
 
+# Statistiques des jobOffers:
+back_office_adminjobOffer_statsJobOffers:
+    path:     /statsJobOffers
+    defaults: { _controller: BackOfficeBundle:AdminJobOffers:statsJobOffers}
+
 # Routes gerant l'administration des Etablissements
 back_office_adminEtablissement_list:
     path:     /list
