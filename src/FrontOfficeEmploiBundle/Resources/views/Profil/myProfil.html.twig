@@ -57,10 +57,11 @@
 						<a href="{{ path('front_office_emploi_employer_createJobOffer',{id:oneSociety.id}) }}">Publier une offre d'emploi :</a>
 
 						{% if oneSociety.hiringState == false %}
-							<p>Cette société n'est actuellement plus en recherche de talents !</p>
+							<p>Votre société n'est actuellement plus en recherche de talents !</p>
 						{% else %}										
 
-							<p>Offres d'emploi de {{ oneSociety.name }} publiées : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id})}}">Voir mes statistiques :</a></p>	
+							<p>Offres d'emploi de {{ oneSociety.name }} publiées : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id}) }}">Voir mes statistiques :</a></p><br>
+							<p><a href="{{ path('front_office_emploi_myJobOffers_list') }}">Voir les réponses obtenues :</a></p><br><br>
 
 							{% for job in oneSociety.jobOffer %}											
 								{{ job.title }}<br>

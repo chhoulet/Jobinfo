@@ -59,21 +59,16 @@
 						{{ jobResponse.content }}<br>
 						{{ jobResponse.dateCreated | date('d-m-Y') }}<br>
 
-						CV : {% for mycv in jobResponse.cuvitae %}	
-								{{ mycv.title }}<br>
-								{{ mycv.gradeOne }}<br>
-								{{ mycv.gradeTwo }}<br>
-								{{ mycv.languages }}<br>
-								{{ mycv.workExperience1}}<br>
-								{{ mycv.workExperience2}}<br> 
-							 {% endfor %}<br><br>
-
-						LM : {% for mylm in jobResponse.motivationLetter %}
-								{{ mylm.subject }}<br>
-								{{ mylm.dateCreated | date('d-m-Y') }}<br>
-								{{ mylm.content }}<br>
-							 {% endfor %}
-
+						CV : {{ jobResponse.cuvitae.title }}<br>
+							 {{ jobResponse.cuvitae.gradeOne }}<br>
+							 {{ jobResponse.cuvitae.gradeTwo }}<br>
+							 {{ jobResponse.cuvitae.languages }}<br>
+							 {{ jobResponse.cuvitae.workExperience1 }}<br>
+							 {{ jobResponse.cuvitae.workExperience2 }}<br><br>
+							 							
+						LM : {{ jobResponse.motivationLetter.subject }}<br>
+							 {{ jobResponse.motivationLetter.dateCreated | date('d-m-Y') }}<br>
+							 {{ jobResponse.motivationLetter.content }}<br>								
 					{% endfor %}<br><br>										 	
 					
 					<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}"><button>Retirer cette offre du marché</button></a><br><br>
