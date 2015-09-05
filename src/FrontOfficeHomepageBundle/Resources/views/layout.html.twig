@@ -37,8 +37,8 @@
 <body>
 
     <div class="brand">JobInfo</div>
-    <div class="address-bar">276 rue de Charenton | Paris 75012 | 01 43 41 56 94 . 07 82 92 41 90</div>
-        {% if app.user %} Bonjour {{ app.user.username }} !{% endif %}
+    <div class="address-bar">276 rue de Charenton | Paris 75012 | 01 43 41 56 94 . 07 82 92 41 90<br>
+        {% if app.user %} Bonjour {{ app.user.username }} !{% endif %}</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -79,7 +79,7 @@
                             {% else %}
                                 {% if app.user.type == 'society' and app.user.personnalSpaceActive %}                                
                                     <li>
-                                        <a href="{{ path('front_office_emploi_myProfil') }}">Espace Employeurs</a> 
+                                        <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil Employeur</a> 
                                     </li>                                
                                 {% endif %}                                                    
                             {% endif %}

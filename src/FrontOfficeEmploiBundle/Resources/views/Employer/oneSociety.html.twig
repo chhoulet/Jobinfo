@@ -36,16 +36,23 @@
 
 						{% endif %}
 
-						<p>{{ oneSociety.name }} participe aux forums suivants :</p>
+						{% if oneSociety.forum is not empty %}
 
-							{% for forum in oneSociety.forum %}
-								<h4><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a></h4><br>
-								{{ forum.forumType }}<br>
-								{{ forum.forumDate | date('m-d-Y') }}<br>
-								{{ forum.forumDescription }}<br>
-							{% endfor %}
+							<p>{{ oneSociety.name }} participe aux forums suivants :</p>
 
-						<hr>
+								{% for forum in oneSociety.forum %}
+									<h4><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a></h4>
+									{{ forum.forumType }}<br>
+									{{ forum.forumDate | date('m-d-Y') }}<br>
+									{{ forum.forumDescription }}<br>
+									<hr>
+								{% endfor %}
+
+						{% else %}						
+
+							</p>{{oneSociety.name }} n'est inscrite à aucun évenement.</p>
+
+						{% endif %}
 
 						<a href="{{ path('front_office_emploi_employer_list')}}"><button>Retour à la liste des sociétés</button></a>
 				
