@@ -43,7 +43,7 @@ class JobOffer
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="descriptionJob", type="string", length=400)
+     * @ORM\Column(name="descriptionJob", type="string", length=600)
      */
     private $descriptionJob;
 

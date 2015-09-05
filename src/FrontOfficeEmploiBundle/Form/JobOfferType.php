@@ -15,14 +15,17 @@ class JobOfferType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('descriptionJob')
-            ->add('place', null)
-            ->add('contract', 'choice', array('choices' => array('Stage'=>'Stage',
-                                                                  'CDD'=>'CDD',
-                                                                  'CDI'=>'CDI',
-                                                                  'Alternance'=>'Alternance')))
-            ->add('jobSector')
+            ->add('title','text',           array('label'   =>'Titre',
+                                                  'attr'    => array('placeholder'=>'Developpeur Symfony, Administrateur Réseaux, Développeur Zend...')))
+            ->add('descriptionJob','text',  array('label'   =>'Description du poste',
+                                                  'attr'    => array('placeholder'=>'Saisissez votre texte')))
+            ->add('place', null,            array('label'   =>'Ville où se situe le poste à pourvoir'))
+            ->add('contract', 'choice',     array('label'   =>'Contrat proposé',
+                                                  'choices' => array('Stage'=>'Stage',
+                                                                     'CDD'=>'CDD',
+                                                                     'CDI'=>'CDI',
+                                                                     'Alternance'=>'Alternance')))
+            ->add('jobSector', null,        array('label'   =>'Secteur d\'activité :'))
             ->add('valider','submit')
         ;
     }
