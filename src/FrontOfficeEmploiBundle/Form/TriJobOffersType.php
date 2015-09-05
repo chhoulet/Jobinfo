@@ -28,6 +28,16 @@ class TriJobOffersType extends AbstractType
         ;
     }
 
+     /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'FrontOfficeEmploiBundle\Entity\JobOffer'
+        ));
+    }
+
     /**
      * @return string
      */
