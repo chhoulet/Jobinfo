@@ -3,6 +3,7 @@
 namespace FrontOfficeEmploiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Candidat
@@ -23,6 +24,12 @@ class Candidat
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Votre prénom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="firstname", type="string", length=255)
      */
@@ -30,6 +37,12 @@ class Candidat
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="lastname", type="string", length=255)
      */
@@ -37,6 +50,12 @@ class Candidat
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le nom de votre rue doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de votre rue ne peut pas être plus long que {{ limit }} caractères"
+     * )     
      *
      * @ORM\Column(name="street", type="string", length=255)
      */
@@ -44,6 +63,12 @@ class Candidat
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le nom de votre ville doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de votre ville ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="city", type="string", length=255)
      */
@@ -51,6 +76,12 @@ class Candidat
 
     /**
      * @var integer
+     * @Assert\Range(
+     *      min = 01,
+     *      max = 99,
+     *      minMessage = "Votre code postal ne doit comporter que 2 chiffres de 01 à 99",
+     *      maxMessage = "Votre code postal ne doit comporter que 2 chiffres de 01 à 99"
+     * )
      *
      * @ORM\Column(name="postcode", type="integer")
      */
@@ -58,6 +89,12 @@ class Candidat
 
     /**
      * @var integer
+     * @Assert\Range(
+     *      min = 0000000000,
+     *      max = 9999999999,
+     *      minMessage = "Votre numéro de téléphone doit comporter 10 chiffres",
+     *      maxMessage = "Votre numéro de téléphone doit comporter 10 chiffres"
+     * )
      *
      * @ORM\Column(name="phoneNumber", type="integer")
      */
@@ -66,6 +103,7 @@ class Candidat
      /**
      * @var datetime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="savedAt", type="datetime")
      */
     private $savedAt;
@@ -73,6 +111,7 @@ class Candidat
      /**
      * @var datetime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateUpdated", type="datetime", nullable = true)
      */
     private $dateUpdated;
