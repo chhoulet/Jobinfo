@@ -26,6 +26,7 @@ class EmployerController extends Controller
 		{
 			$society -> setDateCreated(new \DateTime('now'));
 			$society -> setUser($this -> getUser()) -> setPersonnalSpaceActive(true);			
+			$society -> setHiringState(true);
 			$em -> persist($society);
 			$em -> flush();
 

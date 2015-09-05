@@ -25,7 +25,7 @@ class JobOfferType extends AbstractType
                                                                      'CDD'=>'CDD',
                                                                      'CDI'=>'CDI',
                                                                      'Alternance'=>'Alternance')))
-            ->add('jobSector', null,        array('label'   =>'Secteur d\'activité :'))
+            ->add('jobSector', null,        array('label'   =>'Domaine technique'))
             ->add('valider','submit')
         ;
     }

@@ -94,15 +94,7 @@ class Society
      * @ORM\OneToOne(targetEntity="FrontOfficeUserBundle\Entity\User", mappedBy="society")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeEmploiBundle\Entity\JobSector", inversedBy="societies")
-     * @ORM\JoinColumn(name="jobSector_id", referencedColumnName="id")
-     */
-    private $jobSector;
+    private $user;    
     
     /**
      * Get id
@@ -328,29 +320,6 @@ class Society
     public function getDateUpdated()
     {
         return $this->dateUpdated;
-    }
-
-    /**
-     * Set jobSector
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\JobSector $jobSector
-     * @return Society
-     */
-    public function setJobSector(\FrontOfficeEmploiBundle\Entity\JobSector $jobSector = null)
-    {
-        $this->jobSector = $jobSector;
-
-        return $this;
-    }
-
-    /**
-     * Get jobSector
-     *
-     * @return \FrontOfficeEmploiBundle\Entity\JobSector 
-     */
-    public function getJobSector()
-    {
-        return $this->jobSector;
     }
 
     /**

@@ -15,11 +15,12 @@ class SocietyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('activity')
-            ->add('description')
-            ->add('hiringState')
-            ->add('jobSector', null)
+            ->add('name','text',        array('label'   =>'Raison sociale',
+                                              'attr'    => array('placeholder'=>'Nom de l\'entreprise')))
+            ->add('activity','text',    array('label'   =>'Secteur d\'activité',
+                                              'attr'    => array('placeholder'=>'Agence interactive, Covoiturage, Web Services, Télécoms, ...')))
+            ->add('description','text', array('label'   =>'Votre métier',
+                                              'attr'    => array('placeholder'=>'Fournisseur de services de ...')))                        
             ->add('valider','submit')
         ;
     }
