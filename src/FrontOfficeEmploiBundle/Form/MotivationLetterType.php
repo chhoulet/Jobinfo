@@ -15,8 +15,10 @@ class MotivationLetterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject')
-            ->add('content')
+            ->add('subject', 'text',    array('label'=>'Objet',
+                                              'attr' => array('placeholder'=>'Réponse à l\'offre de ...')))
+            ->add('content', 'text',    array('label'=>'Votre lettre',
+                                              'attr' => array('placeholder'=>'Votre texte içi... Soyez brefs et conçis !')))
             ->add('valider','submit')
         ;
     }

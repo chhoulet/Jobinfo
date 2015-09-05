@@ -15,9 +15,10 @@ class ResponseJobOfferType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content')
-            ->add('motivationLetter')
-            ->add('cuvitae')
+            ->add('content', 'text',    array('label'=>'Réponse',
+                                              'attr' => array('placeholder'=>'Objet de la réponse ...'))))
+            ->add('motivationLetter', 'text',    array('label'=>'Choisissez une lettre de motivation',)
+            ->add('cuvitae', 'text',    array('label'=>'Choisissez un CV',)
             ->add('Valider','submit')
         ;
     }

@@ -15,7 +15,7 @@ class JobSectorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nameSector')
+            ->add('nameSector','text', array('label'=>'Domaine technique'))                                             
             ->add('valider','submit')
         ;
     }
