@@ -31,7 +31,7 @@ class Candidat
      *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères"
      * )
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string")
      */
     private $firstname;
 
@@ -44,7 +44,7 @@ class Candidat
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
      * )
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string")
      */
     private $lastname;
 
@@ -57,7 +57,7 @@ class Candidat
      *      maxMessage = "Le nom de votre rue ne peut pas être plus long que {{ limit }} caractères"
      * )     
      *
-     * @ORM\Column(name="street", type="string", length=255)
+     * @ORM\Column(name="street", type="string")
      */
     private $street;
 
@@ -70,7 +70,7 @@ class Candidat
      *      maxMessage = "Le nom de votre ville ne peut pas être plus long que {{ limit }} caractères"
      * )
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string")
      */
     private $city;
 
