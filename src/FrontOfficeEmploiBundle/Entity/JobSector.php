@@ -35,16 +35,7 @@ class JobSector
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="jobSector")
      */
-    private $jobOffer;
-
-    /**
-    *
-    * @ var string
-    *
-    * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Society", mappedBy="jobSector")
-    *
-    */
-    private $societies;
+    private $jobOffer;    
 
     /**
      * Get id
@@ -122,38 +113,5 @@ class JobSector
     public function __toString()
     {
         return $this ->nameSector;
-    }
-
-    /**
-     * Add societies
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Society $societies
-     * @return JobSector
-     */
-    public function addSociety(\FrontOfficeEmploiBundle\Entity\Society $societies)
-    {
-        $this->societies[] = $societies;
-
-        return $this;
-    }
-
-    /**
-     * Remove societies
-     *
-     * @param \FrontOfficeEmploiBundle\Entity\Society $societies
-     */
-    public function removeSociety(\FrontOfficeEmploiBundle\Entity\Society $societies)
-    {
-        $this->societies->removeElement($societies);
-    }
-
-    /**
-     * Get societies
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSocieties()
-    {
-        return $this->societies;
-    }
+    }    
 }
