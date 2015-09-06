@@ -32,7 +32,7 @@
                             <a href="{{ path('front_office_homepage_blog_oneArticle',{id:article.id}) }}">{{ article.title }}</a>
                         </h2>
                         <p class="lead">
-                            by <a href="index.php"> {{ article.author.username }}</a>
+                            by  {{ article.author.username }}
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> Posté le {{ article.dateCreated | date('d-m-Y H:i:s') }}</p>
                         <hr>

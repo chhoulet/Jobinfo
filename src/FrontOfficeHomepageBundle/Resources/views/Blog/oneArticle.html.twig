@@ -60,7 +60,7 @@
 
                 <!-- Comment -->
                 {% if oneArticle.comment == true %}
-                   {#  {% for com in oneArticle.comment %}
+                    {% for com in oneArticle.comment %}
                         <div class="media">                                              
                             <div class="media-body">
                                 <h4 class="media-heading"> {{ com.userName}}
@@ -69,7 +69,7 @@
                                {{ com.message}}
                             </div>
                         </div>
-                    {% endfor %} #}
+                    {% endfor %}
                 {% else %}
                     <p>Soyez le premier à poster un commentaire !</p>
                 {% endif %}
@@ -79,8 +79,6 @@
             {{ include('FrontOfficeHomepageBundle:Slots:sidebar.html.twig') }}
         
         </div>
-        <!-- /.row -->
-
-        <hr>
+        <!-- /.row -->        
 
         {% endblock %}

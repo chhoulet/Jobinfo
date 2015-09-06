@@ -21,11 +21,7 @@ class TriJobOffersType extends AbstractType
                                                                   'cdi'=>'CDI',
                                                                   'alt'=>'Alternance')))
             ->add('place', null,         array('label'   => 'Ville'))
-            ->add('jobSector', 'choice', array('label'   => 'Métier',
-                                               'choices' => array('Devel' => 'Développement',
-                                                                  'Inte'  => 'Intégration',
-                                                                  'BigD'  => 'Big Data',
-                                                                  'Rese'  => 'Réseaux')))
+            ->add('jobSector', null,     array('label'   => 'Métier'))
             ->add('valider','submit')
         ;
     }
