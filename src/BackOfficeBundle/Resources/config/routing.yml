@@ -111,7 +111,7 @@ back_office_adminforum_delete:
     requirements:
         id: "[0-9]+"
 
-# Tri des forums par type(emploi - formation):
+# Tri des forums par type(emploi - formation) + stats:
 back_office_adminforum_triForums:
     path:     /triForums 
     defaults: { _controller: BackOfficeBundle:AdminForum:triForums}

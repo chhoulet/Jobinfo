@@ -85,8 +85,10 @@ class AdminForumController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getmanager();
 		$getForumType = $em -> getRepository('FrontOfficeHomepageBundle:Forum') -> getForumType();
+		$nbInscritsByForum = $em -> getRepository('FrontOfficeHomepageBundle:Forum') -> getNbInscritsByForum() ;
 
 		return $this -> render('BackOfficeBundle:AdminForum:getForumType.html.twig', 
-			array('getForumType'=> $getForumType));
-	}
+			array('getForumType'      => $getForumType,
+				  'nbInscritsByForum' => $nbInscritsByForum));
+	}	
 }

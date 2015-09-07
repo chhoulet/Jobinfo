@@ -2,15 +2,31 @@
 
 	{% block content %}
 
-		<div style="background-color:white">
+		<div class="container" style="background-color:white">
 
-			<h2> Forums groupés par type : </h2>
+			<h2 style="text-align:center;">Statistiques Forums</h2>
 
-			    {% for form in  getForumType %}
-			        {{ form.forumType }}<br>
-			            {{ form.forumName }}
-			    {% endfor %}
-		    
+			<div class="col-lg-4">
+
+					<h3> Forums groupés par type : </h3>
+
+				    {% for form in  getForumType %}
+				        {{ form.forumType }}<br>
+				            {{ form.forumName }}
+				    {% endfor %}
+		    </div>
+
+		    <div class="col-lg-4">
+
+					<h3>Forums triés par nombre d'inscrits :</h3>
+
+					{% for forum in nbInscritsByForum %}
+						{{ forum.forumName }} compte {{ forum.nb }} {% if forum.nb > 1 %} inscrits. {% else %} inscrit.{% endif %}
+					{% endfor %}
+
+			</div>
+
+					
 		</div>
 
 	{% endblock %}
