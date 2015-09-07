@@ -48,7 +48,7 @@ class ForumRepository extends EntityRepository
 	public function getForumType()
 	{
 		$query = $this -> getEntityManager()->createQuery('
-			SELECT f 
+			SELECT f.forumName, f.forumType
 			FROM FrontOfficeHomepageBundle:Forum f 
 			GROUP BY f.forumType');
 

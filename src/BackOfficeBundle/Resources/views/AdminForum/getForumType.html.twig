@@ -21,7 +21,7 @@
 					<h3>Forums triés par nombre d'inscrits :</h3>
 
 					{% for forum in nbInscritsByForum %}
-						{{ forum.forumName }} compte {{ forum.nb }} {% if forum.nb > 1 %} inscrits. {% else %} inscrit.{% endif %}
+						<a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a> compte {{ forum.nb }} {% if forum.nb > 1 %} inscrits. {% else %} inscrit.{% endif %}
 					{% endfor %}
 
 			</div>

@@ -10,7 +10,7 @@
 					<h3>Formations triées par nombre d'inscrits:</h3>
 
 						{% for formation in statsFormations %}
-							{{ formation.formationName }} compte {{ formation.nb }} {% if formation.nb >1 %} inscrits. {% else %} inscrit.{% endif %}
+							<a href="{{ path('front_office_formation_showOne',{formationType:formation.formationType, id:formation.id}) }}">{{ formation.formationName }}</a> compte {{ formation.nb }} {% if formation.nb >1 %} inscrits. {% else %} inscrit.{% endif %}
 						{% endfor %}
 
 				</div>
