@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * JobSector
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FrontOfficeEmploiBundle\Entity\JobSectorRepository")
  */
 class JobSector
 {
