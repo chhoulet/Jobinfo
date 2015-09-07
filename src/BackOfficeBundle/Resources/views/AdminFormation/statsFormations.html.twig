@@ -1,0 +1,21 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container">
+			<h2>Statistiques Formations :</h2>
+			
+			<div class="row">
+				<div class="col-lg-4">
+					<h3>Formations triées par nombre d'inscrits:</h3>
+
+						{% for formation in statsFormations %}
+							{{ formation.formationName }} compte {{ formation.nb }} {% if formation.nb >1 %} inscrits. {% else %} inscrit.{% endif %}
+						{% endfor %}
+
+				</div>
+			</div>
+		</div>
+
+
+	{% endblock %}

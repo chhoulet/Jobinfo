@@ -47,11 +47,11 @@
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Postez un commentaire :</h4>
-                        <form role="form">
+                       
                             <div class="form-group">                                
                               {{ form(form) }}
                             </div>
-                        </form>
+                       
                 </div>
 
                 <hr>
@@ -63,7 +63,7 @@
                     {% for com in oneArticle.comment %}
                         <div class="media">                                              
                             <div class="media-body">
-                                <h4 class="media-heading"> {{ com.userName}}
+                                <h4 class="media-heading"> {{ com.author}}
                                     <small>{{ com.dateCreated |date('d-m-Y H:i:s')}}</small>
                                 </h4>
                                {{ com.message}}
