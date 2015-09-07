@@ -84,4 +84,13 @@ class AdminFormationController extends Controller
         $session -> getFlashbag()->add('supp','La formation sélectionnée est supprimée dans la base !');
         return $this -> redirect($this->generateUrl('back_office_adminformation_show'));
     }   
+
+    public function statsFormationsAction()
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $statsFormations = $em -> getRepository('FrontOfficeHomepageBundle:Formation') ->getNbUsersByFormation();
+
+        return $this -> render('BackOfficeBundle:AdminFormation:statsFormations.html.twig', 
+            array('statsFormations'=>$statsFormations));
+    }
 }

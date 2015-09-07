@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class FormationRepository extends EntityRepository
 {
+	# Obtenir la dernière formation enregistrée sur le site :
 	public function getLastFormations()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
@@ -21,8 +22,9 @@ class FormationRepository extends EntityRepository
 		->setMaxResults(1);
 		
 		return $query ->getResult();
-	}
+	} 
 
+	# Obtenir les formations d'un seul type:
 	public function getFormations($formationType)
 	{
 		$query = $this -> getEntityManager() -> createQuery('
@@ -34,6 +36,7 @@ class FormationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
+	# # Obtenir le nombre de formations par type (integration, developpement, ...)
 	public function getNbFormationByType()
 	{
 		$query = $this -> getEntityManager()->createQuery('
@@ -45,6 +48,7 @@ class FormationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
+	# Obtenir les formations par type (integration, developpement, ...)
 	public function getFormationType()
 	{
 		$query = $this -> getEntityManager()->createQuery('
@@ -55,6 +59,7 @@ class FormationRepository extends EntityRepository
 		return $query ->  getResult();
 	}
 
+	# Nombre total de formations enregistrées:
 	public function nbFormations()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
@@ -62,5 +67,18 @@ class FormationRepository extends EntityRepository
 			FROM FrontOfficeHomepageBundle:Formation f');
 
 		return $query -> getSingleScalarResult();
+	}
+
+	# Nombre d'inscrits à chaque formation:
+	public function getNbUsersByFormation()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f.formationName, COUNT(i.id) AS nb
+			FROM FrontOfficeHomepageBundle:Formation f 
+			JOIN f.inscrits i
+			GROUP BY f.formationName
+			ORDER BY nb DESC');
+
+		return $query ->getResult();
 	}
 }

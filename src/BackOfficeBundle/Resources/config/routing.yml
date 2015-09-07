@@ -58,6 +58,7 @@ back_office_adminformation_edit:
     requirements: 
         id: "[0-9]+"
 
+# Vue d'une formation :
 back_office_adminformation_one:
     path:     /oneFormation/{id}
     defaults: { _controller: BackOfficeBundle:AdminFormation:oneFormation}
@@ -73,6 +74,11 @@ back_office_adminformation_delete:
     defaults: { _controller: BackOfficeBundle:AdminFormation:deleteFormation}
     requirements:
         id: "[0-9]+"
+
+# Stats des formations :
+back_office_formation_statsFormations:
+    path:    /statsFormations 
+    defaults: { _controller: BackOfficeBundle:AdminFormation:statsFormations}
 
 # Routes gerant l'administration des forums:
 back_office_adminforum_list:
