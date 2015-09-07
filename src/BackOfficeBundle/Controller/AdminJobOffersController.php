@@ -51,17 +51,20 @@ class AdminJobOffersController extends Controller
 		$session ->getFlashbag()->add('notice','L\'élément sélectionné a bien été supprimé !');
 		return $this-> redirect($request -> headers -> get('referer'));
 	}
-
+	
+	# Template de statistiques :
 	public function statsJobOffersAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$nbJobOffersByPlace = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getNbJobOffersByPlace();
 		$nbJobOffersBySociety = $em -> getRepository('FrontOfficeEmploiBundle:Society') ->getNbJobOffersBySociety();
 		$nbJobOffersByJobSector = $em -> getRepository('FrontOfficeEmploiBundle:JobSector') ->getNbJobOffersByJobSector();
+		$nbJobOffersWithMoreResponses = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') ->getJobOffersWithMoreResponses();
 
 		return $this -> render('BackOfficeBundle:AdminJobOffers:stats.html.twig', 
 			array('nbJobOffersByPlace'=> $nbJobOffersByPlace,
 				  'nbJobOffersBySociety'=> $nbJobOffersBySociety,
-				  'nbJobOffersByJobSector'=> $nbJobOffersByJobSector));
+				  'nbJobOffersByJobSector'=> $nbJobOffersByJobSector,
+				  'nbJobOffersWithMoreResponses'=> $nbJobOffersWithMoreResponses));
 	}
 }

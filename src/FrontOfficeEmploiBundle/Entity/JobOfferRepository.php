@@ -121,5 +121,18 @@ class JobOfferRepository extends EntityRepository
 			ORDER BY nb DESC');
 
 		return $query -> getResult();
-	}		
+	}	
+
+	public function getJobOffersWithMoreResponses()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT j.title, COUNT(r.id) AS nb
+			FROM FrontOfficeEmploiBundle:JobOffer j 
+			JOIN j.responseJobOffer r
+			GROUP BY j.title
+			ORDER BY nb DESC');
+		
+		return $query -> getResult();
+	 }
+
 }

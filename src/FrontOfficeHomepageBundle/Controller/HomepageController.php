@@ -27,6 +27,7 @@ class HomepageController extends Controller
         {
             # Recuperation des éléments du formulaire pour hydrater les parametres de la requete:
             $datas = $formJobOffers -> getData();
+            var_dump($datas);
             $jobOffersByTri = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')-> triJobOffers($datas['contract'], $datas['jobSector'], $datas['place']);                  
             return $this -> render('FrontOfficeEmploiBundle:JobOffer:triJobOffer.html.twig', array('jobOffersByTri'=>$jobOffersByTri));
         }

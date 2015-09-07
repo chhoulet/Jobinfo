@@ -1,0 +1,54 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container"></div>
+			<div class="row"></div>
+
+				<h3 style="text-align:center;">Statistiques des Offres d'emploi :</h3>
+
+				<div class="col-lg-4">
+
+					<h3>Offres publiées par ville :</h3>
+
+					{% for place in nbJobOffersByPlace %}
+						{{ place.name}} est le lieu de {{ place.nb }} {% if place.nb > 1 %}postes.{% else %}poste.{% endif %}<br>
+					{% endfor %}
+
+				</div>
+
+				<div class="col-lg-4">
+
+					<h3>Offres publiées par société :</h3>
+
+						{% for society in nbJobOffersBySociety %}
+							{{ society.name }} a publié {{ society.nb }}{% if society.nb > 1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}<br>
+						{% endfor %}
+
+				</div>
+
+				<div class="col-lg-4">
+
+					<h3>Offres publiées par métier :</h3>
+
+						{% for job in nbJobOffersByJobSector %}
+							La catégorie {{ job.nameSector }} a été l'objet de {{ job.nb }}{% if job.nb > 1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}<br>
+						{% endfor %}
+
+					</div>
+
+
+				<div class="col-lg-4">
+
+					<h3>Offres publiées par nombre de réponses obtenues :</h3>
+
+						{% for job in nbJobOffersWithMoreResponses %}
+							L'offre de {{ job.title }} a été l'objet de {{ job.nb }}{% if job.nb > 1 %} réponses.{% else %} réponse.{% endif %}<br>
+						{% endfor %}
+
+					</div>
+
+			</div>
+		</div>
+
+	{% endblock %}
