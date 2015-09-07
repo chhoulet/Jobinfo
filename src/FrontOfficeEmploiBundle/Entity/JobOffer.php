@@ -84,7 +84,6 @@ class JobOffer
      */
     private $dateDesactivation;
 
-
     /**
     * @var boolean
     *

@@ -46,7 +46,6 @@ class Etablissement
      */
     private $dateCreated;
 
-
     /**
      * @var string
      *

@@ -80,4 +80,19 @@ class SocietyRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getSocietiesByNbResponses()
+	{
+		$query = $this ->getEntityManager()->createQuery('
+			SELECT s.name, COUNT(r.id) AS nb
+			FROM FrontOfficeEmploiBundle:Society s 
+			JOIN s.jobOffer j 
+			JOIN j.responseJobOffer r 
+			WHERE j.activeToPurchase = true 
+			GROUP BY s.name
+			ORDER BY nb DESC ')
+		->setMaxResults(10);
+
+		return $query -> getResult();
+	}
 }

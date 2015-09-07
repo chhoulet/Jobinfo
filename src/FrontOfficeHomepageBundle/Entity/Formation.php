@@ -77,7 +77,6 @@ class Formation
      */
     private $updatedAt;
 
-
     /**
      * @var string
      *

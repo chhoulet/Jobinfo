@@ -35,4 +35,5 @@ class ResponseJobOfferRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+	
 }

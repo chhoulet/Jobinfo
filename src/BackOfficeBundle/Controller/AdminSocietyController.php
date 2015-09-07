@@ -13,9 +13,11 @@ class AdminSocietyController extends Controller
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$triSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> triSociety();
+		$societiesByNbResponses = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> getSocietiesByNbResponses();
 
 		return $this -> render('BackOfficeBundle:AdminSociety:triSociety.html.twig', 
-			array('triSociety' => $triSociety));
+			array('triSociety'             => $triSociety,
+				  'societiesByNbResponses' => $societiesByNbResponses));
 	}
 
 	public function editAction(Request $request, $id)
