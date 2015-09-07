@@ -84,7 +84,7 @@ class Society
      /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="society")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="society", cascade={"remove"})
      */
     private $jobOffer;
 

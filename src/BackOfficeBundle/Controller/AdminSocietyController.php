@@ -9,8 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminSocietyController extends Controller
 {
+	# Liste des sociétés + onglet statistique:
 	public function triSocietyAction()
-	{
+	{		
 		$em = $this -> getDoctrine()->getmanager();
 		$triSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> triSociety();
 		$societiesByNbResponses = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> getSocietiesByNbResponses();
@@ -20,6 +21,7 @@ class AdminSocietyController extends Controller
 				  'societiesByNbResponses' => $societiesByNbResponses));
 	}
 
+	# Edition d'une society:
 	public function editAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getmanager();
@@ -43,5 +45,16 @@ class AdminSocietyController extends Controller
 			array('formSociety' => $formSociety ->createView()));
 	}
 
+	# Suppression d'une society :
+	public function deleteSocietyAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$deletedSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society') -> find($id);
+		$em -> remove($deletedSociety);
+		$em -> flush();
 
+		$session -> getFlashbag()->add('succes','La société sélectionnée a bien été supprimée');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }

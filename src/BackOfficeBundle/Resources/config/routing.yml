@@ -184,6 +184,13 @@ back_office_adminSociety_edit:
     requirements: 
         id: "[0-9]+"
 
+# Suppression d'une société:
+back_office_adminSociety_delete:
+    path:     /deleteSociety/{id}
+    defaults: { _controller: BackOfficeBundle:AdminSociety:deleteSociety}
+    requirements:
+        id: "[0-9]+"
+
 # Routes gerant les messages:
 back_office_admin_list_messages:
     path:     /listMessages 
