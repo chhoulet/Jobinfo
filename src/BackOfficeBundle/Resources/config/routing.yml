@@ -202,3 +202,8 @@ back_office_admin_message_delete:
 back_office_admin_category_new:
     path:     /newCategory
     defaults: { _controller: BackOfficeBundle:AdminCategory:new}
+
+# Route menant aux Statistiques Users:
+back_office_user_stats:
+    path:     /statsUsers
+    defaults: { _controller: BackOfficeBundle:AdminUser:statsUsers}

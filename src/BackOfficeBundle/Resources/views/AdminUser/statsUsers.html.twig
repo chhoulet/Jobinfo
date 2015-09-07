@@ -1,0 +1,25 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container">
+
+			<div class="row">
+
+				<h2 style="text-align:center;">Statistiques utilisateurs</h2>
+
+				<div class="col-lg-4">
+
+					<h3>Users classés par nombre de comments :</h3>
+
+					{% for com in nbCommentsByUser %}
+						{{ com.username }} a posté {{ com.nb }} {% if com.nb >1 %} commentaires. {% else %} commentaire. {% endif %}
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{% endblock %}
