@@ -11,6 +11,12 @@
                         <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
                             {% for message in app.session.flashbag.get('succes') %}
                                 {{ message }}
+                                <hr>
+                            {% endfor %}
+
+                            {% for messa in app.session.flashbag.get('notice') %}                
+                                {{ messa }}               
+                                <hr>
                             {% endfor %}
                         </div>
 
@@ -25,7 +31,21 @@
                         <p>{{ oneForum.forumDescription }}</p><br>
                         <p>{{ oneForum.forumAdress }}</p><br><br>
 
-                        <a href="{{ path('front_office_forum_inscription',{id:oneForum.id}) }}"><button>Inscrivez-vous à ce forum</button></a>
+                        {% if (is_granted('ROLE_USER')) %}
+
+                            {% for user in oneForum.inscrits %}
+                                {% if app.user.id == user.id %}
+                                    <p><strong>Vous êtes déjà inscrit à ce forum !</strong></p>
+                                {% endif %}
+                            {% endfor %}
+
+                            <a href="{{ path('front_office_forum_inscription',{id:oneForum.id}) }}"><button class="btn btn-primary">Inscrivez-vous à ce forum</button></a>
+
+                        {% else %}                        
+
+                            <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-primary">Connectez-vous pour vous inscrire !</button></a>
+
+                        {% endif %}
                         
                     </div>
                 </div>
