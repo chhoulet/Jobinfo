@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends Controller
 {
-	# Page d'accueil du blog, articles indifférenciés:
+	# Page d'accueil du blog, articles indifférenciés et affichage de la liste des catégories:
 	public function showArticlesAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -52,25 +52,18 @@ class BlogController extends Controller
 		    	  'form'      => $form -> createView()));
 	}
 
-	# Tri des articles par category:
+	# Tri des articles par category, avec envoi de la liste des categories
+	# pour activer les liens et appel de la query qui trie les articles en fonction de celle-ci:
 	public function triArticlesAction($category)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		
+		$listCategory = $em -> getRepository('FrontOfficeHomepageBundle:Category')->findAll();
 		$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article')-> triArticlesByCategory($category);
 
-		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', 
+		return $this -> render('FrontOfficeHomepageBundle:Blog:articlesByCategories.html.twig', 
 			array('showArticles'=> $articles,
+				  'listCategory'=> $listCategory
 				  ));
-	}
-
-	/*public function listAction()
-	{
-		$em = $this -> getDoctrine()-> getManager();
-		$listCategory = $em -> getRepository('FrontOfficeHomepageBundle:Category')->findAll();
-		
-		return $this -> render('FrontOfficeHomepageBundle:Slots:sidebar.html.twig', 
-			array('listCategory'=>$listCategory));
-	}*/
+	}	
 
 }
