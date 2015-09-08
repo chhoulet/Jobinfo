@@ -15,10 +15,12 @@ class BlogController extends Controller
 	public function showArticlesAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$listCategory = $em -> getRepository('FrontOfficeHomepageBundle:Category')->findAll();
 		$showArticles = $em -> getRepository('FrontOfficeHomepageBundle:Article')->getArticles();
 
 		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', 
-			array('showArticles'=>$showArticles));
+			array('showArticles'=> $showArticles,
+				  'listCategory'=> $listCategory));
 	}
 
 	# Vue d'un article et de ses commentaires, mis en ligne avant leur validation:	
@@ -54,19 +56,21 @@ class BlogController extends Controller
 	public function triArticlesAction($category)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		
 		$articles = $em -> getRepository('FrontOfficeHomepageBundle:Article')-> triArticlesByCategory($category);
 
 		return $this -> render('FrontOfficeHomepageBundle:Blog:showArticles.html.twig', 
-			array('showArticles'=> $articles));
+			array('showArticles'=> $articles,
+				  ));
 	}
 
-	public function listAction()
+	/*public function listAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$listCategory = $em -> getRepository('FrontOfficeHomepageBundle:Category')->findAll();
 		
 		return $this -> render('FrontOfficeHomepageBundle:Slots:sidebar.html.twig', 
 			array('listCategory'=>$listCategory));
-	}
+	}*/
 
 }

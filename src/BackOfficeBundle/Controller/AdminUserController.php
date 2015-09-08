@@ -11,8 +11,10 @@ class AdminUserController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$nbCommentsByUser = $em -> getRepository('FrontOfficeUserBundle:User')->getNbCommentsByUser();
+		$usersByNbResponses = $em -> getRepository('FrontOfficeUserBundle:User')->getUsersByNbResponses();
 
 		return $this -> render('BackOfficeBundle:AdminUser:statsUsers.html.twig', 
-			array('nbCommentsByUser'=> $nbCommentsByUser));
+			array('nbCommentsByUser'  => $nbCommentsByUser,
+				  'usersByNbResponses'=> $usersByNbResponses));
 	}
 }

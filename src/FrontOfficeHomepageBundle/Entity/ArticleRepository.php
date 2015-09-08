@@ -28,7 +28,8 @@ class ArticleRepository extends EntityRepository
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT a 
 			FROM FrontOfficeHomepageBundle:Article a 
-			WHERE a.category LIKE :category')
+			JOIN a.category c 
+			WHERE c.name LIKE :category')
 		->setParameter('category', $category);
 
 		return $query -> getResult();

@@ -18,4 +18,16 @@ class UserRepository extends EntityRepository
 
 		return $query -> getResult(); 
 	}
+
+	public function getUsersByNbResponses()
+	{
+		$query = $this -> getEntitymanager()->createQuery('
+			SELECT u.username, COUNT(r.id) AS nb 
+			FROM FrontOfficeUserBundle:User u			
+			JOIN u.responseJobOffer r
+ 			GROUP BY u.username
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }

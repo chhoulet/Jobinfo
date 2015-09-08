@@ -8,15 +8,25 @@
 
 				<h2 style="text-align:center;">Statistiques utilisateurs</h2>
 
-				<div class="col-lg-4">
+					<div class="col-lg-4">
 
-					<h3>Users classés par nombre de comments :</h3>
+						<h3>Users classés par nombre de comments :</h3>
 
-					{% for com in nbCommentsByUser %}
-						{{ com.username }} a posté {{ com.nb }} {% if com.nb >1 %} commentaires. {% else %} commentaire. {% endif %}
-					{% endfor %}
+							{% for com in nbCommentsByUser %}
+								{{ com.username }} a posté {{ com.nb }} {% if com.nb >1 %} commentaires. {% else %} commentaire. {% endif %}
+							{% endfor %}
 
-				</div>
+					</div>
+
+					<div class="col-lg-4">
+
+						<h3>Users classés par nombre de réponses :</h3>
+
+							{% for com in usersByNbResponses %}
+								{{ com.username }} a posté {{ com.nb }} {% if com.nb >1 %} réponses. {% else %} réponse. {% endif %}
+							{% endfor %}
+
+					</div>
 
 			</div>
 

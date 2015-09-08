@@ -31,7 +31,7 @@ class Message
      *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
      * )
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\Column(name="author", type="string", length=255)   
      */
     private $author;
 
@@ -95,30 +95,7 @@ class Message
     {
         return $this->id;
     }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     * @return Message
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
+   
     /**
      * Set subject
      *
@@ -233,5 +210,28 @@ class Message
     public function getReadMessage()
     {
         return $this->readMessage;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \FrontOfficeUserBundle\Entity\User $author
+     * @return Message
+     */
+    public function setAuthor(\FrontOfficeUserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \FrontOfficeUserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

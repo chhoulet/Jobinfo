@@ -30,7 +30,7 @@ class StaticController extends Controller
 		$form -> handleRequest($request);
 
 		if($form -> isValid())
-		{
+		{			
 			$message -> setDateCreated(new \datetime('now'));
 			$message -> setReadMessage(false);
 			$em -> persist($message);

@@ -63,7 +63,7 @@ class User extends BaseUser
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Article", mappedBy="author")
      */
-    private $articles;
+    private $articles;     
 
     /**
      * @var string
@@ -472,5 +472,38 @@ class User extends BaseUser
     public function getResponseJobOffer()
     {
         return $this->responseJobOffer;
+    }   
+
+    /**
+     * Add messages
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Message $messages
+     * @return User
+     */
+    public function addMessage(\FrontOfficeHomepageBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Remove messages
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Message $messages
+     */
+    public function removeMessage(\FrontOfficeHomepageBundle\Entity\Message $messages)
+    {
+        $this->messages->removeElement($messages);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessages()
+    {
+        return $this->messages;
     }
 }
