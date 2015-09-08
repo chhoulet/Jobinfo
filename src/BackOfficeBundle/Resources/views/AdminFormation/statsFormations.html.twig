@@ -3,18 +3,38 @@
 	{% block content %}
 
 		<div class="container">
-			<h2>Statistiques Formations :</h2>
+
+			<h2 style="text-align:center;">Statistiques Formations :</h2>
 			
-			<div class="row">
-				<div class="col-lg-4">
-					<h3>Formations triées par nombre d'inscrits:</h3>
+				<div class="row">
+					<div class="col-lg-4">
+						<h3>Formations triées par nombre d'inscrits:</h3>
+							<ul>
+								
 
-						{% for formation in statsFormations %}
-							<a href="{{ path('front_office_formation_showOne',{formationType:formation.formationType, id:formation.id}) }}">{{ formation.formationName }}</a> compte {{ formation.nb }} {% if formation.nb >1 %} inscrits. {% else %} inscrit.{% endif %}
-						{% endfor %}
+									{% for formation in statsFormations %}
+										<li><a href="{{ path('front_office_formation_showOne',{formationType:formation.formationType, id:formation.id}) }}">{{ formation.formationName }}</a> compte {{ formation.nb }} {% if formation.nb >1 %} inscrits. {% else %} inscrit.{% endif %}</li>
+									{% endfor %}
 
+								
+							</ul>
+
+					</div>
 				</div>
-			</div>
+
+				<div class="row">
+					<div class="col-lg-4">
+						<h3>Liste des inscrits par formation:</h3>
+
+							<ul>
+								{% for formation in nbInscritsByFormation %}
+										<li><a href="{{ path('front_office_formation_showOne',{formationType:formation.formationType, id:formation.id}) }}">{{ formation.formationName }}</a> compte {{ formation.username }}, {{ formation.email }}, comme inscrit.</li><br>
+								{% endfor %}																				
+							</ul>
+
+					</div>
+				</div>
+
 		</div>
 
 

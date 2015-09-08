@@ -89,8 +89,10 @@ class AdminFormationController extends Controller
     {
         $em = $this -> getDoctrine()->getManager();
         $statsFormations = $em -> getRepository('FrontOfficeHomepageBundle:Formation') ->getNbUsersByFormation();
+        $nbInscritsByFormation = $em -> getRepository('FrontOfficeHomepageBundle:Formation') ->getInscritsByFormation();
 
         return $this -> render('BackOfficeBundle:AdminFormation:statsFormations.html.twig', 
-            array('statsFormations'=>$statsFormations));
+            array('statsFormations'      => $statsFormations,
+                  'nbInscritsByFormation'=> $nbInscritsByFormation));
     }
 }

@@ -81,4 +81,16 @@ class FormationRepository extends EntityRepository
 
 		return $query ->getResult();
 	}
+
+	public function getInscritsByFormation()
+	{
+		$query = $this ->getEntityManager()->createQuery('
+			SELECT f.formationName, f.formationType, f.id, i.username, i.email, COUNT(i.id) AS nb 
+			FROM FrontOfficeHomepageBundle:Formation f 
+			JOIN f.inscrits i 
+			GROUP BY f.formationName, f.formationType, f.id
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }

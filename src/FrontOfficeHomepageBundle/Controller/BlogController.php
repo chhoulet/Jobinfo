@@ -21,8 +21,7 @@ class BlogController extends Controller
 			array('showArticles'=>$showArticles));
 	}
 
-	# Vue d'un article et de ses commentaires, mis en ligne avant leur validation:
-	
+	# Vue d'un article et de ses commentaires, mis en ligne avant leur validation:	
 	public function oneArticleAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
@@ -34,8 +33,7 @@ class BlogController extends Controller
 		$form -> handleRequest($request);
 
 		if($form -> isValid())
-		{
-			var_dump($form);
+		{			
 			$comment -> setAuthor($this -> getUser());
 			$comment -> setDateCreated(new \datetime('now'));
 			$comment -> setArticle($oneArticle);
