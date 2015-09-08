@@ -9,20 +9,33 @@
 			<div class="col-lg-4">
 
 					<h3> Forums groupés par type : </h3>
-
-				    {% for form in  getForumType %}
-				        {{ form.forumType }}<br>
-				            {{ form.forumName }}
-				    {% endfor %}
+						<ul>
+						    {% for form in  getForumType %}
+						        <li>Liste des forums de type {{ form.forumType }} : {{ form.forumName }}</li><br>            
+						    {% endfor %}
+						</ul>
 		    </div>
 
 		    <div class="col-lg-4">
 
 					<h3>Forums triés par nombre d'inscrits :</h3>
 
-					{% for forum in nbInscritsByForum %}
-						<a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a> compte {{ forum.nb }} {% if forum.nb > 1 %} inscrits. {% else %} inscrit.{% endif %}
-					{% endfor %}
+						<ul>
+							{% for forum in nbInscritsByForum %}
+								<li><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a> compte {{ forum.nb }} {% if forum.nb > 1 %} inscrits. {% else %} inscrit.{% endif %}</li><br>
+							{% endfor %}
+						</ul>
+			</div>
+
+			<div class="col-lg-4">
+
+					<h3>Liste d'inscrits par forum:</h3>
+
+						<ul>
+							{% for forum in listInscritsByForum %}
+								<li><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a> compte {{ forum.username }}, {{ forum.email }} inscrit.</li><br>
+							{% endfor %}
+						</ul>
 
 			</div>
 

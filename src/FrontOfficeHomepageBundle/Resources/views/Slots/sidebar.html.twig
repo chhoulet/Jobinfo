@@ -22,14 +22,14 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <ul class="list-unstyled">
-                                           {#  {% for categorie in listCategory %}
+                                            {% for categorie in listCategory %}
                                                 <li><a href="{{ path('front_office_homepage_blog_triArticle',{category:categorie.name}) }}">{{categorie.name}}</a>
                                                 </li>                                           
-                                            {% endfor %} #}
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
-                                    <!-- /.col-lg-6 -->                                                       </div>
+                                    <!-- /.col-lg-6 -->                                                   
                             <!-- /.row -->
                         </div>
                     </div>

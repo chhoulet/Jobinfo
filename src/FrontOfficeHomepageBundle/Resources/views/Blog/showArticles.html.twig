@@ -56,8 +56,10 @@
 
                 </div>
 
-            {{ include('FrontOfficeHomepageBundle:Slots:sidebar.html.twig') }}
+                {% render(url('front_office_homepage_blog_triArticle')) %}
 
+            {# {{ include('FrontOfficeHomepageBundle:Slots:sidebar.html.twig') }}
+ #}
             </div>
             <!-- /.row -->
 

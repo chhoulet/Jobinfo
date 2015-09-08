@@ -66,4 +66,16 @@ class ForumRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getInscritsByForum()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f.forumName, f.forumType, f.id, i.username, i.email, COUNT(i.id) AS nb
+			FROM FrontOfficeHomepageBundle:Forum f 
+			JOIN f.inscrits i 
+			GROUP BY f.forumName
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }
