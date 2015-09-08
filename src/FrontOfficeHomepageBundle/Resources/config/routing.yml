@@ -53,6 +53,11 @@ front_office_forum_inscription:
     requirements:
         id: "[0-9]+"
 
+# Desinscription d'un user d'un forum:
+front_office_forum_desinscriptionForum:
+    path:     /desinscriptionForum/{id}
+    defaults: { _controller: FrontOfficeHomepageBundle:Forum:desinscriptionForum}
+
 # Routes assurant la gestion du blog :
 front_office_homepage_blog_article:
     path:     /showArticles

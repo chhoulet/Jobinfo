@@ -6,6 +6,14 @@
 
 				<h3 style="text-align:center">Mes prochaines formations:</h3>
 
+				{% for message in app.session.flashbag.get('succes') %}
+					{{ message }}<br><br>
+				{% endfor %}
+
+				{% for messag in app.session.flashbag.get('notice') %}
+					{{ messag }}<br><br>
+				{% endfor %}
+
 					{% for forma in app.user.formation %}
 						Nom :           {{ forma.formationName }}<br>
 						Organisme :     {{ forma.organism }}<br>
@@ -27,6 +35,8 @@
  						Date de Début : {{ forum.forumDate | date('d-m-Y') }}<br>
  						Adresse :       {{ forum.forumAdress }}<br>
  						Description :   {{ forum.forumDescription }}<br><br>
+
+ 						<a href="{{ path('front_office_forum_desinscriptionForum',{id:forum.id}) }}"><button>Se désinscrire</button></a><br><br>
  					{% endfor %}
 
  		</div>

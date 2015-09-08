@@ -37,4 +37,17 @@ class ForumController extends Controller
 		$session -> getFlashbag() -> add('succes','Votre inscription à ce forum est bien prise en compte !');
 		return $this ->redirect($request -> headers -> get('referer'));		
 	}
+
+	# Desinscription d'un user d'un forum:
+	public function desinscriptionForumAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$forum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
+		$forum -> removeInscrit($this -> getUser());
+		$em -> flush();
+
+		$session -> getFlashbag()->add('notice','Votre désinscription est bien prise en compte');
+		return ($this -> redirect($request -> headers -> get('referer')));
+	}
 }
