@@ -29,6 +29,7 @@ class BlogController extends Controller
 		$em = $this -> getDoctrine()-> getManager();
 		$session = $request -> getSession();
 		$oneArticle = $em -> getRepository('FrontOfficeHomepageBundle:Article')->find($id);
+		$listCategory = $em -> getRepository('FrontOfficeHomepageBundle:Category')->findAll();
 		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
 
@@ -48,8 +49,9 @@ class BlogController extends Controller
 		}
 
 		return $this -> render('FrontOfficeHomepageBundle:Blog:oneArticle.html.twig',
-		    array('oneArticle'=> $oneArticle,
-		    	  'form'      => $form -> createView()));
+		    array('oneArticle'  => $oneArticle,
+		    	  'listCategory'=> $listCategory,
+		    	  'form'        => $form -> createView()));
 	}
 
 	# Tri des articles par category, avec envoi de la liste des categories
