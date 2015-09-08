@@ -113,8 +113,7 @@ class Formation
      * @ORM\JoinTable(name="user_formation")
      */
     private $inscrits;
-
-
+    
 
     /**
      * Get id

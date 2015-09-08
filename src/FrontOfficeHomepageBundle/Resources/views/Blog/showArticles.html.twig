@@ -1,8 +1,5 @@
 {% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
 
-   {#  {%  use('FrontOfficeHomepageBundle:Slots:sidebar.html.twig') %} #}
-
-
     {% block content %}
        
     <!-- Page Content -->
@@ -44,16 +41,7 @@
                         <hr>
                     {% endfor %}
 
-                    <!-- Pager -->
-                    <ul class="pager">
-                        <li class="previous">
-                            <a href="#">&larr; Older</a>
-                        </li>
-                        <li class="next">
-                            <a href="#">Newer &rarr;</a>
-                        </li>
-                    </ul>
-
+                   
                 </div>               
 
             {% include 'FrontOfficeHomepageBundle:Slots:sidebar.html.twig' with {'listCategory':listCategory} %}
