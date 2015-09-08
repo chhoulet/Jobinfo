@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlaceRepository extends EntityRepository
 {
+	public function getPlaceByNbJobOffers()
+	{
+		$query = $this -> getEntitymanager()->createQuery('
+			SELECT p.name, COUNT(j.id) AS nb 
+			FROM FrontOfficeEmploiBundle:Place p 
+			JOIN p.jobOffer j 
+			GROUP BY p.name
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }

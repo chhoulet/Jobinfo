@@ -11,9 +11,11 @@
 
 					<h3>Offres publiées par ville :</h3>
 
-					{% for place in nbJobOffersByPlace %}
-						{{ place.name}} est le lieu de {{ place.nb }} {% if place.nb > 1 %}postes.{% else %}poste.{% endif %}<br>
-					{% endfor %}
+						<ul>
+							{% for place in nbJobOffersByPlace %}
+								<li>{{ place.name}} est le lieu de {{ place.nb }} {% if place.nb > 1 %}postes.{% else %}poste.{% endif %}</li><br>
+							{% endfor %}
+						</ul>
 
 				</div>
 
@@ -21,9 +23,11 @@
 
 					<h3>Offres publiées par société :</h3>
 
-						{% for society in nbJobOffersBySociety %}
-							{{ society.name }} a publié {{ society.nb }}{% if society.nb > 1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}<br>
-						{% endfor %}
+						<ul>
+							{% for society in nbJobOffersBySociety %}
+								<li>{{ society.name }} a publié {{ society.nb }}{% if society.nb > 1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}</li><br>
+							{% endfor %}
+						</ul>
 
 				</div>
 
@@ -31,22 +35,37 @@
 
 					<h3>Offres publiées par métier :</h3>
 
-						{% for job in nbJobOffersByJobSector %}
-							La catégorie {{ job.nameSector }} a été l'objet de {{ job.nb }}{% if job.nb > 1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}<br>
-						{% endfor %}
+						<ul>
+							{% for job in nbJobOffersByJobSector %}
+								<li>La catégorie {{ job.nameSector }} a été l'objet de {{ job.nb }}{% if job.nb > 1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}</li><br>
+							{% endfor %}
+						</ul>
 
-					</div>
+				</div>
 
 
 				<div class="col-lg-4">
 
 					<h3>Offres publiées par nombre de réponses obtenues :</h3>
 
-						{% for job in nbJobOffersWithMoreResponses %}
-							L'offre de {{ job.title }} a été l'objet de {{ job.nb }}{% if job.nb > 1 %} réponses.{% else %} réponse.{% endif %}<br>
-						{% endfor %}
+						<ul>
+							{% for job in nbJobOffersWithMoreResponses %}
+								<li>L'offre de {{ job.title }} a été l'objet de {{ job.nb }}{% if job.nb > 1 %} réponses.{% else %} réponse.{% endif %}</li><br>
+							{% endfor %}
+						</li>
+				</div>
 
-					</div>
+
+				<div class="col-lg-4">
+
+					<h3>Offres publiées par Ville :</h3>
+
+						<ul>
+							{% for job in placeByNbJobOffers %}
+								<li>{{ job.name }} est l'objet de {{ job.nb }} {% if job.nb >1 %} offres d'emplois.{% else %} offre d'emploi.{% endif %}</li><br>
+							{% endfor %}
+						</ul>
+				</div>			
 
 			</div>
 		</div>

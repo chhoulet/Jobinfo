@@ -4,7 +4,7 @@
 
 
     {% block content %}
-
+       {#  {{ dump(listCategory) }} #}
     <!-- Page Content -->
         <div class="container" style="background-color:white;">
 
@@ -58,9 +58,9 @@
 
                {#  {% render(url('front_office_homepage_blog_triArticle')) %} #}
 
-            {{ include('FrontOfficeHomepageBundle:Slots:sidebar.html.twig', {'listCategory':listCategory}) }}
+            {% include 'FrontOfficeHomepageBundle:Slots:sidebar.html.twig' with {'listCategory':listCategory} %}
 
-
+{# {% include 'template.html' with {'foo': 'bar'} %} #}
                 {# <div class="col-md-4">
 
                         <!-- Blog Search Well -->
