@@ -40,4 +40,17 @@ class FormationController extends Controller
 		# Redirection sur la page d'où vient l'user:
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	# Desinscription d'un user d'une formation:
+	public function desinscriptionFormationAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);	
+		$formation -> removeInscrit($this -> getUser());
+		$em -> flush();
+
+		$session -> getFlashbag()->add('succes','Vous êtes désinscrit de cet évenement');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }

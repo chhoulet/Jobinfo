@@ -13,6 +13,8 @@
 						Date de Début : {{ forma.beginingDate | date('d-m-Y') }}<br>
 						Date de Fin :   {{ forma.endingDate | date('d-m-Y') }}<br>
 						Contenu :       {{ forma.formationDescription }}<br><br>
+
+						<a href="{{ path('front_office_formation_desinscriptionFormation',{id:forma.id}) }}"><button>Se désinscrire</button></a><br><br>
 					{% endfor %}
 
 					<hr>

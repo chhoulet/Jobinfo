@@ -25,6 +25,13 @@ front_office_formation_inscription:
     requirements:
         id: "[0-9]+"
 
+# Désinscription d'un user d'une formation:
+front_office_formation_desinscriptionFormation:
+    path:     /desinscriptionFormation/{id}
+    defaults: { _controller: FrontOfficeHomepageBundle:Formation:desinscriptionFormation}
+    requirements:
+        id: "[0-9]+"
+
 # Routes assurant la gestion des forums + Attribution d'une valeur au paramètre de la requete SQL forumType qui sera la valeur par défault.
 front_office_forum_list:
     path:     /forum/{forumType}
