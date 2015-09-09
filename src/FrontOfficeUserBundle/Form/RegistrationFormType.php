@@ -4,7 +4,7 @@ namespace FrontOfficeUserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
 
 class RegistrationFormType extends AbstractType
 {    
@@ -26,6 +26,6 @@ class RegistrationFormType extends AbstractType
 
     public function getName()
     {
-        return 'user_registration';
+        return 'front_office_user_registration';
     }
 }

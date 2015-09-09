@@ -4,6 +4,7 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    front.office.form.registration:
+        class: FrontOfficeUserBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: 'front_office_user_registration' }

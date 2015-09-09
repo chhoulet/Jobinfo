@@ -80,3 +80,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: FrontOfficeUserBundle\Entity\User
+    registration:
+        form:
+            type: front_office_user_registration
