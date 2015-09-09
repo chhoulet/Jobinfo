@@ -28,8 +28,18 @@ class JobOfferController extends Controller
 	public function selectAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$session = $request -> getSession();		
-		$selectedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> find($id);			
+		$session = $request -> getSession();
+		$jobOffers = $this -> getUser()->getJobOffers();
+		$selectedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> find($id);	
+
+		array_map(function($object) { return $object->getId(); }, $jobOffers);
+
+		if(in_array(($selectedJobOffer), $id_jobOffers))
+		{
+			throw new \Exception('Vous avez déjà selectionné cette offre !');
+			return $this -> redirect($request -> headers -> get('referer'));
+		}
+
 		$selectedJobOffer -> setDateSelected(new \DateTime('now'));
 		$selectedJobOffer -> addUser($this -> getUser());
 		$em -> flush();		

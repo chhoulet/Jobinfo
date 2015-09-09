@@ -90,6 +90,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\JobOffer", mappedBy="user")
+     * @ORM\JoinTable(name="users_jobOffers")
      */
     private $jobOffers;
 

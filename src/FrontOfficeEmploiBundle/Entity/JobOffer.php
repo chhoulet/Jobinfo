@@ -132,7 +132,7 @@ class JobOffer
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="jobOffer")
-     * @ORM\JoinTable(name="jobOffer_candidat")
+     *
      */
     private $candidat;
 
@@ -140,7 +140,7 @@ class JobOffer
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeUserBundle\Entity\User", inversedBy="jobOffers")
-     * @ORM\JoinTable(name="users_jobOffers")
+     *
      */
     private $user;
 
