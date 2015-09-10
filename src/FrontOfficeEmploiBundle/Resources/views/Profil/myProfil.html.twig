@@ -28,9 +28,11 @@
 						{{ candidat.firstname }}<br>
 						{{ candidat.lastname }}<br>
 						{{ candidat.street }}<br>
-						{{ candidat.city }}<br><br>
-
-						<p>Pour candidatez à une offre d'emploi, créez-vous votre <a href="{{ path('front_office_emploi_candidat_createCV')}}">CV</a> et votre <a href="{{ path('front_office_emploi_candidat_createLM')}}">lettre de motivation</a>!</p><br><br>
+						{{ candidat.city }}<br><br>						
+							
+						<p>Pour candidatez à une offre d'emploi, créez-vous votre <a href="{{ path('front_office_emploi_candidat_createCV')}}">CV</a>!</p><br>
+																	
+						<p>Enregistrez votre <a href="{{ path('front_office_emploi_candidat_createLM')}}">lettre de motivation</a>!</p>						
 					
 						<a href="{{ path('front_office_emploi_candidat_update',{id:candidat.id}) }}">Mettre à jour mon profil</a><br>
 						<a href="{{ path('front_office_emploi_candidat_showMyCv') }}">Voir mes CV</a><br>

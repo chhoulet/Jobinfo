@@ -20,10 +20,11 @@
 						Poste proposé :     {{ job.descriptionJob }}<br>
 						Contrat :           {{ job.contract }}<br>
 						Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
-						Sélectionnée le :   {{ job.dateSelected | date('d-m-Y') }}<br>
+						Sélectionnée le :   {{ job.dateSelected | date('d-m-Y') }}<br><br>
 
 						<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id})}}">Candidatez à cette offre !</a><br><br>
-						
+
+						<hr>																																							
 						Réponse:<br>
 							{% for answers in job.responseJobOffer %}								
 								Intitulé de ma réponse : {{ answers.content }}<br>
