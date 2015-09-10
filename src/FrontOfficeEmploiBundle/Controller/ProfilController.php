@@ -10,15 +10,15 @@ class ProfilController extends Controller
 	public function myProfilAction($user = null)
 	{		
 		$em = $this -> getDoctrine()->getManager();
-		$NbJobOffersByUser = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->getNbJobOffersByUser($this ->getUser());		
+		$nbJobOffersByUser = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->getNbJobOffersByUser($this ->getUser());				
 		$type = $this -> getUser() ->getType();
 
 		if ($type == 'candidat'){
 			$myProfil = $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->getCandidatByUser($this -> getUser());			
 
 			return $this -> render('FrontOfficeEmploiBundle:Profil:myProfil.html.twig', 
-			array('nbJobOffersByUser'    => $NbJobOffersByUser,				
-				  'candidat'             => $myProfil));
+			array('nbJobOffersByUser'     => $nbJobOffersByUser,				  			
+				  'candidat'              => $myProfil));
 		}
 		else{
 			$myProfilSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->getSocietyByUser($this -> getUser());
@@ -45,4 +45,16 @@ class ProfilController extends Controller
 	{
 		return $this -> render('FrontOfficeEmploiBundle:Profil:listMyJobOffers.html.twig');
 	}
+
+	public function listMyResponseJobOffersAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$jobOfferResponseByUser = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this->getUser());
+
+		return $this -> render('FrontOfficeEmploiBundle:Profil:listMyResponseJobOffers.html.twig', 
+			array('jobOffer'              => $jobOffer,
+				  'jobOfferResponseByUser'=> $jobOfferResponseByUser));
+	}
 }
+

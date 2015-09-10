@@ -35,5 +35,20 @@ class ResponseJobOfferRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getJobOfferResponseByUser($jobOffer_id, $user_id)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT r 
+			FROM FrontOfficeEmploiBundle:ResponseJobOffer r 
+			JOIN  r.jobOffer j
+			JOIN r.user u
+			WHERE j.id LIKE :jobOffer_id
+			AND u.id  LIKE :user_id')
+		->setParameter('jobOffer_id', $jobOffer_id)
+		->setParameter('user_id', $user_id);
+
+		return $query -> getResult();
+	}	
 	
 }

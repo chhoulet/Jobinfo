@@ -8,6 +8,10 @@ front_office_emploi_myJobOffers_list:
     path:     /listMyJobOffers 
     defaults: { _controller: FrontOfficeEmploiBundle:Profil:listMyJobOffers}
 
+front_office_emploi_listMyResponseJobOffers:
+    path:     /listMyResponseJobOffers/{id}
+    defaults: { _controller: FrontOfficeEmploiBundle:Profil:listMyResponseJobOffers}
+
 # Routes gerant les fonctionnalités des candidats:
 # Enregistrement du CV:
 front_office_emploi_candidat_createCV:
