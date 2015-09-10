@@ -30,11 +30,12 @@ class JobOfferController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
 		$jobOffers = $this -> getUser()->getJobOffers();
+		$tab = $jobOffers->toArray();
 		$selectedJobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer') -> find($id);	
 
-		array_map(function($object) { return $object->getId(); }, $jobOffers);
+		array_map(function($object) { return $object->getId(); }, $tab);
 
-		if(in_array(($selectedJobOffer), $id_jobOffers))
+		if(in_array(($selectedJobOffer), $tab))
 		{
 			throw new \Exception('Vous avez déjà selectionné cette offre !');
 			return $this -> redirect($request -> headers -> get('referer'));
