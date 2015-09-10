@@ -75,7 +75,7 @@ class JobOfferController extends Controller
 			$em ->persist($responseJobOffer);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_emploi_jobOffer_showOne', array('id'=>$id)));
+			return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', array('id'=>$this -> getUser())));
 		}
 		
 		return $this ->render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig', 

@@ -17,8 +17,8 @@ class ResponseJobOfferType extends AbstractType
         $builder
             ->add('content', 'text',           array('label'=>'Réponse',
                                                      'attr' => array('placeholder'=>'Objet de la réponse ...')))
-            ->add('motivationLetter', 'text',  array('label'=>'Choisissez une lettre de motivation'))
-            ->add('cuvitae', 'text',           array('label'=>'Choisissez un CV'))
+            ->add('motivationLetter', null,  array('label'=>'Choisissez une lettre de motivation'))
+            ->add('cuvitae', null,           array('label'=>'Choisissez un CV'))
             ->add('Valider','submit')
         ;
     }

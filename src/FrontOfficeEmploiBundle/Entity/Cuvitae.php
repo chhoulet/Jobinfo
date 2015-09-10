@@ -106,7 +106,7 @@ class Cuvitae
     /**
      * @var datetime
      *      
-     * @ORM\Column(name="dateUpdated", type="datetime")
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable = true)
      */
     private $dateUpdated;
 

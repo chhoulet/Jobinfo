@@ -42,7 +42,7 @@ class MotivationLetter
      * @var \DateTime
      *
      * @Assert\DateTime()
-     * @ORM\Column(name="dateUpdated", type="datetime")
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable = true)
      */
     private $dateUpdated;
 
