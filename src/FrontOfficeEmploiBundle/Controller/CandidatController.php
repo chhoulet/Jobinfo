@@ -145,12 +145,13 @@ class CandidatController extends Controller
 		if($form -> isValid())
 		{
 			$candidat -> setSavedAt(new \DateTime('now'));
-			$candidat -> setUser($this -> getUser()) -> setPersonnalSpaceActive(true);
+			$user = $this -> getUser() -> setPersonnalSpaceActive(true);
+			$candidat -> setUser($user);
 			$em -> persist($candidat);
 			$em -> flush();
 
 			$session -> getFlashbag()->add('notice','Votre profil est bien enregistré dans notre site !');
-			return $this -> redirect($this -> generateUrl('front_office_emploi_mon_profil', array('user' => $user)));
+			return $this -> redirect($this -> generateUrl('front_office_homepage_homepage'));
 		}
 
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form'=>$form->createView()));

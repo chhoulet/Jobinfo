@@ -1,0 +1,17 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}	
+
+	{% block content %}
+
+		<div class="container">
+
+			<img class="img-responsive img-full" src="{{ asset('img/page-error.jpg') }}" alt="Page inexistante">
+	
+			<p>OOUuupsss !!! Nous ne pouvons satisfaire votre requête !!<br>
+			Aucune importance, vous pouvez revenir à la page d'accueil en cliquant <a href="{{ path('front_office_homepage_homepage') }}"><button>ici !</button></a></p>
+
+		</div>
+
+	{% endblock %}
+
+
+

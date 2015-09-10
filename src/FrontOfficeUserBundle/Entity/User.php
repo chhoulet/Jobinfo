@@ -54,7 +54,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", cascade={"persist","remove"})
+     * @ORM\OneToOne(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="user", cascade={"persist","remove"})
      */
     private $candidat;
 
