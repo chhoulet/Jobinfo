@@ -11,13 +11,21 @@ class ProfilController extends Controller
 	{		
 		$em = $this -> getDoctrine()->getManager();
 		$NbJobOffersByUser = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->getNbJobOffersByUser($this ->getUser());		
-		$myProfil = $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->getCandidatByUser($this -> getUser());
-		$myProfilSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->getSocietyByUser($this -> getUser());
+		$type = $this -> getUser() ->getType();
 
-		return $this -> render('FrontOfficeEmploiBundle:Profil:myProfil.html.twig', 
+		if ($type == 'candidat'){
+			$myProfil = $em -> getRepository('FrontOfficeEmploiBundle:Candidat')->getCandidatByUser($this -> getUser());			
+
+			return $this -> render('FrontOfficeEmploiBundle:Profil:myProfil.html.twig', 
 			array('nbJobOffersByUser'    => $NbJobOffersByUser,				
-				  'candidat'             => $myProfil,
-				  'oneSociety'           => $myProfilSociety));
+				  'candidat'             => $myProfil));
+		}
+		else{
+			$myProfilSociety = $em -> getRepository('FrontOfficeEmploiBundle:Society')->getSocietyByUser($this -> getUser());
+
+			return $this -> render('FrontOfficeEmploiBundle:Profil:myProfil.html.twig', 
+			array('oneSociety'=> $myProfilSociety));
+		}		
 	}		
 
 	public function nbJobOfferAction($id)

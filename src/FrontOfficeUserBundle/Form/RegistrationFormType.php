@@ -15,7 +15,7 @@ class RegistrationFormType extends AbstractType
                                           'choices'=> array('candidat'=>'Candidat',
                                                             'society' =>'Société',
                                           'expanded'=> true)))            
-            ->add('Valider','submit')
+            
         ;
     }
 
