@@ -59,12 +59,14 @@
 
 						{% if oneSociety.hiringState == false %}
 							<p>Votre société n'est actuellement plus en recherche de talents !</p>
-						{% else %}										
+						{% else %}
+							<p>Votre société fait partie de la liste des sociétés qui recrutent</p>
+						{% endif %}									
 
 							<p>Offres d'emploi de {{ oneSociety.name }} publiées : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id}) }}">Voir mes statistiques :</a></p><br>
-							<p><a href="{{ path('front_office_emploi_myJobOffers_list') }}">Voir les réponses obtenues :</a></p><br><br>
+							<p><a href="{{ path('front_office_emploi_myJobOffers_list') }}">Voir la liste des offres publiées :</a></p>
 
-							{% for job in oneSociety.jobOffer %}											
+							{# {% for job in oneSociety.jobOffer %}											
 								{{ job.title }}<br>
 								{{ job.place }}<br>
 								{{ job.descriptionJob }}<br>
@@ -77,10 +79,8 @@
 									<p>Poste à pourvoir !</p>
 								{% endif %}
 							{% endfor %}
-
-							<hr>
-
-						{% endif %}
+ #}
+							<hr>						
 
 						{% if oneSociety.forum is not empty %}
 
@@ -107,7 +107,5 @@
 			</div>
 
 		{% endif %}
-
-
 
 	{% endblock %}

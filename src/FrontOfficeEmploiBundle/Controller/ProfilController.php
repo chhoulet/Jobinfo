@@ -46,15 +46,16 @@ class ProfilController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Profil:listMyJobOffers.html.twig');
 	}
 
-	public function listMyResponseJobOffersAction($id)
+	public function myResponseOneJobOfferAction($id)
 	{
-		$em = $this -> getDoctrine()->getManager();
-		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
-		$jobOfferResponseByUser = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this->getUser());
+		$em = $this -> getDoctrine()->getManager();		
+	
+			$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+			$jobOfferResponseByUser = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this->getUser());
 
-		return $this -> render('FrontOfficeEmploiBundle:Profil:listMyResponseJobOffers.html.twig', 
-			array('jobOffer'              => $jobOffer,
-				  'jobOfferResponseByUser'=> $jobOfferResponseByUser));
+			return $this -> render('FrontOfficeEmploiBundle:Profil:listMyResponseJobOffers.html.twig', 
+				array('jobOffer'              => $jobOffer,
+					  'jobOfferResponses'     => $jobOfferResponseByUser));					
 	}
 }
 
