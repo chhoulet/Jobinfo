@@ -2,6 +2,7 @@
 
 	{% block content %}
 
+		{# Envoi du template pour les candidats: #}
 		{% if app.user.type == 'candidat' %}
 
 			<div class="container" style="background-color:white;margin:auto;padding:40px;font-size:20px;"> 
@@ -14,6 +15,7 @@
 
 					<h3 style="text-align:center;">Offres sélectionnées :</h3>
 
+						{# Récupération indifferenciée de toutes les jobOffers selon qu'elles ont été choisies par l'user. La recuperation des donnees app.user suffit: #}
 						{% for job in app.user.jobOffers %}
 						
 							<strong><a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}" >{{ job.title}}</a><strong><br>
@@ -48,12 +50,14 @@
 
 			</div>
 
+		{# Envoi du template pour les employers: #}	
 		{% else %}
-
 			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 	
 
-				<h3 style="text-align:center;">Offres postées :</h3>		
+				<h3 style="text-align:center;">Offres postées :</h3>
 
+				{# Récupération indifferenciée de toutes les jobOffers selon qu'elles ont été créées
+ 				 par l'user. La recuperation des donnees app.user suffit: #}
 				{% for job in app.user.jobOffers %}
 					<strong>{{ job.title}}<strong><br>
 					Poste proposé : {{ job.descriptionJob}}<br>
@@ -61,23 +65,7 @@
 					Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
 
 					<p><a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}">Voir les réponses obtenues :</a></p>
-
-					{# {% for jobResponse in job.responseJobOffer %}
-						{{ jobResponse.content }}<br>
-						{{ jobResponse.dateCreated | date('d-m-Y') }}<br>
-
-						CV : {{ jobResponse.cuvitae.title }}<br>
-							 {{ jobResponse.cuvitae.gradeOne }}<br>
-							 {{ jobResponse.cuvitae.gradeTwo }}<br>
-							 {{ jobResponse.cuvitae.languages }}<br>
-							 {{ jobResponse.cuvitae.workExperience1 }}<br>
-							 {{ jobResponse.cuvitae.workExperience2 }}<br><br>
-							 							
-						LM : {{ jobResponse.motivationLetter.subject }}<br>
-							 {{ jobResponse.motivationLetter.dateCreated | date('d-m-Y') }}<br>
-							 {{ jobResponse.motivationLetter.content }}<br>								
-					{% endfor %}<br><br>										 	
-					 #}
+					
 					<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}"><button>Retirer cette offre du marché</button></a><br><br>
 
 					<hr>

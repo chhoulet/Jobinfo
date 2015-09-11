@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class ResponseJobOfferRepository extends EntityRepository
 {
+	# Retourne les differentes reponses obtenues par une jobOffer:
 	public function getJobOfferResponse($jobOffer_id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
@@ -24,18 +25,9 @@ class ResponseJobOfferRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
-	public function getJobOfferResponses($societyId)
-	{
-		$query = $this -> getEntityManager()-> createQuery('
-			SELECT r 
-			FROM FrontOfficeEmploiBundle:ResponseJobOffer r
-			JOIN  r.jobOffer j
-			WHERE j.society = :society')
-		->setParameter('society', $societyId);
-
-		return $query -> getResult();
-	}
-
+	# Retourne les reponses obtenues par la jobOffer et selon l'user passes en parametres.
+	# Query utilisee pour selectionner les reponses envoyees par un user a une jobOffer 
+	# dans son espace perso:
 	public function getJobOfferResponseByUser($jobOffer_id, $user_id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
@@ -51,6 +43,9 @@ class ResponseJobOfferRepository extends EntityRepository
 		return $query -> getResult();
 	}	
 
+	# Retourne les reponses obtenues par la jobOffer et selon la society passees en parametres.
+	# Sera utilisee dans le backOffice pour permettre a l'admin 
+	# de selectionner les reponses obtenues par society et par jobOffer:
 	public function getJobOfferResponseBySociety($jobOffer_id, $society_id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
