@@ -25,7 +25,8 @@ class EmployerController extends Controller
 		if($formSociety -> isValid())
 		{
 			$society -> setDateCreated(new \DateTime('now'));
-			$society -> setUser($this -> getUser()) -> setPersonnalSpaceActive(true);			
+			$user = $this -> getUser()-> setPersonnalSpaceActive(true);	
+			$society -> setUser($user); 		
 			$society -> setHiringState(true);
 			$em -> persist($society);
 			$em -> flush();

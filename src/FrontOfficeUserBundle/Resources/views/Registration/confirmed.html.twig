@@ -6,9 +6,17 @@
 		<div class="container" style="margin:auto;">
 			<div class="well col-lg-12">
 
-				<h3 style="text-align:center;">Votre compte est créé !</h3>				
+				<h3 style="text-align:center;">Votre compte est créé !</h3>	
 
-				<p>Créez votre espace personnel pour sélectionner des offres d'emplois, enregistrer CV et lettres de motivation : <a href="{{ path('front_office_emploi_candidat_new')}}">Je créé mon espace personnel</a></p>
+				{% if app.user.type == 'candidat' %}			
+
+					<p>Créez votre espace personnel pour sélectionner des offres d'emplois, enregistrer CV et lettres de motivation : <a href="{{ path('front_office_emploi_candidat_new')}}">Je créé mon espace personnel</a></p>
+
+				{% else %}
+
+					<p>Enregistrez votre société pour publier des offres d'emplois, et avoir accès à votre espace employeur : <a href="{{ path('front_office_emploi_employer_createSociety') }}">Je créé mon espace société</a></p>
+
+				{% endif %}
 
 			</div>
 		</div>

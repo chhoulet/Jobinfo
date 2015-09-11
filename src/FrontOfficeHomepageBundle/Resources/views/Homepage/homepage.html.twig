@@ -152,12 +152,12 @@
                             {% if (is_granted('ROLE_USER')) %} 
 
                                 {# Controle d'acces à l'espace perso conditionné à la saisie d'un profil society.#}
-                                {% if app.user.personnalSpaceActive %}
-                                    <p>Gérer votre compte personnel :
+                                {% if app.user.personnalSpaceActive  %}
+                                    <p>Gérer votre espace personnel :
                                     <a href="{{ path('front_office_emploi_myProfil') }}">Accéder à votre espace employeur</a></p> 
                                     {# Les functions d'acces à son espace perso ou de creation de celui-ci exigent d'etre inscrit sur le site #}                                
                                 {% else %}
-                                    <a href="{{ path('front_office_emploi_employer_createSociety')}}">Créer votre espace personnel :</a> 
+                                    <a href="{{ path('front_office_emploi_employer_createSociety')}}">Enregistrer votre société pour créer votre espace personnel :</a> 
                                 {% endif %}
 
                             {% else %}
