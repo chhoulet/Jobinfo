@@ -47,21 +47,31 @@
 							{% endfor %}
 
 						{% else %}
-						{# Selection des reponses obtenues par les employers, pas besoin de différencier lles reposes selon le user, seul le fait qu'elles soient bien rattachées à une jobOffer importe: #}						
-								{% for answers in jobOffer.responseJobOffer %}		
+						{# Selection des reponses obtenues par les employers, pas besoin de différencier lles reposes selon le user, seul le fait qu'elles soient bien rattachées à une jobOffer importe: #}
+							{% if jobOffer.responseJobOffer is empty %}
+
+								<p>Cette offre n'a pour le moment reçue aucune réponse !</p>
+
+							{% else %}						
+										
+								{% for answers in jobOffer.responseJobOffer %}								
+
 									Nombre de réponses obtenues : {{ nbResponseReceived }}<br>					
-									Intitulé de la réponse : {{ answers.content }}<br>
-									Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
-									CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
-										{{ answers.cuvitae.gradeOne }}<br>
-										{{ answers.cuvitae.gradeTwo }}<br>
-										{{ answers.cuvitae.languages }}<br>
-										{{ answers.cuvitae.workExperience1 }}<br>
-										{{ answers.cuvitae.workExperience2 }}<br>
-									
-									LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
-										{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
+										Intitulé de la réponse : {{ answers.content }}<br>
+										Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
+										CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
+											{{ answers.cuvitae.gradeOne }}<br>
+											{{ answers.cuvitae.gradeTwo }}<br>
+											{{ answers.cuvitae.languages }}<br>
+											{{ answers.cuvitae.workExperience1 }}<br>
+											{{ answers.cuvitae.workExperience2 }}<br>
+										
+										LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
+											{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>
+
 								{% endfor %}
+
+							{% endif %}
 
 						{% endif %}
 
