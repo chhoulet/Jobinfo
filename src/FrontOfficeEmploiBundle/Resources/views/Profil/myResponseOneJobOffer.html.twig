@@ -1,0 +1,78 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+							
+		
+			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+
+				<h2>Détail de l'offre</h2>
+
+					{# Détail de l'offre selectionnée, même infos selon que l'on soit connecté comme candidat ou employer: #}
+					<h4>{{ jobOffer.title}}</h4><br>
+						<p><a href="{{ path('front_office_emploi_employer_oneSociety',{id:jobOffer.society.id}) }}">{{ jobOffer.society.name}}</a><br>
+
+						{{ jobOffer.descriptionJob }}<br>
+
+						Statut : {{ jobOffer.contract }}<br>
+
+
+						Lieu : {{ jobOffer.place }}<br>
+
+						Offre postée le : {{ jobOffer.dateCreated | date('d-m-Y H:i:s') }}<br>
+
+						{% if jobOffer.activeToPurchase == false %}
+							<p>Cette offre est pourvue !</p>
+						{% else %}
+							<p>Poste à pourvoir !</p>							
+						{% endif %}
+
+						<hr>
+
+						{# Selection des reponses grace à la querie 'getJobOfferResponseByUser' appelée dans le controller, pour n'avoir que les reponses envoyées par cet user, l'user connecté: #}
+						{% if app.user.type == 'candidat' %}
+							Candidature envoyée :
+
+							{% for answers in jobOfferResponses %}								
+									Intitulé de la réponse : {{ answers.content }}<br>
+									Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
+									CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
+										{{ answers.cuvitae.gradeOne }}<br>
+										{{ answers.cuvitae.gradeTwo }}<br>
+										{{ answers.cuvitae.languages }}<br>
+										{{ answers.cuvitae.workExperience1 }}<br>
+										{{ answers.cuvitae.workExperience2 }}<br>
+									
+									LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
+										{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
+							{% endfor %}
+
+						{% else %}
+						{# Selection des reponses obtenues par les employers, pas besoin de différencier lles reposes selon le user, seul le fait qu'elles soient bien rattachées à une jobOffer importe: #}
+							Réponses reçues :<br>
+								{% for answers in jobOffer.responseJobOffer %}								
+									Intitulé de la réponse : {{ answers.content }}<br>
+									Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
+									CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
+										{{ answers.cuvitae.gradeOne }}<br>
+										{{ answers.cuvitae.gradeTwo }}<br>
+										{{ answers.cuvitae.languages }}<br>
+										{{ answers.cuvitae.workExperience1 }}<br>
+										{{ answers.cuvitae.workExperience2 }}<br>
+									
+									LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
+										{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
+								{% endfor %}
+
+						{% endif %}
+
+							<hr>				
+
+					
+					
+					{% if (is_granted('ROLE_SUPER_ADMIN')) %}
+				    	<a href="{{ path('back_office_adminformation_delete',{id:jobOffer.id}) }}">Supprimer cet élément</a> 
+					{% endif %}
+
+			</div>
+	    
+	{% endblock %}
