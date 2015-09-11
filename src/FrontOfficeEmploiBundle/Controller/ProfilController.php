@@ -57,14 +57,15 @@ class ProfilController extends Controller
 	# Pas besoin pour les employeurs, qui ont besoin d'avoir toutes les reponses indifferenciees:
 	public function myResponseOneJobOfferAction($id)
 	{
-		$em = $this -> getDoctrine()->getManager();		
-	
-			$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
-			$jobOfferResponseByUser = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this->getUser());
+		$em = $this -> getDoctrine()->getManager();			
+		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$nbResponseReceived = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->nbResponseByJobOffer($jobOffer);
+		$jobOfferResponseByUser = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this->getUser());
 
-			return $this -> render('FrontOfficeEmploiBundle:Profil:myResponseOneJobOffer.html.twig', 
-				array('jobOffer'              => $jobOffer,
-					  'jobOfferResponses'     => $jobOfferResponseByUser));					
+		return $this -> render('FrontOfficeEmploiBundle:Profil:myResponseOneJobOffer.html.twig', 
+			array('nbResponseReceived'    => $nbResponseReceived,
+				  'jobOffer'              => $jobOffer,
+				  'jobOfferResponses'     => $jobOfferResponseByUser));								
 	}
 }
 

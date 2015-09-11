@@ -59,6 +59,19 @@ class ResponseJobOfferRepository extends EntityRepository
 		->setParameter('society_id', $society_id);
 
 		return $query -> getResult();
-	}
-	
+	}	
+
+	public function nbResponseByJobOffer($jobOffer)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(r.id) AS nb
+			FROM FrontOfficeEmploiBundle:ResponseJobOffer r  
+			JOIN r.jobOffer j
+			JOIN r.user u
+			WHERE j.id LIKE :jobOffer_id')			
+		->setParameter('jobOffer_id', $jobOffer)
+		;
+
+		return $query -> getSingleScalarResult();
+	}	
 }
