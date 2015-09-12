@@ -12,9 +12,9 @@
 
 				{% for messag in app.session.flashbag.get('notice') %}
 					{{ messag }}<br><br>
-				{% endfor %}
+				{% endfor %}				
 
-					{% for forma in app.user.formation %}
+					{% for forma in app.user.formation %}						
 						Nom :           {{ forma.formationName }}<br>
 						Organisme :     {{ forma.organism }}<br>
 						Secteur :       {{ forma.formationType }}<br>
@@ -23,7 +23,7 @@
 						Contenu :       {{ forma.formationDescription }}<br><br>
 
 						<a href="{{ path('front_office_formation_desinscriptionFormation',{id:forma.id}) }}"><button>Se désinscrire</button></a><br><br>
-					{% endfor %}
+					{% endfor %}				
 
 					<hr>
 

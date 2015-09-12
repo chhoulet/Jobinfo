@@ -45,64 +45,57 @@
 		{% else %}
 
 			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">			
-					<h2 style="text-align:center"> {{ oneSociety.name }}</h2>
-														
-						Métier : {{ oneSociety.activity }}<br>
-						Description : {{ oneSociety.description }}<br>
-						Inscrite sur le site depuis le : {{ oneSociety.dateCreated | date('d-m-Y') }}<br>
-						{% if oneSociety.dateUpdated  %}
-							Dernière mise à jour le : {{ oneSociety.dateUpdated | date('d-m-Y') }}<br>
-						{% endif %}
+					<h2 style="text-align:center;border-style:solid;border-radius:12px; background-color:#A3D1FF;padding:40px;"> {{ oneSociety.name }}</h2>
 
-						<a href="{{ path('front_office_emploi_employer_updateSociety',{id:oneSociety.id}) }}">Mettre à jour mon profil employer</a><br>
-						<a href="{{ path('front_office_emploi_employer_createJobOffer',{id:oneSociety.id}) }}">Publier une offre d'emploi :</a>
+						<h3>Profil :</h3><br><br>
+							<div style ="text-align:left;">
+							<strong>Métier :</strong>      {{ oneSociety.activity }}<br>
+							<strong>Description :</strong> {{ oneSociety.description }}<br>
+							<strong>Inscription :</strong> {{ oneSociety.dateCreated | date('d-m-Y') }}<br>
+							{% if oneSociety.dateUpdated  %}
+								<strong>Dernière mise à jour le :</strong> {{ oneSociety.dateUpdated | date('d-m-Y') }}<br>
+							{% endif %}
 
-						{% if oneSociety.hiringState == false %}
-							<p>Votre société n'est actuellement plus en recherche de talents !</p>
-						{% else %}
-							<p>Votre société fait partie de la liste des sociétés qui recrutent</p>
-						{% endif %}									
+							<a href="{{ path('front_office_emploi_employer_updateSociety',{id:oneSociety.id}) }}"><button>Mettre à jour mon profil employer</button></a>
+								<hr>
+							</div>
 
-							<p>Offres d'emploi de {{ oneSociety.name }} publiées : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id}) }}">Voir mes statistiques :</a></p><br>
-							<p><a href="{{ path('front_office_emploi_myJobOffers_list') }}">Voir la liste des offres publiées :</a></p>
+						<h3>Gestion RH:</h3><br><br>
+							<div style ="text-align:left;">
+							Publier une offre d'emploi:<a href="{{ path('front_office_emploi_employer_createJobOffer',{id:oneSociety.id}) }}"><button>Je recherche </button></a><br>
+							Voir la liste de mes offres publiées :<a href="{{ path('front_office_emploi_myJobOffers_list') }}"><button>Ma recherche de talents</button></a><br>
+							Statistiques de {{ oneSociety.name }} : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id}) }}"><button>Voir mes statistiques</button></a></p><br>												
+								<hr>	
+							</div>
 
-							{# {% for job in oneSociety.jobOffer %}											
-								{{ job.title }}<br>
-								{{ job.place }}<br>
-								{{ job.descriptionJob }}<br>
-								{{ job.contract }}<br>
-								Offre publiée le : {{ job.dateCreated | date('d-m-Y') }}<br>
-
-								{% if job.activeToPurchase == false %}
-									<p>Cette offre est pourvue !</p>
+						<h3>Evenements de recrutement de : {{ oneSociety.name }}</h3>
+							<div style ="text-align:left;">
+								{% if oneSociety.hiringState == false %}
+									<p>Votre société n'est actuellement plus en recherche de talents !</p>
 								{% else %}
-									<p>Poste à pourvoir !</p>
+									<p>Votre société fait partie de la liste des sociétés qui recrutent !</p>
+								{% endif %}						
+
+								{% if oneSociety.forum is not empty %}
+
+									<p>{{ oneSociety.name }} participe aux forums suivants :</p>
+
+										{% for forum in oneSociety.forum %}
+											<h4><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a></h4>
+											{{ forum.forumType }}<br>
+											{{ forum.forumDate | date('m-d-Y') }}<br>
+											{{ forum.forumDescription }}<br>
+											<hr>
+										{% endfor %}
+
+								{% else %}
+
+									<p>{{ oneSociety.name }} n'est pas actuellement inscrit à un évenement de recrutement.</p>
+
 								{% endif %}
-							{% endfor %}
- #}
-							<hr>						
 
-						{% if oneSociety.forum is not empty %}
-
-							<p>{{ oneSociety.name }} participe aux forums suivants :</p>
-
-								{% for forum in oneSociety.forum %}
-									<h4><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{ forum.forumName }}</a></h4>
-									{{ forum.forumType }}<br>
-									{{ forum.forumDate | date('m-d-Y') }}<br>
-									{{ forum.forumDescription }}<br>
-									<hr>
-								{% endfor %}
-
-						{% else %}
-
-							<p>{{ oneSociety.name }} n'est pas actuellement inscrit à un évenement de recrutement.</p>
-
-						{% endif %}
-
-						<hr>						
-						
-						<a href="{{ path('front_office_emploi_employer_desactivateSociety',{id:oneSociety.id}) }}">Quitter la liste des sociétés qui recrutent</a>
+							<hr>
+							</div>																		
 
 			</div>
 

@@ -2,7 +2,7 @@
 
 	{% block content %}
 
-    		<div class="row" style="background-color:white">
+    		<div class="row" style="background-color:white;margin-left:45px;margin-right:45px;">
 
                     <div class="box">
                         <div class="col-lg-12">
@@ -19,17 +19,21 @@
 
                                     {% for user in oneFormation.inscrits %}
                                         {% if app.user.id == user.id %}
-                                            <p style="margin-left:40px;"><strong>Vous êtes déjà inscrit à cette formation !</strong></p> 
+
+                                            <p style="margin-left:40px;"><strong>Vous êtes inscrit à cette formation !</strong></p> 
+
+                                        {% else %}
+                                            
+                                            <a href="{{ path('front_office_formation_inscription',{id:oneFormation.id})}}"><button>Inscrivez-vous à cette formation :</button></a>                                            
+                                                                                            
                                         {% endif %}                                         
-
                                     {% endfor %}  
-
-                                        <a href="{{ path('front_office_formation_inscription',{id:oneFormation.id})}}"><button>Inscrivez-vous à cette formation :</button></a>
-                                
+                                                                        
                                 {% else %}
 
                                     <h4>Vous souhaitez vous inscrire à cette formation ?</h4><br>
                                     <a href="{{ path('fos_user_security_login')}}"><button>Connectez-vous !</button></a>
+                                    <h4>Pas encore de compte utilisateur ? <a href="{{ path('fos_user_register_registration') }}"><button>Je créé mon compte</button></a>
 
                                 {% endif %}
 

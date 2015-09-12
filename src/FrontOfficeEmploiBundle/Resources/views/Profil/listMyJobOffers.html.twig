@@ -25,27 +25,11 @@
 							Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
 							Sélectionnée le :   {{ job.dateSelected | date('d-m-Y') }}<br><br>
 
-							<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}">Candidatez à cette offre !</a><br><br>
+							<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}">Candidatez à cette offre !</a>
 
 							<a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}">Voir le détail de ma candidature :</a>
 
-							<hr>																																							
-							{# Réponse:<br>
-								{% for answers in jobOfferResponseByUser %}								
-									Intitulé de ma réponse : {{ answers.content }}<br>
-									Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
-									CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
-										{{ answers.cuvitae.gradeOne }}<br>
-										{{ answers.cuvitae.gradeTwo }}<br>
-										{{ answers.cuvitae.languages }}<br>
-										{{ answers.cuvitae.workExperience1 }}<br>
-										{{ answers.cuvitae.workExperience2 }}<br>
-									
-									LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
-										{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
-								{% endfor %} #}
-
-							<hr>						
+							<hr>																									
 						{% endfor %}<br><br>	
 
 			</div>
