@@ -1,32 +1,33 @@
 {% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
 
 	{% block content %}
-							
-		
-			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
 
-				<h2>Détail de l'offre</h2>
+		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+
+				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#D6B5D6;padding:30px;">Détail de l'offre</h3>
 
 					{# Détail de l'offre selectionnée, même infos selon que l'on soit connecté comme candidat ou employer: #}
-					<h4>{{ jobOffer.title}}</h4><br>
-						<p><a href="{{ path('front_office_emploi_employer_oneSociety',{id:jobOffer.society.id}) }}">{{ jobOffer.society.name}}</a><br>
+					<div style="text-align:left;">
+						<p style="text-align:center;">{{ jobOffer.title}}<br>
+							<a href="{{ path('front_office_emploi_employer_oneSociety',{id:jobOffer.society.id}) }}">{{ jobOffer.society.name}}</a></p>
 
-						{{ jobOffer.descriptionJob }}<br>
+							<strong>Poste:</strong> {{ jobOffer.descriptionJob }}<br>
 
-						Statut : {{ jobOffer.contract }}<br>
+							<strong>Statut:</strong> {{ jobOffer.contract }}<br>
 
+							<strong>Lieu:</strong> {{ jobOffer.place }}<br>
 
-						Lieu : {{ jobOffer.place }}<br>
+							<strong>Offre postée le:</strong> {{ jobOffer.dateCreated | date('d-m-Y H:i:s') }}<br>
 
-						Offre postée le : {{ jobOffer.dateCreated | date('d-m-Y H:i:s') }}<br>
+							{% if jobOffer.activeToPurchase == false %}
+								<p>Cette offre est pourvue !</p>
+							{% else %}
+								<p>Poste à pourvoir !</p>							
+							{% endif %}
 
-						{% if jobOffer.activeToPurchase == false %}
-							<p>Cette offre est pourvue !</p>
-						{% else %}
-							<p>Poste à pourvoir !</p>							
-						{% endif %}
+							<hr>
 
-						<hr>
+					</div>
 
 						{# Selection des reponses grace à la querie 'getJobOfferResponseByUser' appelée dans le controller, pour n'avoir que les reponses envoyées par cet user, l'user connecté: #}
 						{% if app.user.type == 'candidat' %}
@@ -36,21 +37,46 @@
 
 							{% else %}
 
-								Candidature envoyée :
+								<div style="text-align:left;">
 
-								{% for answers in jobOfferResponses %}								
-										Intitulé de la réponse : {{ answers.content }}<br>
-										Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
-										CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
-											{{ answers.cuvitae.gradeOne }}<br>
-											{{ answers.cuvitae.gradeTwo }}<br>
-											{{ answers.cuvitae.languages }}<br>
-											{{ answers.cuvitae.workExperience1 }}<br>
-											{{ answers.cuvitae.workExperience2 }}<br>
-										
-										LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
-											{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
-								{% endfor %}
+									Candidature envoyée :
+
+									{% for answers in jobOfferResponses %}								
+											{{ answers.content }}<br>
+											Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
+											CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
+																																																
+												<br>
+
+												{% if answers.cuvitae.gradeOne %}				
+													<strong>Diplome 1:</strong> {{ answers.cuvitae.gradeOne }}<br>
+												{% endif %}
+												{% if answers.cuvitae.gradeTwo %}
+													<strong>Diplome 2:</strong> {{ answers.cuvitae.gradeTwo }}<br>
+												{% endif %}
+												{% if answers.cuvitae.languages  %}
+													<strong>Langues:</strong> {{ answers.cuvitae.languages }}<br>
+												{% endif %}
+												{% if answers.cuvitae.workExperience1 %}
+													<strong>Expérience professionnelle 1:</strong> {{ answers.cuvitae.workExperience1 }}<br>
+												{% endif %}
+												{% if answers.cuvitae.workExperience2 %}
+													<strong>Expérience professionnelle 2:</strong> {{ answers.cuvitae.workExperience2 }}<br>
+												{% endif %}
+												{% if answers.cuvitae.skills %}
+													<strong>Languages et compétences informatiques:</strong> {{ answers.cuvitae.skills }}<br>
+												{% endif %}
+												{% if answers.cuvitae.dateUpdated %}
+													<strong>Dernière mise à jour le :</strong> {{ answers.cuvitae.dateUpdated | date('d-m-Y') }}<br><br>
+												{% else %}
+													<br>
+												{% endif %}													
+											
+											LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
+												<strong>Créée le:</strong> {{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
+									{% endfor %}
+
+								</div>
 
 							{% endif %}
 
@@ -60,37 +86,64 @@
 
 								<p>Cette offre n'a pour le moment reçue aucune réponse !</p>
 
-							{% else %}						
-										
-								{% for answers in jobOffer.responseJobOffer %}								
+							{% else %}	
 
-									Nombre de réponses obtenues : {{ nbResponseReceived }}<br>					
-										Intitulé de la réponse : {{ answers.content }}<br>
-										Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
-										CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
-											{{ answers.cuvitae.gradeOne }}<br>
-											{{ answers.cuvitae.gradeTwo }}<br>
-											{{ answers.cuvitae.languages }}<br>
-											{{ answers.cuvitae.workExperience1 }}<br>
-											{{ answers.cuvitae.workExperience2 }}<br>
+								<div style="text-align:left">					
 										
-										LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
-											{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>
+									{% for answers in jobOffer.responseJobOffer %}								
 
-								{% endfor %}
+										<strong>Nombre de réponses obtenues :</strong> {{ nbResponseReceived }}<br>					
+										<strong>Intitulé de la réponse :</strong> {{ answers.content }}<br>
+										<strong>Date d'envoi de la candidature :</strong> {{ answers.dateCreated | date('d-m-Y') }}<br><br>
+
+										<strong>CV:</strong> <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
+											{% if answers.cuvitae.gradeOne %}				
+												<strong>Diplome 1:</strong> {{ answers.cuvitae.gradeOne }}<br>
+											{% endif %}
+												{% if answers.cuvitae.gradeTwo %}
+													<strong>Diplome 2:</strong> {{ answers.cuvitae.gradeTwo }}<br>
+												{% endif %}
+												{% if answers.cuvitae.languages  %}
+													<strong>Langues:</strong> {{ answers.cuvitae.languages }}<br>
+												{% endif %}
+												{% if answers.cuvitae.workExperience1 %}
+													<strong>Expérience professionnelle 1:</strong> {{ answers.cuvitae.workExperience1 }}<br>
+												{% endif %}
+												{% if answers.cuvitae.workExperience2 %}
+													<strong>Expérience professionnelle 2:</strong> {{ answers.cuvitae.workExperience2 }}<br>
+												{% endif %}
+												{% if answers.cuvitae.skills %}
+													<strong>Languages et compétences informatiques:</strong> {{ answers.cuvitae.skills }}<br>
+												{% endif %}
+												{% if answers.cuvitae.dateUpdated %}
+													<strong>Dernière mise à jour le :</strong> {{ answers.cuvitae.dateUpdated | date('d-m-Y') }}<br><br>
+												{% else %}
+														<br>
+												{% endif %}		
+										
+											
+											<strong>LM:</strong> <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
+												{{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>
+
+											<hr>	
+											
+									{% endfor %}
+
+								</div>
 
 							{% endif %}
 
 						{% endif %}
 
-							<hr>				
-
+														
 					
-					
-					{% if (is_granted('ROLE_SUPER_ADMIN')) %}
-				    	<a href="{{ path('back_office_adminformation_delete',{id:jobOffer.id}) }}">Supprimer cet élément</a> 
-					{% endif %}
+						{% if (is_granted('ROLE_SUPER_ADMIN')) %}
+					    	<a href="{{ path('back_office_adminformation_delete',{id:jobOffer.id}) }}">Supprimer cet élément</a> 
+						{% endif %}
 
-			</div>
+		</div>
+							
+		
+			
 	    
 	{% endblock %}
