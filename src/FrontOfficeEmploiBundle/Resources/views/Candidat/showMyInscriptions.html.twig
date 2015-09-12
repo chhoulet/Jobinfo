@@ -4,7 +4,7 @@
 
 		<div class="container" style="background-color:white;text-align:left;margin:auto;padding:40px;font-size:20px;"> 
 
-				<h3 style="text-align:center">Mes prochaines formations:</h3>
+				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFA3A3;padding:30px;">Mes prochaines formations:</h3><br>
 
 				{% for message in app.session.flashbag.get('succes') %}
 					{{ message }}<br><br>
@@ -15,26 +15,26 @@
 				{% endfor %}				
 
 					{% for forma in app.user.formation %}						
-						Nom :           {{ forma.formationName }}<br>
-						Organisme :     {{ forma.organism }}<br>
-						Secteur :       {{ forma.formationType }}<br>
-						Date de Début : {{ forma.beginingDate | date('d-m-Y') }}<br>
-						Date de Fin :   {{ forma.endingDate | date('d-m-Y') }}<br>
-						Contenu :       {{ forma.formationDescription }}<br><br>
+						<strong>Nom :</strong> <a href="{{ path('front_office_formation_showOne',{formationType:forma.formationType, id:forma.id}) }}">{{ forma.formationName }}</a><br>
+						<strong>Organisme :</strong>     {{ forma.organism }}<br>
+						<strong>Secteur :</strong>       {{ forma.formationType }}<br>
+						<strong>Date de Début :</strong> {{ forma.beginingDate | date('d-m-Y') }}<br>
+						<strong>Date de Fin : </strong>  {{ forma.endingDate | date('d-m-Y') }}<br>
+						<strong>Contenu :</strong>       {{ forma.formationDescription }}<br><br>
 
 						<a href="{{ path('front_office_formation_desinscriptionFormation',{id:forma.id}) }}"><button>Se désinscrire</button></a><br><br>
 					{% endfor %}				
 
-					<hr>
+					<hr><br>
 
- 				<h3 style="text-align:center">Mes forums:</h3>
+ 				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#A3FF85;padding:30px;">Mes forums:</h3><br>
 
  					{% for forum in app.user.forum %}
- 						Nom :           {{ forum.forumName }}<br>
- 						Secteur :       {{ forum.forumType }}<br>
- 						Date de Début : {{ forum.forumDate | date('d-m-Y') }}<br>
- 						Adresse :       {{ forum.forumAdress }}<br>
- 						Description :   {{ forum.forumDescription }}<br><br>
+ 						<strong>Nom :</strong><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">          {{ forum.forumName }}</a><br>
+ 						<strong>Secteur :</strong>       {{ forum.forumType }}<br>
+ 						<strong>Date de Début :</strong> {{ forum.forumDate | date('d-m-Y') }}<br>
+ 						<strong>Adresse : </strong>      {{ forum.forumAdress }}<br>
+ 						<strong>Description :</strong>   {{ forum.forumDescription }}<br><br>
 
  						<a href="{{ path('front_office_forum_desinscriptionForum',{id:forum.id}) }}"><button>Se désinscrire</button></a><br><br>
  					{% endfor %}
