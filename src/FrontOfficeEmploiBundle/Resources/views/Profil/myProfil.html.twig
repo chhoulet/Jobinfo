@@ -21,24 +21,40 @@
 			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
 
 				
-				<strong>{{ app.user.username }}</strong><br><br>
+				<strong style="text-align:center;border-style:solid;border-radius:12px; background-color:#B5FF91;padding:30px;">{{ app.user.username }}</strong><br><br>
+				<hr>
 
-					<h3>Mon profil Candidat : {{ nbJobOffersByUser }} {% if nbJobOffersByUser >1 %} offres sélectionnées {% else %} offre sélectionnée {% endif %} </h3>
-					
-						{{ candidat.firstname }}<br>
-						{{ candidat.lastname }}<br>
-						{{ candidat.street }}<br>
-						{{ candidat.city }}<br><br>						
-							
-						<p>Pour candidatez à une offre d'emploi, créez-vous votre <a href="{{ path('front_office_emploi_candidat_createCV')}}">CV</a>!</p><br>
+
+					<h3>Profil Candidat : {{ nbJobOffersByUser }} {% if nbJobOffersByUser >1 %} offres sélectionnées ! {% else %} offre sélectionnée. {% endif %} </h3>
+				
+						<div style ="text-align:left;">
+							<p><strong>Prénom:</strong>  {{ candidat.firstname }}</p>
+							<p><strong>Nom:</strong>     {{ candidat.lastname }}</p>
+							<p><strong>Adresse:</strong> {{ candidat.street }}, {{ candidat.city }}</p>
+							<p><strong>Email:</strong>   {{ candidat.user.email }}</p><br>
+								
+							<a href="{{ path('front_office_emploi_candidat_update',{id:candidat.id}) }}">Mettre à jour mon profil</a>
+							<hr>
+						</div>
+
+					<h3>Gestion de mes CV et Lettres de motivation:</h3>
+
+						<div style ="text-align:left;">													
+							<p>Créez-vous votre CV: <a href="{{ path('front_office_emploi_candidat_createCV')}}">J'enregistre un CV!</a></p>
+							<p>Voir mes CV: <a href="{{ path('front_office_emploi_candidat_showMyCv') }}">Mes CV</a><br>
 																	
-						<p>Enregistrez votre <a href="{{ path('front_office_emploi_candidat_createLM')}}">lettre de motivation</a>!</p>						
-					
-						<a href="{{ path('front_office_emploi_candidat_update',{id:candidat.id}) }}">Mettre à jour mon profil</a><br>
-						<a href="{{ path('front_office_emploi_candidat_showMyCv') }}">Voir mes CV</a><br>
-						<a href="{{ path('front_office_emploi_candidat_showMyLm') }}">Voir mes LM</a><br>
-						<a href="{{ path('front_office_emploi_myJobOffers_list')}}">Voir mes offres sélectionnées</a><br>
-						<a href="{{ path('front_office_emploi_candidat_showMyInscriptions')}}">Mes évenements</a>
+							<p>Enregistrez votre Lettre de Motivation: <a href="{{ path('front_office_emploi_candidat_createLM')}}"> J'enregistre une lettre de motivation</a>!</p>
+							<p>Voir mes lettres de motivation: <a href="{{ path('front_office_emploi_candidat_showMyLm') }}">Mes Lettres de motivation </p></a>
+							<hr>
+						</div>
+
+					<h3>Mon tableau de bord :</h3>
+
+						<div style ="text-align:left;">													
+							<p>Voir mes offres sélectionnées: <a href="{{ path('front_office_emploi_myJobOffers_list')}}">Mes offres</a></p>
+							<p>Mes évenements de recrutement: <a href="{{ path('front_office_emploi_candidat_showMyInscriptions')}}">Mes inscriptions</a></p>
+							<hr>
+						</div>		
 
 			</div>
 
@@ -64,7 +80,7 @@
 							<div style ="text-align:left;">
 							Publier une offre d'emploi:<a href="{{ path('front_office_emploi_employer_createJobOffer',{id:oneSociety.id}) }}"><button>Je recherche </button></a><br>
 							Voir la liste de mes offres publiées :<a href="{{ path('front_office_emploi_myJobOffers_list') }}"><button>Ma recherche de talents</button></a><br>
-							Statistiques de {{ oneSociety.name }} : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id}) }}"><button>Voir mes statistiques</button></a></p><br>												
+							Statistiques de {{ oneSociety.name }} : <a href="{{ path('front_office_emploi_employer_nbJobOffer',{id:oneSociety.id}) }}"><button>Voir mes statistiques</button></a></p>												
 								<hr>	
 							</div>
 
