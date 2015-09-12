@@ -119,7 +119,7 @@ class Candidat
      /**
      * @var integer
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Cuvitae", mappedBy="candidat", cascade={"remove"})
      */
     private $cuvitae;
 
@@ -133,7 +133,7 @@ class Candidat
     /**
      * @var integer
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="candidat", cascade={"remove"})
      */
     private $motivationLetter;
 
