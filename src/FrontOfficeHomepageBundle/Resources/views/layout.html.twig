@@ -77,9 +77,9 @@
                                     <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil Candidat</a>
                                 </li>
                             {% else %}
-                                {% if app.user.type == 'society' and app.user.personnalSpaceActive  %}                                
+                                {% if app.user.type == 'society' and app.user.personnalSpaceActive  %}     
                                     <li>
-                                        <a href="{{ path('front_office_emploi_myProfil') }}">Mon profil Employeur</a> 
+                                        <a href="{{ path('front_office_emploi_myProfil') }}">Espace Employeur</a> 
                                     </li>                                
                                 {% endif %}                                                    
                             {% endif %}
