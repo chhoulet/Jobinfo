@@ -11,13 +11,34 @@
 				{{ response.dateCreated | date('d-m-Y') }}<br><br>
 
 					{% for cuv in response.cuvitae %}
-						{{ cuv.title }}<br>
+						{% if cuv.gradeOne %}				
+								Diplome 1: {{ cuv.gradeOne }}<br>
+							{% endif %}
+							{% if cuv.gradeTwo %}
+								Diplome 2: {{ cuv.gradeTwo }}<br>
+							{% endif %}
+							{% if cuv.languages %}
+								Langues: {{ cuv.languages }}<br>
+							{% endif %}
+							{% if cuv.workExperience1 %}
+								Expérience professionnelle 1: {{ cuv.workExperience1 }}<br>
+							{% endif %}
+							{% if cuv.workExperience2 %}
+								Expérience professionnelle 2: {{ cuv.workExperience2 }}<br>
+							{% endif %}
+							Languages et compétences informatiques: {{ cuv.skills }}<br>
+							{% if cuv.dateUpdated %}
+								<p>Dernière mise à jour le : {{ cuv.dateUpdated | date('d-m-Y') }}<br><br>
+							{% else %}
+								<br>
+							{% endif %}
+						{# {{ cuv.title }}<br>
 						{{ cuv.gradeOne }}<br><br>
 						{{ cuv.gradeTwo }}<br>
 						{{ cuv.languages }}<br>
 						{{ cuv.workExperience1 }}<br>
 						{{ cuv.workExperience2 }}<br>
-						{{ cuv.skills }}<br><br>
+						{{ cuv.skills }}<br><br> #}
 					{% endfor %}
 
 					{% for lem in motivationLetter %}

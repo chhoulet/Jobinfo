@@ -22,7 +22,7 @@
 							{% if jobOffer.activeToPurchase == false %}
 								<p>Cette offre est pourvue !</p>
 							{% else %}
-								<p>Poste à pourvoir !</p>							
+								<p style="text-align:center;">Poste à pourvoir !</p>							
 							{% endif %}
 
 							<hr>
@@ -37,14 +37,12 @@
 
 							{% else %}
 
-								<div style="text-align:left;">
-
-									Candidature envoyée :
+								<div style="text-align:left;">									
 
 									{% for answers in jobOfferResponses %}								
-											{{ answers.content }}<br>
-											Date d'envoi de ma candidature : {{ answers.dateCreated | date('d-m-Y') }}<br>
-											CV: <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
+											<p style="text-align:center;"> {{ answers.content }}</p><br>
+											<strong>Date d'envoi de ma candidature :</strong> {{ answers.dateCreated | date('d-m-Y') }}<br>
+											<strong>CV:</strong> <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>
 																																																
 												<br>
 
@@ -72,7 +70,7 @@
 													<br>
 												{% endif %}													
 											
-											LM: <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
+											<strong>LM:</strong> <a href="{{ path('front_office_emploi_candidat_updateLm',{id:answers.motivationLetter.id})}}">{{ answers.motivationLetter.subject }}</a><br>
 												<strong>Créée le:</strong> {{ answers.motivationLetter.dateCreated | date('d-m-Y') }}<br>							
 									{% endfor %}
 
@@ -86,14 +84,17 @@
 
 								<p>Cette offre n'a pour le moment reçue aucune réponse !</p>
 
-							{% else %}	
+							{% else %}									
 
-								<div style="text-align:left">					
-										
+								<strong>{{ nbResponseReceived }}</strong> réponses obtenues !
+
+								<hr>				
+
+								<div style="text-align:left">	
+
 									{% for answers in jobOffer.responseJobOffer %}								
-
-										<strong>Nombre de réponses obtenues :</strong> {{ nbResponseReceived }}<br>					
-										<strong>Intitulé de la réponse :</strong> {{ answers.content }}<br>
+														
+										<strong><p style="text-align:center;"> {{ answers.content }}</p><strong><br>
 										<strong>Date d'envoi de la candidature :</strong> {{ answers.dateCreated | date('d-m-Y') }}<br><br>
 
 										<strong>CV:</strong> <a href="{{ path('front_office_emploi_candidat_updateCv',{id:answers.cuvitae.id}) }}">{{ answers.cuvitae.title }}</a><br>

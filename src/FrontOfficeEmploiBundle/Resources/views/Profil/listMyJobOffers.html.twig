@@ -38,21 +38,27 @@
 		{% else %}
 			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 	
 
-				<h3 style="text-align:center;">Offres postées :</h3>
+				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#99FF66;padding:30px;">Offres postées :</h3>
 
-				{# Récupération indifferenciée de toutes les jobOffers selon qu'elles ont été créées
- 				 par l'user. La recuperation des donnees app.user suffit: #}
-				{% for job in app.user.jobOffers %}
-					<strong>{{ job.title}}<strong><br>
-					Poste proposé : {{ job.descriptionJob}}<br>
-					Contrat : {{ job.contract}}<br>
-					Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
-
-					<p><a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}">Voir les réponses obtenues :</a></p>
 					
-					<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}"><button>Retirer cette offre du marché</button></a><br><br>
 
-					<hr>
+						{# Récupération indifferenciée de toutes les jobOffers selon qu'elles ont été créées
+		 				 par l'user. La recuperation des donnees app.user suffit: #}
+						{% for job in app.user.jobOffers %}
+							<div style="text-align:left;">
+							<strong><p style="text-align:center;">{{ job.title}}</p></strong><br>
+							<strong>Poste proposé :</strong> {{ job.descriptionJob}}<br>
+							<strong>Contrat :</strong> {{ job.contract}}<br>
+							<strong>Date de l'annonce :</strong> {{ job.dateCreated | date('d-m-Y') }}<br>
+
+							<a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}"><button>Voir les réponses</button></a>
+							
+							<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}"><button>Désactiver cette offre</button></a>
+							</div>
+							<hr>
+
+					
+
 				{% endfor %}
 
 			</div>
