@@ -20,10 +20,10 @@
 						
 							<p style="text-align:center;"><strong><a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}" >{{ job.title}}</a></strong></p><br>
 
-							Poste proposé :     {{ job.descriptionJob }}<br>
-							Contrat :           {{ job.contract }}<br>
-							Date de l'annonce : {{ job.dateCreated | date('d-m-Y') }}<br>
-							Sélectionnée le :   {{ job.dateSelected | date('d-m-Y') }}<br><br>
+							<strong>Poste proposé :    </strong> {{ job.descriptionJob }}<br>
+							<strong>Contrat :          </strong> {{ job.contract }}<br>
+							<strong>Date de l'annonce :</strong> {{ job.dateCreated | date('d-m-Y') }}<br>
+							<strong>Sélectionnée le :  </strong> {{ job.dateSelected | date('d-m-Y') }}<br><br>
 
 							<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}"><button>Candidatez</button></a>
 
