@@ -4,17 +4,23 @@
 
 		<div class="container">
 
-			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
+			<div style="background-color:white;text-align:left;margin:auto;padding:40px;font-size:20px">
 
-				<h2> Liste des sociétés qui recrutent !</h2>
+				<h2 style="text-align:center;border-style:solid;border-radius:12px; background-color:#A6B1B1;padding:30px;"> Liste des sociétés </h2><br>
 
 					{% for society in listSocieties %}
-						Raison sociale : <a href="{{ path('front_office_emploi_employer_oneSociety',{id:society.id}) }}">{{ society.name }}</a><br>												
-						Secteur d'activité : {{ society.activity }}<br>						
-						Description : {{ society.description }}<br>
-						Inscrite sur le site depuis le : {{ society.dateCreated | date('d-m-Y') }}<br>
-						<hr>
+						
+							<p style="text-align:center;"><a href="{{ path('front_office_emploi_employer_oneSociety',{id:society.id}) }}">{{ society.name }}</a></p>								
+							<strong>Secteur d'activité :</strong> {{ society.activity }}<br>						
+							<strong>Description :</strong> {{ society.description }}<br>
+							<strong>Inscrite sur le site depuis le :</strong> {{ society.dateCreated | date('d-m-Y') }}<br>
+							<hr>
+						
 					{% endfor %}
+
+
+
+					
 
 
 
