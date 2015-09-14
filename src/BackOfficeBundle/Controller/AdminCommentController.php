@@ -48,9 +48,11 @@ class AdminCommentController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$listCensored = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> getCensoredComments();
+		$nbCensoredByAuthor = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> getauthorByNbCommentsCensored();
 
 		return $this ->render('BackOfficeBundle:AdminComment:listCensored.html.twig', 
-			array('listCensored'=> $listCensored));
+			array('listCensored'      => $listCensored,
+				  'nbCensoredByAuthor'=> $nbCensoredByAuthor));
 	}
 
 	public function deleteAction(Request $request, $id)

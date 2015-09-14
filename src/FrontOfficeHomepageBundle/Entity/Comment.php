@@ -77,10 +77,9 @@ class Comment
      * @var \DateTime
      *
      * @Assert\DateTime()
-     * @ORM\Column(name="dateCensored", type="datetime")
+     * @ORM\Column(name="dateCensored", type="datetime", nullable = true)
      */
     private $dateCensored;
-
 
     /**
      * @var string

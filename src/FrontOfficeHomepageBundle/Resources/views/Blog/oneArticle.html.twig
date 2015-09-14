@@ -46,12 +46,14 @@
 
                 <!-- Comments Form -->
                 <div class="well">
-                    <h4>Postez un commentaire :</h4>
-                       
-                            <div class="form-group">                                
-                              {{ form(form) }}
-                            </div>
-                       
+                    {% if (is_granted('ROLE_USER')) %}
+                        <h4>Postez un commentaire :</h4>               
+                        <div class="form-group">                                
+                            {{ form(form) }}
+                        </div>                        
+                    {% else %}
+                        <h4>Vous souhaitez poster un commentaire ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a>                             
+                    {% endif %}                       
                 </div>
 
                 <hr>

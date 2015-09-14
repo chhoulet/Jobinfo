@@ -68,4 +68,17 @@ class CommentRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getauthorByNbCommentsCensored()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT u.username, c.dateCreated, c.dateCensored, COUNT(c.id) AS nb 
+			FROM FrontOfficeHomepageBundle:Comment c 
+			JOIN c.author u 
+			WHERE c.censored = true
+			GROUP BY u.username
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }
