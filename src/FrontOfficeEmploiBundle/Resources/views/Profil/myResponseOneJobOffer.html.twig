@@ -34,6 +34,9 @@
 
 							{% if jobOfferResponses is empty %}
 								<p>Vous n'avez pas encore répondu à cette offre !</p>
+								<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:jobOffer.id}) }}">Candidatez</a>
+
+								<hr>
 
 							{% else %}
 

@@ -13,17 +13,19 @@
 				{% else %}
 
 					{% for job in jobOffersByTri %}
-						{{ job.title}}<br><br>
-						<a href="{{ path('front_office_emploi_employer_oneSociety',{id:job.society.id}) }}">{{ job.society }}</a>
-						{{ job.descriptionJob }}<br>
-						{{ job.dateCreated | date('d-m-Y H:i:s') }}<br>
-						<a href="{{ path('front_office_emploi_employer_oneSociety',{id:job.society.id}) }}">{{ job.society }}</a>			
+						<p style="text-align:center;"><a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">{{ job.title }}</a></p>
 
-					{% if (is_granted('ROLE_USER')) %}
-						<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}">Répondez à cette annonce :</a>
-					{% else %}
-						<p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a></p>
-	                {% endif %}
+						<strong>Poste proposé :    </strong> {{ job.descriptionJob }}<br>
+						<strong>Contrat :          </strong> {{ job.contract }}<br>
+						<strong>Date de l'annonce :</strong> {{ job.dateCreated | date('d-m-Y') }}<br>
+						<strong>Sélectionnée le :  </strong> {{ job.dateSelected | date('d-m-Y') }}<br>
+						<hr>		
+
+						{% if (is_granted('ROLE_USER')) %}
+							<a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Selectionnez cette annonce :</a>
+						{% else %}
+							<p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a></p>
+		                {% endif %}
 
 	                {% endfor %}
 

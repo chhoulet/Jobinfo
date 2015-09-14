@@ -1,13 +1,15 @@
 # Route gerant les fonctionnalites communes candidats/employeurs:
-# Voir espace personnel candidat:
+# Voir espace personnel candidat/employer:
 front_office_emploi_myProfil:
     path:     /myProfil/{$user}
     defaults: { _controller: FrontOfficeEmploiBundle:Profil:myProfil}
 
+# Liste des jobOffers:
 front_office_emploi_myJobOffers_list:
     path:     /listMyJobOffers 
     defaults: { _controller: FrontOfficeEmploiBundle:Profil:listMyJobOffers}
 
+# Voir une réponse à une jobOffer:
 front_office_emploi_myResponseOneJobOffer:
     path:     /myResponseOneJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:Profil:myResponseOneJobOffer}
@@ -85,7 +87,7 @@ front_office_emploi_jobOffer_showOne:
     requirements:
         id: "[0-9]+"
 
-# Selection des jobOffers par criteres:
+# Selection d'une jobOffer:
 front_office_emploi_jobOffer_select:
     path:     /selectJobOffer/{id}
     defaults: { _controller: FrontOfficeEmploiBundle:JobOffer:select}

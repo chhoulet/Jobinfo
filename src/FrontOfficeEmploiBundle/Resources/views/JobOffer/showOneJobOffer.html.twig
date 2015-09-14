@@ -13,33 +13,31 @@
 		
 			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
 
-				<h2>Détail de l'offre</h2>
+				<div style="text-align:left;">
 
-					<h4>{{ showOneJobOffer.title}}</h4><br>
-						<p><a href="{{ path('front_office_emploi_employer_oneSociety',{id:showOneJobOffer.society.id}) }}">{{ showOneJobOffer.society.name}}</a><br>
+					<h4 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFCCFF;padding:30px;">{{ showOneJobOffer.title}}</h4><br>
+						<p style="text-align:center;"><a href="{{ path('front_office_emploi_employer_oneSociety',{id:showOneJobOffer.society.id}) }}">{{ showOneJobOffer.society.name}}</a></p>
 
-						{{ showOneJobOffer.descriptionJob }}<br><br>
+						<strong>Poste:</strong> {{ showOneJobOffer.descriptionJob }}<br>
 
-						Statut : {{ showOneJobOffer.contract }}<br><br>
+						<strong>Statut:</strong> {{ showOneJobOffer.contract }}<br>
 
+						<strong>Lieu:</strong> {{ showOneJobOffer.place }}<br>
 
-						Lieu : {{ showOneJobOffer.place }}<br><br>
-
-						Offre postée le : {{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
+						<strong>Offre postée le :</strong> {{ showOneJobOffer.dateCreated | date('d-m-Y H:i:s') }}<br><br>
 
 						{% if showOneJobOffer.activeToPurchase == false %}
-							<p>Cette offre est pourvue !</p>
+							<p style="text-align:center;">Cette offre est pourvue !</p>
 						{% else %}
-							<p>Poste à pourvoir !</p>
-							{% if (is_granted('ROLE_USER')) %}
-								<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:showOneJobOffer.id}) }}">Répondez à cette annonce :</a><br>
+							<p style="text-align:center;">Poste à pourvoir !</p>
+							{% if (is_granted('ROLE_USER')) %}								
 								<a href="{{ path('front_office_emploi_jobOffer_select',{id:showOneJobOffer.id}) }}">Sélectionner cette offre</a><br>
 							{% else %}
-						 		<p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous et créez votre espace personnel !</a></p>
+						 		<p>Vous souhaitez postuler à cette offre ?<a href="{{ path('fos_user_security_login')}}">Connectez-vous et créez votre espace personnel !</a></p>
 							{% endif %} 
 						{% endif %}
 
-					
+				</div>	
 					
 					{% if (is_granted('ROLE_SUPER_ADMIN')) %}
 				    	<a href="{{ path('back_office_adminformation_delete',{id:showOneJobOffer.id}) }}">Supprimer cet élément</a> 

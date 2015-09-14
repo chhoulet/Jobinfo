@@ -12,38 +12,36 @@
 
 					{% for cuv in response.cuvitae %}
 						{% if cuv.gradeOne %}				
-								Diplome 1: {{ cuv.gradeOne }}<br>
+								<strong>Diplome 1:</strong> {{ cuv.gradeOne }}<br>
 							{% endif %}
 							{% if cuv.gradeTwo %}
-								Diplome 2: {{ cuv.gradeTwo }}<br>
+								<strong>Diplome 2:</strong> {{ cuv.gradeTwo }}<br>
 							{% endif %}
 							{% if cuv.languages %}
-								Langues: {{ cuv.languages }}<br>
+								<strong>Langues:</strong> {{ cuv.languages }}<br>
 							{% endif %}
 							{% if cuv.workExperience1 %}
-								Expérience professionnelle 1: {{ cuv.workExperience1 }}<br>
+								<strong>Expérience professionnelle 1:</strong> {{ cuv.workExperience1 }}<br>
 							{% endif %}
 							{% if cuv.workExperience2 %}
-								Expérience professionnelle 2: {{ cuv.workExperience2 }}<br>
+								<strong>Expérience professionnelle 2:</strong> {{ cuv.workExperience2 }}<br>
 							{% endif %}
 							Languages et compétences informatiques: {{ cuv.skills }}<br>
 							{% if cuv.dateUpdated %}
-								<p>Dernière mise à jour le : {{ cuv.dateUpdated | date('d-m-Y') }}<br><br>
-							{% else %}
+								<p><strong>Dernière mise à jour le :</strong> {{ cuv.dateUpdated | date('d-m-Y') }}<br><br>
+						{% else %}
 								<br>
-							{% endif %}
-						{# {{ cuv.title }}<br>
-						{{ cuv.gradeOne }}<br><br>
-						{{ cuv.gradeTwo }}<br>
-						{{ cuv.languages }}<br>
-						{{ cuv.workExperience1 }}<br>
-						{{ cuv.workExperience2 }}<br>
-						{{ cuv.skills }}<br><br> #}
+						{% endif %}
+
+						<hr>
+						
 					{% endfor %}
 
 					{% for lem in motivationLetter %}
-						{{ lem.subject }}
-						{{ lem.content }}
+						<strong>Intitulé:</strong>{{ lem.subject }}<br>
+						<strong>Message:</strong>{{ lem.content }}
+
+						<hr>
 					{% endfor %}
 
 		{% endfor %}
