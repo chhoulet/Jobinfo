@@ -38,7 +38,8 @@ class CommentRepository extends EntityRepository
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT c 
 			FROM FrontOfficeHomepageBundle:Comment c 
-			WHERE c.validAdmin =false');
+			WHERE c.validAdmin =false
+			AND c.censored = false');
 
 		return $query -> getResult();
 	}
@@ -55,5 +56,16 @@ class CommentRepository extends EntityRepository
 		->setParameter('article_id', $article_id);
 
 		return $query->getResult();
+	}
+
+	public function getCensoredComments()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeHomepageBundle:Comment c 
+			WHERE c.censored = true
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
 	}
 }

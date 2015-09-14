@@ -44,6 +44,15 @@ class AdminCommentController extends Controller
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
+	public function listCensoredAction()
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$listCensored = $em -> getRepository('FrontOfficeHomepageBundle:Comment') -> getCensoredComments();
+
+		return $this ->render('BackOfficeBundle:AdminComment:listCensored.html.twig', 
+			array('listCensored'=> $listCensored));
+	}
+
 	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
