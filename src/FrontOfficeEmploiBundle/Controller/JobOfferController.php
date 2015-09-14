@@ -56,29 +56,38 @@ class JobOfferController extends Controller
 		$session = $request -> getSession();
 		$responseJobOffer = new ResponseJobOffer();
 		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		$responses = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this -> getUser());
 
-		$formResponseJobOffer = $this -> createForm(new ResponseJobOfferType(), $responseJobOffer);
+		if($responses){
+			return $this -> render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig',
+			 array('responses'=>$responses));
+		}
+		else{
+			$formResponseJobOffer = $this -> createForm(new ResponseJobOfferType(), $responseJobOffer);
 
-		$formResponseJobOffer -> handleRequest($request);
+			$formResponseJobOffer -> handleRequest($request);
 
-		if($formResponseJobOffer -> isValid())
-		{
-			/*Les id du CV et de la LM sont recuperees dans le formulaire, donc il faut qu'on ait teste d'abord sa valididté avant de pouvoir en exploiter les données.*/
-			/*Ces deux lignes ci-dessous sont superflues, les informations sont récupérées directement via le formulaire*/
-			//$motivationLetter = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->find($id_LM);
-			//$cuvitae = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae')->find($id_cuvitae);
-			$responseJobOffer -> setDateCreated(new \DateTime('now'));
-			$responseJobOffer -> setJobOffer($jobOffer);
-			$responseJobOffer -> setUser($this->getUser());
+			if($formResponseJobOffer -> isValid())
+			{
+				/*Les id du CV et de la LM sont recuperees dans le formulaire, donc il faut qu'on ait teste d'abord sa valididté avant de pouvoir en exploiter les données.*/
+				/*Ces deux lignes ci-dessous sont superflues, les informations sont récupérées directement via le formulaire*/
+				//$motivationLetter = $em -> getRepository('FrontOfficeEmploiBundle:MotivationLetter')->find($id_LM);
+				//$cuvitae = $em -> getRepository('FrontOfficeEmploiBundle:Cuvitae')->find($id_cuvitae);
+				$responseJobOffer -> setDateCreated(new \DateTime('now'));
+				$responseJobOffer -> setJobOffer($jobOffer);
+				$responseJobOffer -> setUser($this->getUser());
 
-			$session -> getFlashbag()-> add('notice','Votre candidature a bien été envoyée !');
-			$em ->persist($responseJobOffer);
-			$em -> flush();
+				$session -> getFlashbag()-> add('notice','Votre candidature a bien été envoyée !');
+				$em ->persist($responseJobOffer);
+				$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', array('id'=>$this -> getUser())));
+				return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', array('id'=>$this -> getUser())));
+			}
+
+			return $this ->render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig', 
+				array('responses'           =>$responses,
+					  'formResponseJobOffer'=>$formResponseJobOffer->createView()));
 		}
 		
-		return $this ->render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig', 
-			array('formResponseJobOffer'=>$formResponseJobOffer->createView()));
 	}
 }

@@ -25,9 +25,11 @@
 							<strong>Date de l'annonce :</strong> {{ job.dateCreated | date('d-m-Y') }}<br>
 							<strong>Sélectionnée le :  </strong> {{ job.dateSelected | date('d-m-Y') }}<br><br>
 
-							<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}"><button>Candidatez</button></a>
-
-							<a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}"><button>Ma candidature</button></a>
+							
+								<a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}"><button>Ma candidature</button></a>
+						
+								<a href="{{ path('front_office_emploi_jobOffer_responseJobOffer',{id:job.id}) }}"><button>Candidatez</button></a>
+									
 
 							<hr>																									
 						{% endfor %}

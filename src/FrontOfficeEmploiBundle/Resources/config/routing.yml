@@ -6,8 +6,8 @@ front_office_emploi_myProfil:
 
 # Liste des jobOffers:
 front_office_emploi_myJobOffers_list:
-    path:     /listMyJobOffers 
-    defaults: { _controller: FrontOfficeEmploiBundle:Profil:listMyJobOffers}
+    path:     /listMyJobOffers/
+    defaults: { _controller: FrontOfficeEmploiBundle:Profil:listMyJobOffers}    
 
 # Voir une réponse à une jobOffer:
 front_office_emploi_myResponseOneJobOffer:

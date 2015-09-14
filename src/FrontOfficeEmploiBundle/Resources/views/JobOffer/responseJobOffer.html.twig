@@ -4,9 +4,17 @@
 		
 		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
 
-			<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFCCFF;padding:30px;">Répondez à cette offre :</h3>
+			{% if responses %}
+
+				<p>Vous avez déjà répondu à cette offre !</p>
+
+			{% else %}
+
+				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFCCFF;padding:30px;">Répondez à cette offre :</h3>
 
 				{{ form(formResponseJobOffer) }}
+
+			{% endif %}
 
 		</div>
 

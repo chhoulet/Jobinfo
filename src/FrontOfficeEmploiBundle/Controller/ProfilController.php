@@ -48,7 +48,7 @@ class ProfilController extends Controller
 
 	# Retourne la liste des jobOffers obtenues en récupérant les donnees users via app.user:
 	public function listMyJobOffersAction()
-	{
+	{						
 		return $this -> render('FrontOfficeEmploiBundle:Profil:listMyJobOffers.html.twig');
 	}
 
