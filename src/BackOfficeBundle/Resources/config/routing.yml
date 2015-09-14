@@ -39,6 +39,13 @@ back_office_admincomments_validation:
     requirements:
         id: "[0-9]+"
 
+# Censure d'un comment:
+back_office_admincomments_censor:
+    path:     /censor/{id}
+    defaults: { _controller: BackOfficeBundle:AdminComment:censore}
+    requirements:
+        id: "[0-9]+"
+
 # Suppression des comments:
 back_office_admincomments_delete:
     path:     /deleteComment/{id}

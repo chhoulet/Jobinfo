@@ -30,6 +30,20 @@ class AdminCommentController extends Controller
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
+	public function censoreAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$censoredComment = $em -> getRepository('FrontOfficeHomepageBundle:Comment')->find($id);
+		$censoredComment -> setMessage('Ce message est supprimé car il ne respecte pas les conditions d\'utilisation du site');
+		$censoredComment -> setCensored(true);
+		$censoredComment -> setDateCensored(new \datetime());
+		$em -> flush();
+
+		$session -> getFlashbag()-> add('cens','Ce commentaire est censuré');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
+
 	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();

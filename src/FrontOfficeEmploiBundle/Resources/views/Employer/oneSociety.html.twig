@@ -27,11 +27,11 @@
 								<div style="text-align:left">	
 
 									{% for job in oneSociety.jobOffer %}											
-										<strong>Poste:</strong>	{{ job.title }}<br>
-										<strong>Ville:</strong>	{{ job.place }}<br>
-										<strong>Description:</strong> {{ job.descriptionJob }}<br>
-										<strong>Contrat:</strong> {{ job.contract }}<br>
-										<strong>Offre publiée le:</strong> {{ job.dateCreated | date('d-m-Y') }}<br>										
+										<strong>Poste: </strong><a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">{{ job.title }}</a><br>
+										<strong>Ville: </strong>	{{ job.place }}<br>
+										<strong>Description: </strong> {{ job.descriptionJob }}<br>
+										<strong>Contrat: </strong> {{ job.contract }}<br>
+										<strong>Offre publiée le: </strong> {{ job.dateCreated | date('d-m-Y') }}<br>										
 									
 									{% if job.activeToPurchase == false %}
 											<p style="text-align:center">Cette offre est pourvue !</p>

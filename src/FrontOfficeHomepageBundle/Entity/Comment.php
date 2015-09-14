@@ -38,6 +38,13 @@ class Comment
     private $validAdmin;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="censored", type="boolean", nullable = true)
+     */
+    private $censored;
+
+    /**
      * @var string
      *
      * @Assert\Length(
@@ -65,6 +72,15 @@ class Comment
      * @ORM\Column(name="dateValidated", type="datetime", nullable = true)
      */
     private $dateValidated;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateCensored", type="datetime")
+     */
+    private $dateCensored;
+
 
     /**
      * @var string
@@ -221,5 +237,51 @@ class Comment
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set censored
+     *
+     * @param boolean $censored
+     * @return Comment
+     */
+    public function setCensored($censored)
+    {
+        $this->censored = $censored;
+
+        return $this;
+    }
+
+    /**
+     * Get censored
+     *
+     * @return boolean 
+     */
+    public function getCensored()
+    {
+        return $this->censored;
+    }
+
+    /**
+     * Set dateCensored
+     *
+     * @param \DateTime $dateCensored
+     * @return Comment
+     */
+    public function setDateCensored($dateCensored)
+    {
+        $this->dateCensored = $dateCensored;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCensored
+     *
+     * @return \DateTime 
+     */
+    public function getDateCensored()
+    {
+        return $this->dateCensored;
     }
 }

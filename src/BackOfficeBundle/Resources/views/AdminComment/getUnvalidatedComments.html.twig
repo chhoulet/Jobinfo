@@ -17,8 +17,12 @@
                                 {{ message }}
                             {% endfor %}
 
-                             {% for messa in app.session.flashbag.get('notice') %}
+                            {% for messa in app.session.flashbag.get('notice') %}
                                 {{ messa }}
+                            {% endfor %}
+
+                            {% for mess in app.session.flashbag.get('cens') %}
+                                {{ mess }}
                             {% endfor %}
 
                         </div>
@@ -27,7 +31,7 @@
                             <div class="col-lg-12 text-center" >
                                 <img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt="">
 
-                                <h2>{{ com.userName }}
+                                <h2>{{ com.author }}
                                     <br>
                                     
                                         {{ com.dateCreated | date('d-m-Y H:i:s') }} 
@@ -37,6 +41,7 @@
                                 <hr>
 
                                 <a href="{{ path('back_office_admincomments_validation',{id:com.id}) }}">Valider ce commentaire</a><br>
+                                <a href="{{ path('back_office_admincomments_censor',{id:com.id}) }}">Censurer ce commentaire</a><br>
                                 <a href="{{ path('back_office_admincomments_delete',{id:com.id}) }}">Supprimer ce commentaire</a>
                             </div>
                         {% endfor %}
