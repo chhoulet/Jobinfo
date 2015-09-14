@@ -10,8 +10,8 @@
                         <hr>
 
                         <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
-                            {% for messa in app.session.flashbag.get('notice') %}                             
-                                {{ messa }}                           
+                            {% for messa in app.session.flashbag.get('notice') %}                         
+                                <div class="flash">{{ messa }}</div>                           
                                 <hr>
                             {% endfor %}
                         </div>

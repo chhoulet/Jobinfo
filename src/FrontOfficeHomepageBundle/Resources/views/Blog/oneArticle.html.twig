@@ -12,7 +12,7 @@
             <div class="col-lg-8">
 
                 {% for message in app.session.flashbag.get('succes') %}
-                    {{ message }}
+                    <div class="flash">{{ message }}</div>
                 {% endfor %}
 
                 <!-- Blog Post -->

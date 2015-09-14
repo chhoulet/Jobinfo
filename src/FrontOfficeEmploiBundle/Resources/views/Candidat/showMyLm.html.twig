@@ -7,12 +7,12 @@
 			<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#D6B5D6;padding:30px;">Mes lettres de motivation :</h3><br>
 
 				{% for message in app.session.flashbag.get('suppLm') %}
-					{{ message }}
+					<div class="flash">{{ message }}</div>
 					<hr>
 				{% endfor %}
 
 				{% for messa in app.session.flashbag.get('updateLm') %}
-					{{ messa }}
+					<div class="flash">{{ messa }}</div>
 					<hr>
 				{% endfor %}
 

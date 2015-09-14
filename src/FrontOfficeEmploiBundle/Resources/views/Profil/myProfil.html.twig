@@ -5,12 +5,12 @@
 		<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;">
 
 			{% for message in app.session.flashbag.get('notice') %}
-				{{ message }}
+				<div class="flash">{{ message }}</div>
 				<hr>
 			{% endfor %}
 
 			{% for messag in app.session.flashbag.get('notice') %}
-				{{ messag }}
+				<div class="flash">{{ messag }}</div>
 				<hr>
 			{% endfor %}
 

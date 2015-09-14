@@ -11,37 +11,29 @@
                 <hr>
             {% endif %}
        
-            {% for message in app.session.flashbag.get('succes') %}
-                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
-                    {{ message }}
-                 </div>
+            {% for message in app.session.flashbag.get('succes') %}                 
+                 <div class="flash"> {{ message }}</div>                 
                  <hr>
             {% endfor %}            
 
             {% for mess in app.session.flashbag.get('creation') %}
-                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
-                    {{ mess }}
-                 </div>
-                 <hr>
+                  <div class="flash">{{ mess }}</div>
+                  <hr>
             {% endfor %}
 
             {% for mes in app.session.flashbag.get('creasoc') %}
-                 <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">
-                    {{ mes }}
-                 </div>
+                 <div class="flash">{{ mes }}</div>                 
                  <hr>
             {% endfor %}  
 
             {% for me in app.session.flashbag.get('select') %} 
-                <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">    {{ me }}
-                </div>
-                <hr>
+                 <div class="flash">{{ me }}</div>
+                 <hr>
             {% endfor %}
 
             {% for conta in app.session.flashbag.get('contact') %}
-               <div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">    {{ conta }}
-                </div>
-                <hr>
+                 <div class="flash">{{ conta }}</div>
+                 <hr>
             {% endfor %}
 
         <div class="row">

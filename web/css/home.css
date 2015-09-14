@@ -1,0 +1,13 @@
+.flash{
+  border: solid 1 gray;
+  background-color:#FF5E5E;
+  border-radius:12px;
+  padding:25px;
+  text-align:center;
+  margin-top:25px;
+  -moz-box-shadow: 10px 10px 5px #656565;
+  -webkit-box-shadow: 10px 10px 5px #656565;
+  -o-box-shadow: 10px 10px 5px #656565;
+  box-shadow: 10px 10px 5px #656565;
+  /*filter:progid:DXImageTransform.Microsoft.Shadow(color='#6565', Direction=135, Strength=5); */
+}

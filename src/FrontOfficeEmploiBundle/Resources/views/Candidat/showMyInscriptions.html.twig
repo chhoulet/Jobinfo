@@ -7,11 +7,11 @@
 				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFA3A3;padding:30px;">Mes prochaines formations:</h3><br>
 
 				{% for message in app.session.flashbag.get('succes') %}
-					{{ message }}<br><br>
+					<div class="flash">{{ message }}</div><br><br>
 				{% endfor %}
 
 				{% for messag in app.session.flashbag.get('notice') %}
-					{{ messag }}<br><br>
+					<div class="flash">{{ messag }}</div><br><br>
 				{% endfor %}				
 
 					{% for forma in app.user.formation %}						

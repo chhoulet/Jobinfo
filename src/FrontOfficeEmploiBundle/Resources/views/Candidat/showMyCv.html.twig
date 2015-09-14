@@ -7,12 +7,12 @@
 			<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#99FF66;padding:30px;">Mes CV enregistrés :<h3>
 
 				{% for message in app.session.flashbag.get('succes') %}
-					{{ message }}
+					<div class="flash">{{ message }}</div>
 					<hr>
 				{% endfor %}
 
 				{% for messa in app.session.flashbag.get('notice') %}
-					{{ messa }}
+					<div class="flash">{{ messa }}</div>
 					<hr>
 				{% endfor %}
 
