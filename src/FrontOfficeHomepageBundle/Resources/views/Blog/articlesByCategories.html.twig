@@ -8,7 +8,7 @@
     <!-- Page Content -->
         <div class="container" style="background-color:white;">
 
-            <div class="row">
+            <div id="top" class="row">
 
                 <!-- Blog Entries Column -->
                 <div class="col-md-8">                   
@@ -30,6 +30,16 @@
 
                         <hr>
                     {% endfor %}  
+
+                    {% if showArticles %}
+
+                        <a href="#top"><button style="margin-left:475px;">Retour en haut de page</button></a>
+
+                    {% else %}
+
+                        <p>Il n'y a aucun article dans la catégorie sélectionnée !</p>
+
+                    {% endif %}
 
                 </div>                 
 

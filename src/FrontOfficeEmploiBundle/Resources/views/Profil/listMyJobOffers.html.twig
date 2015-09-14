@@ -13,7 +13,7 @@
 				{% endfor %}
 				
 
-					<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#ADAD85;padding:30px;">Offres sélectionnées :</h3>
+					<h3 id="top" style="text-align:center;border-style:solid;border-radius:12px; background-color:#ADAD85;padding:30px;">Offres sélectionnées :</h3>
 
 						{# Récupération indifferenciée de toutes les jobOffers selon qu'elles ont été choisies par l'user. La recuperation des donnees app.user suffit: #}
 						{% for job in app.user.jobOffers %}
@@ -30,15 +30,16 @@
 							<a href="{{ path('front_office_emploi_myResponseOneJobOffer',{id:job.id}) }}"><button>Ma candidature</button></a>
 
 							<hr>																									
-						{% endfor %}<br><br>	
+						{% endfor %}
 
+						<a href="#top"><button style="margin-left:475px;">Retour en haut de page</button></a>
 			</div>
 
 		{# Envoi du template pour les employers: #}	
 		{% else %}
 			<div class="container" style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px;"> 	
 
-				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#99FF66;padding:30px;">Offres postées :</h3>
+				<h3 id="top" style="text-align:center;border-style:solid;border-radius:12px; background-color:#99FF66;padding:30px;">Offres postées :</h3>
 
 					
 
@@ -55,11 +56,11 @@
 							
 							<a href="{{ path('front_office_emploi_employer_desactivateJobOffer',{id:job.id})}}"><button>Désactiver cette offre</button></a>
 							</div>
-							<hr>
-
-					
+							<hr>					
 
 				{% endfor %}
+
+				<a href="#top"><button style="margin-left:475px;">Retour en haut de page</button></a>
 
 			</div>
 

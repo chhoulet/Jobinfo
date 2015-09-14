@@ -15,7 +15,7 @@
                             
                         </div>
 
-                        <h2>Auteurs par nombre de commentaires censurés</h2>
+                        <h2 id="top">Auteurs par nombre de commentaires censurés</h2>
                             <TABLE BORDER="2" > 
                                 <CAPTION><strong> Commentaires censurés:</strong></CAPTION> 
                                     <TR> 
@@ -50,7 +50,13 @@
                                     
                                     <a href="{{ path('back_office_admincomments_delete',{id:com.id}) }}">Supprimer ce commentaire</a>
                                 </div>
+
+                                <hr>
+
                             {% endfor %}
+
+                            
+                            <a href="#top"><button style="margin-left:500px;">Retour en haut de page</button></a>
                         
                     </div>
                 </div>

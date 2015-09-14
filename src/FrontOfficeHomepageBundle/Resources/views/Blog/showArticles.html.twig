@@ -8,7 +8,7 @@
             <div class="row">
 
                 <!-- Blog Entries Column -->
-                <div class="col-md-8">
+                <div id="top" class="col-md-8">
 
                     <h1 class="page-header">
                         Bienvenue sur le blog de Jobinfo !
@@ -41,7 +41,7 @@
                         <hr>
                     {% endfor %}
 
-                   
+                    <a href="#top"><button style="margin-left:475px;">Retour en haut de page</button></a>                   
                 </div>               
 
             {% include 'FrontOfficeHomepageBundle:Slots:sidebar.html.twig' with {'listCategory':listCategory} %}

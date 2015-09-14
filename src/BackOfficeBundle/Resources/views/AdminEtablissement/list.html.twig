@@ -2,7 +2,7 @@
 
     {% block content %}
 
-		<h2> Liste des établissements de formation : </h2>
+		<h2 id="top"> Liste des établissements de formation : </h2>
 
             {% for eta in app.session.flashbag.get('newet') %}
                 {{ eta }}
@@ -26,6 +26,10 @@
                     </div>
                 </div>
         	{% endfor %}
+
+            <hr>
+
+            <a href="#top"><button>Retour en haut de page</button></a>
 
 	{% endblock %}
 

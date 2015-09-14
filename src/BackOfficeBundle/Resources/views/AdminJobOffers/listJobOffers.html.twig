@@ -2,7 +2,7 @@
 
     {% block content %}
 
-		<h2> Liste des offres d'emplois disponibles : </h2>
+		<h2 id="top"> Liste des offres d'emplois disponibles : </h2>
 
             {% for message in app.session.flashbag.get('succes') %}
                 {{ message }}
@@ -30,5 +30,9 @@
                 </div>
             </div>
         	{% endfor %}
+
+            <hr>
+
+             <a href="#top"><button>Retour en haut de page</button></a>
 
 	{% endblock %}

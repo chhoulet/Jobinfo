@@ -2,7 +2,7 @@
 
     {% block content %}
 
-		<h2> Liste des formations disponibles : </h2>
+		<h2 id="#top"> Liste des formations disponibles : </h2>
 
             {% for message in app.session.flashbag.get('succes') %}
                 {{ message }}
@@ -45,8 +45,11 @@
                         <a href="{{ path('back_office_adminformation_edit',{id:forma.id}) }}"><button>Edition :</button></a><br>
                         <a href="{{ path('back_office_adminformation_delete',{id:forma.id}) }}">Supprimer cet élément</a><br>
                         <a href="{{ path('back_office_adminformation_one',{id:forma.id}) }}">Détails :</a>
+                        <hr>
                     </div>
                 </div>
         	{% endfor %}
+
+            <a href="#top"><button>Retour en haut de page</button></a>
 
 	{% endblock %}

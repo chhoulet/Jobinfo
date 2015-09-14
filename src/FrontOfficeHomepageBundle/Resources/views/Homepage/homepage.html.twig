@@ -68,7 +68,7 @@
                             <span class="icon-next"></span>
                         </a>
                     </div>
-                    <h2 class="brand-before">
+                    <h2 class="brand-before" id="top">
                         <small>Welcome to</small>
                     </h2>
                     <h1 class="brand-name">JobInfo</h1>
@@ -258,10 +258,14 @@
                         {% if (is_granted('ROLE_USER')) %}
                             <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre :</a><br>
                         {% else %}
-                            <p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous et créez votre espace personnel !</a></p>
+                            <p>Vous souhaitez postuler à cette offre ? <a href="{{ path('fos_user_security_login')}}">Connectez-vous et créez votre espace personnel !</a></p><br>
                         {% endif %}
                     
-                    {% endfor %}
+                    {% endfor %}   
+
+                    <hr>                 
+
+                    <a href="#top"><button style="margin-left:475px;">Retour en haut de page</button>
 
                  </div>
             </div>

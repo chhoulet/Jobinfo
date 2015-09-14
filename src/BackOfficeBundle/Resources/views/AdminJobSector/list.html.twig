@@ -2,7 +2,7 @@
 
     {% block content %}
 
-		<h2> Liste des secteurs d'activité : </h2>
+		<h2 id="top"> Liste des secteurs d'activité : </h2>
 
             {% for message in app.session.flashbag.get('job') %}
                 {{ message }}
@@ -21,5 +21,9 @@
                 </div>
             </div>
         	{% endfor %}
+
+            <hr>
+
+             <a href="#top"><button>Retour en haut de page</button></a>
 
 	{% endblock %}
