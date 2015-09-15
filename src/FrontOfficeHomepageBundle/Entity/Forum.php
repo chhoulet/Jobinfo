@@ -70,9 +70,17 @@ class Forum
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", mappedBy="forum")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", mappedBy="forum")
      */
     private $formation;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="forum")
+     * @ORM\JoinTable(name="forum_candidat")
+     */
+    private $candidat;
 
     /**
      * @var string
@@ -224,39 +232,6 @@ class Forum
     }
 
     /**
-     * Add formation
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Forum $formation
-     * @return Forum
-     */
-    public function addFormation(\FrontOfficeHomepageBundle\Entity\Forum $formation)
-    {
-        $this->formation[] = $formation;
-
-        return $this;
-    }
-
-    /**
-     * Remove formation
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Forum $formation
-     */
-    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Forum $formation)
-    {
-        $this->formation->removeElement($formation);
-    }
-
-    /**
-     * Get formation
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFormation()
-    {
-        return $this->formation;
-    }
-
-    /**
      * Add society
      *
      * @param \FrontOfficeEmploiBundle\Entity\Society $society
@@ -320,5 +295,38 @@ class Forum
     public function getInscrits()
     {
         return $this->inscrits;
+    }
+
+    /**
+     * Add formation
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $formation
+     * @return Forum
+     */
+    public function addFormation(\FrontOfficeHomepageBundle\Entity\Forum $formation)
+    {
+        $this->formation[] = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Remove formation
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $formation
+     */
+    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Forum $formation)
+    {
+        $this->formation->removeElement($formation);
+    }
+
+    /**
+     * Get formation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFormation()
+    {
+        return $this->formation;
     }
 }

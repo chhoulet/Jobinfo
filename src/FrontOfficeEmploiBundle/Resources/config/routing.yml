@@ -64,9 +64,14 @@ front_office_emploi_candidat_updateLm:
         id: "[0-9]+"
 
 # Function Voir ses inscriptions à différents évenements dans son espace perso :
-front_office_emploi_candidat_showMyInscriptions:
-    path:     /showMyInscriptions 
-    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyInscriptions}
+front_office_emploi_candidat_showMyFormations:
+    path:     /showMyFormations/
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyFormations}
+
+# Function Voir ses inscriptions à différents évenements dans son espace perso :
+front_office_emploi_candidat_showMyForums:
+    path:     /showMyForums/
+    defaults: { _controller: FrontOfficeEmploiBundle:Candidat:showMyForums}
 
 # Function créer son profil Candidat dans son espace perso :
 front_office_emploi_candidat_new:

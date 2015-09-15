@@ -2,7 +2,7 @@
 
 	{% block content %}
 
-		 {% for forum in forums %}
+		
 
     		 <div class="row">
                 <div class="box">
@@ -11,18 +11,21 @@
                             {% for messa in app.session.flashbag.get('notice') %}                         
                                 <div class="flash">{{ messa }}</div>                           
                                 <hr>
-                            {% endfor %}                       
-                        <h2 class="intro-text text-center">
-                            <strong><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{forum.forumName}}</a></strong>
-                        </h2>
-                        <hr>
-                        <p>{{ forum.forumDate | date('d-m-Y')}}</p><br>
-                        <p>{{ forum.forumDescription}}</p>                                          
-                        
+                            {% endfor %}  
+
+                            {% for forum in forums %}                     
+                                <h2 class="intro-text text-center">
+                                    <strong><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">{{forum.forumName}}</a></strong>
+                                </h2>
+                                <hr>
+                                <strong>Date:</strong> {{ forum.forumDate | date('d-m-Y')}}<br>
+                                <strong>Description:</strong> {{ forum.forumDescription}}
+                                <hr>
+                            {% endfor %}                                                                  
                     </div>
                 </div>
             </div>
 
-    	{% endfor %}
+    	
 
 	{% endblock %}

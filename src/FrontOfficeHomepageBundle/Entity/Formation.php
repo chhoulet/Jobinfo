@@ -93,10 +93,18 @@ class Formation
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", inversedBy="formation")
-     * @ORM\JoinColumn(name="forum_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", inversedBy="formation")
+     * @ORM\JoinTable(name="candidat_formation")
      */
     private $forum;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="formation")
+     * @ORM\JoinTable(name="forum_formation")
+     */
+    private $candidat;
  
     /**
      * @var string
@@ -193,30 +201,7 @@ class Formation
     {
         return $this->formationDescription;
     }
-
-    /**
-     * Set forum
-     *
-     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
-     * @return Formation
-     */
-    public function setForum(\FrontOfficeHomepageBundle\Entity\Forum $forum = null)
-    {
-        $this->forum = $forum;
-
-        return $this;
-    }
-
-    /**
-     * Get forum
-     *
-     * @return \FrontOfficeHomepageBundle\Entity\Forum 
-     */
-    public function getForum()
-    {
-        return $this->forum;
-    }
-
+   
     /**
      * Set etablissement
      *
@@ -393,5 +378,71 @@ class Formation
     public function getEndingDate()
     {
         return $this->endingDate;
+    }
+
+    /**
+     * Add forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     * @return Formation
+     */
+    public function addForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum[] = $forum;
+
+        return $this;
+    }
+
+    /**
+     * Remove forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     */
+    public function removeForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum->removeElement($forum);
+    }
+
+    /**
+     * Get forum
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getForum()
+    {
+        return $this->forum;
+    }
+
+    /**
+     * Add candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     * @return Formation
+     */
+    public function addCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
+    {
+        $this->candidat[] = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * Remove candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     */
+    public function removeCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
+    {
+        $this->candidat->removeElement($candidat);
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
     }
 }

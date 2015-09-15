@@ -133,6 +133,20 @@ class Candidat
     /**
      * @var integer
      *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Formation", mappedBy="candidat")
+     */
+    private $formation;
+
+     /**
+     * @var integer
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", mappedBy="candidat")
+     */
+    private $forum;
+
+    /**
+     * @var integer
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\MotivationLetter", mappedBy="candidat", cascade={"remove"})
      */
     private $motivationLetter;
@@ -466,5 +480,71 @@ class Candidat
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+
+    /**
+     * Add formation
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Formation $formation
+     * @return Candidat
+     */
+    public function addFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
+    {
+        $this->formation[] = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Remove formation
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Formation $formation
+     */
+    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
+    {
+        $this->formation->removeElement($formation);
+    }
+
+    /**
+     * Get formation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+
+    /**
+     * Add forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     * @return Candidat
+     */
+    public function addForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum[] = $forum;
+
+        return $this;
+    }
+
+    /**
+     * Remove forum
+     *
+     * @param \FrontOfficeHomepageBundle\Entity\Forum $forum
+     */
+    public function removeForum(\FrontOfficeHomepageBundle\Entity\Forum $forum)
+    {
+        $this->forum->removeElement($forum);
+    }
+
+    /**
+     * Get forum
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getForum()
+    {
+        return $this->forum;
     }
 }

@@ -52,7 +52,18 @@
 
 						<div style ="text-align:left;">													
 							<p>Voir mes offres sélectionnées: <a href="{{ path('front_office_emploi_myJobOffers_list')}}">Mes offres</a></p>
-							<p>Mes évenements de recrutement: <a href="{{ path('front_office_emploi_candidat_showMyInscriptions')}}">Forums - Formations</a></p>
+
+							{# {% if candidat.formation is not empty %} #}
+								<p>Mes formations: <a href="{{ path('front_office_emploi_candidat_showMyFormations')}}">Voir mes Formations</a></p>
+							{# {% else %}
+								<p>Vous n'êtes inscrit à aucune formation !</p>
+							{% endif %} #}
+							
+							{# {% if candidat.forum is not empty %} #}
+								<p>Mes forums: <a href="{{ path('front_office_emploi_candidat_showMyForums') }}">Voir mes Forums</a></p>
+							{# {% else %}
+								<p>Vous n'êtes inscrit à aucun forum !</p>
+							{% endif %} #}
 							<hr>
 						</div>		
 
