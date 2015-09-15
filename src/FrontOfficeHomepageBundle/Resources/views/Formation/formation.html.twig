@@ -2,41 +2,24 @@
 
 	{% block content %}
 
-        <div class="row" style="background-color:white;margin-left:45px;margin-right:45px;">
-		  
-            <h2>Liste des formations disponibles : </h2>
+        <div class="row" style="background-color:white;margin-left:45px;margin-right:45px;">		          
                 
     		    {% for format in formation %}
 
                     <div class="box">
                         <div class="col-lg-12">
-                            <hr>
-                            <h2 class="intro-text text-center">
+                            
+                            <h2 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFCCFF;padding:30px;" class="intro-text text-center">
                                 <a href="{{ path('front_office_formation_showOne',{formationType: format.formationType, id:format.id})}}"><strong>{{format.formationName}}</strong></a>
                             </h2>
                             <hr>
-                            <p>Date de création : {{format.createdAt | date('d-m-Y H:i:s') }}</p>
-                            <p>{{ format.formationDescription}}</p>
-                        </div><br>
 
-                        
-                                             
-                           {#  {% if (is_granted('ROLE_USER')) %}                                
-                                {% for user in format.inscrits %}
-                                    {% if app.user.id == user.id %}
-                                        <p class ="flash" style="text-align:center;"><strong>Vous êtes déjà inscrit à cette formation !</strong></p>
-                                    {% endif %}                                            
-                                {% endfor %}
-                                    
-                                        <a href="{{ path('front_office_formation_inscription',{id:format.id})}}"><button>Inscrivez-vous à cette formation :</button></a>                                                 
-                                                                                                  
-                            {% else %}
+                            <p><strong>Type :</strong> {{ format.formationType | capitalize }}</p>
+                            <p><strong>Date de création:</strong> {{ format.createdAt | date('d-m-Y H:i:s') }}</p>
+                            <p><strong>Description:</strong> {{ format.formationDescription }}</p>
+                            <p><strong>Organisme :</strong> {{ format.organism }}</p>
 
-                                <h4>Vous souhaitez vous inscrire à cette formation ?</h4>
-                                <a href="{{ path('fos_user_security_login')}}"><button>Connectez-vous !</button></a>
-                                    
-                            {% endif %}    #}                                               
-                        
+                        </div><br>                                                                  
                     </div>
                 
         	   {% endfor %}

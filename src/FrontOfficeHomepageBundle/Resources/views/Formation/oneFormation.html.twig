@@ -12,10 +12,28 @@
                             </h2><br>
                             
                             <strong>Date de création:</strong> {{ oneFormation.createdAt | date('d-m-Y H:i:s') }}<br>
-                            <strong>Description:</strong>{{ oneFormation.formationDescription }}
+                            <strong>Description:</strong> {{ oneFormation.formationDescription }}<br>
+                            <strong>Organisme:</strong> {{ oneFormation.organism }}<br>
+                            <strong>Formation:</strong> {{ oneFormation.formationType }}<br>
+                            <strong>Date de début:</strong> {{ oneFormation.beginingDate | date('d-m-Y') }}<br>
+                            <strong>Date de fin:</strong> {{ oneFormation.endingDate | date('d-m-Y') }}<br>
+                            <p style="text-align:center"><strong>Etablissement:</strong></p>
+
+                            <p>La formation a lieu:</p>
+
+                               <strong>Nom:</strong> {{ oneFormation.etablissement.etablissementName }} <br>
+                               <strong>Adresse:</strong> {{ oneFormation.etablissement.etablissementAdress }} <br>
+                               <strong>Téléphone:</strong> {{ oneFormation.etablissement.etablissementPhone }} <br>  
+
+                            <p style="text-align:center"><strong>Forum:</strong></p>            
+                               <strong>Nom:</strong> {{ oneFormation.forum.forumName }}<br>
+                               <strong>Adresse:</strong> {{ oneFormation.forum.forumAdress }}<br>
+                               <strong>Date:</strong> {{ oneFormation.forum.forumDate | date('d-m-Y')}}<br>
+                               <strong>Description:</strong> {{ oneFormation.forum.forumDescription }}<br>
                         </div>       
 
                         <hr>  
+
                     </div>                                   
 
                                 {% if (is_granted('ROLE_USER')) %}                                    

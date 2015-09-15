@@ -46,7 +46,7 @@ class FormationController extends Controller
 		$formation -> addInscrit($this -> getUser());
 		$em -> flush();
 
-		# Message flash:
+		# Message flash + redirection sur la meme page:
 		$session -> getFlashbag()->add('notice','Votre inscription est enregistrée !');
 		return $this -> render($this -> redirect($request -> headers -> get('referer')));			
 	}
