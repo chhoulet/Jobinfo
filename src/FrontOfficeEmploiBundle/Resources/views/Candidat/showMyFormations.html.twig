@@ -4,7 +4,7 @@
 
 		<div class="container" style="background-color:white;text-align:left;margin:auto;padding:40px;font-size:20px;"> 
 
-				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFA3A3;padding:30px;">Mes prochaines formations:</h3><br>
+				<h3 id="top" style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFA3A3;padding:30px;">Mes prochaines formations:</h3><br>
 
 				{% for message in app.session.flashbag.get('succes') %}
 					<div class="flash">{{ message }}</div><br><br>
@@ -29,7 +29,7 @@
 						{% endfor %}	
 						<hr>	
 
-
+						<a href="#top"><button style="margin-left:430px;">Retour en haut de page</button></a>
 	 				{% else %}			
 
 	 					<p>Vous n'êtes inscrit à aucun forum !</p>

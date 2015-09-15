@@ -157,6 +157,7 @@ class CandidatController extends Controller
 		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form'=>$form->createView()));
 	}
 
+	# Mise à jour de son profil personnel:
 	public function updateAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();

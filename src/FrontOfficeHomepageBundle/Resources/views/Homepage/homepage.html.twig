@@ -243,7 +243,7 @@
                     {% for job in jobOffers %}
                                     
                         <h2 class="intro-text text-center">
-                            <strong>{{ job.title }}</strong>
+                            <strong><a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">{{ job.title }}</a></strong>
                         </h2>
                         <hr>
                         <p><h4>{{ job.descriptionJob }}</h4></p><br>
@@ -252,8 +252,7 @@
                             <p><h3>{{ societe.name }}</h3></p><br>
                             <p>{{ societe.activity }}</p><br>
                             <p>{{ societe.description }}</p><br>
-                        {% endfor %}
-                        <a href="{{ path('front_office_emploi_jobOffer_showOne',{id:job.id}) }}">En savoir plus :</a><br>
+                        {% endfor %}                    
 
                         {% if (is_granted('ROLE_USER')) %}
                             <a href="{{ path('front_office_emploi_jobOffer_select',{id:job.id}) }}">Sélectionner cette offre :</a><br>

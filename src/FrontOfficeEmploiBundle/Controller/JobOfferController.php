@@ -35,6 +35,7 @@ class JobOfferController extends Controller
 
 		array_map(function($object) { return $object->getId(); }, $tab);
 
+		# Test pour savoir si l'user a déjà selectionné cette offre dans son espace personnel:
 		if(in_array(($selectedJobOffer), $tab))
 		{
 			throw new \Exception('Vous avez déjà selectionné cette offre !');
@@ -56,15 +57,16 @@ class JobOfferController extends Controller
 		$session = $request -> getSession();
 		$responseJobOffer = new ResponseJobOffer();
 		$jobOffer = $em -> getRepository('FrontOfficeEmploiBundle:JobOffer')->find($id);
+		# Recuperation des reponses faites par l'user connecte à l'offre selectionnee: $responseJobOffer = $this -> getUser()-> getJobOffer() -> getResponseJobOffer();
 		$responses = $em -> getRepository('FrontOfficeEmploiBundle:ResponseJobOffer')->getJobOfferResponseByUser($jobOffer, $this -> getUser());
 
+		# Test pour savoir si l'user a déja répondu à cette offre:
 		if($responses){
 			return $this -> render('FrontOfficeEmploiBundle:JobOffer:responseJobOffer.html.twig',
 			 array('responses'=>$responses));
 		}
 		else{
 			$formResponseJobOffer = $this -> createForm(new ResponseJobOfferType(), $responseJobOffer);
-
 			$formResponseJobOffer -> handleRequest($request);
 
 			if($formResponseJobOffer -> isValid())
