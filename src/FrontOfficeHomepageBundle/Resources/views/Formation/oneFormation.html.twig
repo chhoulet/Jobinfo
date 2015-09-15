@@ -21,7 +21,7 @@
                                         {% if app.user.id == user.id %}
 
                                             <p style="margin-left:40px;"><strong>Vous êtes inscrit à cette formation !</strong></p> 
-
+                                            
                                         {% else %}
                                             
                                             <a href="{{ path('front_office_formation_inscription',{id:oneFormation.id})}}"><button>Inscrivez-vous à cette formation :</button></a>                                            

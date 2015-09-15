@@ -26,12 +26,12 @@
                                 {% for user in format.inscrits %}
 
                                     {% if app.user.id == user.id %}
-                                        <p><strong>Vous êtes déjà inscrit à cette formation !</strong></p>
+                                        <p style="text-align:center;"><strong>Vous êtes déjà inscrit à cette formation !</strong></p>
+                                    {% else %}
+                                        <a href="{{ path('front_office_formation_inscription',{id:oneFormation.id})}}"><button>Inscrivez-vous à cette formation :</button></a>                                                 
                                     {% endif %}
 
-                                {% endfor %}
-
-                                <a href="{{ path('front_office_formation_inscription',{id:format.id}) }}"><button>Inscrivez-vous à cette formation</button></a>
+                                {% endfor %}                                
 
                             {% else %}
 
@@ -47,3 +47,4 @@
         </div>
 
 	{% endblock %}
+    
