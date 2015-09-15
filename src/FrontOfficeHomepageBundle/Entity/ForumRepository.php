@@ -78,4 +78,18 @@ class ForumRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getForumByInscrit($forum_id, $user)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f 
+			FROM FrontOfficeHomepageBundle:Forum f
+			JOIN f.inscrits u
+			WHERE f.id LIKE :forum_id
+			AND u.id LIKE :user')
+		->setParameter('forum_id', $forum_id)
+		->setParameter('user', $user);
+
+		return $query ->getResult();
+	}
 }
