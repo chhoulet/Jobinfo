@@ -82,6 +82,7 @@ class FormationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
+	# Liste des inscrits a chaque formation:
 	public function getInscritsByFormation()
 	{
 		$query = $this ->getEntityManager()->createQuery('
@@ -90,6 +91,20 @@ class FormationRepository extends EntityRepository
 			JOIN f.inscrits i 
 			GROUP BY f.formationName, f.formationType, f.id
 			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
+
+	public function getFormationByInscrit($formation_id, $user)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT f 
+			FROM FrontOfficeHomepageBundle:Formation f 
+			JOIN f.inscrits i 
+			WHERE i.id LIKE :user
+			AND f.id LIKE :formation_id')
+		->setParameter('user', $user)
+		->setParameter('formation_id', $formation_id);
 
 		return $query -> getResult();
 	}
