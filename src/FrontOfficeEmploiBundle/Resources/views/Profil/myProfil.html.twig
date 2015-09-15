@@ -51,19 +51,12 @@
 					<h3>Mon tableau de bord :</h3>
 
 						<div style ="text-align:left;">													
-							<p>Voir mes offres sélectionnées: <a href="{{ path('front_office_emploi_myJobOffers_list')}}">Mes offres</a></p>
-
-							{# {% if candidat.formation is not empty %} #}
-								<p>Mes formations: <a href="{{ path('front_office_emploi_candidat_showMyFormations')}}">Voir mes Formations</a></p>
-							{# {% else %}
-								<p>Vous n'êtes inscrit à aucune formation !</p>
-							{% endif %} #}
+							<p>Voir mes offres sélectionnées: <a href="{{ path('front_office_emploi_myJobOffers_list')}}">Voir mes Offres</a></p>
 							
-							{# {% if candidat.forum is not empty %} #}
-								<p>Mes forums: <a href="{{ path('front_office_emploi_candidat_showMyForums') }}">Voir mes Forums</a></p>
-							{# {% else %}
-								<p>Vous n'êtes inscrit à aucun forum !</p>
-							{% endif %} #}
+							<p>Mes formations: <a href="{{ path('front_office_emploi_candidat_showMyFormations')}}">Voir mes Formations</a></p>
+
+							<p>Mes forums: <a href="{{ path('front_office_emploi_candidat_showMyForums') }}">Voir mes Forums</a></p>
+							
 							<hr>
 						</div>		
 
@@ -101,9 +94,15 @@
 									<p>Votre société n'est actuellement plus en recherche de talents !</p>
 								{% else %}
 									<p>Votre société fait partie de la liste des sociétés qui recrutent !</p>
-								{% endif %}						
+								{% endif %}	
 
-								{% if oneSociety.forum is not empty %}
+								<p>Mes forums: <a href="{{ path('front_office_emploi_candidat_showMyForums') }}">Voir mes Forums</a></p>
+
+								<hr>
+
+													
+
+								{# {% if oneSociety.forum is not empty %}
 
 									<p>{{ oneSociety.name }} participe aux forums suivants :</p>
 
@@ -115,13 +114,13 @@
 											<hr>
 										{% endfor %}
 
-								{% else %}
+								{% else %} #}
 
-									<p>{{ oneSociety.name }} n'est pas actuellement inscrit à un évenement de recrutement.</p>
+									
 
-								{% endif %}
+								{# {% endif %} #}
 
-							<hr>
+							
 							</div>																		
 
 			</div>

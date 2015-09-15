@@ -1,0 +1,39 @@
+{% extends 'FrontOfficeHomepageBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container" style="background-color:white;text-align:left;margin:auto;padding:40px;font-size:20px;"> 
+
+				<h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#FFA3A3;padding:30px;">Mes prochains forums:</h3><br>
+
+				{% for message in app.session.flashbag.get('succes') %}
+					<div class="flash">{{ message }}</div><br><br>
+				{% endfor %}
+
+				{% for messag in app.session.flashbag.get('notice') %}
+					<div class="flash">{{ messag }}</div><br><br>
+				{% endfor %}				
+
+				
+ 				{% if user_forum is not empty %}
+
+	 					{% for forum in app.user.forum %}
+	 						<strong>Nom :</strong><a href="{{ path('front_office_forum_oneForum',{id:forum.id}) }}">          {{ forum.forumName }}</a><br>
+	 						<strong>Secteur :</strong>       {{ forum.forumType }}<br>
+	 						<strong>Date de Début :</strong> {{ forum.forumDate | date('d-m-Y') }}<br>
+	 						<strong>Adresse : </strong>      {{ forum.forumAdress }}<br>
+	 						<strong>Description :</strong>   {{ forum.forumDescription }}<br><br>
+
+	 						<a href="{{ path('front_office_forum_desinscriptionForum',{id:forum.id}) }}"><button>Se désinscrire</button></a><br><br>
+	 					{% endfor %}	 	
+
+	 			{% else %}			
+
+	 				<p>Vous n'êtes inscrit à aucun forum !</p>
+
+	 			{% endif %}
+
+ 		</div>
+
+
+	{% endblock %}
