@@ -4,11 +4,11 @@
 		
 		
 			{% for message in app.session.flashbag.get('select') %}				
-				<div class="flash">{{ message }}</div>			
+				<div class="flash">{{ message }}</div><br>			
 			{% endfor %}
 
 			{% for messa in app.session.flashbag.get('notice') %}				
-				<div class="flash">{{ messa }}</div>				
+				<div class="flash">{{ messa }}</div><br>				
 			{% endfor %}
 		
 			<div style="background-color:white;text-align:center;margin:auto;padding:40px;font-size:20px">

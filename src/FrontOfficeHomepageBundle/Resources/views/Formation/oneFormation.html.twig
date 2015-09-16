@@ -25,11 +25,17 @@
                                <strong>Adresse:</strong> {{ oneFormation.etablissement.etablissementAdress }} <br>
                                <strong>Téléphone:</strong> {{ oneFormation.etablissement.etablissementPhone }} <br>  
 
-                            <p style="text-align:center"><strong>Forum:</strong></p>            
-                               <strong>Nom:</strong> {{ oneFormation.forum.forumName }}<br>
-                               <strong>Adresse:</strong> {{ oneFormation.forum.forumAdress }}<br>
-                               <strong>Date:</strong> {{ oneFormation.forum.forumDate | date('d-m-Y')}}<br>
-                               <strong>Description:</strong> {{ oneFormation.forum.forumDescription }}<br>
+                            <p style="text-align:center"><strong>Forum:</strong></p>
+                                {% if oneFormation.forum is not empty %}
+                                    {% for formation in oneFormation.forum %}            
+                                       <strong>Nom:</strong> {{ formation.forumName }}<br>
+                                       <strong>Adresse:</strong> {{ formation.forumAdress }}<br>
+                                       <strong>Date:</strong> {{ formation.forumDate | date('d-m-Y')}}<br>
+                                       <strong>Description:</strong> {{ formation.forumDescription }}<br>
+                                    {% endfor %}
+                                {% else %}
+                                    <p style="text-align:center;">Cette formation ne participe à aucun forum !</p>
+                                {% endif %}
                         </div>       
 
                         <hr>  

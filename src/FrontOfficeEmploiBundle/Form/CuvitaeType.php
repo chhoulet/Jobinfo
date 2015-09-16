@@ -23,9 +23,9 @@ class CuvitaeType extends AbstractType
                                                   'attr' => array('placeholder'=>'Licence de développement Web...')))
             ->add('languages','text',       array('label'=>'Langues parlées',
                                                   'attr' => array('placeholder'=>'Anglais, Allemand, Espagnol ...')))
-            ->add('workExperience1','text', array('label'=>'Exprérience professionnelle 1',
+            ->add('workExperience1','text', array('label'=>'Expérience professionnelle 1',
                                                   'attr' => array('placeholder'=>'De la plus récente à la plus ancienne, par ex : Ingénieur développement chez Orange')))
-            ->add('workExperience2','text', array('label'=>'Exprérience professionnelle 2',
+            ->add('workExperience2','text', array('label'=>'Expérience professionnelle 2',
                                                   'attr' => array('placeholder'=>'Stage en alternance chez BirdOffice')))
             ->add('skills','text',          array('label'=>'Compétences informatiques',
                                                   'attr' => array('placeholder'=>'PHP, Javascript, Java, Rubis, Python, ...')))

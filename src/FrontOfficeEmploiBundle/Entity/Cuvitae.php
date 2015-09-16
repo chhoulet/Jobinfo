@@ -84,7 +84,7 @@ class Cuvitae
      *
       * @Assert\Length(
      *      min = "0",
-     *      max = "50",
+     *      max = "500",
      *      maxMessage = "La description de votre expérience professionnelle ne peut pas être plus longue que {{ limit }} caractères"
      * )
      * @ORM\Column(name="workExperience2", type="string", length=400)

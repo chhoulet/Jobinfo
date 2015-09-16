@@ -42,11 +42,25 @@ class FormationController extends Controller
 		$session = $request -> getSession();
 
 		# Recuperation de la formation selectionnée:
-		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);		
+		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
+
+		# Recuperation des formations auxquelles l'user est deja inscrit:
+		$formation_user = $this -> getUser()->getFormation();	
+		$tab = $formation_user -> toArray();
+
+		array_map(function($object) { return $object->getId(); }, $tab);
+
+		# Test pour savoir si l'user a déjà selectionné cette offre dans son espace personnel:
+		if(in_array(($formation), $tab))
+		{
+			throw new \Exception('Vous avez déjà selectionné cette formation !');
+			return $this -> redirect($request -> headers -> get('referer'));
+		}
+
 		$formation -> addInscrit($this -> getUser());
 		$em -> flush();
 
-		# Message flash + redirection sur la meme page:
+		# Message flash 
 		$session -> getFlashbag()->add('notice','Votre inscription est enregistrée !');
 		return $this -> render($this -> redirect($request -> headers -> get('referer')));			
 	}

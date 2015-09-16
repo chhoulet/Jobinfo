@@ -23,23 +23,25 @@
 						{% for cv in app.user.cuvitae %}
 							<p style="text-align:center;text-transform:uppercase"><strong>{{ cv.title }}</strong></p>	
 							{% if cv.gradeOne %}				
-								Diplome 1: {{ cv.gradeOne }}<br>
+								<strong>Diplome 1:</strong> {{ cv.gradeOne }}<br>
 							{% endif %}
 							{% if cv.gradeTwo %}
-								Diplome 2: {{ cv.gradeTwo }}<br>
+								<strong>Diplome 2:</strong> {{ cv.gradeTwo }}<br>
 							{% endif %}
 							{% if cv.languages %}
-								Langues: {{ cv.languages }}<br>
+								<strong>Langues:</strong> {{ cv.languages }}<br>
 							{% endif %}
 							{% if cv.workExperience1 %}
-								Expérience professionnelle 1: {{ cv.workExperience1 }}<br>
+								<strong>Expérience professionnelle 1:</strong> {{ cv.workExperience1 }}<br>
 							{% endif %}
 							{% if cv.workExperience2 %}
-								Expérience professionnelle 2: {{ cv.workExperience2 }}<br>
+								<strong>Expérience professionnelle 2:</strong> {{ cv.workExperience2 }}<br>
 							{% endif %}
-							Languages et compétences informatiques: {{ cv.skills }}<br>
+							{% if cv.skills %}
+								<strong>Languages et compétences informatiques:</strong> {{ cv.skills }}<br>
+							{% endif %}
 							{% if cv.dateUpdated %}
-								<p>Dernière mise à jour le : {{ cv.dateUpdated | date('d-m-Y') }}<br><br>
+								<strong>Dernière mise à jour le :</strong> {{ cv.dateUpdated | date('d-m-Y') }}<br><br>
 							{% else %}
 								<br>
 							{% endif %}
