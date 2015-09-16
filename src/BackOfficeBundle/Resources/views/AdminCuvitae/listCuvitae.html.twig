@@ -1,0 +1,18 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h2> Liste des CV </h2>
+
+		{% for message in app.session.flashbag.get('succes') %}
+			{{ message }}
+			<hr>
+		{% endfor %}
+
+		{% for cv in listCuvitae %}
+			{{ cv.title }}<br>
+			<a href="{{ path('front_office_emploi_candidat_deleteCv',{id:cv.id}) }}"><button>Supprimer ce CV</button></a><br>
+		{% endfor %}
+
+
+	{% endblock %}

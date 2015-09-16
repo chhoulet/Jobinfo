@@ -237,3 +237,8 @@ back_office_user_stats:
 back_office_admin_cuvitae_listCuvitae:
     path:     /listCuvitae:
     defaults: { _controller: BackOfficeBundle:AdminCuvitae:listCuvitae}
+
+# Route selectionnant toutes les LM enregistrées:
+back_office_admin_motivationLetter_listMotivationLetter:
+    path:     /listMotivationLetter
+    defaults: { _controller: BackOfficeBundle:AdminMotivationLetter:listMotivationLetter}

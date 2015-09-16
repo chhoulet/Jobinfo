@@ -65,7 +65,7 @@ class MotivationLetter
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="motivationLetter")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="motivationLetter", cascade={"remove"})
      */
     private $responseJobOffer;
 
