@@ -18,22 +18,31 @@
 
 				<div style ="text-align:left;">
 
-					{% for lm in app.user.motivationLetter %}
+					{% if motivationLetter is not empty %}
 
-						<strong>Sujet:</strong> {{ lm.subject }}<br><br>
-						<strong>Contenu:</strong> {{ lm.content }}<br>
+						{% for lm in app.user.motivationLetter %}
 
-						{% if lm.dateUpdated %}
-							Dernière mises à jour : {{ lm.dateUpdated | date('d-m-Y') }}
+							<strong>Sujet:</strong> {{ lm.subject }}<br><br>
+							<strong>Contenu:</strong> {{ lm.content }}<br>
+
+							{% if lm.dateUpdated %}
+								Dernière mises à jour : {{ lm.dateUpdated | date('d-m-Y') }}
+								<hr>
+							{% endif %}
+
+							<a href="{{ path('front_office_emploi_candidat_updateLm',{id:lm.id}) }}"><button>Mettre à jour</button></a>
+							<a href="{{ path('front_office_emploi_candidat_deleteLm',{id:lm.id}) }}"><button>Supprimer</button></a>
+
 							<hr>
-						{% endif %}
 
-						<a href="{{ path('front_office_emploi_candidat_updateLm',{id:lm.id}) }}"><button>Mettre à jour</button></a>
-						<a href="{{ path('front_office_emploi_candidat_deleteLm',{id:lm.id}) }}"><button>Supprimer</button></a>
+						{% endfor %}
 
-						<hr>
+					{% else %}
 
-					{% endfor %}
+						<p>Vous n'avez enregistré aucune lettre de motivation !</p>
+
+					{% endif %}
+					
 
 				</div>
 

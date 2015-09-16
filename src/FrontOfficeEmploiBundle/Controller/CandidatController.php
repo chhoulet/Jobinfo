@@ -173,23 +173,28 @@ class CandidatController extends Controller
 			$em -> flush();
 
 			$session -> getFlashbag()-> add('update', 'Votre profil est mis à jour !');
-			return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', array('id' => $id)));
+			return $this -> redirect($this -> generateUrl('front_office_emploi_myProfil', 
+				array('id' => $id)));
 		}
 
-		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', array('form' => $formUpdate -> createView()));
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:new.html.twig', 
+			array('form' => $formUpdate -> createView()));
 	}
 
 	# Acces via son espace personnel a ses CV:
 	public function showMyCvAction()
 	{
 		$cuvitae = $this -> getUser()->getCuvitae();
-		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig', array('cuvitae'=>$cuvitae));
+		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig', 
+			array('cuvitae'=>$cuvitae));
 	}
 
 	# Acces via son espace personnel a ses LM:
 	public function showMyLmAction()
-	{		
-		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig');
+	{
+		$motivationLetter = $this -> getUser()->getMotivationLetter();		
+		return $this -> render('FrontOfficeEmploiBundle:Candidat:showMyLm.html.twig', 
+			array('motivationLetter'=>$motivationLetter));
 	}	
 
 	# Acces via son espace personnel aux formations selectionnees:
