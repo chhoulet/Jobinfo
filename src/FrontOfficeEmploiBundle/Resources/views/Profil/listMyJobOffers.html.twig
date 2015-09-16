@@ -15,6 +15,8 @@
 
 					<h3 id="top" style="text-align:center;border-style:solid;border-radius:12px; background-color:#ADAD85;padding:30px;">Offres sélectionnées :</h3>
 
+					{% if jobOffers is not empty %}
+
 						{# Récupération indifferenciée de toutes les jobOffers selon qu'elles ont été choisies par l'user. La recuperation des donnees app.user suffit: #}
 						{% for job in app.user.jobOffers %}
 						
@@ -33,6 +35,12 @@
 
 							<hr>																									
 						{% endfor %}
+
+					{% else %}
+
+						<p>Aucune offre d'emploi ne se trouve dans votre espace personnel !</p>
+
+					{% endif %}
 
 						<a href="#top"><button style="margin-left:475px;">Retour en haut de page</button></a>
 			</div>
