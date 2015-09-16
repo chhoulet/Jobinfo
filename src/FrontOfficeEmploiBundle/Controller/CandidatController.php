@@ -182,7 +182,8 @@ class CandidatController extends Controller
 	# Acces via son espace personnel a ses CV:
 	public function showMyCvAction()
 	{
-		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig');
+		$cuvitae = $this -> getUser()->getCuvitae();
+		return $this ->render('FrontOfficeEmploiBundle:Candidat:showMyCv.html.twig', array('cuvitae'=>$cuvitae));
 	}
 
 	# Acces via son espace personnel a ses LM:

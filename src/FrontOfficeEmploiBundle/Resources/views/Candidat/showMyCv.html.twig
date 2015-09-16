@@ -16,9 +16,7 @@
 					<hr>
 				{% endfor %}
 
-				{% for cv in app.user.cuvitae %}
-					
-				{% endfor %}
+				{% if cuvitae is not empty %}
 
 					<div style ="text-align:left;text-transform :capitalize">
 
@@ -51,6 +49,13 @@
 						{% endfor %}
 
 					</div>
+
+				{% else %}
+
+					<p>Vous n'avez enregistré aucun CV !</p>
+					<a href="{{ path('front_office_emploi_candidat_createCV')}}">Enregistrez un CV !</a>
+
+				{% endif %}
 
 		</div>
 
