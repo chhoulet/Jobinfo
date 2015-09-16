@@ -89,7 +89,7 @@
 
 							{% else %}									
 
-								<strong>{{ nbResponseReceived }}</strong> réponses obtenues !
+								<strong>{{ nbResponseReceived }}</strong> {% if nbResponseReceived > 1 %}réponses obtenues !{% else %} réponse obtenue !{% endif %}
 
 								<hr>				
 

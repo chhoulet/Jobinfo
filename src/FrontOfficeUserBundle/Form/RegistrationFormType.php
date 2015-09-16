@@ -13,8 +13,8 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('type', 'choice', array('label'=>'Etes-vous ?',
                                           'choices'=> array('candidat'=>'Candidat',
-                                                            'society' =>'Société',
-                                          'expanded'=> true)))            
+                                                            'society' =>'Société'
+                                          )))            
             
         ;
     }

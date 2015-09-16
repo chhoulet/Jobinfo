@@ -44,7 +44,7 @@ class FormationController extends Controller
 		# Recuperation de la formation selectionnée:
 		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
 
-		# Recuperation des formations auxquelles l'user est deja inscrit:
+		/*# Recuperation des formations auxquelles l'user est deja inscrit:
 		$formation_user = $this -> getUser()->getFormation();	
 		$tab = $formation_user -> toArray();
 
@@ -55,7 +55,7 @@ class FormationController extends Controller
 		{
 			throw new \Exception('Vous avez déjà selectionné cette formation !');
 			return $this -> redirect($request -> headers -> get('referer'));
-		}
+		}*/
 
 		$formation -> addInscrit($this -> getUser());
 		$em -> flush();

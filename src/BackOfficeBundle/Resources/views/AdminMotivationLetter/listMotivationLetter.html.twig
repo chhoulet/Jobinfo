@@ -1,0 +1,18 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h2> Liste des LM </h2>
+
+		{% for message in app.session.flashbag.get('suppLm') %}
+			{{ message }}
+			<hr>
+		{% endfor %}
+
+		{% for lm in listMotivationLetter %}
+			{{ lm.subject }}<br>
+			<a href="{{ path('front_office_emploi_candidat_deleteLm',{id:lm.id}) }}"><button>Supprimer cette LM</button></a><br>
+		{% endfor %}
+
+
+	{% endblock %}

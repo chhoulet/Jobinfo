@@ -70,21 +70,27 @@
 
             {% else %}
 
-                {% for emploi in oneForum.society %}
-                    <div class="row">
-                        <div class="box">
-                            <div class="col-lg-12">                               
-                                <h2 class="intro-text text-center">
-                                    <strong><a href="{{ path('front_office_emploi_employer_oneSociety',{id:emploi.id}) }}">{{ emploi.name }} :</a></strong>
-                                </h2>
-                                <hr>
-                                <strong>Activité:</strong> {{ emploi.activity }}<br><br>
-                                <strong>Description:</strong> {{ emploi.description }}
-                                <hr>
-                            </div>
+                <div class="row">
+                    <div class="box">
+                        <div class="col-lg-12">    
+
+                            <h3 style="text-align:center;border-style:solid;border-radius:12px; background-color:#B2B2B2;padding:30px;" class="intro-text text-center"><strong>Liste des sociétés participantes:</strong></h3>
+
+                                {% for emploi in oneForum.society %}
+                                                               
+                                    <h2 class="intro-text text-center">
+                                        <strong><a href="{{ path('front_office_emploi_employer_oneSociety',{id:emploi.id}) }}">{{ emploi.name }} :</a></strong>
+                                    </h2>
+                                    <hr>
+                                    <strong>Activité:</strong> {{ emploi.activity }}<br><br>
+                                    <strong>Description:</strong> {{ emploi.description }}
+                                    <hr>
+                                            
+                                {% endfor %}
+
                         </div>
                     </div>
-                {% endfor %}
+                </div>
 
             {% endif %}
 
