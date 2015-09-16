@@ -129,7 +129,7 @@ class Cuvitae
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="cuvitae")
+     * @ORM\OneToMany(targetEntity="FrontOfficeEmploiBundle\Entity\ResponseJobOffer", mappedBy="cuvitae", cascade={"remove"})
      */
     private $responseJobOffer;
 

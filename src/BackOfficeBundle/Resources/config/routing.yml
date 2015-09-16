@@ -232,3 +232,8 @@ back_office_admin_category_new:
 back_office_user_stats:
     path:     /statsUsers
     defaults: { _controller: BackOfficeBundle:AdminUser:statsUsers}
+
+# Route selectionnant tous les CV enregistrés:
+back_office_admin_cuvitae_listCuvitae:
+    path:     /listCuvitae:
+    defaults: { _controller: BackOfficeBundle:AdminCuvitae:listCuvitae}

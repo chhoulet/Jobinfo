@@ -9,7 +9,7 @@ class AdminUserController extends Controller
 {
 	public function statsUsersAction()
 	{
-		$em = $this -> getDoctrine()->getManager();
+		$em = $this -> getDoctrine()->getManager();	
 		$nbCommentsByUser = $em -> getRepository('FrontOfficeUserBundle:User')->getNbCommentsByUser();
 		$usersByNbResponses = $em -> getRepository('FrontOfficeUserBundle:User')->getUsersByNbResponses();
 

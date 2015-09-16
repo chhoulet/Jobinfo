@@ -71,7 +71,7 @@ class CandidatController extends Controller
 		$em -> remove($deletedCv);
 		$em -> flush();
 
-		$session -> getFlashbag()->add('succes','Ce cv est supprimé de votre espace personnel !');
+		$session -> getFlashbag()->add('succes','Ce cv est supprimé !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
