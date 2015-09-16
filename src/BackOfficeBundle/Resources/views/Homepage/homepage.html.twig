@@ -169,14 +169,21 @@
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"></div>
+                                        <div class="huge">{{ nbMessages }}</div>
                                         <div></div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="{{ path('back_office_admin_list_messages') }}">
                                 <div class="panel-footer">
-                                    <span class="pull-left">A compléter</span>
+                                    <span class="pull-left">Messages reçus</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <a href="{{ path('back_office_admin_readMessage_list') }}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Messages archivés</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>

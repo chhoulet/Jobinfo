@@ -25,4 +25,13 @@ class MessageRepository extends EntityRepository
 			ORDER BY m.dateCreated DESC');
 		return $query -> getResult();
 	}
+
+	public function nbMessages()
+	{
+		$query = $this -> getEntitymanager()-> createQuery('
+			SELECT COUNT(m.id)
+			FROM FrontOfficeHomepageBundle:Message m');
+
+		return $query -> getSingleScalarResult();
+	}
 }
