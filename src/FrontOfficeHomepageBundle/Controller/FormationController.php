@@ -35,8 +35,6 @@ class FormationController extends Controller
 				  'formationByInscrit' => $formationByInscrit));
 	}
 
-
-
 	# Ajout  d'un inscrit dans la join-table user_formation:
 	public function inscriptionAction(Request $request, $id)
 	{
@@ -51,7 +49,7 @@ class FormationController extends Controller
 
 		# Message flash 
 		$session -> getFlashbag()->add('notice','Votre inscription est enregistrée !');
-		return $this -> render($this -> redirect($request -> headers -> get('referer')));			
+		return $this -> redirect($request -> headers -> get('referer'));			
 	}
 	
 	# Desinscription d'un user d'une formation:
