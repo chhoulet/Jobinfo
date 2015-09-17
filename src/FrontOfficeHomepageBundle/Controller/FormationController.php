@@ -35,6 +35,8 @@ class FormationController extends Controller
 				  'formationByInscrit' => $formationByInscrit));
 	}
 
+
+
 	# Ajout  d'un inscrit dans la join-table user_formation:
 	public function inscriptionAction(Request $request, $id)
 	{
@@ -42,20 +44,7 @@ class FormationController extends Controller
 		$session = $request -> getSession();
 
 		# Recuperation de la formation selectionnée:
-		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);
-
-		/*# Recuperation des formations auxquelles l'user est deja inscrit:
-		$formation_user = $this -> getUser()->getFormation();	
-		$tab = $formation_user -> toArray();
-
-		array_map(function($object) { return $object->getId(); }, $tab);
-
-		# Test pour savoir si l'user a déjà selectionné cette offre dans son espace personnel:
-		if(in_array(($formation), $tab))
-		{
-			throw new \Exception('Vous avez déjà selectionné cette formation !');
-			return $this -> redirect($request -> headers -> get('referer'));
-		}*/
+		$formation = $em -> getRepository('FrontOfficeHomepageBundle:Formation')->find($id);		
 
 		$formation -> addInscrit($this -> getUser());
 		$em -> flush();
@@ -64,7 +53,7 @@ class FormationController extends Controller
 		$session -> getFlashbag()->add('notice','Votre inscription est enregistrée !');
 		return $this -> render($this -> redirect($request -> headers -> get('referer')));			
 	}
-
+	
 	# Desinscription d'un user d'une formation:
 	public function desinscriptionFormationAction(Request $request, $id)
 	{

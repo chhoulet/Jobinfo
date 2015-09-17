@@ -21,7 +21,8 @@ class ForumController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$oneForum = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->find($id);
-		$forumByInscrit = $em -> getRepository('FrontOfficeHomepageBundle:Forum')->getForumByInscrit($oneForum, $this -> getuser());		
+		$forumByInscrit = $em -> getRepository('FrontOfficeHomepageBundle:Forum')
+			->getForumByInscrit($oneForum, $this -> getuser());		
 
 		return $this -> render('FrontOfficeHomepageBundle:Forum:oneForum.html.twig', 
 			array('oneForum'=> $oneForum,
