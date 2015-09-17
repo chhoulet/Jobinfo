@@ -94,7 +94,7 @@ class Formation
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", inversedBy="formation")
-     * @ORM\JoinTable(name="candidat_formation")
+     * @ORM\JoinTable(name="forum_formation")
      */
     private $forum;
 
@@ -102,7 +102,7 @@ class Formation
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeEmploiBundle\Entity\Candidat", inversedBy="formation")
-     * @ORM\JoinTable(name="forum_formation")
+     * @ORM\JoinTable(name="candidat_formation")
      */
     private $candidat;
  
@@ -378,7 +378,9 @@ class Formation
     public function getEndingDate()
     {
         return $this->endingDate;
-    }
+    }    
+
+   
 
     /**
      * Add forum

@@ -70,7 +70,7 @@ class Forum
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Forum", mappedBy="forum")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeHomepageBundle\Entity\Formation", mappedBy="forum")
      */
     private $formation;
 
@@ -296,14 +296,15 @@ class Forum
     {
         return $this->inscrits;
     }
+    
 
     /**
      * Add formation
      *
-     * @param \FrontOfficeHomepageBundle\Entity\Forum $formation
+     * @param \FrontOfficeHomepageBundle\Entity\Formation $formation
      * @return Forum
      */
-    public function addFormation(\FrontOfficeHomepageBundle\Entity\Forum $formation)
+    public function addFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
     {
         $this->formation[] = $formation;
 
@@ -313,9 +314,9 @@ class Forum
     /**
      * Remove formation
      *
-     * @param \FrontOfficeHomepageBundle\Entity\Forum $formation
+     * @param \FrontOfficeHomepageBundle\Entity\Formation $formation
      */
-    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Forum $formation)
+    public function removeFormation(\FrontOfficeHomepageBundle\Entity\Formation $formation)
     {
         $this->formation->removeElement($formation);
     }
@@ -328,5 +329,38 @@ class Forum
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Add candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     * @return Forum
+     */
+    public function addCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
+    {
+        $this->candidat[] = $candidat;
+
+        return $this;
+    }
+
+    /**
+     * Remove candidat
+     *
+     * @param \FrontOfficeEmploiBundle\Entity\Candidat $candidat
+     */
+    public function removeCandidat(\FrontOfficeEmploiBundle\Entity\Candidat $candidat)
+    {
+        $this->candidat->removeElement($candidat);
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
     }
 }
